@@ -1,0 +1,32 @@
+project:
+  type: website
+  preview:
+    # host: 0.0.0.0
+    port: 4200
+    browser: true
+
+
+website:
+  title: "Rede de Educação e Saúde"
+  search: false
+  navbar:
+    left:
+      - href: index.qmd
+        text: Página inicial
+      - href: municipio.qmd
+        text: Municipio
+      - sobre.qmd
+      
+    right: 
+      - icon: instagram
+        href: https://instagram.com/rede_de_educacao_e_saude_
+
+format:
+  html:
+    theme: minty
+    css: styles.css
+    toc: true
+
+
+
+

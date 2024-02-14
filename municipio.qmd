@@ -1,0 +1,68 @@
+---
+format:
+  html:
+    toc: false
+    echo: false
+    keep-hidden: true
+    
+---
+
+
+## Santo Antônio de Jesus
+#### Ano de referência : 2020
+
+::: {.panel-tabset}
+
+## Matriculas do EM 
+
+### Total de matriculas do EM: ${total}
+
+ ```{ojs}
+
+import { bar } from '@chrispahm/charts'
+
+total = filtered[0].CY.toLocaleString('pt-BR')
+
+bar({
+  data: [{ name: "Total", ' 2020': filtered[0].CY},
+  { name: "Masculina", ' 2020': filtered[0].CZ},
+  { name: "Feminina", ' 2020': filtered[0].DA},
+  { name: "Não declarada", ' 2020': filtered[0].DB},
+  { name: "Branca", ' 2020': filtered[0].DC},
+  { name: "Preta", ' 2020': filtered[0].DD},
+  { name: "Parda", ' 2020': filtered[0].DE},
+  { name: "Amarela", ' 2020': filtered[0].DF},
+  { name: "Indígena", ' 2020':filtered[0].DG},
+  { name: "Deficiência", ' 2020': filtered[0].DH},
+  ],
+  options: {
+    plugins: {
+      datalabels: {
+        color: 'white',
+        font: {
+          weight: 'bold'
+        },
+        formatter: function(x) {
+          return x.toLocaleString('pt-BR')
+        }
+      }
+    }
+  },
+   width: 700,
+  height: 500
+})
+
+```
+
+
+```{ojs}
+data = FileAttachment("Matriculas EM Estadual 2010 a 2022.xlsx").xlsx()
+```
+
+```{ojs}
+filtered = data.sheet("números absolutos").filter(function(pesquisa) {
+  return pesquisa.A == "Recôncavo" && pesquisa.B == "Santo Antônio de Jesus";
+})
+```
+
+:::
