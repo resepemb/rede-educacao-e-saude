@@ -1,5 +1,6 @@
 {
     "recommendations": [
-        "quarto.quarto"
+        "quarto.quarto",
+        "grapecity.gc-excelviewer"
     ]
 }

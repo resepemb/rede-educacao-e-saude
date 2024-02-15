@@ -8,11 +8,32 @@ title: Teste Link
 ---
 ```{ojs}
 
+searchParams = new URLSearchParams(location.search);
+
+id_pesquisa_value = searchParams.has("id_pesquisa")? searchParams.get("id_pesquisa") : "2928703";
+
+viewof id_pesquisa = Inputs.select(["2927408", "2932903", "2928703"], {value: id_pesquisa_value, label: "id_pesquisa"})
+
 data = FileAttachment("files/Matriculas 2010 a 2022 ID.xlsx").xlsx()
+
+filtered = data.sheet("números absolutos").filter(function(pesquisa) {
+  return pesquisa.A != "Territórios BA" && pesquisa.B == id_pesquisa
+})
+
+nomeCidade = filtered[0].C
 
 ```
 
+# ${nomeCidade}
+
+${size}
+
 O valor de `location.search` é: _${location.search}_
+
+O valor de `searchParams` é: _${searchParams}_
+
+O valor de `searchParams.get("id_pesquisa")` é: _${searchParams.get("id_pesquisa")}_
+
 
 O valor de `location.hash` é: _${location.hash}_
 
@@ -28,7 +49,9 @@ Abrindo em uma nova janela
 
 Abrindo em uma nova janela
 
-- [?id_pesquisa](?id_pesquisa=2928703){target="_blank"} 
+- [Salvador](?id_pesquisa=2927408){target="_blank"} 
+- [Valença](?id_pesquisa=2932903){target="_blank"} 
+- [Santo Antônio de Jesus](?id_pesquisa=2928703){target="_blank"} 
 
 ## hash dinamico
 
