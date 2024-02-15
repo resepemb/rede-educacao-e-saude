@@ -10,8 +10,6 @@ format:
 
 ```{ojs}
 
-geojs_bahia = FileAttachment("geojs_bahia.json")
-
 html`<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>`
 
@@ -29,7 +27,7 @@ viewof map = {
   }).addTo(map);
 
   // Adiciona um GeoJSON com os limites dos municípios da Bahia
-  fetch('geojs_bahia.json') 
+  fetch('files/geojs_bahia.json') 
     .then(response => response.json())
     .then(data => {
       L.geoJSON(data, {
