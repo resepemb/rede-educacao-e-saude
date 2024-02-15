@@ -1,0 +1,30 @@
+[
+  {
+    "objectID": "sobre.html",
+    "href": "sobre.html",
+    "title": "Sobre",
+    "section": "",
+    "text": "Sobre este site"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Visualização de Dados",
+    "section": "",
+    "text": "html`&lt;link rel=\"stylesheet\" href=\"https://unpkg.com/leaflet/dist/leaflet.css\" /&gt;\n&lt;script src=\"https://unpkg.com/leaflet/dist/leaflet.js\"&gt;&lt;/script&gt;`\n\n\n\n\n\n\n\nhtml`&lt;div id=\"map\" style=\"height: 500px;\"&gt;&lt;/div&gt;`\n\n\n\n\n\n\n\nviewof map = {\n  const mapDiv = document.getElementById('map');\n  \n  const map = L.map(mapDiv).setView([-12.9714, -38.5014], 10);\n\n  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {\n    attribution: '&copy; &lt;a href=\"https://www.openstreetmap.org/copyright\"&gt;OpenStreetMap&lt;/a&gt; contributors &copy; &lt;a href=\"https://carto.com/attributions\"&gt;CARTO&lt;/a&gt;',\n    subdomains: 'abcd',\n    maxZoom: 20\n  }).addTo(map);\n\n  // Adiciona um GeoJSON com os limites dos municípios da Bahia\n  fetch('files/geojs_bahia.json') \n    .then(response =&gt; response.json())\n    .then(data =&gt; {\n      L.geoJSON(data, {\n        style: {\n        color: 'green', \n        weight: 1 \n      },\n         onEachFeature: function (feature, layer) {\n        const popupContent = `\n          &lt;b&gt;Município:&lt;/b&gt; ${feature.properties.name}&lt;br&gt;\n          &lt;b&gt;id:&lt;/b&gt; ${feature.properties.id}&lt;br&gt;\n           \n          &lt;button onclick=\"window.location.href = 'http://localhost:4200/municipio/?id=' + ${feature.properties.id}+ '&ano=2022' ;\"&gt;Ir para ${feature.properties.name}&lt;/button&gt;\n        `;\n        \n        layer.bindPopup(popupContent);\n      }\n      }).addTo(map);\n    });\n\n  return mapDiv;\n}"
+  },
+  {
+    "objectID": "municipio.html",
+    "href": "municipio.html",
+    "title": "Rede de Educação e Saúde",
+    "section": "",
+    "text": "Matriculas do EM\n\n\n\n\n\nimport { bar } from '@chrispahm/charts'\n\nnomeCidade = filtered[0].C\n\ntotal = filtered[0].CZ.toLocaleString('pt-BR')\n\nbar({\n  data: [{ name: \"Total\", ' 2020': filtered[0].CZ},\n  { name: \"Masculina\", ' 2020': filtered[0].DA},\n  { name: \"Feminina\", ' 2020': filtered[0].DB},\n  { name: \"Não declarada\", ' 2020': filtered[0].DC},\n  { name: \"Branca\", ' 2020': filtered[0].DD},\n  { name: \"Preta\", ' 2020': filtered[0].DE},\n  { name: \"Parda\", ' 2020': filtered[0].DF},\n  { name: \"Amarela\", ' 2020': filtered[0].DG},\n  { name: \"Indígena\", ' 2020':filtered[0].DH},\n  { name: \"Deficiência\", ' 2020': filtered[0].DI},\n  ],\n  options: {\n    plugins: {\n      datalabels: {\n        color: 'white',\n        font: {\n          weight: 'bold'\n        },\n        formatter: function(x) {\n          return x.toLocaleString('pt-BR')\n        }\n      }\n    }\n  },\n   width: 700,\n  height: 500\n})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ndata = FileAttachment(\"files/Matriculas 2010 a 2022 ID.xlsx\").xlsx()\n\nid_pesquisa = 2928703\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nfiltered = data.sheet(\"números absolutos\").filter(function(pesquisa) {\n  return pesquisa.A != \"Territórios BA\" && pesquisa.B == id_pesquisa\n})"
+  },
+  {
+    "objectID": "municipio.html#nomecidade",
+    "href": "municipio.html#nomecidade",
+    "title": "Rede de Educação e Saúde",
+    "section": "",
+    "text": "Matriculas do EM\n\n\n\n\n\nimport { bar } from '@chrispahm/charts'\n\nnomeCidade = filtered[0].C\n\ntotal = filtered[0].CZ.toLocaleString('pt-BR')\n\nbar({\n  data: [{ name: \"Total\", ' 2020': filtered[0].CZ},\n  { name: \"Masculina\", ' 2020': filtered[0].DA},\n  { name: \"Feminina\", ' 2020': filtered[0].DB},\n  { name: \"Não declarada\", ' 2020': filtered[0].DC},\n  { name: \"Branca\", ' 2020': filtered[0].DD},\n  { name: \"Preta\", ' 2020': filtered[0].DE},\n  { name: \"Parda\", ' 2020': filtered[0].DF},\n  { name: \"Amarela\", ' 2020': filtered[0].DG},\n  { name: \"Indígena\", ' 2020':filtered[0].DH},\n  { name: \"Deficiência\", ' 2020': filtered[0].DI},\n  ],\n  options: {\n    plugins: {\n      datalabels: {\n        color: 'white',\n        font: {\n          weight: 'bold'\n        },\n        formatter: function(x) {\n          return x.toLocaleString('pt-BR')\n        }\n      }\n    }\n  },\n   width: 700,\n  height: 500\n})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ndata = FileAttachment(\"files/Matriculas 2010 a 2022 ID.xlsx\").xlsx()\n\nid_pesquisa = 2928703\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nfiltered = data.sheet(\"números absolutos\").filter(function(pesquisa) {\n  return pesquisa.A != \"Territórios BA\" && pesquisa.B == id_pesquisa\n})"
+  }
+]

@@ -1,7 +1,0 @@
----
-title: Página não encontrada
----
-
-A página solicitada não pode ser encontrada (talvez tenha sido movida ou renomeada).
-
-Você pode tentar pesquisar para encontrar o novo local da página.
