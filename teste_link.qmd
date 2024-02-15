@@ -1,0 +1,53 @@
+---
+format:
+  html:
+    toc: false
+    echo: false
+    keep-hidden: true    
+title: Teste Link
+---
+```{ojs}
+
+data = FileAttachment("files/Matriculas 2010 a 2022 ID.xlsx").xlsx()
+
+```
+
+O valor de `location.search` é: _${location.search}_
+
+O valor de `location.hash` é: _${location.hash}_
+
+## Teste de uso do location.hash:
+
+Abrindo em uma nova janela
+
+- [#simple](#simple){target="_blank"} 
+- [#hashful](#hashful){target="_blank"} 
+- [#links](#links){target="_blank"}
+
+## Teste de uso do location.search:
+
+Abrindo em uma nova janela
+
+- [?id_pesquisa](?id_pesquisa=2928703){target="_blank"} 
+
+## hash dinamico
+
+Na mesma janela
+
+```{ojs}
+
+
+hash = Generators.observe(notify => {
+  const hashchange = () => notify(location.hash);
+  hashchange();
+  addEventListener("hashchange", hashchange);
+  return () => removeEventListener("hashchange", hashchange);
+})
+
+```
+
+hash = ${hash}
+
+- [#simple](#simple) 
+- [#hashful](#hashful) 
+- [#links](#links)

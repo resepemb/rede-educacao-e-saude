@@ -18,6 +18,15 @@ format:
  ```{ojs}
 import { bar } from '@chrispahm/charts'
 
+data = FileAttachment("files/Matriculas 2010 a 2022 ID.xlsx").xlsx()
+
+id_pesquisa = 2928703
+
+filtered = data.sheet("números absolutos").filter(function(pesquisa) {
+  return pesquisa.A != "Territórios BA" && pesquisa.B == id_pesquisa
+})
+
+
 nomeCidade = filtered[0].C
 
 total = filtered[0].CZ.toLocaleString('pt-BR')
@@ -53,17 +62,5 @@ bar({
 
 ```
 
-
-```{ojs}
-data = FileAttachment("files/Matriculas 2010 a 2022 ID.xlsx").xlsx()
-
-id_pesquisa = 2928703
-```
-
-```{ojs}
-filtered = data.sheet("números absolutos").filter(function(pesquisa) {
-  return pesquisa.A != "Territórios BA" && pesquisa.B == id_pesquisa
-})
-```
 
 :::
