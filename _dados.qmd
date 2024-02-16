@@ -1,0 +1,161 @@
+
+```{ojs}
+//| output: false
+
+import { bar } from '@chrispahm/charts'
+
+data = FileAttachment("files/Matriculas 2010 a 2022 ID.xlsx").xlsx()
+
+searchParams = new URLSearchParams(location.search);
+
+id_pesquisa = searchParams.has("id") ? searchParams.get("id") : "2928703";
+
+ano_pesquisa = searchParams.has("ano") ? searchParams.get("ano") : "2010";
+
+filtered = data.sheet("números absolutos").filter(function(filtro) {
+  return filtro.A != "Territórios BA" && filtro.B == id_pesquisa
+})
+
+
+nomeCidade = filtered[0].C
+
+dados = [{
+  "2010": {
+  "Total" : filtered[0].D, 
+  "Masculina": filtered[0].E, 
+  "Feminina": filtered[0].F,
+  "Nãodeclarada": filtered[0].G,
+  "Branca": filtered[0].H,
+  "Preta": filtered[0].I,
+  "Parda": filtered[0].J,
+  "Amarela": filtered[0].K,
+  "Indígena":filtered[0].L,
+  "Deficiência": filtered[0].M,},
+
+  "2011": {
+  "Total" : filtered[0].N, 
+  "Masculina": filtered[0].O, 
+  "Feminina": filtered[0].P,
+  "Nãodeclarada": filtered[0].Q,
+  "Branca": filtered[0].R,
+  "Preta": filtered[0].S,
+  "Parda": filtered[0].T,
+  "Amarela": filtered[0].U,
+  "Indígena":filtered[0].V,
+  "Deficiência": filtered[0].W,},
+
+  "2012": {
+  "Total" : filtered[0].X, 
+  "Masculina": filtered[0].Y, 
+  "Feminina": filtered[0].Z,
+  "Nãodeclarada": filtered[0].AA,
+  "Branca": filtered[0].AB,
+  "Preta": filtered[0].AC,
+  "Parda": filtered[0].AD,
+  "Amarela": filtered[0].AE,
+  "Indígena":filtered[0].AF,
+  "Deficiência": filtered[0].AG,},
+
+  "2013": {
+  "Total" : filtered[0].AH, 
+  "Masculina": filtered[0].AI, 
+  "Feminina": filtered[0].AJ,
+  "Nãodeclarada": filtered[0].AK,
+  "Branca": filtered[0].AL,
+  "Preta": filtered[0].AM,
+  "Parda": filtered[0].AN,
+  "Amarela": filtered[0].AO,
+  "Indígena":filtered[0].AP,
+  "Deficiência": filtered[0].AQ,},
+
+  "2014": {
+  "Total" : filtered[0].AR, 
+  "Masculina": filtered[0].AS, 
+  "Feminina": filtered[0].AT,
+  "Nãodeclarada": filtered[0].AU,
+  "Branca": filtered[0].AV,
+  "Preta": filtered[0].AW,
+  "Parda": filtered[0].AX,
+  "Amarela": filtered[0].AY,
+  "Indígena":filtered[0].AZ,
+  "Deficiência": filtered[0].BA,},
+
+
+  "2015": {
+  "Total" : filtered[0].BB, 
+  "Masculina": filtered[0].BC, 
+  "Feminina": filtered[0].BD,
+  "Nãodeclarada": filtered[0].BE,
+  "Branca": filtered[0].BF,
+  "Preta": filtered[0].BG,
+  "Parda": filtered[0].BH,
+  "Amarela": filtered[0].BI,
+  "Indígena":filtered[0].BJ,
+  "Deficiência": filtered[0].BK,},
+
+  "2016": {
+  "Total" : filtered[0].BL, 
+  "Masculina": filtered[0].BM, 
+  "Feminina": filtered[0].BN,
+  "Nãodeclarada": filtered[0].BO,
+  "Branca": filtered[0].BP,
+  "Preta": filtered[0].BQ,
+  "Parda": filtered[0].BR,
+  "Amarela": filtered[0].BS,
+  "Indígena":filtered[0].BT,
+  "Deficiência": filtered[0].BU,},
+
+
+  "2017": {
+  "Total" : filtered[0].BV, 
+  "Masculina": filtered[0].BW, 
+  "Feminina": filtered[0].BX,
+  "Nãodeclarada": filtered[0].BY,
+  "Branca": filtered[0].BZ,
+  "Preta": filtered[0].CA,
+  "Parda": filtered[0].CB,
+  "Amarela": filtered[0].CC,
+  "Indígena":filtered[0].CD,
+  "Deficiência": filtered[0].CE,},
+
+  "2018": {
+  "Total" : filtered[0].CF, 
+  "Masculina": filtered[0].CG, 
+  "Feminina": filtered[0].CH,
+  "Nãodeclarada": filtered[0].CI,
+  "Branca": filtered[0].CJ,
+  "Preta": filtered[0].CK,
+  "Parda": filtered[0].CL,
+  "Amarela": filtered[0].CM,
+  "Indígena":filtered[0].CN,
+  "Deficiência": filtered[0].CO,},
+
+  "2019": {
+  "Total" : filtered[0].CP, 
+  "Masculina": filtered[0].CQ, 
+  "Feminina": filtered[0].CR,
+  "Nãodeclarada": filtered[0].CS,
+  "Branca": filtered[0].CT,
+  "Preta": filtered[0].CU,
+  "Parda": filtered[0].CV,
+  "Amarela": filtered[0].CW,
+  "Indígena":filtered[0].CX,
+  "Deficiência": filtered[0].CY,},
+  
+
+  "2020": {
+  "Total" : filtered[0].CZ, 
+  "Masculina": filtered[0].DA, 
+  "Feminina": filtered[0].DB,
+  "Nãodeclarada": filtered[0].DC,
+  "Branca": filtered[0].DD,
+  "Preta": filtered[0].DE,
+  "Parda": filtered[0].DF,
+  "Amarela": filtered[0].DG,
+  "Indígena":filtered[0].DH,
+  "Deficiência": filtered[0].DI,},
+  }]
+
+total = dados[0][pesquisa_ano].Total.toLocaleString('pt-BR')
+
+```

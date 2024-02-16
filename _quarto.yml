@@ -14,9 +14,7 @@ website:
       - href: index.qmd
         text: Página inicial
       - href: municipio.qmd
-        text: Municipio
-      - href: teste_link.qmd
-        text: Teste Link
+        text: Dados
       - sobre.qmd
       
     right: 

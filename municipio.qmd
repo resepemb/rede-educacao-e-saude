@@ -1,48 +1,36 @@
 ---
-format:
-  html:
-    toc: false
-    echo: false
-    keep-hidden: true    
+format: dashboard
 ---
+{{< include _dados.qmd >}}
 
-## ${nomeCidade}
-#### Ano de referência : 2020
+## {height=20%}
+::: {.valuebox color="white"} 
+  Município
 
-::: {.panel-tabset}
+  ${nomeCidade}
 
-## Matriculas do EM 
+:::
 
-### Total de matriculas do EM: ${total}
+## Row {.tabset}
 
- ```{ojs}
-import { bar } from '@chrispahm/charts'
-
-data = FileAttachment("files/Matriculas 2010 a 2022 ID.xlsx").xlsx()
-
-id_pesquisa = 2928703
-
-filtered = data.sheet("números absolutos").filter(function(pesquisa) {
-  return pesquisa.A != "Territórios BA" && pesquisa.B == id_pesquisa
-})
-
-
-nomeCidade = filtered[0].C
-
-total = filtered[0].CZ.toLocaleString('pt-BR')
+```{ojs}
+//| title: Dados completos
+viewof pesquisa_ano = Inputs.select(["2010", "2011", "2012", "2013","2014","2015","2016","2017", "2018","2019","2020"], {value: ano_pesquisa, label: "Ano de pesquisa"})
 
 bar({
-  data: [{ name: "Total", ' 2020': filtered[0].CZ},
-  { name: "Masculina", ' 2020': filtered[0].DA},
-  { name: "Feminina", ' 2020': filtered[0].DB},
-  { name: "Não declarada", ' 2020': filtered[0].DC},
-  { name: "Branca", ' 2020': filtered[0].DD},
-  { name: "Preta", ' 2020': filtered[0].DE},
-  { name: "Parda", ' 2020': filtered[0].DF},
-  { name: "Amarela", ' 2020': filtered[0].DG},
-  { name: "Indígena", ' 2020':filtered[0].DH},
-  { name: "Deficiência", ' 2020': filtered[0].DI},
+  data: [{ name: "Total", '' :dados[0][pesquisa_ano].Total},
+  { name: "Masculina", '':  dados[0][pesquisa_ano].Masculina},
+  { name: "Feminina", '': dados[0][pesquisa_ano].Feminina},
+  { name: "Não declarada", '': dados[0][pesquisa_ano].Nãodeclarada},
+  { name: "Branca", '': dados[0][pesquisa_ano].Branca},
+  { name: "Preta", '': dados[0][pesquisa_ano].Preta},
+  { name: "Parda", '': dados[0][pesquisa_ano].Parda},
+  { name: "Amarela", '': dados[0][pesquisa_ano].Amarela},
+  { name: "Indígena",'':dados[0][pesquisa_ano].Indígena},
+  { name: "Deficiência", '':dados[0][pesquisa_ano].Deficiência},
   ],
+
+  
   options: {
     plugins: {
       datalabels: {
@@ -61,6 +49,10 @@ bar({
 })  
 
 ```
+```{ojs}
+//| title: Dados parciais
+
+teste 
+```
 
 
-:::

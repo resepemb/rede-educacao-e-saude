@@ -1,5 +1,5 @@
 ---
-title: "Visualização de Dados"
+title: "Mapa regional"
 format:
   html:
     toc: false
@@ -8,12 +8,18 @@ format:
     
 ---
 
+#### Escolha um município para visualizar os dados
+
+::: {.card}
+
 ```{ojs}
+
+json = FileAttachment("files/geojs_bahia.json").json()
 
 html`<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>`
 
-html`<div id="map" style="height: 500px;"></div>`
+html`<div id="map" style="height: 600px;"></div>`
 
 viewof map = {
   const mapDiv = document.getElementById('map');
@@ -26,28 +32,23 @@ viewof map = {
 	maxZoom: 20
   }).addTo(map);
 
-  // Adiciona um GeoJSON com os limites dos municípios da Bahia
-  fetch('files/geojs_bahia.json') 
-    .then(response => response.json())
-    .then(data => {
-      L.geoJSON(data, {
-        style: {
-        color: 'green', 
-        weight: 1 
-      },
-         onEachFeature: function (feature, layer) {
-        const popupContent = `
-          <b>Município:</b> ${feature.properties.name}<br>
-          <b>id:</b> ${feature.properties.id}<br>
-           
-          <button onclick="window.location.href = 'http://localhost:4200/municipio/?id=' + ${feature.properties.id}+ '&ano=2022' ;">Ir para ${feature.properties.name}</button>
-        `;
-        
-        layer.bindPopup(popupContent);
-      }
-      }).addTo(map);
-    });
+  
+  L.geoJSON(json, {
+    style: {
+    color: 'green', 
+    weight: 1 
+  },
+      onEachFeature: function (feature, layer) {
+    const popupContent = `
+      <button onclick="window.location.href = 'http://localhost:4200/municipio.html?id=' + ${feature.properties.id}+ '&ano=2020' ;">Visualizar dados de ${feature.properties.name}</button>
+    `;
+    
+    layer.bindPopup(popupContent);
+  }
+  }).addTo(map);
+
 
   return mapDiv;
 }
 ```
+:::
