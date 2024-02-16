@@ -40,9 +40,9 @@ viewof map = {
   },
       onEachFeature: function (feature, layer) {
     const popupContent = `
-      <button onclick="window.location.href = 'http://localhost:4200/municipio.html?id=' + ${feature.properties.id}+ '&ano=2020' ;">Visualizar dados de ${feature.properties.name}</button>
+      <button onclick="window.location.href = '${location}municipio.html?id=' + ${feature.properties.id}+ '&ano=2020' ;">Visualizar dados de ${feature.properties.name}</button>
     `;
-    
+     
     layer.bindPopup(popupContent);
   }
   }).addTo(map);
