@@ -1,22 +1,112 @@
 ---
 format: dashboard
----
+--- 
 {{< include _dados.qmd >}}
-
+ 
 ## {height=20%}
 ::: {.valuebox color="white"} 
   Município
 
   ${nomeCidade}
+:::
+  
+## {height=15%}
 
+::: {.valuebox  color="blue" } 
+  Total
+
+  ${total}
+
+  100%
 :::
 
+
+::: {.valuebox color="info" } 
+  Masculina
+
+  ${total_masculina}
+
+  ${total_masculina_porcentagem} %
+:::
+
+::: {.valuebox  color="info"} 
+  Feminina
+
+  ${total_feminina}
+
+  ${total_feminina_porcentagem} %
+:::
+
+
+::: {.valuebox  color="info" } 
+  Nãodeclarada
+
+  ${total_naodeclarada}
+
+  ${total_naodeclarada_porcentagem} %
+:::
+
+ 
+::: {.valuebox  color="info" } 
+  Branca
+ 
+  ${total_branca}
+
+  ${total_branca_porcentagem} %
+:::
+
+
+::: {.valuebox  color="info" } 
+  Preta
+
+  ${total_preta}
+
+  ${total_preta_porcentagem} %
+:::
+
+
+::: {.valuebox  color="info" } 
+  Parda
+
+  ${total_parda}
+
+  ${total_parda_porcentagem} %
+:::
+
+
+::: {.valuebox  color="info" } 
+  Amarela
+
+  ${total_amarela}
+
+  ${total_amarela_porcentagem} %
+:::
+
+
+::: {.valuebox  color="info" } 
+  Indígena
+
+  ${total_indigena}
+
+  ${total_indigena_porcentagem} %
+:::
+ 
+
+::: {.valuebox  color="info" } 
+  Deficiência
+
+  ${total_deficiencia}
+
+  ${total_deficiencia_porcentagem} %
+:::
+ 
+ 
 ## Row {.tabset}
 
 ```{ojs}
-//| title: Dados completos
+//| title: 'Dados completos'
 viewof pesquisa_ano = Inputs.select(["2010", "2011", "2012", "2013","2014","2015","2016","2017", "2018","2019","2020"], {value: ano_pesquisa, label: "Ano de pesquisa"})
-
+ 
 bar({
   data: [{ name: "Total", '' :dados[0][pesquisa_ano].Total},
   { name: "Masculina", '':  dados[0][pesquisa_ano].Masculina},
@@ -29,8 +119,8 @@ bar({
   { name: "Indígena",'':dados[0][pesquisa_ano].Indígena},
   { name: "Deficiência", '':dados[0][pesquisa_ano].Deficiência},
   ],
-
-  
+ 
+   
   options: {
     plugins: {
       datalabels: {
@@ -44,15 +134,9 @@ bar({
       }
     }
   },
-   width: 700,
-  height: 500
+   width: 900,
+  height: 375
 })  
-
-```
-```{ojs}
-//| title: Dados parciais
-
-teste 
 ```
 
 

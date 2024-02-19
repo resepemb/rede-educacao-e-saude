@@ -12,6 +12,8 @@ id_pesquisa = searchParams.has("id") ? searchParams.get("id") : "2928703";
 
 ano_pesquisa = searchParams.has("ano") ? searchParams.get("ano") : "2010";
 
+ano_pesquisa_parcial = "2022"
+
 filtered = data.sheet("números absolutos").filter(function(filtro) {
   return filtro.A != "Territórios BA" && filtro.B == id_pesquisa
 })
@@ -154,8 +156,51 @@ dados = [{
   "Amarela": filtered[0].DG,
   "Indígena":filtered[0].DH,
   "Deficiência": filtered[0].DI,},
+
+   "2021": {
+  "Total" : filtered[0].DJ, 
+  "Integral": filtered[0].DK,
+  "Parcial":filtered[0].DL},
+
+  "2022": {
+  "Total" : filtered[0].DM, 
+  "Integral": filtered[0].DN,
+  "Parcial":filtered[0].DO},
   }]
 
+
+
 total = dados[0][pesquisa_ano].Total.toLocaleString('pt-BR')
+
+total_masculina = dados[0][pesquisa_ano].Masculina.toLocaleString('pt-BR')
+total_masculina_porcentagem = calculaPorcentagemTotal(dados[0][pesquisa_ano].Masculina)
+
+total_feminina = dados[0][pesquisa_ano].Feminina.toLocaleString('pt-BR')
+total_feminina_porcentagem = calculaPorcentagemTotal(dados[0][pesquisa_ano].Feminina)
+
+total_naodeclarada = dados[0][pesquisa_ano].Nãodeclarada.toLocaleString('pt-BR')
+total_naodeclarada_porcentagem = calculaPorcentagemTotal(dados[0][pesquisa_ano].Nãodeclarada)
+
+total_branca = dados[0][pesquisa_ano].Branca.toLocaleString('pt-BR')
+total_branca_porcentagem = calculaPorcentagemTotal(dados[0][pesquisa_ano].Branca)
+
+total_preta = dados[0][pesquisa_ano].Preta.toLocaleString('pt-BR')
+total_preta_porcentagem = calculaPorcentagemTotal(dados[0][pesquisa_ano].Preta)
+
+total_parda = dados[0][pesquisa_ano].Parda.toLocaleString('pt-BR')
+total_parda_porcentagem = calculaPorcentagemTotal(dados[0][pesquisa_ano].Parda)
+
+total_amarela = dados[0][pesquisa_ano].Amarela.toLocaleString('pt-BR')
+total_amarela_porcentagem = calculaPorcentagemTotal(dados[0][pesquisa_ano].Amarela)
+
+total_indigena = dados[0][pesquisa_ano].Indígena.toLocaleString('pt-BR')
+total_indigena_porcentagem = calculaPorcentagemTotal(dados[0][pesquisa_ano].Indígena)
+
+total_deficiencia = dados[0][pesquisa_ano].Deficiência.toLocaleString('pt-BR')
+total_deficiencia_porcentagem = calculaPorcentagemTotal(dados[0][pesquisa_ano].Deficiência)
+
+function calculaPorcentagemTotal(n1){
+  return ((n1/dados[0][pesquisa_ano].Total) * 100).toFixed(2)
+}
 
 ```
