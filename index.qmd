@@ -2,6 +2,11 @@
 title: "Mapa regional"
 format:
   html:
+    include-in-header:
+      - text: |
+          <link rel="manifest" href="/static/manifest.json">
+    include-after-body: 
+      file: 'loadserviceworker.html'
     toc: false
     echo: false
     keep-hidden: true

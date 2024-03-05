@@ -1,5 +1,8 @@
 project:
   type: website
+  post-render:
+    - "cp -rnv static/images/. _site/static/img"
+    - "cp static/sw.js _site/static/"
   preview:
     # host: 0.0.0.0
     port: 4200
