@@ -1,7 +1,7 @@
 <script>
     if('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./static/sw.js', {scope:'/static/'})
+        navigator.serviceWorker.register('./static/sw.js', {scope:'/rede-educacao-e-saude/static/'})
         .then(function (reg) {
             //registration worked
             console.log('Registration succeded. Scope is' + reg.scope);
