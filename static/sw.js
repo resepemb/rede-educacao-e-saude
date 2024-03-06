@@ -18,6 +18,8 @@ registerRoute(
 
 precacheAndRoute([
     {url: '/index.html', revision: '01'},
-    {url: '/404.html', revision: '01'}
+    {url: '/404.html', revision: '01'},
+    {url: '/municipio.html', revision: '01'},
+    {url: '/sobre.html', revision: '01'}
 ]
 );
