@@ -636,7 +636,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <script>
     if('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js', {scope:'/'})
+        navigator.serviceWorker.register('sw.js', {scope:'/rede-educacao-e-saude/'})
         .then(function (reg) {
             //registration worked
             console.log('Registration succeded. Scope is: ' + reg.scope);
