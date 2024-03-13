@@ -4,10 +4,10 @@ const { precacheAndRoute } = workbox.precaching;
 
 
 precacheAndRoute([
-    {url: '/index.html', revision: '01'},
-    {url: '/404.html', revision: '01'},
-    {url: '/municipio.html', revision: '01'},
-    {url: '/sobre.html', revision: '01'},
+    {url: '/rede-educacao-e-saude/index.html', revision: '01'},
+    {url: '/rede-educacao-e-saude/404.html', revision: '01'},
+    {url: '/rede-educacao-e-saude/municipio.html', revision: '01'},
+    {url: '/rede-educacao-e-saude/sobre.html', revision: '01'},
 ]);
 
 
