@@ -2,6 +2,7 @@ importScripts('https://storage.googleapis.com/workbox-cdn/releases/6.4.1/workbox
 
 const { precacheAndRoute } = workbox.precaching;
 
+const { registerRoute } = workbox.routing;
 
 precacheAndRoute([
     {url: '/rede-educacao-e-saude/index.html', revision: '01'},
@@ -9,6 +10,15 @@ precacheAndRoute([
     {url: '/rede-educacao-e-saude/municipio.html', revision: '01'},
     {url: '/rede-educacao-e-saude/sobre.html', revision: '01'},
 ]);
+
+registerRoute(({url}) => url.pathname === '/rede-educacao-e-saude/municipio.html', async({event}) => {
+    try {
+        const cacheResponse = await caches.match('/rede-educacao-e-saude/municipio.html?__WB_REVISION__=01');
+        return cacheResponse || fetch(event.request);
+    } catch (error) {
+        return new Response('Erro ao buscar a página', { status: 500 });
+    }
+});
 
 
 const strategy = new workbox.strategies.CacheFirst();
