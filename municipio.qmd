@@ -1,5 +1,8 @@
 ---
 format: dashboard
+include-in-header:
+      - text: |
+          <link rel="manifest" href="/static/manifest.json">
 --- 
 {{< include _dados.qmd >}}
  
