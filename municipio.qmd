@@ -5,16 +5,27 @@ include-in-header:
           <link rel="manifest" href="/static/manifest.json">
 --- 
 {{< include _dados.qmd >}}
- 
-## {height=20%}
+
+
+# {.toolbar}
+```{ojs}
+
+viewof pesquisa_ano = Inputs.select(["2010", "2011", "2012", "2013","2014","2015","2016","2017", "2018","2019","2020"], {value: ano_pesquisa, label: "Ano de pesquisa "})
+
+```
+
+
+# Dados Gerais
+
+
+##
 ::: {.valuebox color="white"} 
   Município
 
   ${nomeCidade}
 :::
-  
-## {height=15%}
 
+##
 ::: {.valuebox  color="blue" } 
   Total
 
@@ -24,7 +35,7 @@ include-in-header:
 :::
 
 
-::: {.valuebox color="info" } 
+::: {.valuebox color="green" } 
   Masculina
 
   ${total_masculina}
@@ -32,7 +43,7 @@ include-in-header:
   ${total_masculina_porcentagem} %
 :::
 
-::: {.valuebox  color="info"} 
+::: {.valuebox  color="green"} 
   Feminina
 
   ${total_feminina}
@@ -41,7 +52,7 @@ include-in-header:
 :::
 
 
-::: {.valuebox  color="info" } 
+::: {.valuebox  color="green" } 
   Nãodeclarada
 
   ${total_naodeclarada}
@@ -49,7 +60,8 @@ include-in-header:
   ${total_naodeclarada_porcentagem} %
 :::
 
- 
+##
+
 ::: {.valuebox  color="info" } 
   Branca
  
@@ -104,11 +116,10 @@ include-in-header:
 :::
  
  
-## Row {.tabset}
+# Graficos {.tabset}
 
 ```{ojs}
 //| title: 'Dados completos'
-viewof pesquisa_ano = Inputs.select(["2010", "2011", "2012", "2013","2014","2015","2016","2017", "2018","2019","2020"], {value: ano_pesquisa, label: "Ano de pesquisa"})
  
 bar({
   data: [{ name: "Total", '' :dados[0][pesquisa_ano].Total},
