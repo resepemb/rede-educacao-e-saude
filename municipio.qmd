@@ -1,5 +1,7 @@
 ---
-format: dashboard
+format: 
+  html:
+    page-layout: custom
 include-in-header:
       - text: |
           <link rel="manifest" href="/static/manifest.json">
@@ -7,35 +9,50 @@ include-in-header:
 {{< include _dados.qmd >}}
 
 
-# {.toolbar}
-```{ojs}
+::: {.grid .mx-5 .my-3}
 
+::: {.g-col-6}
+
+::: { .text-start } 
+
+:::{.mun}
+
+Município
+
+:::
+  
+:::{.cityfont .fw-bold }
+
+${nomeCidade}
+
+:::
+  
+:::
+
+:::
+
+:::{.g-col-6 .d-flex .justify-content-center}
+
+```{ojs}
 viewof pesquisa_ano = Inputs.select(["2010", "2011", "2012", "2013","2014","2015","2016","2017", "2018","2019","2020"], {value: ano_pesquisa, label: "Ano de pesquisa "})
 
 ```
 
-
-# Dados Gerais
-
-
-##
-::: {.valuebox color="white"} 
-  Município
-
-  ${nomeCidade}
 :::
 
-##
-::: {.valuebox  color="blue" } 
-  Total
+::: 
 
-  ${total}
 
-  100%
+::: {.grid .mx-5 .mun}
+
+Por genêro
+
 :::
 
+:::{.grid .mx-5 .text-center }
+ 
 
-::: {.valuebox color="green" } 
+::: {.valuebox color="green" .g-col-12 .g-col-sm-4 .rounded-2} 
   Masculina
 
   ${total_masculina}
@@ -43,7 +60,8 @@ viewof pesquisa_ano = Inputs.select(["2010", "2011", "2012", "2013","2014","2015
   ${total_masculina_porcentagem} %
 :::
 
-::: {.valuebox  color="green"} 
+
+::: {.valuebox  color="green" .g-col-12 .g-col-sm-4 .rounded-2} 
   Feminina
 
   ${total_feminina}
@@ -52,17 +70,27 @@ viewof pesquisa_ano = Inputs.select(["2010", "2011", "2012", "2013","2014","2015
 :::
 
 
-::: {.valuebox  color="green" } 
-  Nãodeclarada
+
+::: {.valuebox  color="green" .g-col-12 .g-col-sm-4 .rounded-2} 
+  Não declarada
 
   ${total_naodeclarada}
 
   ${total_naodeclarada_porcentagem} %
 :::
 
-##
+:::
 
-::: {.valuebox  color="info" } 
+
+::: {.grid .mx-5 .mun}
+
+Por raça/cor
+
+:::
+
+:::{.grid .mx-5 .my-2 .text-center }
+
+::: {.valuebox  color="info" .g-col-12 .g-col-md-2} 
   Branca
  
   ${total_branca}
@@ -71,7 +99,7 @@ viewof pesquisa_ano = Inputs.select(["2010", "2011", "2012", "2013","2014","2015
 :::
 
 
-::: {.valuebox  color="info" } 
+::: {.valuebox  color="info" .g-col-12 .g-col-md-2} 
   Preta
 
   ${total_preta}
@@ -80,7 +108,7 @@ viewof pesquisa_ano = Inputs.select(["2010", "2011", "2012", "2013","2014","2015
 :::
 
 
-::: {.valuebox  color="info" } 
+::: {.valuebox  color="info" .g-col-12 .g-col-md-2} 
   Parda
 
   ${total_parda}
@@ -89,7 +117,7 @@ viewof pesquisa_ano = Inputs.select(["2010", "2011", "2012", "2013","2014","2015
 :::
 
 
-::: {.valuebox  color="info" } 
+::: {.valuebox  color="info" .g-col-12 .g-col-md-2} 
   Amarela
 
   ${total_amarela}
@@ -98,16 +126,15 @@ viewof pesquisa_ano = Inputs.select(["2010", "2011", "2012", "2013","2014","2015
 :::
 
 
-::: {.valuebox  color="info" } 
+::: {.valuebox  color="info" .g-col-12 .g-col-md-2} 
   Indígena
 
   ${total_indigena}
 
   ${total_indigena_porcentagem} %
 :::
- 
 
-::: {.valuebox  color="info" } 
+::: {.valuebox  color="info" .g-col-12 .g-col-md-2} 
   Deficiência
 
   ${total_deficiencia}
@@ -115,8 +142,10 @@ viewof pesquisa_ano = Inputs.select(["2010", "2011", "2012", "2013","2014","2015
   ${total_deficiencia_porcentagem} %
 :::
  
- 
-# Graficos {.tabset}
+:::
+
+
+:::{.grid .mx-5}
 
 ```{ojs}
 //| title: 'Dados completos'
@@ -153,4 +182,4 @@ bar({
 })  
 ```
 
-
+:::

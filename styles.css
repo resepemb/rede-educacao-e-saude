@@ -3,3 +3,20 @@
 .navbar{
     background-color: darkcyan;
 }
+
+
+.mun{
+    font-weight: 600;
+    font-size: medium;
+}
+
+.cityfont{
+    font-weight: 600;
+    font-size: 60px;
+}
+
+.valuebox{
+    background-color: antiquewhite;
+    /* border: 1px transparent;
+    border-radius: 5px;*/
+}

@@ -6,7 +6,7 @@ project:
   preview:
     # host: 0.0.0.0
     port: 4200
-    browser: true
+    browser: false
 
 
 website:
@@ -26,10 +26,10 @@ website:
 
 format:
   html:
+    echo: false
     theme: minty
     css: styles.css
     toc: true
-
 
 
 
