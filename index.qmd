@@ -1,5 +1,4 @@
 ---
-title: "Mapa regional"
 format:
   html:
     include-in-header:
@@ -7,18 +6,54 @@ format:
           <link rel="manifest" href="/static/manifest.json">
     include-after-body: 
       file: 'loadserviceworker.html'
-    toc: false
-    echo: false
-    keep-hidden: true
-    
 ---
 
-#### Escolha um município para visualizar os dados
+::: {.grid .mx-5 .px-4 .my-3 .bg-primary .rounded}
+
+:::{ .g-col-6 .d-flex .fs-1 .flex-column .sloganMainPage .align-items-start }
+
+Informações de fácil acesso.
+
+Até mesmo offline.
+
+:::
+
+::: {.g-col-12 }
+
+:::{.pb-3}
+
+:::{.input-group .w-100}
+
+:::{.input-group-text  .bi-search .inputSearchLeft}
+ 
+:::
+
+```{ojs}
+viewof textInput = html`<input type="search" class="form-control inputSearchRight" id="searchCity" placeholder="Buscar por município" name="q">`
+// viewof searchInput = Inputs.text({label: "Buscar por município", value: "", datalist:["Teste1","Teste2","bar"]})
+```
+
+
+:::
+
+:::
+
+
+
+
+:::
+
+:::
+
+
+::: {.grid .mx-5 .px-1 .my-3  .rounded .vh-100}
+
+:::{ .g-col-12}
 
 ::: {.card}
 
-```{ojs}
 
+```{ojs}
 json = FileAttachment("files/geojs_bahia.json").json()
 
 html`<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
@@ -56,4 +91,11 @@ viewof map = {
   return mapDiv;
 }
 ```
+
 :::
+
+:::
+
+:::
+
+{{< include _pagefooter.qmd >}}

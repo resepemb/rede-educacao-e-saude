@@ -1,8 +1,7 @@
 ---
 format: 
   html:
-    page-layout: custom
-include-in-header:
+    include-in-header:
       - text: |
           <link rel="manifest" href="/static/manifest.json">
 --- 
@@ -31,12 +30,37 @@ ${nomeCidade}
 
 :::
 
-:::{.g-col-6 .d-flex .justify-content-center}
+:::{.g-col-6 .d-flex .justify-content-center .align-self-center}
+
+:::{.row}
+
+Selecione o ano de pesquisa desejado   
 
 ```{ojs}
-viewof pesquisa_ano = Inputs.select(["2010", "2011", "2012", "2013","2014","2015","2016","2017", "2018","2019","2020"], {value: ano_pesquisa, label: "Ano de pesquisa "})
+
+// viewof pesquisa_ano = Inputs.select(["2010", "2011", "2012", "2013","2014","2015","2016","2017", "2018","2019","2020"], {value: ano_pesquisa, label: "Ano de pesquisa "}) 
+
+viewof pesquisa_ano = html`
+<select id="pesquisa_ano" class="form-select" >
+  <option value="2010">2010</option>
+  <option value="2011">2011</option>
+  <option value="2012">2012</option>
+  <option value="2013">2013</option>
+  <option value="2014">2014</option>
+  <option value="2015">2015</option>
+  <option value="2016">2016</option>
+  <option value="2017">2017</option>
+  <option value="2018">2018</option>
+  <option value="2019">2019</option>
+  <option value="2020" selected>2020</option>
+</select>
+`
 
 ```
+
+:::
+
+
 
 :::
 
@@ -52,7 +76,7 @@ Por genêro
 :::{.grid .mx-5 .text-center }
  
 
-::: {.valuebox color="green" .g-col-12 .g-col-sm-4 .rounded-2} 
+::: {.valuebox color="green" .g-col-12 .g-col-sm-4 .rounded-2 .pt-2} 
   Masculina
 
   ${total_masculina}
@@ -61,7 +85,7 @@ Por genêro
 :::
 
 
-::: {.valuebox  color="green" .g-col-12 .g-col-sm-4 .rounded-2} 
+::: {.valuebox  color="green" .g-col-12 .g-col-sm-4 .rounded-2 .pt-2}  
   Feminina
 
   ${total_feminina}
@@ -71,7 +95,7 @@ Por genêro
 
 
 
-::: {.valuebox  color="green" .g-col-12 .g-col-sm-4 .rounded-2} 
+::: {.valuebox  color="green" .g-col-12 .g-col-sm-4 .rounded-2 .pt-2} 
   Não declarada
 
   ${total_naodeclarada}
@@ -88,9 +112,9 @@ Por raça/cor
 
 :::
 
-:::{.grid .mx-5 .my-2 .text-center }
+:::{.grid .mx-5 .text-center }
 
-::: {.valuebox  color="info" .g-col-12 .g-col-md-2} 
+::: {.valuebox  color="info" .g-col-12 .g-col-md-2 .rounded-2 .pt-2} 
   Branca
  
   ${total_branca}
@@ -99,7 +123,7 @@ Por raça/cor
 :::
 
 
-::: {.valuebox  color="info" .g-col-12 .g-col-md-2} 
+::: {.valuebox  color="info" .g-col-12 .g-col-md-2 .rounded-2 .pt-2} 
   Preta
 
   ${total_preta}
@@ -108,7 +132,7 @@ Por raça/cor
 :::
 
 
-::: {.valuebox  color="info" .g-col-12 .g-col-md-2} 
+::: {.valuebox  color="info" .g-col-12 .g-col-md-2 .rounded-2 .pt-2} 
   Parda
 
   ${total_parda}
@@ -117,7 +141,7 @@ Por raça/cor
 :::
 
 
-::: {.valuebox  color="info" .g-col-12 .g-col-md-2} 
+::: {.valuebox  color="info" .g-col-12 .g-col-md-2 .rounded-2 .pt-2} 
   Amarela
 
   ${total_amarela}
@@ -126,7 +150,7 @@ Por raça/cor
 :::
 
 
-::: {.valuebox  color="info" .g-col-12 .g-col-md-2} 
+::: {.valuebox  color="info" .g-col-12 .g-col-md-2 .rounded-2 .pt-2} 
   Indígena
 
   ${total_indigena}
@@ -134,7 +158,7 @@ Por raça/cor
   ${total_indigena_porcentagem} %
 :::
 
-::: {.valuebox  color="info" .g-col-12 .g-col-md-2} 
+::: {.valuebox  color="info" .g-col-12 .g-col-md-2 .rounded-2 .pt-2} 
   Deficiência
 
   ${total_deficiencia}
@@ -145,7 +169,7 @@ Por raça/cor
 :::
 
 
-:::{.grid .mx-5}
+:::{.grid .mx-5 .pb-3}
 
 ```{ojs}
 //| title: 'Dados completos'
@@ -183,3 +207,5 @@ bar({
 ```
 
 :::
+
+{{< include _pagefooter.qmd >}}

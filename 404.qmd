@@ -1,5 +1,9 @@
 ---
-title: Página não encontrada
+title: 404 - Página não encontrada
+format: 
+    html:
+        page-layout: full
+
 ---
 
 A página solicitada não pode ser encontrada (talvez tenha sido movida ou renomeada).

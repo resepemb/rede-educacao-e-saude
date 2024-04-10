@@ -13,23 +13,44 @@ website:
   title: "Rede de Educação e Saúde"
   search: false
   navbar:
-    left:
-      - href: index.qmd
-        text: Página inicial
-      - href: municipio.qmd
-        text: Dados
-      - sobre.qmd
+
       
-    right: 
+      
+    right:
+        # Substituir no futuro com as respectivas páginas
+      - href: http://localhost:4200/proeficiencia/
+        text: Proeficiência
+      - text: Publicações
+        menu: 
+          - href: http://localhost:4200/publicacoes_gerais/
+            text: Publicações Gerais
+          - href: http://localhost:4200/artigos/
+            text: Artigos
+      - text: Cursos de Formação
+        menu: 
+          - href: http://localhost:4200/curso_especializacao/
+            text: Curso de especialização
+          - href: http://localhost:4200/jovem_doutor/
+            text: Jovem Doutor
+      - sobre.qmd 
       - icon: instagram
         href: https://instagram.com/rede_de_educacao_e_saude_
 
 format:
   html:
+    toc: false
     echo: false
-    theme: minty
+    keep-hidden: true
+    smooth-scroll: true
+    theme: 
+      - minty
+      - custom.scss
     css: styles.css
-    toc: true
+    page-layout: custom
+    
+    
+    
+    
 
 
 

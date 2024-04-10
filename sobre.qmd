@@ -3,3 +3,9 @@ title: "Sobre"
 ---
 
 Sobre este site
+
+:::{.grid .vh-100}
+
+:::
+
+{{< include _pagefooter.qmd >}}
