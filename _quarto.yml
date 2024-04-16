@@ -14,25 +14,24 @@ website:
   search: false
   navbar:
 
-      
-      
     right:
         # Substituir no futuro com as respectivas páginas
-      - href: http://localhost:4200/proeficiencia/
+      - href: ./proeficiencia/
         text: Proeficiência
       - text: Publicações
         menu: 
-          - href: http://localhost:4200/publicacoes_gerais/
+          - href: ./publicacoes_gerais/
             text: Publicações Gerais
-          - href: http://localhost:4200/artigos/
+          - href: ./artigos/
             text: Artigos
       - text: Cursos de Formação
         menu: 
-          - href: http://localhost:4200/curso_especializacao/
+          - href: ./curso_especializacao/
             text: Curso de especialização
-          - href: http://localhost:4200/jovem_doutor/
+          - href: ./jovem_doutor/
             text: Jovem Doutor
-      - sobre.qmd 
+      - href: sobre.qmd
+        text: Sobre 
       - icon: instagram
         href: https://instagram.com/rede_de_educacao_e_saude_
 

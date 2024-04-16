@@ -4,18 +4,18 @@
 
 import { bar } from '@chrispahm/charts'
 
-data = FileAttachment("files/Matriculas 2010 a 2022 ID.xlsx").xlsx()
+data = FileAttachment("files/Matriculas 2010 a 2022 ID.xlsx").xlsx();
 
 searchParams = new URLSearchParams(location.search);
 
 id_pesquisa = searchParams.has("id") ? searchParams.get("id") : "2928703";
 
-ano_pesquisa = searchParams.has("ano") ? searchParams.get("ano") : "2010";
+// ano_pesquisa = searchParams.has("ano") ? searchParams.get("ano") : "2010";
 
-ano_pesquisa_parcial = "2022"
+// ano_pesquisa_parcial = "2022";
 
 filtered = data.sheet("números absolutos").filter(function(filtro) {
-  return filtro.A != "Territórios BA" && filtro.B == id_pesquisa
+  return filtro.A != "Territórios BA" && filtro.B == id_pesquisa;
 })
 
 
@@ -170,37 +170,37 @@ dados = [{
 
 
 
-total = dados[0][pesquisa_ano].Total.toLocaleString('pt-BR')
+total = dados[0][pesquisa_ano].Total.toLocaleString('pt-BR');
 
-total_masculina = dados[0][pesquisa_ano].Masculina.toLocaleString('pt-BR')
-total_masculina_porcentagem = calculaPorcentagemTotal(dados[0][pesquisa_ano].Masculina)
+total_masculina = dados[0][pesquisa_ano].Masculina.toLocaleString('pt-BR');
+total_masculina_porcentagem = calculaPorcentagemTotal(dados[0][pesquisa_ano].Masculina);
 
-total_feminina = dados[0][pesquisa_ano].Feminina.toLocaleString('pt-BR')
-total_feminina_porcentagem = calculaPorcentagemTotal(dados[0][pesquisa_ano].Feminina)
+total_feminina = dados[0][pesquisa_ano].Feminina.toLocaleString('pt-BR');
+total_feminina_porcentagem = calculaPorcentagemTotal(dados[0][pesquisa_ano].Feminina);
 
-total_naodeclarada = dados[0][pesquisa_ano].Nãodeclarada.toLocaleString('pt-BR')
-total_naodeclarada_porcentagem = calculaPorcentagemTotal(dados[0][pesquisa_ano].Nãodeclarada)
+total_naodeclarada = dados[0][pesquisa_ano].Nãodeclarada.toLocaleString('pt-BR');
+total_naodeclarada_porcentagem = calculaPorcentagemTotal(dados[0][pesquisa_ano].Nãodeclarada);
 
-total_branca = dados[0][pesquisa_ano].Branca.toLocaleString('pt-BR')
-total_branca_porcentagem = calculaPorcentagemTotal(dados[0][pesquisa_ano].Branca)
+total_branca = dados[0][pesquisa_ano].Branca.toLocaleString('pt-BR');
+total_branca_porcentagem = calculaPorcentagemTotal(dados[0][pesquisa_ano].Branca);
 
-total_preta = dados[0][pesquisa_ano].Preta.toLocaleString('pt-BR')
-total_preta_porcentagem = calculaPorcentagemTotal(dados[0][pesquisa_ano].Preta)
+total_preta = dados[0][pesquisa_ano].Preta.toLocaleString('pt-BR');
+total_preta_porcentagem = calculaPorcentagemTotal(dados[0][pesquisa_ano].Preta);
 
-total_parda = dados[0][pesquisa_ano].Parda.toLocaleString('pt-BR')
-total_parda_porcentagem = calculaPorcentagemTotal(dados[0][pesquisa_ano].Parda)
+total_parda = dados[0][pesquisa_ano].Parda.toLocaleString('pt-BR');
+total_parda_porcentagem = calculaPorcentagemTotal(dados[0][pesquisa_ano].Parda);
 
-total_amarela = dados[0][pesquisa_ano].Amarela.toLocaleString('pt-BR')
-total_amarela_porcentagem = calculaPorcentagemTotal(dados[0][pesquisa_ano].Amarela)
+total_amarela = dados[0][pesquisa_ano].Amarela.toLocaleString('pt-BR');
+total_amarela_porcentagem = calculaPorcentagemTotal(dados[0][pesquisa_ano].Amarela);
 
-total_indigena = dados[0][pesquisa_ano].Indígena.toLocaleString('pt-BR')
-total_indigena_porcentagem = calculaPorcentagemTotal(dados[0][pesquisa_ano].Indígena)
+total_indigena = dados[0][pesquisa_ano].Indígena.toLocaleString('pt-BR');
+total_indigena_porcentagem = calculaPorcentagemTotal(dados[0][pesquisa_ano].Indígena);
 
-total_deficiencia = dados[0][pesquisa_ano].Deficiência.toLocaleString('pt-BR')
-total_deficiencia_porcentagem = calculaPorcentagemTotal(dados[0][pesquisa_ano].Deficiência)
+total_deficiencia = dados[0][pesquisa_ano].Deficiência.toLocaleString('pt-BR');
+total_deficiencia_porcentagem = calculaPorcentagemTotal(dados[0][pesquisa_ano].Deficiência);
 
 function calculaPorcentagemTotal(n1){
-  return ((n1/dados[0][pesquisa_ano].Total) * 100).toFixed(2)
+  return ((n1/dados[0][pesquisa_ano].Total) * 100).toFixed(2);
 }
 
 ```

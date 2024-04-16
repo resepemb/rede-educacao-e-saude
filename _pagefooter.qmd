@@ -3,13 +3,23 @@
 
 :::{.grid .px-5 .bg-primary .footerBorders }
 
-:::{.g-col-3 }
+:::{.d-flex .g-col-3 .justify-content-center .align-items-start .pt-3}
+
+:::{.col}
+
+[Página inicial](./index.qmd){.link-light}
+
+
   
+[Sobre](./sobre.qmd){.link-light}
+
+:::
 
 :::
 
 
 :::{.g-col-3 }
+
 
 
 :::
@@ -18,10 +28,11 @@
 :::{.g-col-3 }
  
 
+
 :::
 
 
-:::{.g-col-3 }
+:::{.g-col-3 .pt-3}
  Realização: 
 
   [![](files/images/participants/CNPq_v2017_rgb_neg.png){width=125px fig-align="center"}](https://www.gov.br/cnpq/pt-br)  
