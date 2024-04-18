@@ -4,6 +4,8 @@ format:
     include-in-header:
       - text: |
           <link rel="manifest" href="/static/manifest.json">
+    include-after-body: 
+      file: 'loadserviceworker.html'
 --- 
 {{< include _dados.qmd >}}
 

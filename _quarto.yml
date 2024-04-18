@@ -1,7 +1,8 @@
 project:
   type: website
   post-render:
-    - "cp -rnv static/images/. _site/static/img"
+    - "cp -rnv static/images/. _site/static/images"
+    - "cp -rnv static/requests_content/. _site/static/requests_content"
     - "cp sw.js _site/"
   preview:
     # host: 0.0.0.0
