@@ -1,5 +1,41 @@
 /* css styles */
 
-.navbar{
+.mun{
+    font-weight: 600;
+    font-size: medium;
+    margin-bottom: -1.25rem !important;
+}
+
+.cityfont{
+    font-weight: 600;
+    font-size: 60px;
+}
+
+.valuebox{
+    font-weight: 600;
     background-color: darkcyan;
+    color: white;
+}
+
+
+.sloganMainPage{
+    font-weight: 600;
+    font-weight: bold;
+    line-height: 1;
+}
+
+
+.inputSearchLeft{
+    border-top-left-radius: .4rem;
+    border-bottom-left-radius: .4rem;
+}
+
+.inputSearchRight{
+    border-top-right-radius: .4rem ;
+    border-bottom-right-radius: .4rem ;
+}
+
+.footerBorders{
+    border-top-left-radius: .9rem;
+    border-top-right-radius: .9rem ;
 }

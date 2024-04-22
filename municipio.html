@@ -69,14 +69,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script src="site_libs/quarto-dashboard/quarto-dashboard.js"></script>
-<script src="site_libs/quarto-dashboard/stickythead.js"></script>
-<script src="site_libs/quarto-dashboard/datatables.min.js" kdttablesentinel="true"></script>
-<script src="site_libs/quarto-dashboard/pdfmake.min.js" kdttablesentinel="true"></script>
-<script src="site_libs/quarto-dashboard/vfs_fonts.js" kdttablesentinel="true"></script>
-<script src="site_libs/quarto-dashboard/web-components.js" type="module"></script>
-<script src="site_libs/quarto-dashboard/components.js"></script>
-<link href="site_libs/quarto-dashboard/datatables.min.css" rel="stylesheet" kdttablesentinel="true">
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -92,15 +84,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<style>html{ scroll-behavior: smooth; }</style>
 <script type="module" src="site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
 <link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 <link rel="manifest" href="./static/manifest.json">
 
 
+<link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="quarto-dashboard nav-fixed dashboard-fill fullcontent">
-
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -115,21 +108,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll me-auto">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
-<span class="menu-text">Página inicial</span></a>
+    <a class="nav-link" href="././proeficiencia/"> 
+<span class="menu-text">Proeficiência</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link active" href="./municipio.html" aria-current="page"> 
-<span class="menu-text">Dados</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-publicações" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Publicações</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-publicações">    
+        <li>
+    <a class="dropdown-item" href="././publicacoes_gerais/">
+ <span class="dropdown-text">Publicações Gerais</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="././artigos/">
+ <span class="dropdown-text">Artigos</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos-de-formação" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos de Formação</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-cursos-de-formação">    
+        <li>
+    <a class="dropdown-item" href="././curso_especializacao/">
+ <span class="dropdown-text">Curso de especialização</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="././jovem_doutor/">
+ <span class="dropdown-text">Jovem Doutor</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item">
     <a class="nav-link" href="./sobre.html"> 
 <span class="menu-text">Sobre</span></a>
   </li>  
-</ul>
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
     <a class="nav-link" href="https://instagram.com/rede_de_educacao_e_saude_"> <i class="bi bi-instagram" role="img">
 </i> 
@@ -141,223 +158,217 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
       </div> <!-- /container-fluid -->
     </nav>
-<header id="quarto-dashboard-header">
-<nav class="navbar navbar-expand-md slim" data-bs-theme="dark">
-  <div class="navbar-container container-fluid">
-    <button class="navbar-toggler hidden" type="button" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-controls="dashboard-collapse" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>    
-
-
-</div></nav>
-</header></header>
+</header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-layout-custom page-navbar quarto-dashboard-content bslib-gap-spacing html-fill-container bslib-page-fill">
+<div id="quarto-content" class="quarto-container page-layout-custom page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
 <!-- main -->
 
-<div class="cell hidden bslib-grid-item html-fill-item">
-<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="112" data-source-offset="-2"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 111;"><span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { bar } <span class="im">from</span> <span class="st">'@chrispahm/charts'</span></span>
-<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"files/Matriculas 2010 a 2022 ID.xlsx"</span>)<span class="op">.</span><span class="fu">xlsx</span>()</span>
-<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a>searchParams <span class="op">=</span> <span class="kw">new</span> <span class="fu">URLSearchParams</span>(location<span class="op">.</span><span class="at">search</span>)<span class="op">;</span></span>
-<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a>id_pesquisa <span class="op">=</span> searchParams<span class="op">.</span><span class="fu">has</span>(<span class="st">"id"</span>) <span class="op">?</span> searchParams<span class="op">.</span><span class="fu">get</span>(<span class="st">"id"</span>) <span class="op">:</span> <span class="st">"2928703"</span><span class="op">;</span></span>
-<span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-120"><a href="#cb1-120" aria-hidden="true" tabindex="-1"></a>ano_pesquisa <span class="op">=</span> searchParams<span class="op">.</span><span class="fu">has</span>(<span class="st">"ano"</span>) <span class="op">?</span> searchParams<span class="op">.</span><span class="fu">get</span>(<span class="st">"ano"</span>) <span class="op">:</span> <span class="st">"2010"</span><span class="op">;</span></span>
-<span id="cb1-121"><a href="#cb1-121" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-122"><a href="#cb1-122" aria-hidden="true" tabindex="-1"></a>ano_pesquisa_parcial <span class="op">=</span> <span class="st">"2022"</span></span>
+
+
+
+<div class="cell hidden">
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="44" data-source-offset="-2"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 43;"><span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { bar } <span class="im">from</span> <span class="st">'@chrispahm/charts'</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"files/Matriculas 2010 a 2022 ID.xlsx"</span>)<span class="op">.</span><span class="fu">xlsx</span>()<span class="op">;</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>searchParams <span class="op">=</span> <span class="kw">new</span> <span class="fu">URLSearchParams</span>(location<span class="op">.</span><span class="at">search</span>)<span class="op">;</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>id_pesquisa <span class="op">=</span> searchParams<span class="op">.</span><span class="fu">has</span>(<span class="st">"id"</span>) <span class="op">?</span> searchParams<span class="op">.</span><span class="fu">get</span>(<span class="st">"id"</span>) <span class="op">:</span> <span class="st">"2928703"</span><span class="op">;</span></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="co">// ano_pesquisa = searchParams.has("ano") ? searchParams.get("ano") : "2010";</span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="co">// ano_pesquisa_parcial = "2022";</span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>filtered <span class="op">=</span> data<span class="op">.</span><span class="fu">sheet</span>(<span class="st">"números absolutos"</span>)<span class="op">.</span><span class="fu">filter</span>(<span class="kw">function</span>(filtro) {</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> filtro<span class="op">.</span><span class="at">A</span> <span class="op">!=</span> <span class="st">"Territórios BA"</span> <span class="op">&amp;&amp;</span> filtro<span class="op">.</span><span class="at">B</span> <span class="op">==</span> id_pesquisa<span class="op">;</span></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>nomeCidade <span class="op">=</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">C</span></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>dados <span class="op">=</span> [{</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>  <span class="st">"2010"</span><span class="op">:</span> {</span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Total"</span> <span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">D</span><span class="op">,</span> </span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Masculina"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">E</span><span class="op">,</span> </span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Feminina"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">F</span><span class="op">,</span></span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Nãodeclarada"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">G</span><span class="op">,</span></span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Branca"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">H</span><span class="op">,</span></span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Preta"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">I</span><span class="op">,</span></span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Parda"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">J</span><span class="op">,</span></span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Amarela"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">K</span><span class="op">,</span></span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Indígena"</span><span class="op">:</span>filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">L</span><span class="op">,</span></span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Deficiência"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">M</span><span class="op">,</span>}<span class="op">,</span></span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a>  <span class="st">"2011"</span><span class="op">:</span> {</span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Total"</span> <span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">N</span><span class="op">,</span> </span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Masculina"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">O</span><span class="op">,</span> </span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Feminina"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">P</span><span class="op">,</span></span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Nãodeclarada"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">Q</span><span class="op">,</span></span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Branca"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">R</span><span class="op">,</span></span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Preta"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">S</span><span class="op">,</span></span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Parda"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">T</span><span class="op">,</span></span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Amarela"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">U</span><span class="op">,</span></span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Indígena"</span><span class="op">:</span>filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">V</span><span class="op">,</span></span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Deficiência"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">W</span><span class="op">,</span>}<span class="op">,</span></span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a>  <span class="st">"2012"</span><span class="op">:</span> {</span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Total"</span> <span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">X</span><span class="op">,</span> </span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Masculina"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">Y</span><span class="op">,</span> </span>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Feminina"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">Z</span><span class="op">,</span></span>
+<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Nãodeclarada"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">AA</span><span class="op">,</span></span>
+<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Branca"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">AB</span><span class="op">,</span></span>
+<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Preta"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">AC</span><span class="op">,</span></span>
+<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Parda"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">AD</span><span class="op">,</span></span>
+<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Amarela"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">AE</span><span class="op">,</span></span>
+<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Indígena"</span><span class="op">:</span>filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">AF</span><span class="op">,</span></span>
+<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Deficiência"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">AG</span><span class="op">,</span>}<span class="op">,</span></span>
+<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a>  <span class="st">"2013"</span><span class="op">:</span> {</span>
+<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Total"</span> <span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">AH</span><span class="op">,</span> </span>
+<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Masculina"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">AI</span><span class="op">,</span> </span>
+<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Feminina"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">AJ</span><span class="op">,</span></span>
+<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Nãodeclarada"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">AK</span><span class="op">,</span></span>
+<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Branca"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">AL</span><span class="op">,</span></span>
+<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Preta"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">AM</span><span class="op">,</span></span>
+<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Parda"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">AN</span><span class="op">,</span></span>
+<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Amarela"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">AO</span><span class="op">,</span></span>
+<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Indígena"</span><span class="op">:</span>filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">AP</span><span class="op">,</span></span>
+<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Deficiência"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">AQ</span><span class="op">,</span>}<span class="op">,</span></span>
+<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a>  <span class="st">"2014"</span><span class="op">:</span> {</span>
+<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Total"</span> <span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">AR</span><span class="op">,</span> </span>
+<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Masculina"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">AS</span><span class="op">,</span> </span>
+<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Feminina"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">AT</span><span class="op">,</span></span>
+<span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Nãodeclarada"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">AU</span><span class="op">,</span></span>
+<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Branca"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">AV</span><span class="op">,</span></span>
+<span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Preta"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">AW</span><span class="op">,</span></span>
+<span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Parda"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">AX</span><span class="op">,</span></span>
+<span id="cb1-120"><a href="#cb1-120" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Amarela"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">AY</span><span class="op">,</span></span>
+<span id="cb1-121"><a href="#cb1-121" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Indígena"</span><span class="op">:</span>filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">AZ</span><span class="op">,</span></span>
+<span id="cb1-122"><a href="#cb1-122" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Deficiência"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">BA</span><span class="op">,</span>}<span class="op">,</span></span>
 <span id="cb1-123"><a href="#cb1-123" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-124"><a href="#cb1-124" aria-hidden="true" tabindex="-1"></a>filtered <span class="op">=</span> data<span class="op">.</span><span class="fu">sheet</span>(<span class="st">"números absolutos"</span>)<span class="op">.</span><span class="fu">filter</span>(<span class="kw">function</span>(filtro) {</span>
-<span id="cb1-125"><a href="#cb1-125" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> filtro<span class="op">.</span><span class="at">A</span> <span class="op">!=</span> <span class="st">"Territórios BA"</span> <span class="op">&amp;&amp;</span> filtro<span class="op">.</span><span class="at">B</span> <span class="op">==</span> id_pesquisa</span>
-<span id="cb1-126"><a href="#cb1-126" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb1-127"><a href="#cb1-127" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-128"><a href="#cb1-128" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-129"><a href="#cb1-129" aria-hidden="true" tabindex="-1"></a>nomeCidade <span class="op">=</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">C</span></span>
-<span id="cb1-130"><a href="#cb1-130" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-131"><a href="#cb1-131" aria-hidden="true" tabindex="-1"></a>dados <span class="op">=</span> [{</span>
-<span id="cb1-132"><a href="#cb1-132" aria-hidden="true" tabindex="-1"></a>  <span class="st">"2010"</span><span class="op">:</span> {</span>
-<span id="cb1-133"><a href="#cb1-133" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Total"</span> <span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">D</span><span class="op">,</span> </span>
-<span id="cb1-134"><a href="#cb1-134" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Masculina"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">E</span><span class="op">,</span> </span>
-<span id="cb1-135"><a href="#cb1-135" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Feminina"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">F</span><span class="op">,</span></span>
-<span id="cb1-136"><a href="#cb1-136" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Nãodeclarada"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">G</span><span class="op">,</span></span>
-<span id="cb1-137"><a href="#cb1-137" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Branca"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">H</span><span class="op">,</span></span>
-<span id="cb1-138"><a href="#cb1-138" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Preta"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">I</span><span class="op">,</span></span>
-<span id="cb1-139"><a href="#cb1-139" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Parda"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">J</span><span class="op">,</span></span>
-<span id="cb1-140"><a href="#cb1-140" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Amarela"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">K</span><span class="op">,</span></span>
-<span id="cb1-141"><a href="#cb1-141" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Indígena"</span><span class="op">:</span>filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">L</span><span class="op">,</span></span>
-<span id="cb1-142"><a href="#cb1-142" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Deficiência"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">M</span><span class="op">,</span>}<span class="op">,</span></span>
-<span id="cb1-143"><a href="#cb1-143" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-144"><a href="#cb1-144" aria-hidden="true" tabindex="-1"></a>  <span class="st">"2011"</span><span class="op">:</span> {</span>
-<span id="cb1-145"><a href="#cb1-145" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Total"</span> <span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">N</span><span class="op">,</span> </span>
-<span id="cb1-146"><a href="#cb1-146" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Masculina"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">O</span><span class="op">,</span> </span>
-<span id="cb1-147"><a href="#cb1-147" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Feminina"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">P</span><span class="op">,</span></span>
-<span id="cb1-148"><a href="#cb1-148" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Nãodeclarada"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">Q</span><span class="op">,</span></span>
-<span id="cb1-149"><a href="#cb1-149" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Branca"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">R</span><span class="op">,</span></span>
-<span id="cb1-150"><a href="#cb1-150" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Preta"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">S</span><span class="op">,</span></span>
-<span id="cb1-151"><a href="#cb1-151" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Parda"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">T</span><span class="op">,</span></span>
-<span id="cb1-152"><a href="#cb1-152" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Amarela"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">U</span><span class="op">,</span></span>
-<span id="cb1-153"><a href="#cb1-153" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Indígena"</span><span class="op">:</span>filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">V</span><span class="op">,</span></span>
-<span id="cb1-154"><a href="#cb1-154" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Deficiência"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">W</span><span class="op">,</span>}<span class="op">,</span></span>
-<span id="cb1-155"><a href="#cb1-155" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-156"><a href="#cb1-156" aria-hidden="true" tabindex="-1"></a>  <span class="st">"2012"</span><span class="op">:</span> {</span>
-<span id="cb1-157"><a href="#cb1-157" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Total"</span> <span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">X</span><span class="op">,</span> </span>
-<span id="cb1-158"><a href="#cb1-158" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Masculina"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">Y</span><span class="op">,</span> </span>
-<span id="cb1-159"><a href="#cb1-159" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Feminina"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">Z</span><span class="op">,</span></span>
-<span id="cb1-160"><a href="#cb1-160" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Nãodeclarada"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">AA</span><span class="op">,</span></span>
-<span id="cb1-161"><a href="#cb1-161" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Branca"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">AB</span><span class="op">,</span></span>
-<span id="cb1-162"><a href="#cb1-162" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Preta"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">AC</span><span class="op">,</span></span>
-<span id="cb1-163"><a href="#cb1-163" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Parda"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">AD</span><span class="op">,</span></span>
-<span id="cb1-164"><a href="#cb1-164" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Amarela"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">AE</span><span class="op">,</span></span>
-<span id="cb1-165"><a href="#cb1-165" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Indígena"</span><span class="op">:</span>filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">AF</span><span class="op">,</span></span>
-<span id="cb1-166"><a href="#cb1-166" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Deficiência"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">AG</span><span class="op">,</span>}<span class="op">,</span></span>
-<span id="cb1-167"><a href="#cb1-167" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-168"><a href="#cb1-168" aria-hidden="true" tabindex="-1"></a>  <span class="st">"2013"</span><span class="op">:</span> {</span>
-<span id="cb1-169"><a href="#cb1-169" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Total"</span> <span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">AH</span><span class="op">,</span> </span>
-<span id="cb1-170"><a href="#cb1-170" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Masculina"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">AI</span><span class="op">,</span> </span>
-<span id="cb1-171"><a href="#cb1-171" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Feminina"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">AJ</span><span class="op">,</span></span>
-<span id="cb1-172"><a href="#cb1-172" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Nãodeclarada"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">AK</span><span class="op">,</span></span>
-<span id="cb1-173"><a href="#cb1-173" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Branca"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">AL</span><span class="op">,</span></span>
-<span id="cb1-174"><a href="#cb1-174" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Preta"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">AM</span><span class="op">,</span></span>
-<span id="cb1-175"><a href="#cb1-175" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Parda"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">AN</span><span class="op">,</span></span>
-<span id="cb1-176"><a href="#cb1-176" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Amarela"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">AO</span><span class="op">,</span></span>
-<span id="cb1-177"><a href="#cb1-177" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Indígena"</span><span class="op">:</span>filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">AP</span><span class="op">,</span></span>
-<span id="cb1-178"><a href="#cb1-178" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Deficiência"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">AQ</span><span class="op">,</span>}<span class="op">,</span></span>
-<span id="cb1-179"><a href="#cb1-179" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-180"><a href="#cb1-180" aria-hidden="true" tabindex="-1"></a>  <span class="st">"2014"</span><span class="op">:</span> {</span>
-<span id="cb1-181"><a href="#cb1-181" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Total"</span> <span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">AR</span><span class="op">,</span> </span>
-<span id="cb1-182"><a href="#cb1-182" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Masculina"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">AS</span><span class="op">,</span> </span>
-<span id="cb1-183"><a href="#cb1-183" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Feminina"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">AT</span><span class="op">,</span></span>
-<span id="cb1-184"><a href="#cb1-184" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Nãodeclarada"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">AU</span><span class="op">,</span></span>
-<span id="cb1-185"><a href="#cb1-185" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Branca"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">AV</span><span class="op">,</span></span>
-<span id="cb1-186"><a href="#cb1-186" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Preta"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">AW</span><span class="op">,</span></span>
-<span id="cb1-187"><a href="#cb1-187" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Parda"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">AX</span><span class="op">,</span></span>
-<span id="cb1-188"><a href="#cb1-188" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Amarela"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">AY</span><span class="op">,</span></span>
-<span id="cb1-189"><a href="#cb1-189" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Indígena"</span><span class="op">:</span>filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">AZ</span><span class="op">,</span></span>
-<span id="cb1-190"><a href="#cb1-190" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Deficiência"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">BA</span><span class="op">,</span>}<span class="op">,</span></span>
-<span id="cb1-191"><a href="#cb1-191" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-192"><a href="#cb1-192" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-193"><a href="#cb1-193" aria-hidden="true" tabindex="-1"></a>  <span class="st">"2015"</span><span class="op">:</span> {</span>
-<span id="cb1-194"><a href="#cb1-194" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Total"</span> <span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">BB</span><span class="op">,</span> </span>
-<span id="cb1-195"><a href="#cb1-195" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Masculina"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">BC</span><span class="op">,</span> </span>
-<span id="cb1-196"><a href="#cb1-196" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Feminina"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">BD</span><span class="op">,</span></span>
-<span id="cb1-197"><a href="#cb1-197" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Nãodeclarada"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">BE</span><span class="op">,</span></span>
-<span id="cb1-198"><a href="#cb1-198" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Branca"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">BF</span><span class="op">,</span></span>
-<span id="cb1-199"><a href="#cb1-199" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Preta"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">BG</span><span class="op">,</span></span>
-<span id="cb1-200"><a href="#cb1-200" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Parda"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">BH</span><span class="op">,</span></span>
-<span id="cb1-201"><a href="#cb1-201" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Amarela"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">BI</span><span class="op">,</span></span>
-<span id="cb1-202"><a href="#cb1-202" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Indígena"</span><span class="op">:</span>filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">BJ</span><span class="op">,</span></span>
-<span id="cb1-203"><a href="#cb1-203" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Deficiência"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">BK</span><span class="op">,</span>}<span class="op">,</span></span>
-<span id="cb1-204"><a href="#cb1-204" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-205"><a href="#cb1-205" aria-hidden="true" tabindex="-1"></a>  <span class="st">"2016"</span><span class="op">:</span> {</span>
-<span id="cb1-206"><a href="#cb1-206" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Total"</span> <span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">BL</span><span class="op">,</span> </span>
-<span id="cb1-207"><a href="#cb1-207" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Masculina"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">BM</span><span class="op">,</span> </span>
-<span id="cb1-208"><a href="#cb1-208" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Feminina"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">BN</span><span class="op">,</span></span>
-<span id="cb1-209"><a href="#cb1-209" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Nãodeclarada"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">BO</span><span class="op">,</span></span>
-<span id="cb1-210"><a href="#cb1-210" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Branca"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">BP</span><span class="op">,</span></span>
-<span id="cb1-211"><a href="#cb1-211" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Preta"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">BQ</span><span class="op">,</span></span>
-<span id="cb1-212"><a href="#cb1-212" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Parda"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">BR</span><span class="op">,</span></span>
-<span id="cb1-213"><a href="#cb1-213" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Amarela"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">BS</span><span class="op">,</span></span>
-<span id="cb1-214"><a href="#cb1-214" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Indígena"</span><span class="op">:</span>filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">BT</span><span class="op">,</span></span>
-<span id="cb1-215"><a href="#cb1-215" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Deficiência"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">BU</span><span class="op">,</span>}<span class="op">,</span></span>
+<span id="cb1-124"><a href="#cb1-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-125"><a href="#cb1-125" aria-hidden="true" tabindex="-1"></a>  <span class="st">"2015"</span><span class="op">:</span> {</span>
+<span id="cb1-126"><a href="#cb1-126" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Total"</span> <span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">BB</span><span class="op">,</span> </span>
+<span id="cb1-127"><a href="#cb1-127" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Masculina"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">BC</span><span class="op">,</span> </span>
+<span id="cb1-128"><a href="#cb1-128" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Feminina"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">BD</span><span class="op">,</span></span>
+<span id="cb1-129"><a href="#cb1-129" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Nãodeclarada"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">BE</span><span class="op">,</span></span>
+<span id="cb1-130"><a href="#cb1-130" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Branca"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">BF</span><span class="op">,</span></span>
+<span id="cb1-131"><a href="#cb1-131" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Preta"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">BG</span><span class="op">,</span></span>
+<span id="cb1-132"><a href="#cb1-132" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Parda"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">BH</span><span class="op">,</span></span>
+<span id="cb1-133"><a href="#cb1-133" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Amarela"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">BI</span><span class="op">,</span></span>
+<span id="cb1-134"><a href="#cb1-134" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Indígena"</span><span class="op">:</span>filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">BJ</span><span class="op">,</span></span>
+<span id="cb1-135"><a href="#cb1-135" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Deficiência"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">BK</span><span class="op">,</span>}<span class="op">,</span></span>
+<span id="cb1-136"><a href="#cb1-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-137"><a href="#cb1-137" aria-hidden="true" tabindex="-1"></a>  <span class="st">"2016"</span><span class="op">:</span> {</span>
+<span id="cb1-138"><a href="#cb1-138" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Total"</span> <span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">BL</span><span class="op">,</span> </span>
+<span id="cb1-139"><a href="#cb1-139" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Masculina"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">BM</span><span class="op">,</span> </span>
+<span id="cb1-140"><a href="#cb1-140" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Feminina"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">BN</span><span class="op">,</span></span>
+<span id="cb1-141"><a href="#cb1-141" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Nãodeclarada"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">BO</span><span class="op">,</span></span>
+<span id="cb1-142"><a href="#cb1-142" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Branca"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">BP</span><span class="op">,</span></span>
+<span id="cb1-143"><a href="#cb1-143" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Preta"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">BQ</span><span class="op">,</span></span>
+<span id="cb1-144"><a href="#cb1-144" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Parda"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">BR</span><span class="op">,</span></span>
+<span id="cb1-145"><a href="#cb1-145" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Amarela"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">BS</span><span class="op">,</span></span>
+<span id="cb1-146"><a href="#cb1-146" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Indígena"</span><span class="op">:</span>filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">BT</span><span class="op">,</span></span>
+<span id="cb1-147"><a href="#cb1-147" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Deficiência"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">BU</span><span class="op">,</span>}<span class="op">,</span></span>
+<span id="cb1-148"><a href="#cb1-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-149"><a href="#cb1-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-150"><a href="#cb1-150" aria-hidden="true" tabindex="-1"></a>  <span class="st">"2017"</span><span class="op">:</span> {</span>
+<span id="cb1-151"><a href="#cb1-151" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Total"</span> <span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">BV</span><span class="op">,</span> </span>
+<span id="cb1-152"><a href="#cb1-152" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Masculina"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">BW</span><span class="op">,</span> </span>
+<span id="cb1-153"><a href="#cb1-153" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Feminina"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">BX</span><span class="op">,</span></span>
+<span id="cb1-154"><a href="#cb1-154" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Nãodeclarada"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">BY</span><span class="op">,</span></span>
+<span id="cb1-155"><a href="#cb1-155" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Branca"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">BZ</span><span class="op">,</span></span>
+<span id="cb1-156"><a href="#cb1-156" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Preta"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">CA</span><span class="op">,</span></span>
+<span id="cb1-157"><a href="#cb1-157" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Parda"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">CB</span><span class="op">,</span></span>
+<span id="cb1-158"><a href="#cb1-158" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Amarela"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">CC</span><span class="op">,</span></span>
+<span id="cb1-159"><a href="#cb1-159" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Indígena"</span><span class="op">:</span>filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">CD</span><span class="op">,</span></span>
+<span id="cb1-160"><a href="#cb1-160" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Deficiência"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">CE</span><span class="op">,</span>}<span class="op">,</span></span>
+<span id="cb1-161"><a href="#cb1-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-162"><a href="#cb1-162" aria-hidden="true" tabindex="-1"></a>  <span class="st">"2018"</span><span class="op">:</span> {</span>
+<span id="cb1-163"><a href="#cb1-163" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Total"</span> <span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">CF</span><span class="op">,</span> </span>
+<span id="cb1-164"><a href="#cb1-164" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Masculina"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">CG</span><span class="op">,</span> </span>
+<span id="cb1-165"><a href="#cb1-165" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Feminina"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">CH</span><span class="op">,</span></span>
+<span id="cb1-166"><a href="#cb1-166" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Nãodeclarada"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">CI</span><span class="op">,</span></span>
+<span id="cb1-167"><a href="#cb1-167" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Branca"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">CJ</span><span class="op">,</span></span>
+<span id="cb1-168"><a href="#cb1-168" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Preta"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">CK</span><span class="op">,</span></span>
+<span id="cb1-169"><a href="#cb1-169" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Parda"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">CL</span><span class="op">,</span></span>
+<span id="cb1-170"><a href="#cb1-170" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Amarela"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">CM</span><span class="op">,</span></span>
+<span id="cb1-171"><a href="#cb1-171" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Indígena"</span><span class="op">:</span>filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">CN</span><span class="op">,</span></span>
+<span id="cb1-172"><a href="#cb1-172" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Deficiência"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">CO</span><span class="op">,</span>}<span class="op">,</span></span>
+<span id="cb1-173"><a href="#cb1-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-174"><a href="#cb1-174" aria-hidden="true" tabindex="-1"></a>  <span class="st">"2019"</span><span class="op">:</span> {</span>
+<span id="cb1-175"><a href="#cb1-175" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Total"</span> <span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">CP</span><span class="op">,</span> </span>
+<span id="cb1-176"><a href="#cb1-176" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Masculina"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">CQ</span><span class="op">,</span> </span>
+<span id="cb1-177"><a href="#cb1-177" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Feminina"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">CR</span><span class="op">,</span></span>
+<span id="cb1-178"><a href="#cb1-178" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Nãodeclarada"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">CS</span><span class="op">,</span></span>
+<span id="cb1-179"><a href="#cb1-179" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Branca"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">CT</span><span class="op">,</span></span>
+<span id="cb1-180"><a href="#cb1-180" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Preta"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">CU</span><span class="op">,</span></span>
+<span id="cb1-181"><a href="#cb1-181" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Parda"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">CV</span><span class="op">,</span></span>
+<span id="cb1-182"><a href="#cb1-182" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Amarela"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">CW</span><span class="op">,</span></span>
+<span id="cb1-183"><a href="#cb1-183" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Indígena"</span><span class="op">:</span>filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">CX</span><span class="op">,</span></span>
+<span id="cb1-184"><a href="#cb1-184" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Deficiência"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">CY</span><span class="op">,</span>}<span class="op">,</span></span>
+<span id="cb1-185"><a href="#cb1-185" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-186"><a href="#cb1-186" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-187"><a href="#cb1-187" aria-hidden="true" tabindex="-1"></a>  <span class="st">"2020"</span><span class="op">:</span> {</span>
+<span id="cb1-188"><a href="#cb1-188" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Total"</span> <span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">CZ</span><span class="op">,</span> </span>
+<span id="cb1-189"><a href="#cb1-189" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Masculina"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">DA</span><span class="op">,</span> </span>
+<span id="cb1-190"><a href="#cb1-190" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Feminina"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">DB</span><span class="op">,</span></span>
+<span id="cb1-191"><a href="#cb1-191" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Nãodeclarada"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">DC</span><span class="op">,</span></span>
+<span id="cb1-192"><a href="#cb1-192" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Branca"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">DD</span><span class="op">,</span></span>
+<span id="cb1-193"><a href="#cb1-193" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Preta"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">DE</span><span class="op">,</span></span>
+<span id="cb1-194"><a href="#cb1-194" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Parda"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">DF</span><span class="op">,</span></span>
+<span id="cb1-195"><a href="#cb1-195" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Amarela"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">DG</span><span class="op">,</span></span>
+<span id="cb1-196"><a href="#cb1-196" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Indígena"</span><span class="op">:</span>filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">DH</span><span class="op">,</span></span>
+<span id="cb1-197"><a href="#cb1-197" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Deficiência"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">DI</span><span class="op">,</span>}<span class="op">,</span></span>
+<span id="cb1-198"><a href="#cb1-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-199"><a href="#cb1-199" aria-hidden="true" tabindex="-1"></a>   <span class="st">"2021"</span><span class="op">:</span> {</span>
+<span id="cb1-200"><a href="#cb1-200" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Total"</span> <span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">DJ</span><span class="op">,</span> </span>
+<span id="cb1-201"><a href="#cb1-201" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Integral"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">DK</span><span class="op">,</span></span>
+<span id="cb1-202"><a href="#cb1-202" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Parcial"</span><span class="op">:</span>filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">DL</span>}<span class="op">,</span></span>
+<span id="cb1-203"><a href="#cb1-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-204"><a href="#cb1-204" aria-hidden="true" tabindex="-1"></a>  <span class="st">"2022"</span><span class="op">:</span> {</span>
+<span id="cb1-205"><a href="#cb1-205" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Total"</span> <span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">DM</span><span class="op">,</span> </span>
+<span id="cb1-206"><a href="#cb1-206" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Integral"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">DN</span><span class="op">,</span></span>
+<span id="cb1-207"><a href="#cb1-207" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Parcial"</span><span class="op">:</span>filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">DO</span>}<span class="op">,</span></span>
+<span id="cb1-208"><a href="#cb1-208" aria-hidden="true" tabindex="-1"></a>  }]</span>
+<span id="cb1-209"><a href="#cb1-209" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-210"><a href="#cb1-210" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-211"><a href="#cb1-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-212"><a href="#cb1-212" aria-hidden="true" tabindex="-1"></a>total <span class="op">=</span> dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Total</span><span class="op">.</span><span class="fu">toLocaleString</span>(<span class="st">'pt-BR'</span>)<span class="op">;</span></span>
+<span id="cb1-213"><a href="#cb1-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-214"><a href="#cb1-214" aria-hidden="true" tabindex="-1"></a>total_masculina <span class="op">=</span> dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Masculina</span><span class="op">.</span><span class="fu">toLocaleString</span>(<span class="st">'pt-BR'</span>)<span class="op">;</span></span>
+<span id="cb1-215"><a href="#cb1-215" aria-hidden="true" tabindex="-1"></a>total_masculina_porcentagem <span class="op">=</span> <span class="fu">calculaPorcentagemTotal</span>(dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Masculina</span>)<span class="op">;</span></span>
 <span id="cb1-216"><a href="#cb1-216" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-217"><a href="#cb1-217" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-218"><a href="#cb1-218" aria-hidden="true" tabindex="-1"></a>  <span class="st">"2017"</span><span class="op">:</span> {</span>
-<span id="cb1-219"><a href="#cb1-219" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Total"</span> <span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">BV</span><span class="op">,</span> </span>
-<span id="cb1-220"><a href="#cb1-220" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Masculina"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">BW</span><span class="op">,</span> </span>
-<span id="cb1-221"><a href="#cb1-221" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Feminina"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">BX</span><span class="op">,</span></span>
-<span id="cb1-222"><a href="#cb1-222" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Nãodeclarada"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">BY</span><span class="op">,</span></span>
-<span id="cb1-223"><a href="#cb1-223" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Branca"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">BZ</span><span class="op">,</span></span>
-<span id="cb1-224"><a href="#cb1-224" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Preta"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">CA</span><span class="op">,</span></span>
-<span id="cb1-225"><a href="#cb1-225" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Parda"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">CB</span><span class="op">,</span></span>
-<span id="cb1-226"><a href="#cb1-226" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Amarela"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">CC</span><span class="op">,</span></span>
-<span id="cb1-227"><a href="#cb1-227" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Indígena"</span><span class="op">:</span>filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">CD</span><span class="op">,</span></span>
-<span id="cb1-228"><a href="#cb1-228" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Deficiência"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">CE</span><span class="op">,</span>}<span class="op">,</span></span>
-<span id="cb1-229"><a href="#cb1-229" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-230"><a href="#cb1-230" aria-hidden="true" tabindex="-1"></a>  <span class="st">"2018"</span><span class="op">:</span> {</span>
-<span id="cb1-231"><a href="#cb1-231" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Total"</span> <span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">CF</span><span class="op">,</span> </span>
-<span id="cb1-232"><a href="#cb1-232" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Masculina"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">CG</span><span class="op">,</span> </span>
-<span id="cb1-233"><a href="#cb1-233" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Feminina"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">CH</span><span class="op">,</span></span>
-<span id="cb1-234"><a href="#cb1-234" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Nãodeclarada"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">CI</span><span class="op">,</span></span>
-<span id="cb1-235"><a href="#cb1-235" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Branca"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">CJ</span><span class="op">,</span></span>
-<span id="cb1-236"><a href="#cb1-236" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Preta"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">CK</span><span class="op">,</span></span>
-<span id="cb1-237"><a href="#cb1-237" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Parda"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">CL</span><span class="op">,</span></span>
-<span id="cb1-238"><a href="#cb1-238" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Amarela"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">CM</span><span class="op">,</span></span>
-<span id="cb1-239"><a href="#cb1-239" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Indígena"</span><span class="op">:</span>filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">CN</span><span class="op">,</span></span>
-<span id="cb1-240"><a href="#cb1-240" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Deficiência"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">CO</span><span class="op">,</span>}<span class="op">,</span></span>
-<span id="cb1-241"><a href="#cb1-241" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-242"><a href="#cb1-242" aria-hidden="true" tabindex="-1"></a>  <span class="st">"2019"</span><span class="op">:</span> {</span>
-<span id="cb1-243"><a href="#cb1-243" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Total"</span> <span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">CP</span><span class="op">,</span> </span>
-<span id="cb1-244"><a href="#cb1-244" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Masculina"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">CQ</span><span class="op">,</span> </span>
-<span id="cb1-245"><a href="#cb1-245" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Feminina"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">CR</span><span class="op">,</span></span>
-<span id="cb1-246"><a href="#cb1-246" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Nãodeclarada"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">CS</span><span class="op">,</span></span>
-<span id="cb1-247"><a href="#cb1-247" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Branca"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">CT</span><span class="op">,</span></span>
-<span id="cb1-248"><a href="#cb1-248" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Preta"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">CU</span><span class="op">,</span></span>
-<span id="cb1-249"><a href="#cb1-249" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Parda"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">CV</span><span class="op">,</span></span>
-<span id="cb1-250"><a href="#cb1-250" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Amarela"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">CW</span><span class="op">,</span></span>
-<span id="cb1-251"><a href="#cb1-251" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Indígena"</span><span class="op">:</span>filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">CX</span><span class="op">,</span></span>
-<span id="cb1-252"><a href="#cb1-252" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Deficiência"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">CY</span><span class="op">,</span>}<span class="op">,</span></span>
-<span id="cb1-253"><a href="#cb1-253" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-254"><a href="#cb1-254" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-255"><a href="#cb1-255" aria-hidden="true" tabindex="-1"></a>  <span class="st">"2020"</span><span class="op">:</span> {</span>
-<span id="cb1-256"><a href="#cb1-256" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Total"</span> <span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">CZ</span><span class="op">,</span> </span>
-<span id="cb1-257"><a href="#cb1-257" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Masculina"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">DA</span><span class="op">,</span> </span>
-<span id="cb1-258"><a href="#cb1-258" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Feminina"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">DB</span><span class="op">,</span></span>
-<span id="cb1-259"><a href="#cb1-259" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Nãodeclarada"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">DC</span><span class="op">,</span></span>
-<span id="cb1-260"><a href="#cb1-260" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Branca"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">DD</span><span class="op">,</span></span>
-<span id="cb1-261"><a href="#cb1-261" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Preta"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">DE</span><span class="op">,</span></span>
-<span id="cb1-262"><a href="#cb1-262" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Parda"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">DF</span><span class="op">,</span></span>
-<span id="cb1-263"><a href="#cb1-263" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Amarela"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">DG</span><span class="op">,</span></span>
-<span id="cb1-264"><a href="#cb1-264" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Indígena"</span><span class="op">:</span>filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">DH</span><span class="op">,</span></span>
-<span id="cb1-265"><a href="#cb1-265" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Deficiência"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">DI</span><span class="op">,</span>}<span class="op">,</span></span>
-<span id="cb1-266"><a href="#cb1-266" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-267"><a href="#cb1-267" aria-hidden="true" tabindex="-1"></a>   <span class="st">"2021"</span><span class="op">:</span> {</span>
-<span id="cb1-268"><a href="#cb1-268" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Total"</span> <span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">DJ</span><span class="op">,</span> </span>
-<span id="cb1-269"><a href="#cb1-269" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Integral"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">DK</span><span class="op">,</span></span>
-<span id="cb1-270"><a href="#cb1-270" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Parcial"</span><span class="op">:</span>filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">DL</span>}<span class="op">,</span></span>
-<span id="cb1-271"><a href="#cb1-271" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-272"><a href="#cb1-272" aria-hidden="true" tabindex="-1"></a>  <span class="st">"2022"</span><span class="op">:</span> {</span>
-<span id="cb1-273"><a href="#cb1-273" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Total"</span> <span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">DM</span><span class="op">,</span> </span>
-<span id="cb1-274"><a href="#cb1-274" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Integral"</span><span class="op">:</span> filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">DN</span><span class="op">,</span></span>
-<span id="cb1-275"><a href="#cb1-275" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Parcial"</span><span class="op">:</span>filtered[<span class="dv">0</span>]<span class="op">.</span><span class="at">DO</span>}<span class="op">,</span></span>
-<span id="cb1-276"><a href="#cb1-276" aria-hidden="true" tabindex="-1"></a>  }]</span>
-<span id="cb1-277"><a href="#cb1-277" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-278"><a href="#cb1-278" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-279"><a href="#cb1-279" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-280"><a href="#cb1-280" aria-hidden="true" tabindex="-1"></a>total <span class="op">=</span> dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Total</span><span class="op">.</span><span class="fu">toLocaleString</span>(<span class="st">'pt-BR'</span>)</span>
-<span id="cb1-281"><a href="#cb1-281" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-282"><a href="#cb1-282" aria-hidden="true" tabindex="-1"></a>total_masculina <span class="op">=</span> dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Masculina</span><span class="op">.</span><span class="fu">toLocaleString</span>(<span class="st">'pt-BR'</span>)</span>
-<span id="cb1-283"><a href="#cb1-283" aria-hidden="true" tabindex="-1"></a>total_masculina_porcentagem <span class="op">=</span> <span class="fu">calculaPorcentagemTotal</span>(dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Masculina</span>)</span>
-<span id="cb1-284"><a href="#cb1-284" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-285"><a href="#cb1-285" aria-hidden="true" tabindex="-1"></a>total_feminina <span class="op">=</span> dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Feminina</span><span class="op">.</span><span class="fu">toLocaleString</span>(<span class="st">'pt-BR'</span>)</span>
-<span id="cb1-286"><a href="#cb1-286" aria-hidden="true" tabindex="-1"></a>total_feminina_porcentagem <span class="op">=</span> <span class="fu">calculaPorcentagemTotal</span>(dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Feminina</span>)</span>
-<span id="cb1-287"><a href="#cb1-287" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-288"><a href="#cb1-288" aria-hidden="true" tabindex="-1"></a>total_naodeclarada <span class="op">=</span> dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Nãodeclarada</span><span class="op">.</span><span class="fu">toLocaleString</span>(<span class="st">'pt-BR'</span>)</span>
-<span id="cb1-289"><a href="#cb1-289" aria-hidden="true" tabindex="-1"></a>total_naodeclarada_porcentagem <span class="op">=</span> <span class="fu">calculaPorcentagemTotal</span>(dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Nãodeclarada</span>)</span>
-<span id="cb1-290"><a href="#cb1-290" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-291"><a href="#cb1-291" aria-hidden="true" tabindex="-1"></a>total_branca <span class="op">=</span> dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Branca</span><span class="op">.</span><span class="fu">toLocaleString</span>(<span class="st">'pt-BR'</span>)</span>
-<span id="cb1-292"><a href="#cb1-292" aria-hidden="true" tabindex="-1"></a>total_branca_porcentagem <span class="op">=</span> <span class="fu">calculaPorcentagemTotal</span>(dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Branca</span>)</span>
-<span id="cb1-293"><a href="#cb1-293" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-294"><a href="#cb1-294" aria-hidden="true" tabindex="-1"></a>total_preta <span class="op">=</span> dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Preta</span><span class="op">.</span><span class="fu">toLocaleString</span>(<span class="st">'pt-BR'</span>)</span>
-<span id="cb1-295"><a href="#cb1-295" aria-hidden="true" tabindex="-1"></a>total_preta_porcentagem <span class="op">=</span> <span class="fu">calculaPorcentagemTotal</span>(dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Preta</span>)</span>
-<span id="cb1-296"><a href="#cb1-296" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-297"><a href="#cb1-297" aria-hidden="true" tabindex="-1"></a>total_parda <span class="op">=</span> dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Parda</span><span class="op">.</span><span class="fu">toLocaleString</span>(<span class="st">'pt-BR'</span>)</span>
-<span id="cb1-298"><a href="#cb1-298" aria-hidden="true" tabindex="-1"></a>total_parda_porcentagem <span class="op">=</span> <span class="fu">calculaPorcentagemTotal</span>(dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Parda</span>)</span>
-<span id="cb1-299"><a href="#cb1-299" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-300"><a href="#cb1-300" aria-hidden="true" tabindex="-1"></a>total_amarela <span class="op">=</span> dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Amarela</span><span class="op">.</span><span class="fu">toLocaleString</span>(<span class="st">'pt-BR'</span>)</span>
-<span id="cb1-301"><a href="#cb1-301" aria-hidden="true" tabindex="-1"></a>total_amarela_porcentagem <span class="op">=</span> <span class="fu">calculaPorcentagemTotal</span>(dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Amarela</span>)</span>
-<span id="cb1-302"><a href="#cb1-302" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-303"><a href="#cb1-303" aria-hidden="true" tabindex="-1"></a>total_indigena <span class="op">=</span> dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Indígena</span><span class="op">.</span><span class="fu">toLocaleString</span>(<span class="st">'pt-BR'</span>)</span>
-<span id="cb1-304"><a href="#cb1-304" aria-hidden="true" tabindex="-1"></a>total_indigena_porcentagem <span class="op">=</span> <span class="fu">calculaPorcentagemTotal</span>(dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Indígena</span>)</span>
-<span id="cb1-305"><a href="#cb1-305" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-306"><a href="#cb1-306" aria-hidden="true" tabindex="-1"></a>total_deficiencia <span class="op">=</span> dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Deficiência</span><span class="op">.</span><span class="fu">toLocaleString</span>(<span class="st">'pt-BR'</span>)</span>
-<span id="cb1-307"><a href="#cb1-307" aria-hidden="true" tabindex="-1"></a>total_deficiencia_porcentagem <span class="op">=</span> <span class="fu">calculaPorcentagemTotal</span>(dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Deficiência</span>)</span>
-<span id="cb1-308"><a href="#cb1-308" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-309"><a href="#cb1-309" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">calculaPorcentagemTotal</span>(n1){</span>
-<span id="cb1-310"><a href="#cb1-310" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> ((n1<span class="op">/</span>dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Total</span>) <span class="op">*</span> <span class="dv">100</span>)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)</span>
-<span id="cb1-311"><a href="#cb1-311" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-217"><a href="#cb1-217" aria-hidden="true" tabindex="-1"></a>total_feminina <span class="op">=</span> dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Feminina</span><span class="op">.</span><span class="fu">toLocaleString</span>(<span class="st">'pt-BR'</span>)<span class="op">;</span></span>
+<span id="cb1-218"><a href="#cb1-218" aria-hidden="true" tabindex="-1"></a>total_feminina_porcentagem <span class="op">=</span> <span class="fu">calculaPorcentagemTotal</span>(dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Feminina</span>)<span class="op">;</span></span>
+<span id="cb1-219"><a href="#cb1-219" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-220"><a href="#cb1-220" aria-hidden="true" tabindex="-1"></a>total_naodeclarada <span class="op">=</span> dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Nãodeclarada</span><span class="op">.</span><span class="fu">toLocaleString</span>(<span class="st">'pt-BR'</span>)<span class="op">;</span></span>
+<span id="cb1-221"><a href="#cb1-221" aria-hidden="true" tabindex="-1"></a>total_naodeclarada_porcentagem <span class="op">=</span> <span class="fu">calculaPorcentagemTotal</span>(dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Nãodeclarada</span>)<span class="op">;</span></span>
+<span id="cb1-222"><a href="#cb1-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-223"><a href="#cb1-223" aria-hidden="true" tabindex="-1"></a>total_branca <span class="op">=</span> dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Branca</span><span class="op">.</span><span class="fu">toLocaleString</span>(<span class="st">'pt-BR'</span>)<span class="op">;</span></span>
+<span id="cb1-224"><a href="#cb1-224" aria-hidden="true" tabindex="-1"></a>total_branca_porcentagem <span class="op">=</span> <span class="fu">calculaPorcentagemTotal</span>(dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Branca</span>)<span class="op">;</span></span>
+<span id="cb1-225"><a href="#cb1-225" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-226"><a href="#cb1-226" aria-hidden="true" tabindex="-1"></a>total_preta <span class="op">=</span> dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Preta</span><span class="op">.</span><span class="fu">toLocaleString</span>(<span class="st">'pt-BR'</span>)<span class="op">;</span></span>
+<span id="cb1-227"><a href="#cb1-227" aria-hidden="true" tabindex="-1"></a>total_preta_porcentagem <span class="op">=</span> <span class="fu">calculaPorcentagemTotal</span>(dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Preta</span>)<span class="op">;</span></span>
+<span id="cb1-228"><a href="#cb1-228" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-229"><a href="#cb1-229" aria-hidden="true" tabindex="-1"></a>total_parda <span class="op">=</span> dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Parda</span><span class="op">.</span><span class="fu">toLocaleString</span>(<span class="st">'pt-BR'</span>)<span class="op">;</span></span>
+<span id="cb1-230"><a href="#cb1-230" aria-hidden="true" tabindex="-1"></a>total_parda_porcentagem <span class="op">=</span> <span class="fu">calculaPorcentagemTotal</span>(dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Parda</span>)<span class="op">;</span></span>
+<span id="cb1-231"><a href="#cb1-231" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-232"><a href="#cb1-232" aria-hidden="true" tabindex="-1"></a>total_amarela <span class="op">=</span> dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Amarela</span><span class="op">.</span><span class="fu">toLocaleString</span>(<span class="st">'pt-BR'</span>)<span class="op">;</span></span>
+<span id="cb1-233"><a href="#cb1-233" aria-hidden="true" tabindex="-1"></a>total_amarela_porcentagem <span class="op">=</span> <span class="fu">calculaPorcentagemTotal</span>(dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Amarela</span>)<span class="op">;</span></span>
+<span id="cb1-234"><a href="#cb1-234" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-235"><a href="#cb1-235" aria-hidden="true" tabindex="-1"></a>total_indigena <span class="op">=</span> dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Indígena</span><span class="op">.</span><span class="fu">toLocaleString</span>(<span class="st">'pt-BR'</span>)<span class="op">;</span></span>
+<span id="cb1-236"><a href="#cb1-236" aria-hidden="true" tabindex="-1"></a>total_indigena_porcentagem <span class="op">=</span> <span class="fu">calculaPorcentagemTotal</span>(dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Indígena</span>)<span class="op">;</span></span>
+<span id="cb1-237"><a href="#cb1-237" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-238"><a href="#cb1-238" aria-hidden="true" tabindex="-1"></a>total_deficiencia <span class="op">=</span> dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Deficiência</span><span class="op">.</span><span class="fu">toLocaleString</span>(<span class="st">'pt-BR'</span>)<span class="op">;</span></span>
+<span id="cb1-239"><a href="#cb1-239" aria-hidden="true" tabindex="-1"></a>total_deficiencia_porcentagem <span class="op">=</span> <span class="fu">calculaPorcentagemTotal</span>(dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Deficiência</span>)<span class="op">;</span></span>
+<span id="cb1-240"><a href="#cb1-240" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-241"><a href="#cb1-241" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">calculaPorcentagemTotal</span>(n1){</span>
+<span id="cb1-242"><a href="#cb1-242" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> ((n1<span class="op">/</span>dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Total</span>) <span class="op">*</span> <span class="dv">100</span>)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="op">;</span></span>
+<span id="cb1-243"><a href="#cb1-243" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display hidden">
 <div>
 <div id="ojs-cell-1-1" data-nodetype="declaration">
@@ -547,256 +558,200 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div class="cell-output cell-output-display hidden">
-<div>
-<div id="ojs-cell-1-28" data-nodetype="declaration">
+</div>
+<div class="grid mx-5 my-3">
+<div class="g-col-12 g-col-sm-6">
+<div class="text-start">
+<div class="mun">
+<p>Município</p>
+</div>
+<div class="cityfont fw-bold">
+<p><span><span id="ojs-element-id-1"></span></span></p>
+</div>
+</div>
+</div>
+<div class="g-col-12 g-col-sm-6 d-flex justify-content-center justify-content-sm-end align-self-center">
+<div class="fw-bold">
+<p>Selecione o ano de pesquisa desejado</p>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="211" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 210;"><span id="cb2-211"><a href="#cb2-211" aria-hidden="true" tabindex="-1"></a>viewof pesquisa_ano <span class="op">=</span> <span class="fu">html</span><span class="vs">`</span></span>
+<span id="cb2-212"><a href="#cb2-212" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;select id="pesquisa_ano" class="form-select" &gt;</span></span>
+<span id="cb2-213"><a href="#cb2-213" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;option value="2010"&gt;2010&lt;/option&gt;</span></span>
+<span id="cb2-214"><a href="#cb2-214" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;option value="2011"&gt;2011&lt;/option&gt;</span></span>
+<span id="cb2-215"><a href="#cb2-215" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;option value="2012"&gt;2012&lt;/option&gt;</span></span>
+<span id="cb2-216"><a href="#cb2-216" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;option value="2013"&gt;2013&lt;/option&gt;</span></span>
+<span id="cb2-217"><a href="#cb2-217" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;option value="2014"&gt;2014&lt;/option&gt;</span></span>
+<span id="cb2-218"><a href="#cb2-218" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;option value="2015"&gt;2015&lt;/option&gt;</span></span>
+<span id="cb2-219"><a href="#cb2-219" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;option value="2016"&gt;2016&lt;/option&gt;</span></span>
+<span id="cb2-220"><a href="#cb2-220" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;option value="2017"&gt;2017&lt;/option&gt;</span></span>
+<span id="cb2-221"><a href="#cb2-221" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;option value="2018"&gt;2018&lt;/option&gt;</span></span>
+<span id="cb2-222"><a href="#cb2-222" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;option value="2019"&gt;2019&lt;/option&gt;</span></span>
+<span id="cb2-223"><a href="#cb2-223" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;option value="2020" selected &gt;2020&lt;/option&gt;</span></span>
+<span id="cb2-224"><a href="#cb2-224" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/select&gt;</span></span>
+<span id="cb2-225"><a href="#cb2-225" aria-hidden="true" tabindex="-1"></a><span class="vs">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-2" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
-<div class="cell-output cell-output-display hidden">
-<div>
-<div id="ojs-cell-1-29" data-nodetype="declaration">
+</div>
+</div>
+</div>
+<div class="fs-2 fw-bold mx-5">
+<p>Matrículas no Ensino Médio</p>
+</div>
+<div class="grid mx-5">
+<div class="g-col-12 g-col-md-6">
+<div class="mun">
+<p>Por genêro</p>
+</div>
+<div class="d-flex text-center flex-column flex-md-row gap-3">
+<div class="valuebox flex-fill my-2 rounded-2 pt-2">
+<p>Masculino</p>
+<p><span><span id="ojs-element-id-2"></span></span></p>
+<p><span><span id="ojs-element-id-3"></span></span> %</p>
+</div>
+<div class="valuebox flex-fill my-2 rounded-2 pt-2">
+<p>Feminino</p>
+<p><span><span id="ojs-element-id-4"></span></span></p>
+<p><span><span id="ojs-element-id-5"></span></span> %</p>
+</div>
+</div>
+</div>
+<div class="g-col-12 g-col-md-6">
+<div class="mun">
+<p>Por raça/cor</p>
+</div>
+<div class="d-flex text-center flex-column">
+<div class="d-flex justify-content-between gap-3 flex-column flex-md-row">
+<div class="valuebox flex-fill my-2 rounded-2 pt-2">
+<p>Não declarada</p>
+<p><span><span id="ojs-element-id-6"></span></span></p>
+<p><span><span id="ojs-element-id-7"></span></span> %</p>
+</div>
+<div class="valuebox flex-fill my-2 rounded-2 pt-2">
+<p>Branca</p>
+<p><span><span id="ojs-element-id-8"></span></span></p>
+<p><span><span id="ojs-element-id-9"></span></span> %</p>
+</div>
+<div class="valuebox flex-fill my-2 rounded-2 pt-2">
+<p>Preta</p>
+<p><span><span id="ojs-element-id-10"></span></span></p>
+<p><span><span id="ojs-element-id-11"></span></span> %</p>
+</div>
+</div>
+<div class="d-flex gap-3 flex-column flex-md-row">
+<div class="valuebox flex-fill my-2 rounded-2 pt-2">
+<p>Parda</p>
+<p><span><span id="ojs-element-id-12"></span></span></p>
+<p><span><span id="ojs-element-id-13"></span></span> %</p>
+</div>
+<div class="valuebox flex-fill my-2 rounded-2 pt-2">
+<p>Amarela</p>
+<p><span><span id="ojs-element-id-14"></span></span></p>
+<p><span><span id="ojs-element-id-15"></span></span> %</p>
+</div>
+<div class="valuebox flex-fill my-2 rounded-2 pt-2">
+<p>Indígena</p>
+<p><span><span id="ojs-element-id-16"></span></span></p>
+<p><span><span id="ojs-element-id-17"></span></span> %</p>
+</div>
+<div class="valuebox flex-fill my-2 rounded-2 pt-2">
+<p>Deficiência</p>
+<p><span><span id="ojs-element-id-18"></span></span></p>
+<p><span><span id="ojs-element-id-19"></span></span> %</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mx-5 fs-6 fw-light">
+<p>Fonte: INEP.</p>
+</div>
+<div class="mx-5 fs-2 fw-bold">
+<p>Gráficos representativos</p>
+<div class="mx-5 pb-3">
+<div class="cell" title="Dados completos">
+<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="0" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line -1;"><span id="cb3-0"><a href="#cb3-0" aria-hidden="true" tabindex="-1"></a><span class="fu">bar</span>({</span>
+<span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>  <span class="dt">data</span><span class="op">:</span> [{ <span class="dt">name</span><span class="op">:</span> <span class="st">"Total"</span><span class="op">,</span> <span class="st">''</span> <span class="op">:</span>dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Total</span>}<span class="op">,</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  { <span class="dt">name</span><span class="op">:</span> <span class="st">"Masculina"</span><span class="op">,</span> <span class="st">''</span><span class="op">:</span>  dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Masculina</span>}<span class="op">,</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  { <span class="dt">name</span><span class="op">:</span> <span class="st">"Feminina"</span><span class="op">,</span> <span class="st">''</span><span class="op">:</span> dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Feminina</span>}<span class="op">,</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  { <span class="dt">name</span><span class="op">:</span> <span class="st">"Não declarada"</span><span class="op">,</span> <span class="st">''</span><span class="op">:</span> dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Nãodeclarada</span>}<span class="op">,</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  { <span class="dt">name</span><span class="op">:</span> <span class="st">"Branca"</span><span class="op">,</span> <span class="st">''</span><span class="op">:</span> dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Branca</span>}<span class="op">,</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  { <span class="dt">name</span><span class="op">:</span> <span class="st">"Preta"</span><span class="op">,</span> <span class="st">''</span><span class="op">:</span> dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Preta</span>}<span class="op">,</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  { <span class="dt">name</span><span class="op">:</span> <span class="st">"Parda"</span><span class="op">,</span> <span class="st">''</span><span class="op">:</span> dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Parda</span>}<span class="op">,</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  { <span class="dt">name</span><span class="op">:</span> <span class="st">"Amarela"</span><span class="op">,</span> <span class="st">''</span><span class="op">:</span> dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Amarela</span>}<span class="op">,</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  { <span class="dt">name</span><span class="op">:</span> <span class="st">"Indígena"</span><span class="op">,</span><span class="st">''</span><span class="op">:</span>dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Indígena</span>}<span class="op">,</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  { <span class="dt">name</span><span class="op">:</span> <span class="st">"Deficiência"</span><span class="op">,</span> <span class="st">''</span><span class="op">:</span>dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Deficiência</span>}<span class="op">,</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  ]<span class="op">,</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="dt">options</span><span class="op">:</span> {</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="dt">plugins</span><span class="op">:</span> {</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>      <span class="dt">datalabels</span><span class="op">:</span> {</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>        <span class="dt">color</span><span class="op">:</span> <span class="st">'white'</span><span class="op">,</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>        <span class="dt">font</span><span class="op">:</span> {</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>          <span class="dt">weight</span><span class="op">:</span> <span class="st">'bold'</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>        }<span class="op">,</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>        <span class="dt">formatter</span><span class="op">:</span> <span class="kw">function</span>(x) {</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>          <span class="cf">return</span> x<span class="op">.</span><span class="fu">toLocaleString</span>(<span class="st">'pt-BR'</span>)</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-3" data-nodetype="expression">
 
 </div>
 </div>
 </div>
 </div>
-<div class="bslib-grid-item html-fill-item bslib-grid" data-layout="fill" style="display: grid; grid-template-rows: minmax(3em, 20fr) minmax(3em, 15fr) minmax(3em, 65fr); grid-auto-columns: minmax(0, 1fr);">
-<div class="bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
-grid-auto-rows: minmax(0, 1fr);">
-<div class="card valuebox bslib-card html-fill-container bslib-value-box bg-white" data-bslib-card-init="" data-require-bs-caller="card()">
-<div class="card-body html-fill-item html-fill-container">
-<div class="html-fill-item html-fill-container value-box-grid">
-<div class="value-box-area">
-<p class="value-box-title">
-Município
-</p>
-<p class="value-box-value">
-<span><span id="ojs-element-id-1"></span></span>
-</p>
+</div>
+<div class="grid px-5 bg-primary footerBorders">
+<div class="d-flex g-col-3 justify-content-center align-items-start pt-3">
+<div class="col">
+<p><a href="./index.html" class="link-light">Página inicial</a></p>
+<p><a href="./sobre.html" class="link-light">Sobre</a></p>
 </div>
 </div>
-</div>
-<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
-</div>
-<div class="bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr);
-grid-auto-rows: minmax(0, 1fr);">
-<div class="card valuebox bslib-card html-fill-container bslib-value-box bg-blue" data-bslib-card-init="" data-require-bs-caller="card()">
-<div class="card-body html-fill-item html-fill-container">
-<div class="html-fill-item html-fill-container value-box-grid">
-<div class="value-box-area">
-<p class="value-box-title">
-Total
-</p>
-<p class="value-box-value">
-<span><span id="ojs-element-id-2"></span></span>
-</p>
-100%
-</div>
-</div>
-</div>
-<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card valuebox bslib-card html-fill-container bslib-value-box bg-info" data-bslib-card-init="" data-require-bs-caller="card()">
-<div class="card-body html-fill-item html-fill-container">
-<div class="html-fill-item html-fill-container value-box-grid">
-<div class="value-box-area">
-<p class="value-box-title">
-Masculina
-</p>
-<p class="value-box-value">
-<span><span id="ojs-element-id-3"></span></span>
-</p>
-<p><span><span id="ojs-element-id-4"></span></span> %</p>
-</div>
-</div>
-</div>
-<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card valuebox bslib-card html-fill-container bslib-value-box bg-info" data-bslib-card-init="" data-require-bs-caller="card()">
-<div class="card-body html-fill-item html-fill-container">
-<div class="html-fill-item html-fill-container value-box-grid">
-<div class="value-box-area">
-<p class="value-box-title">
-Feminina
-</p>
-<p class="value-box-value">
-<span><span id="ojs-element-id-5"></span></span>
-</p>
-<p><span><span id="ojs-element-id-6"></span></span> %</p>
-</div>
-</div>
-</div>
-<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card valuebox bslib-card html-fill-container bslib-value-box bg-info" data-bslib-card-init="" data-require-bs-caller="card()">
-<div class="card-body html-fill-item html-fill-container">
-<div class="html-fill-item html-fill-container value-box-grid">
-<div class="value-box-area">
-<p class="value-box-title">
-Nãodeclarada
-</p>
-<p class="value-box-value">
-<span><span id="ojs-element-id-7"></span></span>
-</p>
-<p><span><span id="ojs-element-id-8"></span></span> %</p>
-</div>
-</div>
-</div>
-<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card valuebox bslib-card html-fill-container bslib-value-box bg-info" data-bslib-card-init="" data-require-bs-caller="card()">
-<div class="card-body html-fill-item html-fill-container">
-<div class="html-fill-item html-fill-container value-box-grid">
-<div class="value-box-area">
-<p class="value-box-title">
-Branca
-</p>
-<p class="value-box-value">
-<span><span id="ojs-element-id-9"></span></span>
-</p>
-<p><span><span id="ojs-element-id-10"></span></span> %</p>
-</div>
-</div>
-</div>
-<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card valuebox bslib-card html-fill-container bslib-value-box bg-info" data-bslib-card-init="" data-require-bs-caller="card()">
-<div class="card-body html-fill-item html-fill-container">
-<div class="html-fill-item html-fill-container value-box-grid">
-<div class="value-box-area">
-<p class="value-box-title">
-Preta
-</p>
-<p class="value-box-value">
-<span><span id="ojs-element-id-11"></span></span>
-</p>
-<p><span><span id="ojs-element-id-12"></span></span> %</p>
-</div>
-</div>
-</div>
-<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card valuebox bslib-card html-fill-container bslib-value-box bg-info" data-bslib-card-init="" data-require-bs-caller="card()">
-<div class="card-body html-fill-item html-fill-container">
-<div class="html-fill-item html-fill-container value-box-grid">
-<div class="value-box-area">
-<p class="value-box-title">
-Parda
-</p>
-<p class="value-box-value">
-<span><span id="ojs-element-id-13"></span></span>
-</p>
-<p><span><span id="ojs-element-id-14"></span></span> %</p>
-</div>
-</div>
-</div>
-<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card valuebox bslib-card html-fill-container bslib-value-box bg-info" data-bslib-card-init="" data-require-bs-caller="card()">
-<div class="card-body html-fill-item html-fill-container">
-<div class="html-fill-item html-fill-container value-box-grid">
-<div class="value-box-area">
-<p class="value-box-title">
-Amarela
-</p>
-<p class="value-box-value">
-<span><span id="ojs-element-id-15"></span></span>
-</p>
-<p><span><span id="ojs-element-id-16"></span></span> %</p>
-</div>
-</div>
-</div>
-<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card valuebox bslib-card html-fill-container bslib-value-box bg-info" data-bslib-card-init="" data-require-bs-caller="card()">
-<div class="card-body html-fill-item html-fill-container">
-<div class="html-fill-item html-fill-container value-box-grid">
-<div class="value-box-area">
-<p class="value-box-title">
-Indígena
-</p>
-<p class="value-box-value">
-<span><span id="ojs-element-id-17"></span></span>
-</p>
-<p><span><span id="ojs-element-id-18"></span></span> %</p>
-</div>
-</div>
-</div>
-<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card valuebox bslib-card html-fill-container bslib-value-box bg-info" data-bslib-card-init="" data-require-bs-caller="card()">
-<div class="card-body html-fill-item html-fill-container">
-<div class="html-fill-item html-fill-container value-box-grid">
-<div class="value-box-area">
-<p class="value-box-title">
-Deficiência
-</p>
-<p class="value-box-value">
-<span><span id="ojs-element-id-19"></span></span>
-</p>
-<p><span><span id="ojs-element-id-20"></span></span> %</p>
-</div>
-</div>
-</div>
-<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
-</div>
-<div class="card tabset bslib-card html-fill-container" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
-<div class="card-header dashboard-card-no-title bslib-navs-card-title">
-
-<ul class="nav nav-tabs card-header-tabs" role="tablist" data-tabsetid="card-tabset-12"><li class="nav-item" role="presentation"><a href="#card-tabset-12-1" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Dados completos" aria-selected="true" class="nav-link active">Dados completos</a></li></ul></div>
-
-
-
-<div id="3ade8a4a-fb1d-4a6c-8409-ac45482d5fc9" class="hidden">
+<div class="g-col-3">
 
 </div>
-<div class="tab-content html-fill-item html-fill-container" data-tabset-id="card-tabset-12"><div class="tab-pane active show html-fill-item html-fill-container" role="tabpanel" id="card-tabset-12-1"><div class="card-body html-fill-item html-fill-container" data-title="Dados completos">
-<div class="sourceCode cell-code hidden html-fill-item html-fill-container" id="cb2" data-startfrom="1" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>viewof pesquisa_ano <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>([<span class="st">"2010"</span><span class="op">,</span> <span class="st">"2011"</span><span class="op">,</span> <span class="st">"2012"</span><span class="op">,</span> <span class="st">"2013"</span><span class="op">,</span><span class="st">"2014"</span><span class="op">,</span><span class="st">"2015"</span><span class="op">,</span><span class="st">"2016"</span><span class="op">,</span><span class="st">"2017"</span><span class="op">,</span> <span class="st">"2018"</span><span class="op">,</span><span class="st">"2019"</span><span class="op">,</span><span class="st">"2020"</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> ano_pesquisa<span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Ano de pesquisa"</span>})</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">bar</span>({</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">data</span><span class="op">:</span> [{ <span class="dt">name</span><span class="op">:</span> <span class="st">"Total"</span><span class="op">,</span> <span class="st">''</span> <span class="op">:</span>dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Total</span>}<span class="op">,</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  { <span class="dt">name</span><span class="op">:</span> <span class="st">"Masculina"</span><span class="op">,</span> <span class="st">''</span><span class="op">:</span>  dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Masculina</span>}<span class="op">,</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  { <span class="dt">name</span><span class="op">:</span> <span class="st">"Feminina"</span><span class="op">,</span> <span class="st">''</span><span class="op">:</span> dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Feminina</span>}<span class="op">,</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  { <span class="dt">name</span><span class="op">:</span> <span class="st">"Não declarada"</span><span class="op">,</span> <span class="st">''</span><span class="op">:</span> dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Nãodeclarada</span>}<span class="op">,</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  { <span class="dt">name</span><span class="op">:</span> <span class="st">"Branca"</span><span class="op">,</span> <span class="st">''</span><span class="op">:</span> dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Branca</span>}<span class="op">,</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  { <span class="dt">name</span><span class="op">:</span> <span class="st">"Preta"</span><span class="op">,</span> <span class="st">''</span><span class="op">:</span> dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Preta</span>}<span class="op">,</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  { <span class="dt">name</span><span class="op">:</span> <span class="st">"Parda"</span><span class="op">,</span> <span class="st">''</span><span class="op">:</span> dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Parda</span>}<span class="op">,</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  { <span class="dt">name</span><span class="op">:</span> <span class="st">"Amarela"</span><span class="op">,</span> <span class="st">''</span><span class="op">:</span> dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Amarela</span>}<span class="op">,</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  { <span class="dt">name</span><span class="op">:</span> <span class="st">"Indígena"</span><span class="op">,</span><span class="st">''</span><span class="op">:</span>dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Indígena</span>}<span class="op">,</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  { <span class="dt">name</span><span class="op">:</span> <span class="st">"Deficiência"</span><span class="op">,</span> <span class="st">''</span><span class="op">:</span>dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Deficiência</span>}<span class="op">,</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  ]<span class="op">,</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>   </span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="dt">options</span><span class="op">:</span> {</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="dt">plugins</span><span class="op">:</span> {</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>      <span class="dt">datalabels</span><span class="op">:</span> {</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>        <span class="dt">color</span><span class="op">:</span> <span class="st">'white'</span><span class="op">,</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>        <span class="dt">font</span><span class="op">:</span> {</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>          <span class="dt">weight</span><span class="op">:</span> <span class="st">'bold'</span></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>        }<span class="op">,</span></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>        <span class="dt">formatter</span><span class="op">:</span> <span class="kw">function</span>(x) {</span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>          <span class="cf">return</span> x<span class="op">.</span><span class="fu">toLocaleString</span>(<span class="st">'pt-BR'</span>)</span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>        }</span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>      }</span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>   <span class="dt">width</span><span class="op">:</span> <span class="dv">900</span><span class="op">,</span></span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>  <span class="dt">height</span><span class="op">:</span> <span class="dv">375</span></span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display html-fill-item html-fill-container">
-<div class="html-fill-item html-fill-container">
-<div id="ojs-cell-2-1" data-nodetype="declaration" class="html-fill-item html-fill-container">
+<div class="g-col-3">
 
 </div>
+<div class="g-col-3 pt-3">
+<p>Realização:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://www.gov.br/cnpq/pt-br"><img src="files/images/participants/CNPq_v2017_rgb_neg.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="125"></a></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://portal.ifba.edu.br/"><img src="files/images/participants/MARCA_IFBA_HORIZONTAL_completa_negativaBRANCA_IFBA.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="250"></a></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://www.ufrb.edu.br"><img src="files/images/participants/UFRB-Vertical_branca.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="150"></a></p>
+</figure>
 </div>
 </div>
-<div class="cell-output cell-output-display html-fill-item html-fill-container">
-<div class="html-fill-item html-fill-container">
-<div id="ojs-cell-2-2" data-nodetype="expression" class="html-fill-item html-fill-container">
+</div>
 
-</div>
-</div>
-</div>
-</div></div></div><bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
-    <template>Expand</template>
-    <span class="bslib-full-screen-enter badge rounded-pill">
-        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
-    </span>
-</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
-</div>
-<div class="ojs-auto-generated hidden bslib-grid-item html-fill-item">
+
+<div class="ojs-auto-generated hidden">
 <script type="ojs-module-contents">
-eyJjb250ZW50cyI6WyAgeyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiaW5saW5lIjoidHJ1ZSIsInNvdXJjZSI6Imh0bC5odG1sYDxzcGFuPiR7bm9tZUNpZGFkZX08L3NwYW4+YCIsICJjZWxsTmFtZSI6Im9qcy1lbGVtZW50LWlkLTEifSwgIHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImlubGluZSI6InRydWUiLCJzb3VyY2UiOiJodGwuaHRtbGA8c3Bhbj4ke3RvdGFsfTwvc3Bhbj5gIiwgImNlbGxOYW1lIjoib2pzLWVsZW1lbnQtaWQtMiJ9LCAgeyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiaW5saW5lIjoidHJ1ZSIsInNvdXJjZSI6Imh0bC5odG1sYDxzcGFuPiR7dG90YWxfbWFzY3VsaW5hfTwvc3Bhbj5gIiwgImNlbGxOYW1lIjoib2pzLWVsZW1lbnQtaWQtMyJ9LCAgeyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiaW5saW5lIjoidHJ1ZSIsInNvdXJjZSI6Imh0bC5odG1sYDxzcGFuPiR7dG90YWxfbWFzY3VsaW5hX3BvcmNlbnRhZ2VtfTwvc3Bhbj5gIiwgImNlbGxOYW1lIjoib2pzLWVsZW1lbnQtaWQtNCJ9LCAgeyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiaW5saW5lIjoidHJ1ZSIsInNvdXJjZSI6Imh0bC5odG1sYDxzcGFuPiR7dG90YWxfZmVtaW5pbmF9PC9zcGFuPmAiLCAiY2VsbE5hbWUiOiJvanMtZWxlbWVudC1pZC01In0sICB7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJpbmxpbmUiOiJ0cnVlIiwic291cmNlIjoiaHRsLmh0bWxgPHNwYW4+JHt0b3RhbF9mZW1pbmluYV9wb3JjZW50YWdlbX08L3NwYW4+YCIsICJjZWxsTmFtZSI6Im9qcy1lbGVtZW50LWlkLTYifSwgIHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImlubGluZSI6InRydWUiLCJzb3VyY2UiOiJodGwuaHRtbGA8c3Bhbj4ke3RvdGFsX25hb2RlY2xhcmFkYX08L3NwYW4+YCIsICJjZWxsTmFtZSI6Im9qcy1lbGVtZW50LWlkLTcifSwgIHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImlubGluZSI6InRydWUiLCJzb3VyY2UiOiJodGwuaHRtbGA8c3Bhbj4ke3RvdGFsX25hb2RlY2xhcmFkYV9wb3JjZW50YWdlbX08L3NwYW4+YCIsICJjZWxsTmFtZSI6Im9qcy1lbGVtZW50LWlkLTgifSwgIHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImlubGluZSI6InRydWUiLCJzb3VyY2UiOiJodGwuaHRtbGA8c3Bhbj4ke3RvdGFsX2JyYW5jYX08L3NwYW4+YCIsICJjZWxsTmFtZSI6Im9qcy1lbGVtZW50LWlkLTkifSwgIHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImlubGluZSI6InRydWUiLCJzb3VyY2UiOiJodGwuaHRtbGA8c3Bhbj4ke3RvdGFsX2JyYW5jYV9wb3JjZW50YWdlbX08L3NwYW4+YCIsICJjZWxsTmFtZSI6Im9qcy1lbGVtZW50LWlkLTEwIn0sICB7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJpbmxpbmUiOiJ0cnVlIiwic291cmNlIjoiaHRsLmh0bWxgPHNwYW4+JHt0b3RhbF9wcmV0YX08L3NwYW4+YCIsICJjZWxsTmFtZSI6Im9qcy1lbGVtZW50LWlkLTExIn0sICB7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJpbmxpbmUiOiJ0cnVlIiwic291cmNlIjoiaHRsLmh0bWxgPHNwYW4+JHt0b3RhbF9wcmV0YV9wb3JjZW50YWdlbX08L3NwYW4+YCIsICJjZWxsTmFtZSI6Im9qcy1lbGVtZW50LWlkLTEyIn0sICB7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJpbmxpbmUiOiJ0cnVlIiwic291cmNlIjoiaHRsLmh0bWxgPHNwYW4+JHt0b3RhbF9wYXJkYX08L3NwYW4+YCIsICJjZWxsTmFtZSI6Im9qcy1lbGVtZW50LWlkLTEzIn0sICB7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJpbmxpbmUiOiJ0cnVlIiwic291cmNlIjoiaHRsLmh0bWxgPHNwYW4+JHt0b3RhbF9wYXJkYV9wb3JjZW50YWdlbX08L3NwYW4+YCIsICJjZWxsTmFtZSI6Im9qcy1lbGVtZW50LWlkLTE0In0sICB7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJpbmxpbmUiOiJ0cnVlIiwic291cmNlIjoiaHRsLmh0bWxgPHNwYW4+JHt0b3RhbF9hbWFyZWxhfTwvc3Bhbj5gIiwgImNlbGxOYW1lIjoib2pzLWVsZW1lbnQtaWQtMTUifSwgIHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImlubGluZSI6InRydWUiLCJzb3VyY2UiOiJodGwuaHRtbGA8c3Bhbj4ke3RvdGFsX2FtYXJlbGFfcG9yY2VudGFnZW19PC9zcGFuPmAiLCAiY2VsbE5hbWUiOiJvanMtZWxlbWVudC1pZC0xNiJ9LCAgeyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiaW5saW5lIjoidHJ1ZSIsInNvdXJjZSI6Imh0bC5odG1sYDxzcGFuPiR7dG90YWxfaW5kaWdlbmF9PC9zcGFuPmAiLCAiY2VsbE5hbWUiOiJvanMtZWxlbWVudC1pZC0xNyJ9LCAgeyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiaW5saW5lIjoidHJ1ZSIsInNvdXJjZSI6Imh0bC5odG1sYDxzcGFuPiR7dG90YWxfaW5kaWdlbmFfcG9yY2VudGFnZW19PC9zcGFuPmAiLCAiY2VsbE5hbWUiOiJvanMtZWxlbWVudC1pZC0xOCJ9LCAgeyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiaW5saW5lIjoidHJ1ZSIsInNvdXJjZSI6Imh0bC5odG1sYDxzcGFuPiR7dG90YWxfZGVmaWNpZW5jaWF9PC9zcGFuPmAiLCAiY2VsbE5hbWUiOiJvanMtZWxlbWVudC1pZC0xOSJ9LCAgeyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiaW5saW5lIjoidHJ1ZSIsInNvdXJjZSI6Imh0bC5odG1sYDxzcGFuPiR7dG90YWxfZGVmaWNpZW5jaWFfcG9yY2VudGFnZW19PC9zcGFuPmAiLCAiY2VsbE5hbWUiOiJvanMtZWxlbWVudC1pZC0yMCJ9XX0=
+eyJjb250ZW50cyI6WyAgeyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiaW5saW5lIjoidHJ1ZSIsInNvdXJjZSI6Imh0bC5odG1sYDxzcGFuPiR7bm9tZUNpZGFkZX08L3NwYW4+YCIsICJjZWxsTmFtZSI6Im9qcy1lbGVtZW50LWlkLTEifSwgIHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImlubGluZSI6InRydWUiLCJzb3VyY2UiOiJodGwuaHRtbGA8c3Bhbj4ke3RvdGFsX21hc2N1bGluYX08L3NwYW4+YCIsICJjZWxsTmFtZSI6Im9qcy1lbGVtZW50LWlkLTIifSwgIHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImlubGluZSI6InRydWUiLCJzb3VyY2UiOiJodGwuaHRtbGA8c3Bhbj4ke3RvdGFsX21hc2N1bGluYV9wb3JjZW50YWdlbX08L3NwYW4+YCIsICJjZWxsTmFtZSI6Im9qcy1lbGVtZW50LWlkLTMifSwgIHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImlubGluZSI6InRydWUiLCJzb3VyY2UiOiJodGwuaHRtbGA8c3Bhbj4ke3RvdGFsX2ZlbWluaW5hfTwvc3Bhbj5gIiwgImNlbGxOYW1lIjoib2pzLWVsZW1lbnQtaWQtNCJ9LCAgeyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiaW5saW5lIjoidHJ1ZSIsInNvdXJjZSI6Imh0bC5odG1sYDxzcGFuPiR7dG90YWxfZmVtaW5pbmFfcG9yY2VudGFnZW19PC9zcGFuPmAiLCAiY2VsbE5hbWUiOiJvanMtZWxlbWVudC1pZC01In0sICB7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJpbmxpbmUiOiJ0cnVlIiwic291cmNlIjoiaHRsLmh0bWxgPHNwYW4+JHt0b3RhbF9uYW9kZWNsYXJhZGF9PC9zcGFuPmAiLCAiY2VsbE5hbWUiOiJvanMtZWxlbWVudC1pZC02In0sICB7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJpbmxpbmUiOiJ0cnVlIiwic291cmNlIjoiaHRsLmh0bWxgPHNwYW4+JHt0b3RhbF9uYW9kZWNsYXJhZGFfcG9yY2VudGFnZW19PC9zcGFuPmAiLCAiY2VsbE5hbWUiOiJvanMtZWxlbWVudC1pZC03In0sICB7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJpbmxpbmUiOiJ0cnVlIiwic291cmNlIjoiaHRsLmh0bWxgPHNwYW4+JHt0b3RhbF9icmFuY2F9PC9zcGFuPmAiLCAiY2VsbE5hbWUiOiJvanMtZWxlbWVudC1pZC04In0sICB7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJpbmxpbmUiOiJ0cnVlIiwic291cmNlIjoiaHRsLmh0bWxgPHNwYW4+JHt0b3RhbF9icmFuY2FfcG9yY2VudGFnZW19PC9zcGFuPmAiLCAiY2VsbE5hbWUiOiJvanMtZWxlbWVudC1pZC05In0sICB7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJpbmxpbmUiOiJ0cnVlIiwic291cmNlIjoiaHRsLmh0bWxgPHNwYW4+JHt0b3RhbF9wcmV0YX08L3NwYW4+YCIsICJjZWxsTmFtZSI6Im9qcy1lbGVtZW50LWlkLTEwIn0sICB7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJpbmxpbmUiOiJ0cnVlIiwic291cmNlIjoiaHRsLmh0bWxgPHNwYW4+JHt0b3RhbF9wcmV0YV9wb3JjZW50YWdlbX08L3NwYW4+YCIsICJjZWxsTmFtZSI6Im9qcy1lbGVtZW50LWlkLTExIn0sICB7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJpbmxpbmUiOiJ0cnVlIiwic291cmNlIjoiaHRsLmh0bWxgPHNwYW4+JHt0b3RhbF9wYXJkYX08L3NwYW4+YCIsICJjZWxsTmFtZSI6Im9qcy1lbGVtZW50LWlkLTEyIn0sICB7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJpbmxpbmUiOiJ0cnVlIiwic291cmNlIjoiaHRsLmh0bWxgPHNwYW4+JHt0b3RhbF9wYXJkYV9wb3JjZW50YWdlbX08L3NwYW4+YCIsICJjZWxsTmFtZSI6Im9qcy1lbGVtZW50LWlkLTEzIn0sICB7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJpbmxpbmUiOiJ0cnVlIiwic291cmNlIjoiaHRsLmh0bWxgPHNwYW4+JHt0b3RhbF9hbWFyZWxhfTwvc3Bhbj5gIiwgImNlbGxOYW1lIjoib2pzLWVsZW1lbnQtaWQtMTQifSwgIHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImlubGluZSI6InRydWUiLCJzb3VyY2UiOiJodGwuaHRtbGA8c3Bhbj4ke3RvdGFsX2FtYXJlbGFfcG9yY2VudGFnZW19PC9zcGFuPmAiLCAiY2VsbE5hbWUiOiJvanMtZWxlbWVudC1pZC0xNSJ9LCAgeyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiaW5saW5lIjoidHJ1ZSIsInNvdXJjZSI6Imh0bC5odG1sYDxzcGFuPiR7dG90YWxfaW5kaWdlbmF9PC9zcGFuPmAiLCAiY2VsbE5hbWUiOiJvanMtZWxlbWVudC1pZC0xNiJ9LCAgeyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiaW5saW5lIjoidHJ1ZSIsInNvdXJjZSI6Imh0bC5odG1sYDxzcGFuPiR7dG90YWxfaW5kaWdlbmFfcG9yY2VudGFnZW19PC9zcGFuPmAiLCAiY2VsbE5hbWUiOiJvanMtZWxlbWVudC1pZC0xNyJ9LCAgeyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiaW5saW5lIjoidHJ1ZSIsInNvdXJjZSI6Imh0bC5odG1sYDxzcGFuPiR7dG90YWxfZGVmaWNpZW5jaWF9PC9zcGFuPmAiLCAiY2VsbE5hbWUiOiJvanMtZWxlbWVudC1pZC0xOCJ9LCAgeyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiaW5saW5lIjoidHJ1ZSIsInNvdXJjZSI6Imh0bC5odG1sYDxzcGFuPiR7dG90YWxfZGVmaWNpZW5jaWFfcG9yY2VudGFnZW19PC9zcGFuPmAiLCAiY2VsbE5hbWUiOiJvanMtZWxlbWVudC1pZC0xOSJ9XX0=
 </script>
 </div>
 
 
 <script type="ojs-module-contents">
-eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxyXG5pbXBvcnQgeyBiYXIgfSBmcm9tICdAY2hyaXNwYWhtL2NoYXJ0cydcclxuXHJcbmRhdGEgPSBGaWxlQXR0YWNobWVudChcImZpbGVzL01hdHJpY3VsYXMgMjAxMCBhIDIwMjIgSUQueGxzeFwiKS54bHN4KClcclxuXHJcbnNlYXJjaFBhcmFtcyA9IG5ldyBVUkxTZWFyY2hQYXJhbXMobG9jYXRpb24uc2VhcmNoKTtcclxuXHJcbmlkX3Blc3F1aXNhID0gc2VhcmNoUGFyYW1zLmhhcyhcImlkXCIpID8gc2VhcmNoUGFyYW1zLmdldChcImlkXCIpIDogXCIyOTI4NzAzXCI7XHJcblxyXG5hbm9fcGVzcXVpc2EgPSBzZWFyY2hQYXJhbXMuaGFzKFwiYW5vXCIpID8gc2VhcmNoUGFyYW1zLmdldChcImFub1wiKSA6IFwiMjAxMFwiO1xyXG5cclxuYW5vX3Blc3F1aXNhX3BhcmNpYWwgPSBcIjIwMjJcIlxyXG5cclxuZmlsdGVyZWQgPSBkYXRhLnNoZWV0KFwibsO6bWVyb3MgYWJzb2x1dG9zXCIpLmZpbHRlcihmdW5jdGlvbihmaWx0cm8pIHtcclxuICByZXR1cm4gZmlsdHJvLkEgIT0gXCJUZXJyaXTDs3Jpb3MgQkFcIiAmJiBmaWx0cm8uQiA9PSBpZF9wZXNxdWlzYVxyXG59KVxyXG5cclxuXHJcbm5vbWVDaWRhZGUgPSBmaWx0ZXJlZFswXS5DXHJcblxyXG5kYWRvcyA9IFt7XHJcbiAgXCIyMDEwXCI6IHtcclxuICBcIlRvdGFsXCIgOiBmaWx0ZXJlZFswXS5ELCBcclxuICBcIk1hc2N1bGluYVwiOiBmaWx0ZXJlZFswXS5FLCBcclxuICBcIkZlbWluaW5hXCI6IGZpbHRlcmVkWzBdLkYsXHJcbiAgXCJOw6NvZGVjbGFyYWRhXCI6IGZpbHRlcmVkWzBdLkcsXHJcbiAgXCJCcmFuY2FcIjogZmlsdGVyZWRbMF0uSCxcclxuICBcIlByZXRhXCI6IGZpbHRlcmVkWzBdLkksXHJcbiAgXCJQYXJkYVwiOiBmaWx0ZXJlZFswXS5KLFxyXG4gIFwiQW1hcmVsYVwiOiBmaWx0ZXJlZFswXS5LLFxyXG4gIFwiSW5kw61nZW5hXCI6ZmlsdGVyZWRbMF0uTCxcclxuICBcIkRlZmljacOqbmNpYVwiOiBmaWx0ZXJlZFswXS5NLH0sXHJcblxyXG4gIFwiMjAxMVwiOiB7XHJcbiAgXCJUb3RhbFwiIDogZmlsdGVyZWRbMF0uTiwgXHJcbiAgXCJNYXNjdWxpbmFcIjogZmlsdGVyZWRbMF0uTywgXHJcbiAgXCJGZW1pbmluYVwiOiBmaWx0ZXJlZFswXS5QLFxyXG4gIFwiTsOjb2RlY2xhcmFkYVwiOiBmaWx0ZXJlZFswXS5RLFxyXG4gIFwiQnJhbmNhXCI6IGZpbHRlcmVkWzBdLlIsXHJcbiAgXCJQcmV0YVwiOiBmaWx0ZXJlZFswXS5TLFxyXG4gIFwiUGFyZGFcIjogZmlsdGVyZWRbMF0uVCxcclxuICBcIkFtYXJlbGFcIjogZmlsdGVyZWRbMF0uVSxcclxuICBcIkluZMOtZ2VuYVwiOmZpbHRlcmVkWzBdLlYsXHJcbiAgXCJEZWZpY2nDqm5jaWFcIjogZmlsdGVyZWRbMF0uVyx9LFxyXG5cclxuICBcIjIwMTJcIjoge1xyXG4gIFwiVG90YWxcIiA6IGZpbHRlcmVkWzBdLlgsIFxyXG4gIFwiTWFzY3VsaW5hXCI6IGZpbHRlcmVkWzBdLlksIFxyXG4gIFwiRmVtaW5pbmFcIjogZmlsdGVyZWRbMF0uWixcclxuICBcIk7Do29kZWNsYXJhZGFcIjogZmlsdGVyZWRbMF0uQUEsXHJcbiAgXCJCcmFuY2FcIjogZmlsdGVyZWRbMF0uQUIsXHJcbiAgXCJQcmV0YVwiOiBmaWx0ZXJlZFswXS5BQyxcclxuICBcIlBhcmRhXCI6IGZpbHRlcmVkWzBdLkFELFxyXG4gIFwiQW1hcmVsYVwiOiBmaWx0ZXJlZFswXS5BRSxcclxuICBcIkluZMOtZ2VuYVwiOmZpbHRlcmVkWzBdLkFGLFxyXG4gIFwiRGVmaWNpw6puY2lhXCI6IGZpbHRlcmVkWzBdLkFHLH0sXHJcblxyXG4gIFwiMjAxM1wiOiB7XHJcbiAgXCJUb3RhbFwiIDogZmlsdGVyZWRbMF0uQUgsIFxyXG4gIFwiTWFzY3VsaW5hXCI6IGZpbHRlcmVkWzBdLkFJLCBcclxuICBcIkZlbWluaW5hXCI6IGZpbHRlcmVkWzBdLkFKLFxyXG4gIFwiTsOjb2RlY2xhcmFkYVwiOiBmaWx0ZXJlZFswXS5BSyxcclxuICBcIkJyYW5jYVwiOiBmaWx0ZXJlZFswXS5BTCxcclxuICBcIlByZXRhXCI6IGZpbHRlcmVkWzBdLkFNLFxyXG4gIFwiUGFyZGFcIjogZmlsdGVyZWRbMF0uQU4sXHJcbiAgXCJBbWFyZWxhXCI6IGZpbHRlcmVkWzBdLkFPLFxyXG4gIFwiSW5kw61nZW5hXCI6ZmlsdGVyZWRbMF0uQVAsXHJcbiAgXCJEZWZpY2nDqm5jaWFcIjogZmlsdGVyZWRbMF0uQVEsfSxcclxuXHJcbiAgXCIyMDE0XCI6IHtcclxuICBcIlRvdGFsXCIgOiBmaWx0ZXJlZFswXS5BUiwgXHJcbiAgXCJNYXNjdWxpbmFcIjogZmlsdGVyZWRbMF0uQVMsIFxyXG4gIFwiRmVtaW5pbmFcIjogZmlsdGVyZWRbMF0uQVQsXHJcbiAgXCJOw6NvZGVjbGFyYWRhXCI6IGZpbHRlcmVkWzBdLkFVLFxyXG4gIFwiQnJhbmNhXCI6IGZpbHRlcmVkWzBdLkFWLFxyXG4gIFwiUHJldGFcIjogZmlsdGVyZWRbMF0uQVcsXHJcbiAgXCJQYXJkYVwiOiBmaWx0ZXJlZFswXS5BWCxcclxuICBcIkFtYXJlbGFcIjogZmlsdGVyZWRbMF0uQVksXHJcbiAgXCJJbmTDrWdlbmFcIjpmaWx0ZXJlZFswXS5BWixcclxuICBcIkRlZmljacOqbmNpYVwiOiBmaWx0ZXJlZFswXS5CQSx9LFxyXG5cclxuXHJcbiAgXCIyMDE1XCI6IHtcclxuICBcIlRvdGFsXCIgOiBmaWx0ZXJlZFswXS5CQiwgXHJcbiAgXCJNYXNjdWxpbmFcIjogZmlsdGVyZWRbMF0uQkMsIFxyXG4gIFwiRmVtaW5pbmFcIjogZmlsdGVyZWRbMF0uQkQsXHJcbiAgXCJOw6NvZGVjbGFyYWRhXCI6IGZpbHRlcmVkWzBdLkJFLFxyXG4gIFwiQnJhbmNhXCI6IGZpbHRlcmVkWzBdLkJGLFxyXG4gIFwiUHJldGFcIjogZmlsdGVyZWRbMF0uQkcsXHJcbiAgXCJQYXJkYVwiOiBmaWx0ZXJlZFswXS5CSCxcclxuICBcIkFtYXJlbGFcIjogZmlsdGVyZWRbMF0uQkksXHJcbiAgXCJJbmTDrWdlbmFcIjpmaWx0ZXJlZFswXS5CSixcclxuICBcIkRlZmljacOqbmNpYVwiOiBmaWx0ZXJlZFswXS5CSyx9LFxyXG5cclxuICBcIjIwMTZcIjoge1xyXG4gIFwiVG90YWxcIiA6IGZpbHRlcmVkWzBdLkJMLCBcclxuICBcIk1hc2N1bGluYVwiOiBmaWx0ZXJlZFswXS5CTSwgXHJcbiAgXCJGZW1pbmluYVwiOiBmaWx0ZXJlZFswXS5CTixcclxuICBcIk7Do29kZWNsYXJhZGFcIjogZmlsdGVyZWRbMF0uQk8sXHJcbiAgXCJCcmFuY2FcIjogZmlsdGVyZWRbMF0uQlAsXHJcbiAgXCJQcmV0YVwiOiBmaWx0ZXJlZFswXS5CUSxcclxuICBcIlBhcmRhXCI6IGZpbHRlcmVkWzBdLkJSLFxyXG4gIFwiQW1hcmVsYVwiOiBmaWx0ZXJlZFswXS5CUyxcclxuICBcIkluZMOtZ2VuYVwiOmZpbHRlcmVkWzBdLkJULFxyXG4gIFwiRGVmaWNpw6puY2lhXCI6IGZpbHRlcmVkWzBdLkJVLH0sXHJcblxyXG5cclxuICBcIjIwMTdcIjoge1xyXG4gIFwiVG90YWxcIiA6IGZpbHRlcmVkWzBdLkJWLCBcclxuICBcIk1hc2N1bGluYVwiOiBmaWx0ZXJlZFswXS5CVywgXHJcbiAgXCJGZW1pbmluYVwiOiBmaWx0ZXJlZFswXS5CWCxcclxuICBcIk7Do29kZWNsYXJhZGFcIjogZmlsdGVyZWRbMF0uQlksXHJcbiAgXCJCcmFuY2FcIjogZmlsdGVyZWRbMF0uQlosXHJcbiAgXCJQcmV0YVwiOiBmaWx0ZXJlZFswXS5DQSxcclxuICBcIlBhcmRhXCI6IGZpbHRlcmVkWzBdLkNCLFxyXG4gIFwiQW1hcmVsYVwiOiBmaWx0ZXJlZFswXS5DQyxcclxuICBcIkluZMOtZ2VuYVwiOmZpbHRlcmVkWzBdLkNELFxyXG4gIFwiRGVmaWNpw6puY2lhXCI6IGZpbHRlcmVkWzBdLkNFLH0sXHJcblxyXG4gIFwiMjAxOFwiOiB7XHJcbiAgXCJUb3RhbFwiIDogZmlsdGVyZWRbMF0uQ0YsIFxyXG4gIFwiTWFzY3VsaW5hXCI6IGZpbHRlcmVkWzBdLkNHLCBcclxuICBcIkZlbWluaW5hXCI6IGZpbHRlcmVkWzBdLkNILFxyXG4gIFwiTsOjb2RlY2xhcmFkYVwiOiBmaWx0ZXJlZFswXS5DSSxcclxuICBcIkJyYW5jYVwiOiBmaWx0ZXJlZFswXS5DSixcclxuICBcIlByZXRhXCI6IGZpbHRlcmVkWzBdLkNLLFxyXG4gIFwiUGFyZGFcIjogZmlsdGVyZWRbMF0uQ0wsXHJcbiAgXCJBbWFyZWxhXCI6IGZpbHRlcmVkWzBdLkNNLFxyXG4gIFwiSW5kw61nZW5hXCI6ZmlsdGVyZWRbMF0uQ04sXHJcbiAgXCJEZWZpY2nDqm5jaWFcIjogZmlsdGVyZWRbMF0uQ08sfSxcclxuXHJcbiAgXCIyMDE5XCI6IHtcclxuICBcIlRvdGFsXCIgOiBmaWx0ZXJlZFswXS5DUCwgXHJcbiAgXCJNYXNjdWxpbmFcIjogZmlsdGVyZWRbMF0uQ1EsIFxyXG4gIFwiRmVtaW5pbmFcIjogZmlsdGVyZWRbMF0uQ1IsXHJcbiAgXCJOw6NvZGVjbGFyYWRhXCI6IGZpbHRlcmVkWzBdLkNTLFxyXG4gIFwiQnJhbmNhXCI6IGZpbHRlcmVkWzBdLkNULFxyXG4gIFwiUHJldGFcIjogZmlsdGVyZWRbMF0uQ1UsXHJcbiAgXCJQYXJkYVwiOiBmaWx0ZXJlZFswXS5DVixcclxuICBcIkFtYXJlbGFcIjogZmlsdGVyZWRbMF0uQ1csXHJcbiAgXCJJbmTDrWdlbmFcIjpmaWx0ZXJlZFswXS5DWCxcclxuICBcIkRlZmljacOqbmNpYVwiOiBmaWx0ZXJlZFswXS5DWSx9LFxyXG4gIFxyXG5cclxuICBcIjIwMjBcIjoge1xyXG4gIFwiVG90YWxcIiA6IGZpbHRlcmVkWzBdLkNaLCBcclxuICBcIk1hc2N1bGluYVwiOiBmaWx0ZXJlZFswXS5EQSwgXHJcbiAgXCJGZW1pbmluYVwiOiBmaWx0ZXJlZFswXS5EQixcclxuICBcIk7Do29kZWNsYXJhZGFcIjogZmlsdGVyZWRbMF0uREMsXHJcbiAgXCJCcmFuY2FcIjogZmlsdGVyZWRbMF0uREQsXHJcbiAgXCJQcmV0YVwiOiBmaWx0ZXJlZFswXS5ERSxcclxuICBcIlBhcmRhXCI6IGZpbHRlcmVkWzBdLkRGLFxyXG4gIFwiQW1hcmVsYVwiOiBmaWx0ZXJlZFswXS5ERyxcclxuICBcIkluZMOtZ2VuYVwiOmZpbHRlcmVkWzBdLkRILFxyXG4gIFwiRGVmaWNpw6puY2lhXCI6IGZpbHRlcmVkWzBdLkRJLH0sXHJcblxyXG4gICBcIjIwMjFcIjoge1xyXG4gIFwiVG90YWxcIiA6IGZpbHRlcmVkWzBdLkRKLCBcclxuICBcIkludGVncmFsXCI6IGZpbHRlcmVkWzBdLkRLLFxyXG4gIFwiUGFyY2lhbFwiOmZpbHRlcmVkWzBdLkRMfSxcclxuXHJcbiAgXCIyMDIyXCI6IHtcclxuICBcIlRvdGFsXCIgOiBmaWx0ZXJlZFswXS5ETSwgXHJcbiAgXCJJbnRlZ3JhbFwiOiBmaWx0ZXJlZFswXS5ETixcclxuICBcIlBhcmNpYWxcIjpmaWx0ZXJlZFswXS5ET30sXHJcbiAgfV1cclxuXHJcblxyXG5cclxudG90YWwgPSBkYWRvc1swXVtwZXNxdWlzYV9hbm9dLlRvdGFsLnRvTG9jYWxlU3RyaW5nKCdwdC1CUicpXHJcblxyXG50b3RhbF9tYXNjdWxpbmEgPSBkYWRvc1swXVtwZXNxdWlzYV9hbm9dLk1hc2N1bGluYS50b0xvY2FsZVN0cmluZygncHQtQlInKVxyXG50b3RhbF9tYXNjdWxpbmFfcG9yY2VudGFnZW0gPSBjYWxjdWxhUG9yY2VudGFnZW1Ub3RhbChkYWRvc1swXVtwZXNxdWlzYV9hbm9dLk1hc2N1bGluYSlcclxuXHJcbnRvdGFsX2ZlbWluaW5hID0gZGFkb3NbMF1bcGVzcXVpc2FfYW5vXS5GZW1pbmluYS50b0xvY2FsZVN0cmluZygncHQtQlInKVxyXG50b3RhbF9mZW1pbmluYV9wb3JjZW50YWdlbSA9IGNhbGN1bGFQb3JjZW50YWdlbVRvdGFsKGRhZG9zWzBdW3Blc3F1aXNhX2Fub10uRmVtaW5pbmEpXHJcblxyXG50b3RhbF9uYW9kZWNsYXJhZGEgPSBkYWRvc1swXVtwZXNxdWlzYV9hbm9dLk7Do29kZWNsYXJhZGEudG9Mb2NhbGVTdHJpbmcoJ3B0LUJSJylcclxudG90YWxfbmFvZGVjbGFyYWRhX3BvcmNlbnRhZ2VtID0gY2FsY3VsYVBvcmNlbnRhZ2VtVG90YWwoZGFkb3NbMF1bcGVzcXVpc2FfYW5vXS5Ow6NvZGVjbGFyYWRhKVxyXG5cclxudG90YWxfYnJhbmNhID0gZGFkb3NbMF1bcGVzcXVpc2FfYW5vXS5CcmFuY2EudG9Mb2NhbGVTdHJpbmcoJ3B0LUJSJylcclxudG90YWxfYnJhbmNhX3BvcmNlbnRhZ2VtID0gY2FsY3VsYVBvcmNlbnRhZ2VtVG90YWwoZGFkb3NbMF1bcGVzcXVpc2FfYW5vXS5CcmFuY2EpXHJcblxyXG50b3RhbF9wcmV0YSA9IGRhZG9zWzBdW3Blc3F1aXNhX2Fub10uUHJldGEudG9Mb2NhbGVTdHJpbmcoJ3B0LUJSJylcclxudG90YWxfcHJldGFfcG9yY2VudGFnZW0gPSBjYWxjdWxhUG9yY2VudGFnZW1Ub3RhbChkYWRvc1swXVtwZXNxdWlzYV9hbm9dLlByZXRhKVxyXG5cclxudG90YWxfcGFyZGEgPSBkYWRvc1swXVtwZXNxdWlzYV9hbm9dLlBhcmRhLnRvTG9jYWxlU3RyaW5nKCdwdC1CUicpXHJcbnRvdGFsX3BhcmRhX3BvcmNlbnRhZ2VtID0gY2FsY3VsYVBvcmNlbnRhZ2VtVG90YWwoZGFkb3NbMF1bcGVzcXVpc2FfYW5vXS5QYXJkYSlcclxuXHJcbnRvdGFsX2FtYXJlbGEgPSBkYWRvc1swXVtwZXNxdWlzYV9hbm9dLkFtYXJlbGEudG9Mb2NhbGVTdHJpbmcoJ3B0LUJSJylcclxudG90YWxfYW1hcmVsYV9wb3JjZW50YWdlbSA9IGNhbGN1bGFQb3JjZW50YWdlbVRvdGFsKGRhZG9zWzBdW3Blc3F1aXNhX2Fub10uQW1hcmVsYSlcclxuXHJcbnRvdGFsX2luZGlnZW5hID0gZGFkb3NbMF1bcGVzcXVpc2FfYW5vXS5JbmTDrWdlbmEudG9Mb2NhbGVTdHJpbmcoJ3B0LUJSJylcclxudG90YWxfaW5kaWdlbmFfcG9yY2VudGFnZW0gPSBjYWxjdWxhUG9yY2VudGFnZW1Ub3RhbChkYWRvc1swXVtwZXNxdWlzYV9hbm9dLkluZMOtZ2VuYSlcclxuXHJcbnRvdGFsX2RlZmljaWVuY2lhID0gZGFkb3NbMF1bcGVzcXVpc2FfYW5vXS5EZWZpY2nDqm5jaWEudG9Mb2NhbGVTdHJpbmcoJ3B0LUJSJylcclxudG90YWxfZGVmaWNpZW5jaWFfcG9yY2VudGFnZW0gPSBjYWxjdWxhUG9yY2VudGFnZW1Ub3RhbChkYWRvc1swXVtwZXNxdWlzYV9hbm9dLkRlZmljacOqbmNpYSlcclxuXHJcbmZ1bmN0aW9uIGNhbGN1bGFQb3JjZW50YWdlbVRvdGFsKG4xKXtcclxuICByZXR1cm4gKChuMS9kYWRvc1swXVtwZXNxdWlzYV9hbm9dLlRvdGFsKSAqIDEwMCkudG9GaXhlZCgyKVxyXG59XHJcblxyXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTIiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ2aWV3b2YgcGVzcXVpc2FfYW5vID0gSW5wdXRzLnNlbGVjdChbXCIyMDEwXCIsIFwiMjAxMVwiLCBcIjIwMTJcIiwgXCIyMDEzXCIsXCIyMDE0XCIsXCIyMDE1XCIsXCIyMDE2XCIsXCIyMDE3XCIsIFwiMjAxOFwiLFwiMjAxOVwiLFwiMjAyMFwiXSwge3ZhbHVlOiBhbm9fcGVzcXVpc2EsIGxhYmVsOiBcIkFubyBkZSBwZXNxdWlzYVwifSlcclxuIFxyXG5iYXIoe1xyXG4gIGRhdGE6IFt7IG5hbWU6IFwiVG90YWxcIiwgJycgOmRhZG9zWzBdW3Blc3F1aXNhX2Fub10uVG90YWx9LFxyXG4gIHsgbmFtZTogXCJNYXNjdWxpbmFcIiwgJyc6ICBkYWRvc1swXVtwZXNxdWlzYV9hbm9dLk1hc2N1bGluYX0sXHJcbiAgeyBuYW1lOiBcIkZlbWluaW5hXCIsICcnOiBkYWRvc1swXVtwZXNxdWlzYV9hbm9dLkZlbWluaW5hfSxcclxuICB7IG5hbWU6IFwiTsOjbyBkZWNsYXJhZGFcIiwgJyc6IGRhZG9zWzBdW3Blc3F1aXNhX2Fub10uTsOjb2RlY2xhcmFkYX0sXHJcbiAgeyBuYW1lOiBcIkJyYW5jYVwiLCAnJzogZGFkb3NbMF1bcGVzcXVpc2FfYW5vXS5CcmFuY2F9LFxyXG4gIHsgbmFtZTogXCJQcmV0YVwiLCAnJzogZGFkb3NbMF1bcGVzcXVpc2FfYW5vXS5QcmV0YX0sXHJcbiAgeyBuYW1lOiBcIlBhcmRhXCIsICcnOiBkYWRvc1swXVtwZXNxdWlzYV9hbm9dLlBhcmRhfSxcclxuICB7IG5hbWU6IFwiQW1hcmVsYVwiLCAnJzogZGFkb3NbMF1bcGVzcXVpc2FfYW5vXS5BbWFyZWxhfSxcclxuICB7IG5hbWU6IFwiSW5kw61nZW5hXCIsJyc6ZGFkb3NbMF1bcGVzcXVpc2FfYW5vXS5JbmTDrWdlbmF9LFxyXG4gIHsgbmFtZTogXCJEZWZpY2nDqm5jaWFcIiwgJyc6ZGFkb3NbMF1bcGVzcXVpc2FfYW5vXS5EZWZpY2nDqm5jaWF9LFxyXG4gIF0sXHJcbiBcclxuICAgXHJcbiAgb3B0aW9uczoge1xyXG4gICAgcGx1Z2luczoge1xyXG4gICAgICBkYXRhbGFiZWxzOiB7XHJcbiAgICAgICAgY29sb3I6ICd3aGl0ZScsXHJcbiAgICAgICAgZm9udDoge1xyXG4gICAgICAgICAgd2VpZ2h0OiAnYm9sZCdcclxuICAgICAgICB9LFxyXG4gICAgICAgIGZvcm1hdHRlcjogZnVuY3Rpb24oeCkge1xyXG4gICAgICAgICAgcmV0dXJuIHgudG9Mb2NhbGVTdHJpbmcoJ3B0LUJSJylcclxuICAgICAgICB9XHJcbiAgICAgIH1cclxuICAgIH1cclxuICB9LFxyXG4gICB3aWR0aDogOTAwLFxyXG4gIGhlaWdodDogMzc1XHJcbn0pICBcclxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdwZXNxdWlzYV9hbm8nKSJ9XX0=
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxyXG5pbXBvcnQgeyBiYXIgfSBmcm9tICdAY2hyaXNwYWhtL2NoYXJ0cydcclxuXHJcbmRhdGEgPSBGaWxlQXR0YWNobWVudChcImZpbGVzL01hdHJpY3VsYXMgMjAxMCBhIDIwMjIgSUQueGxzeFwiKS54bHN4KCk7XHJcblxyXG5zZWFyY2hQYXJhbXMgPSBuZXcgVVJMU2VhcmNoUGFyYW1zKGxvY2F0aW9uLnNlYXJjaCk7XHJcblxyXG5pZF9wZXNxdWlzYSA9IHNlYXJjaFBhcmFtcy5oYXMoXCJpZFwiKSA/IHNlYXJjaFBhcmFtcy5nZXQoXCJpZFwiKSA6IFwiMjkyODcwM1wiO1xyXG5cclxuLy8gYW5vX3Blc3F1aXNhID0gc2VhcmNoUGFyYW1zLmhhcyhcImFub1wiKSA/IHNlYXJjaFBhcmFtcy5nZXQoXCJhbm9cIikgOiBcIjIwMTBcIjtcclxuXHJcbi8vIGFub19wZXNxdWlzYV9wYXJjaWFsID0gXCIyMDIyXCI7XHJcblxyXG5maWx0ZXJlZCA9IGRhdGEuc2hlZXQoXCJuw7ptZXJvcyBhYnNvbHV0b3NcIikuZmlsdGVyKGZ1bmN0aW9uKGZpbHRybykge1xyXG4gIHJldHVybiBmaWx0cm8uQSAhPSBcIlRlcnJpdMOzcmlvcyBCQVwiICYmIGZpbHRyby5CID09IGlkX3Blc3F1aXNhO1xyXG59KVxyXG5cclxuXHJcbm5vbWVDaWRhZGUgPSBmaWx0ZXJlZFswXS5DXHJcblxyXG5kYWRvcyA9IFt7XHJcbiAgXCIyMDEwXCI6IHtcclxuICBcIlRvdGFsXCIgOiBmaWx0ZXJlZFswXS5ELCBcclxuICBcIk1hc2N1bGluYVwiOiBmaWx0ZXJlZFswXS5FLCBcclxuICBcIkZlbWluaW5hXCI6IGZpbHRlcmVkWzBdLkYsXHJcbiAgXCJOw6NvZGVjbGFyYWRhXCI6IGZpbHRlcmVkWzBdLkcsXHJcbiAgXCJCcmFuY2FcIjogZmlsdGVyZWRbMF0uSCxcclxuICBcIlByZXRhXCI6IGZpbHRlcmVkWzBdLkksXHJcbiAgXCJQYXJkYVwiOiBmaWx0ZXJlZFswXS5KLFxyXG4gIFwiQW1hcmVsYVwiOiBmaWx0ZXJlZFswXS5LLFxyXG4gIFwiSW5kw61nZW5hXCI6ZmlsdGVyZWRbMF0uTCxcclxuICBcIkRlZmljacOqbmNpYVwiOiBmaWx0ZXJlZFswXS5NLH0sXHJcblxyXG4gIFwiMjAxMVwiOiB7XHJcbiAgXCJUb3RhbFwiIDogZmlsdGVyZWRbMF0uTiwgXHJcbiAgXCJNYXNjdWxpbmFcIjogZmlsdGVyZWRbMF0uTywgXHJcbiAgXCJGZW1pbmluYVwiOiBmaWx0ZXJlZFswXS5QLFxyXG4gIFwiTsOjb2RlY2xhcmFkYVwiOiBmaWx0ZXJlZFswXS5RLFxyXG4gIFwiQnJhbmNhXCI6IGZpbHRlcmVkWzBdLlIsXHJcbiAgXCJQcmV0YVwiOiBmaWx0ZXJlZFswXS5TLFxyXG4gIFwiUGFyZGFcIjogZmlsdGVyZWRbMF0uVCxcclxuICBcIkFtYXJlbGFcIjogZmlsdGVyZWRbMF0uVSxcclxuICBcIkluZMOtZ2VuYVwiOmZpbHRlcmVkWzBdLlYsXHJcbiAgXCJEZWZpY2nDqm5jaWFcIjogZmlsdGVyZWRbMF0uVyx9LFxyXG5cclxuICBcIjIwMTJcIjoge1xyXG4gIFwiVG90YWxcIiA6IGZpbHRlcmVkWzBdLlgsIFxyXG4gIFwiTWFzY3VsaW5hXCI6IGZpbHRlcmVkWzBdLlksIFxyXG4gIFwiRmVtaW5pbmFcIjogZmlsdGVyZWRbMF0uWixcclxuICBcIk7Do29kZWNsYXJhZGFcIjogZmlsdGVyZWRbMF0uQUEsXHJcbiAgXCJCcmFuY2FcIjogZmlsdGVyZWRbMF0uQUIsXHJcbiAgXCJQcmV0YVwiOiBmaWx0ZXJlZFswXS5BQyxcclxuICBcIlBhcmRhXCI6IGZpbHRlcmVkWzBdLkFELFxyXG4gIFwiQW1hcmVsYVwiOiBmaWx0ZXJlZFswXS5BRSxcclxuICBcIkluZMOtZ2VuYVwiOmZpbHRlcmVkWzBdLkFGLFxyXG4gIFwiRGVmaWNpw6puY2lhXCI6IGZpbHRlcmVkWzBdLkFHLH0sXHJcblxyXG4gIFwiMjAxM1wiOiB7XHJcbiAgXCJUb3RhbFwiIDogZmlsdGVyZWRbMF0uQUgsIFxyXG4gIFwiTWFzY3VsaW5hXCI6IGZpbHRlcmVkWzBdLkFJLCBcclxuICBcIkZlbWluaW5hXCI6IGZpbHRlcmVkWzBdLkFKLFxyXG4gIFwiTsOjb2RlY2xhcmFkYVwiOiBmaWx0ZXJlZFswXS5BSyxcclxuICBcIkJyYW5jYVwiOiBmaWx0ZXJlZFswXS5BTCxcclxuICBcIlByZXRhXCI6IGZpbHRlcmVkWzBdLkFNLFxyXG4gIFwiUGFyZGFcIjogZmlsdGVyZWRbMF0uQU4sXHJcbiAgXCJBbWFyZWxhXCI6IGZpbHRlcmVkWzBdLkFPLFxyXG4gIFwiSW5kw61nZW5hXCI6ZmlsdGVyZWRbMF0uQVAsXHJcbiAgXCJEZWZpY2nDqm5jaWFcIjogZmlsdGVyZWRbMF0uQVEsfSxcclxuXHJcbiAgXCIyMDE0XCI6IHtcclxuICBcIlRvdGFsXCIgOiBmaWx0ZXJlZFswXS5BUiwgXHJcbiAgXCJNYXNjdWxpbmFcIjogZmlsdGVyZWRbMF0uQVMsIFxyXG4gIFwiRmVtaW5pbmFcIjogZmlsdGVyZWRbMF0uQVQsXHJcbiAgXCJOw6NvZGVjbGFyYWRhXCI6IGZpbHRlcmVkWzBdLkFVLFxyXG4gIFwiQnJhbmNhXCI6IGZpbHRlcmVkWzBdLkFWLFxyXG4gIFwiUHJldGFcIjogZmlsdGVyZWRbMF0uQVcsXHJcbiAgXCJQYXJkYVwiOiBmaWx0ZXJlZFswXS5BWCxcclxuICBcIkFtYXJlbGFcIjogZmlsdGVyZWRbMF0uQVksXHJcbiAgXCJJbmTDrWdlbmFcIjpmaWx0ZXJlZFswXS5BWixcclxuICBcIkRlZmljacOqbmNpYVwiOiBmaWx0ZXJlZFswXS5CQSx9LFxyXG5cclxuXHJcbiAgXCIyMDE1XCI6IHtcclxuICBcIlRvdGFsXCIgOiBmaWx0ZXJlZFswXS5CQiwgXHJcbiAgXCJNYXNjdWxpbmFcIjogZmlsdGVyZWRbMF0uQkMsIFxyXG4gIFwiRmVtaW5pbmFcIjogZmlsdGVyZWRbMF0uQkQsXHJcbiAgXCJOw6NvZGVjbGFyYWRhXCI6IGZpbHRlcmVkWzBdLkJFLFxyXG4gIFwiQnJhbmNhXCI6IGZpbHRlcmVkWzBdLkJGLFxyXG4gIFwiUHJldGFcIjogZmlsdGVyZWRbMF0uQkcsXHJcbiAgXCJQYXJkYVwiOiBmaWx0ZXJlZFswXS5CSCxcclxuICBcIkFtYXJlbGFcIjogZmlsdGVyZWRbMF0uQkksXHJcbiAgXCJJbmTDrWdlbmFcIjpmaWx0ZXJlZFswXS5CSixcclxuICBcIkRlZmljacOqbmNpYVwiOiBmaWx0ZXJlZFswXS5CSyx9LFxyXG5cclxuICBcIjIwMTZcIjoge1xyXG4gIFwiVG90YWxcIiA6IGZpbHRlcmVkWzBdLkJMLCBcclxuICBcIk1hc2N1bGluYVwiOiBmaWx0ZXJlZFswXS5CTSwgXHJcbiAgXCJGZW1pbmluYVwiOiBmaWx0ZXJlZFswXS5CTixcclxuICBcIk7Do29kZWNsYXJhZGFcIjogZmlsdGVyZWRbMF0uQk8sXHJcbiAgXCJCcmFuY2FcIjogZmlsdGVyZWRbMF0uQlAsXHJcbiAgXCJQcmV0YVwiOiBmaWx0ZXJlZFswXS5CUSxcclxuICBcIlBhcmRhXCI6IGZpbHRlcmVkWzBdLkJSLFxyXG4gIFwiQW1hcmVsYVwiOiBmaWx0ZXJlZFswXS5CUyxcclxuICBcIkluZMOtZ2VuYVwiOmZpbHRlcmVkWzBdLkJULFxyXG4gIFwiRGVmaWNpw6puY2lhXCI6IGZpbHRlcmVkWzBdLkJVLH0sXHJcblxyXG5cclxuICBcIjIwMTdcIjoge1xyXG4gIFwiVG90YWxcIiA6IGZpbHRlcmVkWzBdLkJWLCBcclxuICBcIk1hc2N1bGluYVwiOiBmaWx0ZXJlZFswXS5CVywgXHJcbiAgXCJGZW1pbmluYVwiOiBmaWx0ZXJlZFswXS5CWCxcclxuICBcIk7Do29kZWNsYXJhZGFcIjogZmlsdGVyZWRbMF0uQlksXHJcbiAgXCJCcmFuY2FcIjogZmlsdGVyZWRbMF0uQlosXHJcbiAgXCJQcmV0YVwiOiBmaWx0ZXJlZFswXS5DQSxcclxuICBcIlBhcmRhXCI6IGZpbHRlcmVkWzBdLkNCLFxyXG4gIFwiQW1hcmVsYVwiOiBmaWx0ZXJlZFswXS5DQyxcclxuICBcIkluZMOtZ2VuYVwiOmZpbHRlcmVkWzBdLkNELFxyXG4gIFwiRGVmaWNpw6puY2lhXCI6IGZpbHRlcmVkWzBdLkNFLH0sXHJcblxyXG4gIFwiMjAxOFwiOiB7XHJcbiAgXCJUb3RhbFwiIDogZmlsdGVyZWRbMF0uQ0YsIFxyXG4gIFwiTWFzY3VsaW5hXCI6IGZpbHRlcmVkWzBdLkNHLCBcclxuICBcIkZlbWluaW5hXCI6IGZpbHRlcmVkWzBdLkNILFxyXG4gIFwiTsOjb2RlY2xhcmFkYVwiOiBmaWx0ZXJlZFswXS5DSSxcclxuICBcIkJyYW5jYVwiOiBmaWx0ZXJlZFswXS5DSixcclxuICBcIlByZXRhXCI6IGZpbHRlcmVkWzBdLkNLLFxyXG4gIFwiUGFyZGFcIjogZmlsdGVyZWRbMF0uQ0wsXHJcbiAgXCJBbWFyZWxhXCI6IGZpbHRlcmVkWzBdLkNNLFxyXG4gIFwiSW5kw61nZW5hXCI6ZmlsdGVyZWRbMF0uQ04sXHJcbiAgXCJEZWZpY2nDqm5jaWFcIjogZmlsdGVyZWRbMF0uQ08sfSxcclxuXHJcbiAgXCIyMDE5XCI6IHtcclxuICBcIlRvdGFsXCIgOiBmaWx0ZXJlZFswXS5DUCwgXHJcbiAgXCJNYXNjdWxpbmFcIjogZmlsdGVyZWRbMF0uQ1EsIFxyXG4gIFwiRmVtaW5pbmFcIjogZmlsdGVyZWRbMF0uQ1IsXHJcbiAgXCJOw6NvZGVjbGFyYWRhXCI6IGZpbHRlcmVkWzBdLkNTLFxyXG4gIFwiQnJhbmNhXCI6IGZpbHRlcmVkWzBdLkNULFxyXG4gIFwiUHJldGFcIjogZmlsdGVyZWRbMF0uQ1UsXHJcbiAgXCJQYXJkYVwiOiBmaWx0ZXJlZFswXS5DVixcclxuICBcIkFtYXJlbGFcIjogZmlsdGVyZWRbMF0uQ1csXHJcbiAgXCJJbmTDrWdlbmFcIjpmaWx0ZXJlZFswXS5DWCxcclxuICBcIkRlZmljacOqbmNpYVwiOiBmaWx0ZXJlZFswXS5DWSx9LFxyXG4gIFxyXG5cclxuICBcIjIwMjBcIjoge1xyXG4gIFwiVG90YWxcIiA6IGZpbHRlcmVkWzBdLkNaLCBcclxuICBcIk1hc2N1bGluYVwiOiBmaWx0ZXJlZFswXS5EQSwgXHJcbiAgXCJGZW1pbmluYVwiOiBmaWx0ZXJlZFswXS5EQixcclxuICBcIk7Do29kZWNsYXJhZGFcIjogZmlsdGVyZWRbMF0uREMsXHJcbiAgXCJCcmFuY2FcIjogZmlsdGVyZWRbMF0uREQsXHJcbiAgXCJQcmV0YVwiOiBmaWx0ZXJlZFswXS5ERSxcclxuICBcIlBhcmRhXCI6IGZpbHRlcmVkWzBdLkRGLFxyXG4gIFwiQW1hcmVsYVwiOiBmaWx0ZXJlZFswXS5ERyxcclxuICBcIkluZMOtZ2VuYVwiOmZpbHRlcmVkWzBdLkRILFxyXG4gIFwiRGVmaWNpw6puY2lhXCI6IGZpbHRlcmVkWzBdLkRJLH0sXHJcblxyXG4gICBcIjIwMjFcIjoge1xyXG4gIFwiVG90YWxcIiA6IGZpbHRlcmVkWzBdLkRKLCBcclxuICBcIkludGVncmFsXCI6IGZpbHRlcmVkWzBdLkRLLFxyXG4gIFwiUGFyY2lhbFwiOmZpbHRlcmVkWzBdLkRMfSxcclxuXHJcbiAgXCIyMDIyXCI6IHtcclxuICBcIlRvdGFsXCIgOiBmaWx0ZXJlZFswXS5ETSwgXHJcbiAgXCJJbnRlZ3JhbFwiOiBmaWx0ZXJlZFswXS5ETixcclxuICBcIlBhcmNpYWxcIjpmaWx0ZXJlZFswXS5ET30sXHJcbiAgfV1cclxuXHJcblxyXG5cclxudG90YWwgPSBkYWRvc1swXVtwZXNxdWlzYV9hbm9dLlRvdGFsLnRvTG9jYWxlU3RyaW5nKCdwdC1CUicpO1xyXG5cclxudG90YWxfbWFzY3VsaW5hID0gZGFkb3NbMF1bcGVzcXVpc2FfYW5vXS5NYXNjdWxpbmEudG9Mb2NhbGVTdHJpbmcoJ3B0LUJSJyk7XHJcbnRvdGFsX21hc2N1bGluYV9wb3JjZW50YWdlbSA9IGNhbGN1bGFQb3JjZW50YWdlbVRvdGFsKGRhZG9zWzBdW3Blc3F1aXNhX2Fub10uTWFzY3VsaW5hKTtcclxuXHJcbnRvdGFsX2ZlbWluaW5hID0gZGFkb3NbMF1bcGVzcXVpc2FfYW5vXS5GZW1pbmluYS50b0xvY2FsZVN0cmluZygncHQtQlInKTtcclxudG90YWxfZmVtaW5pbmFfcG9yY2VudGFnZW0gPSBjYWxjdWxhUG9yY2VudGFnZW1Ub3RhbChkYWRvc1swXVtwZXNxdWlzYV9hbm9dLkZlbWluaW5hKTtcclxuXHJcbnRvdGFsX25hb2RlY2xhcmFkYSA9IGRhZG9zWzBdW3Blc3F1aXNhX2Fub10uTsOjb2RlY2xhcmFkYS50b0xvY2FsZVN0cmluZygncHQtQlInKTtcclxudG90YWxfbmFvZGVjbGFyYWRhX3BvcmNlbnRhZ2VtID0gY2FsY3VsYVBvcmNlbnRhZ2VtVG90YWwoZGFkb3NbMF1bcGVzcXVpc2FfYW5vXS5Ow6NvZGVjbGFyYWRhKTtcclxuXHJcbnRvdGFsX2JyYW5jYSA9IGRhZG9zWzBdW3Blc3F1aXNhX2Fub10uQnJhbmNhLnRvTG9jYWxlU3RyaW5nKCdwdC1CUicpO1xyXG50b3RhbF9icmFuY2FfcG9yY2VudGFnZW0gPSBjYWxjdWxhUG9yY2VudGFnZW1Ub3RhbChkYWRvc1swXVtwZXNxdWlzYV9hbm9dLkJyYW5jYSk7XHJcblxyXG50b3RhbF9wcmV0YSA9IGRhZG9zWzBdW3Blc3F1aXNhX2Fub10uUHJldGEudG9Mb2NhbGVTdHJpbmcoJ3B0LUJSJyk7XHJcbnRvdGFsX3ByZXRhX3BvcmNlbnRhZ2VtID0gY2FsY3VsYVBvcmNlbnRhZ2VtVG90YWwoZGFkb3NbMF1bcGVzcXVpc2FfYW5vXS5QcmV0YSk7XHJcblxyXG50b3RhbF9wYXJkYSA9IGRhZG9zWzBdW3Blc3F1aXNhX2Fub10uUGFyZGEudG9Mb2NhbGVTdHJpbmcoJ3B0LUJSJyk7XHJcbnRvdGFsX3BhcmRhX3BvcmNlbnRhZ2VtID0gY2FsY3VsYVBvcmNlbnRhZ2VtVG90YWwoZGFkb3NbMF1bcGVzcXVpc2FfYW5vXS5QYXJkYSk7XHJcblxyXG50b3RhbF9hbWFyZWxhID0gZGFkb3NbMF1bcGVzcXVpc2FfYW5vXS5BbWFyZWxhLnRvTG9jYWxlU3RyaW5nKCdwdC1CUicpO1xyXG50b3RhbF9hbWFyZWxhX3BvcmNlbnRhZ2VtID0gY2FsY3VsYVBvcmNlbnRhZ2VtVG90YWwoZGFkb3NbMF1bcGVzcXVpc2FfYW5vXS5BbWFyZWxhKTtcclxuXHJcbnRvdGFsX2luZGlnZW5hID0gZGFkb3NbMF1bcGVzcXVpc2FfYW5vXS5JbmTDrWdlbmEudG9Mb2NhbGVTdHJpbmcoJ3B0LUJSJyk7XHJcbnRvdGFsX2luZGlnZW5hX3BvcmNlbnRhZ2VtID0gY2FsY3VsYVBvcmNlbnRhZ2VtVG90YWwoZGFkb3NbMF1bcGVzcXVpc2FfYW5vXS5JbmTDrWdlbmEpO1xyXG5cclxudG90YWxfZGVmaWNpZW5jaWEgPSBkYWRvc1swXVtwZXNxdWlzYV9hbm9dLkRlZmljacOqbmNpYS50b0xvY2FsZVN0cmluZygncHQtQlInKTtcclxudG90YWxfZGVmaWNpZW5jaWFfcG9yY2VudGFnZW0gPSBjYWxjdWxhUG9yY2VudGFnZW1Ub3RhbChkYWRvc1swXVtwZXNxdWlzYV9hbm9dLkRlZmljacOqbmNpYSk7XHJcblxyXG5mdW5jdGlvbiBjYWxjdWxhUG9yY2VudGFnZW1Ub3RhbChuMSl7XHJcbiAgcmV0dXJuICgobjEvZGFkb3NbMF1bcGVzcXVpc2FfYW5vXS5Ub3RhbCkgKiAxMDApLnRvRml4ZWQoMik7XHJcbn1cclxuXHJcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMiIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBwZXNxdWlzYV9hbm8gPSBodG1sYFxyXG48c2VsZWN0IGlkPVwicGVzcXVpc2FfYW5vXCIgY2xhc3M9XCJmb3JtLXNlbGVjdFwiID5cclxuICA8b3B0aW9uIHZhbHVlPVwiMjAxMFwiPjIwMTA8L29wdGlvbj5cclxuICA8b3B0aW9uIHZhbHVlPVwiMjAxMVwiPjIwMTE8L29wdGlvbj5cclxuICA8b3B0aW9uIHZhbHVlPVwiMjAxMlwiPjIwMTI8L29wdGlvbj5cclxuICA8b3B0aW9uIHZhbHVlPVwiMjAxM1wiPjIwMTM8L29wdGlvbj5cclxuICA8b3B0aW9uIHZhbHVlPVwiMjAxNFwiPjIwMTQ8L29wdGlvbj5cclxuICA8b3B0aW9uIHZhbHVlPVwiMjAxNVwiPjIwMTU8L29wdGlvbj5cclxuICA8b3B0aW9uIHZhbHVlPVwiMjAxNlwiPjIwMTY8L29wdGlvbj5cclxuICA8b3B0aW9uIHZhbHVlPVwiMjAxN1wiPjIwMTc8L29wdGlvbj5cclxuICA8b3B0aW9uIHZhbHVlPVwiMjAxOFwiPjIwMTg8L29wdGlvbj5cclxuICA8b3B0aW9uIHZhbHVlPVwiMjAxOVwiPjIwMTk8L29wdGlvbj5cclxuICA8b3B0aW9uIHZhbHVlPVwiMjAyMFwiIHNlbGVjdGVkID4yMDIwPC9vcHRpb24+XHJcbjwvc2VsZWN0PlxyXG5gXHJcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMyIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IiBcclxuYmFyKHtcclxuICBkYXRhOiBbeyBuYW1lOiBcIlRvdGFsXCIsICcnIDpkYWRvc1swXVtwZXNxdWlzYV9hbm9dLlRvdGFsfSxcclxuICB7IG5hbWU6IFwiTWFzY3VsaW5hXCIsICcnOiAgZGFkb3NbMF1bcGVzcXVpc2FfYW5vXS5NYXNjdWxpbmF9LFxyXG4gIHsgbmFtZTogXCJGZW1pbmluYVwiLCAnJzogZGFkb3NbMF1bcGVzcXVpc2FfYW5vXS5GZW1pbmluYX0sXHJcbiAgeyBuYW1lOiBcIk7Do28gZGVjbGFyYWRhXCIsICcnOiBkYWRvc1swXVtwZXNxdWlzYV9hbm9dLk7Do29kZWNsYXJhZGF9LFxyXG4gIHsgbmFtZTogXCJCcmFuY2FcIiwgJyc6IGRhZG9zWzBdW3Blc3F1aXNhX2Fub10uQnJhbmNhfSxcclxuICB7IG5hbWU6IFwiUHJldGFcIiwgJyc6IGRhZG9zWzBdW3Blc3F1aXNhX2Fub10uUHJldGF9LFxyXG4gIHsgbmFtZTogXCJQYXJkYVwiLCAnJzogZGFkb3NbMF1bcGVzcXVpc2FfYW5vXS5QYXJkYX0sXHJcbiAgeyBuYW1lOiBcIkFtYXJlbGFcIiwgJyc6IGRhZG9zWzBdW3Blc3F1aXNhX2Fub10uQW1hcmVsYX0sXHJcbiAgeyBuYW1lOiBcIkluZMOtZ2VuYVwiLCcnOmRhZG9zWzBdW3Blc3F1aXNhX2Fub10uSW5kw61nZW5hfSxcclxuICB7IG5hbWU6IFwiRGVmaWNpw6puY2lhXCIsICcnOmRhZG9zWzBdW3Blc3F1aXNhX2Fub10uRGVmaWNpw6puY2lhfSxcclxuICBdLFxyXG4gXHJcbiAgIFxyXG4gIG9wdGlvbnM6IHtcclxuICAgIHBsdWdpbnM6IHtcclxuICAgICAgZGF0YWxhYmVsczoge1xyXG4gICAgICAgIGNvbG9yOiAnd2hpdGUnLFxyXG4gICAgICAgIGZvbnQ6IHtcclxuICAgICAgICAgIHdlaWdodDogJ2JvbGQnXHJcbiAgICAgICAgfSxcclxuICAgICAgICBmb3JtYXR0ZXI6IGZ1bmN0aW9uKHgpIHtcclxuICAgICAgICAgIHJldHVybiB4LnRvTG9jYWxlU3RyaW5nKCdwdC1CUicpXHJcbiAgICAgICAgfVxyXG4gICAgICB9XHJcbiAgICB9XHJcbiAgfSxcclxufSk7ICBcclxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdwZXNxdWlzYV9hbm8nKSJ9XX0=
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
@@ -1194,16 +1149,34 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+<script>
 
-<script type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (_event) {
-  if (window.bslib.Card) {
-    window.bslib.Card.initializeAllCards();
-  }
-}); 
+    function getScope() {
+        if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+            return "/";
+        } else {
+            var repositoryName = window.location.pathname.split('/')[1];
+            return repositoryName;
+        }
+    }
+
+
+    if('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js', {scope: getScope()})
+        .then(function (reg) {
+            //registration worked
+            console.log('Registration succeded. Scope is: ' + reg.scope);
+        }).catch(function (error) {
+            //registration failed
+            console.log('Registration failed with '+ error);
+        });
+    });
+}
 </script>
-  
 
 
 
+
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

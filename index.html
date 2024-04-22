@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Rede de Educação e Saúde - Mapa regional</title>
+<title>Rede de Educação e Saúde</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -84,6 +84,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<style>html{ scroll-behavior: smooth; }</style>
 <script type="module" src="site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
 <link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 <link rel="manifest" href="./static/manifest.json">
@@ -107,21 +108,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll me-auto">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
-<span class="menu-text">Página inicial</span></a>
+    <a class="nav-link" href="././proeficiencia/"> 
+<span class="menu-text">Proeficiência</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./municipio.html"> 
-<span class="menu-text">Dados</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-publicações" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Publicações</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-publicações">    
+        <li>
+    <a class="dropdown-item" href="././publicacoes_gerais/">
+ <span class="dropdown-text">Publicações Gerais</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="././artigos/">
+ <span class="dropdown-text">Artigos</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos-de-formação" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos de Formação</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-cursos-de-formação">    
+        <li>
+    <a class="dropdown-item" href="././curso_especializacao/">
+ <span class="dropdown-text">Curso de especialização</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="././jovem_doutor/">
+ <span class="dropdown-text">Jovem Doutor</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item">
     <a class="nav-link" href="./sobre.html"> 
 <span class="menu-text">Sobre</span></a>
   </li>  
-</ul>
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
     <a class="nav-link" href="https://instagram.com/rede_de_educacao_e_saude_"> <i class="bi bi-instagram" role="img">
 </i> 
@@ -135,40 +160,62 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-layout-custom page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
 <!-- main -->
-<main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Mapa regional</h1>
+
+
+
+<div class="grid mx-5 px-4 my-3 bg-primary rounded">
+<div class="g-col-12 d-flex fs-1 flex-column sloganMainPage align-items-start">
+<p>Informações de fácil acesso.</p>
+<p>Até mesmo offline.</p>
 </div>
+<div class="g-col-12">
+<div class="pb-3">
+<div class="input-group w-100">
+<div class="input-group-text bi-search inputSearchLeft">
 
-
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<section id="escolha-um-município-para-visualizar-os-dados" class="level4">
-<h4 class="anchored" data-anchor-id="escolha-um-município-para-visualizar-os-dados">Escolha um município para visualizar os dados</h4>
-<div class="card">
+</div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="22" data-source-offset="-2"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 21;"><span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>json <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"files/geojs_bahia.json"</span>)<span class="op">.</span><span class="fu">json</span>()</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" /&gt;</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;script src="https://unpkg.com/leaflet/dist/leaflet.js"&gt;&lt;/script&gt;`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="32" data-source-offset="-2"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 31;"><span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>viewof textInput <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;input type="search" class="form-control inputSearchRight" id="searchCity" placeholder="Digite o Município" name="q"&gt;`</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>  data <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"files/Matriculas 2010 a 2022 ID.xlsx"</span>)<span class="op">.</span><span class="fu">xlsx</span>()<span class="op">;</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>  searchCityFilter <span class="op">=</span> data<span class="op">.</span><span class="fu">sheet</span>(<span class="st">"id"</span>)<span class="op">.</span><span class="fu">filter</span>(<span class="kw">function</span>(element) { </span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (textInput<span class="op">.</span><span class="fu">trim</span>() <span class="op">===</span> <span class="st">""</span>){</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> normalizedElementA <span class="op">=</span> element<span class="op">.</span><span class="at">A</span><span class="op">.</span><span class="fu">normalize</span>(<span class="st">"NFD"</span>)<span class="op">.</span><span class="fu">replace</span>(<span class="ss">/</span><span class="sc">[\u0300-\u036f]</span><span class="ss">/g</span><span class="op">,</span> <span class="st">""</span>)<span class="op">.</span><span class="fu">toLowerCase</span>()<span class="op">;</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> normalizedTextInput <span class="op">=</span> textInput<span class="op">.</span><span class="fu">normalize</span>(<span class="st">"NFD"</span>)<span class="op">.</span><span class="fu">replace</span>(<span class="ss">/</span><span class="sc">[\u0300-\u036f]</span><span class="ss">/g</span><span class="op">,</span> <span class="st">""</span>)<span class="op">.</span><span class="fu">toLowerCase</span>()<span class="op">;</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> normalizedElementA<span class="op">.</span><span class="fu">startsWith</span>(normalizedTextInput)<span class="op">;</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>  hideSearch <span class="op">=</span>  {</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(textInput <span class="op">==</span> <span class="st">""</span> <span class="op">||</span> searchCityFilter<span class="op">.</span><span class="at">length</span> <span class="op">==</span> <span class="dv">0</span>){</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (<span class="op">!</span><span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">"searchTab"</span>)<span class="op">.</span><span class="at">classList</span><span class="op">.</span><span class="fu">contains</span>(<span class="st">"d-none"</span>)){</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>        <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">"searchTab"</span>)<span class="op">.</span><span class="at">classList</span><span class="op">.</span><span class="fu">add</span>(<span class="st">"d-none"</span>)<span class="op">;</span>    </span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span><span class="op">;</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>  showSearch <span class="op">=</span>  {</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (searchCityFilter<span class="op">.</span><span class="at">length</span> <span class="op">&gt;</span> <span class="dv">0</span>){</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (<span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">"searchTab"</span>)<span class="op">.</span><span class="at">classList</span><span class="op">.</span><span class="fu">contains</span>(<span class="st">"d-none"</span>)){</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>        <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">"searchTab"</span>)<span class="op">.</span><span class="at">classList</span><span class="op">.</span><span class="fu">remove</span>(<span class="st">"d-none"</span>)<span class="op">;</span>  </span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>  }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-1-1" data-nodetype="declaration">
@@ -178,48 +225,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-1-2" data-nodetype="expression">
+<div id="ojs-cell-1-2" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
-<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="27" data-source-offset="-212"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 26;"><span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div id="map" style="height: 600px;"&gt;&lt;/div&gt;`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-1-3" data-nodetype="expression">
+<div id="ojs-cell-1-3" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
-<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="29" data-source-offset="-265"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 28;"><span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>viewof map <span class="op">=</span> {</span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> mapDiv <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">'map'</span>)<span class="op">;</span></span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> map <span class="op">=</span> L<span class="op">.</span><span class="fu">map</span>(mapDiv)<span class="op">.</span><span class="fu">setView</span>([<span class="op">-</span><span class="fl">12.9714</span><span class="op">,</span> <span class="op">-</span><span class="fl">38.5014</span>]<span class="op">,</span> <span class="dv">10</span>)<span class="op">;</span></span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>  L<span class="op">.</span><span class="fu">tileLayer</span>(<span class="st">'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png'</span><span class="op">,</span> {</span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>    <span class="dt">attribution</span><span class="op">:</span> <span class="st">'&amp;copy; &lt;a href="https://www.openstreetmap.org/copyright"&gt;OpenStreetMap&lt;/a&gt; contributors &amp;copy; &lt;a href="https://carto.com/attributions"&gt;CARTO&lt;/a&gt;'</span><span class="op">,</span></span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>    <span class="dt">subdomains</span><span class="op">:</span> <span class="st">'abcd'</span><span class="op">,</span></span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>    <span class="dt">maxZoom</span><span class="op">:</span> <span class="dv">20</span></span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>  })<span class="op">.</span><span class="fu">addTo</span>(map)<span class="op">;</span></span>
-<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>  L<span class="op">.</span><span class="fu">geoJSON</span>(json<span class="op">,</span> {</span>
-<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>    <span class="dt">style</span><span class="op">:</span> {</span>
-<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>    <span class="dt">color</span><span class="op">:</span> <span class="st">'green'</span><span class="op">,</span> </span>
-<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>    <span class="dt">weight</span><span class="op">:</span> <span class="dv">1</span> </span>
-<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
-<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>      <span class="dt">onEachFeature</span><span class="op">:</span> <span class="kw">function</span> (feature<span class="op">,</span> layer) {</span>
-<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> popupContent <span class="op">=</span> <span class="vs">`</span></span>
-<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;button onclick="window.location.href = '</span><span class="sc">${</span>location<span class="sc">}</span><span class="vs">municipio.html?id=' + </span><span class="sc">${</span>feature<span class="op">.</span><span class="at">properties</span><span class="op">.</span><span class="at">id</span><span class="sc">}</span><span class="vs">+ '&amp;ano=2020' ;"&gt;Visualizar dados de </span><span class="sc">${</span>feature<span class="op">.</span><span class="at">properties</span><span class="op">.</span><span class="at">name</span><span class="sc">}</span><span class="vs">&lt;/button&gt;</span></span>
-<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a><span class="vs">    `</span><span class="op">;</span></span>
-<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>     </span>
-<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>    layer<span class="op">.</span><span class="fu">bindPopup</span>(popupContent)<span class="op">;</span></span>
-<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>  })<span class="op">.</span><span class="fu">addTo</span>(map)<span class="op">;</span></span>
-<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> mapDiv<span class="op">;</span></span>
-<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-1-4" data-nodetype="declaration">
@@ -227,15 +244,166 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-5" data-nodetype="declaration">
+
 </div>
 </div>
+</div>
+</div>
+</div>
+</div>
+<div id="searchTab">
+<div id="searchListGroup" class="list-group pb-3">
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="83" data-source-offset="-4"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 82;"><span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a>updateSearch <span class="op">=</span> <span class="kw">function</span> () {</span>
+<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a>    <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">"searchListGroup"</span>)<span class="op">.</span><span class="fu">replaceChildren</span>()<span class="op">;</span></span>
+<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">5</span><span class="op">;</span> i<span class="op">++</span>) {</span>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> element <span class="op">=</span> searchCityFilter[i]<span class="op">;</span></span>
+<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> para <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">createElement</span>(<span class="st">"a"</span>)<span class="op">;</span></span>
+<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a>      para<span class="op">.</span><span class="fu">setAttribute</span>(<span class="st">"href"</span><span class="op">,</span> location<span class="op">+</span><span class="st">"municipio.html?id="</span> <span class="op">+</span> element<span class="op">.</span><span class="at">B</span>)<span class="op">;</span></span>
+<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a>      para<span class="op">.</span><span class="at">classList</span><span class="op">.</span><span class="fu">add</span>(<span class="st">"list-group-item"</span>)<span class="op">;</span></span>
+<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a>      para<span class="op">.</span><span class="at">classList</span><span class="op">.</span><span class="fu">add</span>(<span class="st">"list-group-item-action"</span>)<span class="op">;</span></span>
+<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> node <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">createTextNode</span>(element<span class="op">.</span><span class="at">A</span>)<span class="op">;</span></span>
+<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a>      para<span class="op">.</span><span class="fu">appendChild</span>(node)<span class="op">;</span></span>
+<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a>      <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">"searchListGroup"</span>)<span class="op">.</span><span class="fu">appendChild</span>(para)<span class="op">;</span></span>
+<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a>  <span class="fu">updateSearch</span>()<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-2" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="grid mx-5 my-3 rounded vh-100">
+<div class="g-col-12">
+<div class="card">
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="122" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 121;"><span id="cb3-122"><a href="#cb3-122" aria-hidden="true" tabindex="-1"></a>json <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"files/geojs_bahia.json"</span>)<span class="op">.</span><span class="fu">json</span>()</span>
+<span id="cb3-123"><a href="#cb3-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-124"><a href="#cb3-124" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" /&gt;</span></span>
+<span id="cb3-125"><a href="#cb3-125" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;script src="https://unpkg.com/leaflet/dist/leaflet.js"&gt;&lt;/script&gt;`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-2" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<div class="sourceCode cell-code hidden" id="cb4" data-startfrom="127" data-source-offset="-210"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 126;"><span id="cb4-127"><a href="#cb4-127" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div id="map" style="height: 600px;"&gt;&lt;/div&gt;`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-3" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="129" data-source-offset="-263"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 128;"><span id="cb5-129"><a href="#cb5-129" aria-hidden="true" tabindex="-1"></a>viewof map <span class="op">=</span> {</span>
+<span id="cb5-130"><a href="#cb5-130" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> mapDiv <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">'map'</span>)<span class="op">;</span></span>
+<span id="cb5-131"><a href="#cb5-131" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-132"><a href="#cb5-132" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> map <span class="op">=</span> L<span class="op">.</span><span class="fu">map</span>(mapDiv)<span class="op">.</span><span class="fu">setView</span>([<span class="op">-</span><span class="fl">12.9714</span><span class="op">,</span> <span class="op">-</span><span class="fl">38.5014</span>]<span class="op">,</span> <span class="dv">10</span>)<span class="op">;</span></span>
+<span id="cb5-133"><a href="#cb5-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-134"><a href="#cb5-134" aria-hidden="true" tabindex="-1"></a>  L<span class="op">.</span><span class="fu">tileLayer</span>(<span class="st">'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png'</span><span class="op">,</span> {</span>
+<span id="cb5-135"><a href="#cb5-135" aria-hidden="true" tabindex="-1"></a>    <span class="dt">attribution</span><span class="op">:</span> <span class="st">'&amp;copy; &lt;a href="https://www.openstreetmap.org/copyright"&gt;OpenStreetMap&lt;/a&gt; contributors &amp;copy; &lt;a href="https://carto.com/attributions"&gt;CARTO&lt;/a&gt;'</span><span class="op">,</span></span>
+<span id="cb5-136"><a href="#cb5-136" aria-hidden="true" tabindex="-1"></a>    <span class="dt">subdomains</span><span class="op">:</span> <span class="st">'abcd'</span><span class="op">,</span></span>
+<span id="cb5-137"><a href="#cb5-137" aria-hidden="true" tabindex="-1"></a>    <span class="dt">maxZoom</span><span class="op">:</span> <span class="dv">20</span></span>
+<span id="cb5-138"><a href="#cb5-138" aria-hidden="true" tabindex="-1"></a>  })<span class="op">.</span><span class="fu">addTo</span>(map)<span class="op">;</span></span>
+<span id="cb5-139"><a href="#cb5-139" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb5-140"><a href="#cb5-140" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-141"><a href="#cb5-141" aria-hidden="true" tabindex="-1"></a>  L<span class="op">.</span><span class="fu">geoJSON</span>(json<span class="op">,</span> {</span>
+<span id="cb5-142"><a href="#cb5-142" aria-hidden="true" tabindex="-1"></a>    <span class="dt">style</span><span class="op">:</span> {</span>
+<span id="cb5-143"><a href="#cb5-143" aria-hidden="true" tabindex="-1"></a>    <span class="dt">color</span><span class="op">:</span> <span class="st">'green'</span><span class="op">,</span> </span>
+<span id="cb5-144"><a href="#cb5-144" aria-hidden="true" tabindex="-1"></a>    <span class="dt">weight</span><span class="op">:</span> <span class="dv">1</span> </span>
+<span id="cb5-145"><a href="#cb5-145" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span> </span>
+<span id="cb5-146"><a href="#cb5-146" aria-hidden="true" tabindex="-1"></a>      <span class="dt">onEachFeature</span><span class="op">:</span> <span class="kw">function</span> (feature<span class="op">,</span> layer) {</span>
+<span id="cb5-147"><a href="#cb5-147" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> popupContent <span class="op">=</span> <span class="vs">`</span></span>
+<span id="cb5-148"><a href="#cb5-148" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;button onclick="window.location.href = '</span><span class="sc">${</span>location<span class="sc">}</span><span class="vs">municipio.html?id=' + </span><span class="sc">${</span>feature<span class="op">.</span><span class="at">properties</span><span class="op">.</span><span class="at">id</span><span class="sc">}</span><span class="vs">;"&gt;Visualizar dados de </span><span class="sc">${</span>feature<span class="op">.</span><span class="at">properties</span><span class="op">.</span><span class="at">name</span><span class="sc">}</span><span class="vs">&lt;/button&gt;</span></span>
+<span id="cb5-149"><a href="#cb5-149" aria-hidden="true" tabindex="-1"></a><span class="vs">    `</span><span class="op">;</span></span>
+<span id="cb5-150"><a href="#cb5-150" aria-hidden="true" tabindex="-1"></a>     </span>
+<span id="cb5-151"><a href="#cb5-151" aria-hidden="true" tabindex="-1"></a>    layer<span class="op">.</span><span class="fu">bindPopup</span>(popupContent)<span class="op">;</span> </span>
+<span id="cb5-152"><a href="#cb5-152" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb5-153"><a href="#cb5-153" aria-hidden="true" tabindex="-1"></a>  })<span class="op">.</span><span class="fu">addTo</span>(map)<span class="op">;</span></span>
+<span id="cb5-154"><a href="#cb5-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-155"><a href="#cb5-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-156"><a href="#cb5-156" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> mapDiv<span class="op">;</span></span>
+<span id="cb5-157"><a href="#cb5-157" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="grid px-5 bg-primary footerBorders">
+<div class="d-flex g-col-3 justify-content-center align-items-start pt-3">
+<div class="col">
+<p><a href="./index.html" class="link-light">Página inicial</a></p>
+<p><a href="./sobre.html" class="link-light">Sobre</a></p>
+</div>
+</div>
+<div class="g-col-3">
+
+</div>
+<div class="g-col-3">
+
+</div>
+<div class="g-col-3 pt-3">
+<p>Realização:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://www.gov.br/cnpq/pt-br"><img src="files/images/participants/CNPq_v2017_rgb_neg.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="125"></a></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://portal.ifba.edu.br/"><img src="files/images/participants/MARCA_IFBA_HORIZONTAL_completa_negativaBRANCA_IFBA.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="250"></a></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://www.ufrb.edu.br"><img src="files/images/participants/UFRB-Vertical_branca.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="150"></a></p>
+</figure>
+</div>
+</div>
+</div>
 
 
-</section>
 
-</main> <!-- /main -->
+
 <script type="ojs-module-contents">
-eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxyXG5qc29uID0gRmlsZUF0dGFjaG1lbnQoXCJmaWxlcy9nZW9qc19iYWhpYS5qc29uXCIpLmpzb24oKVxyXG5cclxuaHRtbGA8bGluayByZWw9XCJzdHlsZXNoZWV0XCIgaHJlZj1cImh0dHBzOi8vdW5wa2cuY29tL2xlYWZsZXQvZGlzdC9sZWFmbGV0LmNzc1wiIC8+XHJcbjxzY3JpcHQgc3JjPVwiaHR0cHM6Ly91bnBrZy5jb20vbGVhZmxldC9kaXN0L2xlYWZsZXQuanNcIj48L3NjcmlwdD5gXHJcblxyXG5odG1sYDxkaXYgaWQ9XCJtYXBcIiBzdHlsZT1cImhlaWdodDogNjAwcHg7XCI+PC9kaXY+YFxyXG5cclxudmlld29mIG1hcCA9IHtcclxuICBjb25zdCBtYXBEaXYgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnbWFwJyk7XHJcbiAgXHJcbiAgY29uc3QgbWFwID0gTC5tYXAobWFwRGl2KS5zZXRWaWV3KFstMTIuOTcxNCwgLTM4LjUwMTRdLCAxMCk7XHJcblxyXG4gIEwudGlsZUxheWVyKCdodHRwczovL3tzfS5iYXNlbWFwcy5jYXJ0b2Nkbi5jb20vbGlnaHRfYWxsL3t6fS97eH0ve3l9e3J9LnBuZycsIHtcclxuXHRhdHRyaWJ1dGlvbjogJyZjb3B5OyA8YSBocmVmPVwiaHR0cHM6Ly93d3cub3BlbnN0cmVldG1hcC5vcmcvY29weXJpZ2h0XCI+T3BlblN0cmVldE1hcDwvYT4gY29udHJpYnV0b3JzICZjb3B5OyA8YSBocmVmPVwiaHR0cHM6Ly9jYXJ0by5jb20vYXR0cmlidXRpb25zXCI+Q0FSVE88L2E+JyxcclxuXHRzdWJkb21haW5zOiAnYWJjZCcsXHJcblx0bWF4Wm9vbTogMjBcclxuICB9KS5hZGRUbyhtYXApO1xyXG5cclxuICBcclxuICBMLmdlb0pTT04oanNvbiwge1xyXG4gICAgc3R5bGU6IHtcclxuICAgIGNvbG9yOiAnZ3JlZW4nLCBcclxuICAgIHdlaWdodDogMSBcclxuICB9LFxyXG4gICAgICBvbkVhY2hGZWF0dXJlOiBmdW5jdGlvbiAoZmVhdHVyZSwgbGF5ZXIpIHtcclxuICAgIGNvbnN0IHBvcHVwQ29udGVudCA9IGBcclxuICAgICAgPGJ1dHRvbiBvbmNsaWNrPVwid2luZG93LmxvY2F0aW9uLmhyZWYgPSAnJHtsb2NhdGlvbn1tdW5pY2lwaW8uaHRtbD9pZD0nICsgJHtmZWF0dXJlLnByb3BlcnRpZXMuaWR9KyAnJmFubz0yMDIwJyA7XCI+VmlzdWFsaXphciBkYWRvcyBkZSAke2ZlYXR1cmUucHJvcGVydGllcy5uYW1lfTwvYnV0dG9uPlxyXG4gICAgYDtcclxuICAgICBcclxuICAgIGxheWVyLmJpbmRQb3B1cChwb3B1cENvbnRlbnQpO1xyXG4gIH1cclxuICB9KS5hZGRUbyhtYXApO1xyXG5cclxuXHJcbiAgcmV0dXJuIG1hcERpdjtcclxufVxyXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ21hcCcpIn1dfQ==
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IiAgdmlld29mIHRleHRJbnB1dCA9IGh0bWxgPGlucHV0IHR5cGU9XCJzZWFyY2hcIiBjbGFzcz1cImZvcm0tY29udHJvbCBpbnB1dFNlYXJjaFJpZ2h0XCIgaWQ9XCJzZWFyY2hDaXR5XCIgcGxhY2Vob2xkZXI9XCJEaWdpdGUgbyBNdW5pY8OtcGlvXCIgbmFtZT1cInFcIj5gXHJcblxyXG4gIGRhdGEgPSBGaWxlQXR0YWNobWVudChcImZpbGVzL01hdHJpY3VsYXMgMjAxMCBhIDIwMjIgSUQueGxzeFwiKS54bHN4KCk7XHJcblxyXG4gIHNlYXJjaENpdHlGaWx0ZXIgPSBkYXRhLnNoZWV0KFwiaWRcIikuZmlsdGVyKGZ1bmN0aW9uKGVsZW1lbnQpIHsgXHJcblxyXG4gICAgaWYgKHRleHRJbnB1dC50cmltKCkgPT09IFwiXCIpe1xyXG4gICAgICByZXR1cm4gZmFsc2U7XHJcbiAgICB9XHJcblxyXG4gICAgdmFyIG5vcm1hbGl6ZWRFbGVtZW50QSA9IGVsZW1lbnQuQS5ub3JtYWxpemUoXCJORkRcIikucmVwbGFjZSgvW1xcdTAzMDAtXFx1MDM2Zl0vZywgXCJcIikudG9Mb3dlckNhc2UoKTtcclxuICAgIHZhciBub3JtYWxpemVkVGV4dElucHV0ID0gdGV4dElucHV0Lm5vcm1hbGl6ZShcIk5GRFwiKS5yZXBsYWNlKC9bXFx1MDMwMC1cXHUwMzZmXS9nLCBcIlwiKS50b0xvd2VyQ2FzZSgpO1xyXG5cclxuICAgIHJldHVybiBub3JtYWxpemVkRWxlbWVudEEuc3RhcnRzV2l0aChub3JtYWxpemVkVGV4dElucHV0KTtcclxuICB9KVxyXG5cclxuICBcclxuICBoaWRlU2VhcmNoID0gIHtcclxuICAgIGlmKHRleHRJbnB1dCA9PSBcIlwiIHx8IHNlYXJjaENpdHlGaWx0ZXIubGVuZ3RoID09IDApe1xyXG4gICAgICBcclxuICAgICAgaWYgKCFkb2N1bWVudC5nZXRFbGVtZW50QnlJZChcInNlYXJjaFRhYlwiKS5jbGFzc0xpc3QuY29udGFpbnMoXCJkLW5vbmVcIikpe1xyXG4gICAgICAgIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKFwic2VhcmNoVGFiXCIpLmNsYXNzTGlzdC5hZGQoXCJkLW5vbmVcIik7ICAgIFxyXG4gICAgICB9XHJcbiAgICAgIFxyXG4gICAgICByZXR1cm47XHJcbiAgICB9XHJcbiAgfVxyXG4gIFxyXG4gIHNob3dTZWFyY2ggPSAge1xyXG4gICAgaWYgKHNlYXJjaENpdHlGaWx0ZXIubGVuZ3RoID4gMCl7XHJcbiAgICAgIFxyXG4gICAgICBpZiAoZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoXCJzZWFyY2hUYWJcIikuY2xhc3NMaXN0LmNvbnRhaW5zKFwiZC1ub25lXCIpKXtcclxuICAgICAgICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZChcInNlYXJjaFRhYlwiKS5jbGFzc0xpc3QucmVtb3ZlKFwiZC1ub25lXCIpOyAgXHJcbiAgICAgIH1cclxuICAgIH1cclxuICB9XHJcblxyXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTIiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJcclxuICB1cGRhdGVTZWFyY2ggPSBmdW5jdGlvbiAoKSB7XHJcbiAgICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZChcInNlYXJjaExpc3RHcm91cFwiKS5yZXBsYWNlQ2hpbGRyZW4oKTtcclxuXHJcbiAgICBmb3IgKGxldCBpID0gMDsgaSA8IDU7IGkrKykge1xyXG4gICAgICBjb25zdCBlbGVtZW50ID0gc2VhcmNoQ2l0eUZpbHRlcltpXTtcclxuXHJcbiAgICAgIGNvbnN0IHBhcmEgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KFwiYVwiKTtcclxuICAgICAgcGFyYS5zZXRBdHRyaWJ1dGUoXCJocmVmXCIsIGxvY2F0aW9uK1wibXVuaWNpcGlvLmh0bWw/aWQ9XCIgKyBlbGVtZW50LkIpO1xyXG4gICAgICBwYXJhLmNsYXNzTGlzdC5hZGQoXCJsaXN0LWdyb3VwLWl0ZW1cIik7XHJcbiAgICAgIHBhcmEuY2xhc3NMaXN0LmFkZChcImxpc3QtZ3JvdXAtaXRlbS1hY3Rpb25cIik7XHJcblxyXG4gICAgICBjb25zdCBub2RlID0gZG9jdW1lbnQuY3JlYXRlVGV4dE5vZGUoZWxlbWVudC5BKTtcclxuICAgICAgcGFyYS5hcHBlbmRDaGlsZChub2RlKTtcclxuXHJcbiAgICAgIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKFwic2VhcmNoTGlzdEdyb3VwXCIpLmFwcGVuZENoaWxkKHBhcmEpO1xyXG4gICAgfVxyXG4gICAgXHJcbiAgfVxyXG5cclxuICB1cGRhdGVTZWFyY2goKTtcclxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0zIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoianNvbiA9IEZpbGVBdHRhY2htZW50KFwiZmlsZXMvZ2VvanNfYmFoaWEuanNvblwiKS5qc29uKClcclxuXHJcbmh0bWxgPGxpbmsgcmVsPVwic3R5bGVzaGVldFwiIGhyZWY9XCJodHRwczovL3VucGtnLmNvbS9sZWFmbGV0L2Rpc3QvbGVhZmxldC5jc3NcIiAvPlxyXG48c2NyaXB0IHNyYz1cImh0dHBzOi8vdW5wa2cuY29tL2xlYWZsZXQvZGlzdC9sZWFmbGV0LmpzXCI+PC9zY3JpcHQ+YFxyXG5cclxuaHRtbGA8ZGl2IGlkPVwibWFwXCIgc3R5bGU9XCJoZWlnaHQ6IDYwMHB4O1wiPjwvZGl2PmBcclxuXHJcbnZpZXdvZiBtYXAgPSB7XHJcbiAgY29uc3QgbWFwRGl2ID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ21hcCcpO1xyXG4gIFxyXG4gIGNvbnN0IG1hcCA9IEwubWFwKG1hcERpdikuc2V0VmlldyhbLTEyLjk3MTQsIC0zOC41MDE0XSwgMTApO1xyXG5cclxuICBMLnRpbGVMYXllcignaHR0cHM6Ly97c30uYmFzZW1hcHMuY2FydG9jZG4uY29tL2xpZ2h0X2FsbC97en0ve3h9L3t5fXtyfS5wbmcnLCB7XHJcblx0YXR0cmlidXRpb246ICcmY29weTsgPGEgaHJlZj1cImh0dHBzOi8vd3d3Lm9wZW5zdHJlZXRtYXAub3JnL2NvcHlyaWdodFwiPk9wZW5TdHJlZXRNYXA8L2E+IGNvbnRyaWJ1dG9ycyAmY29weTsgPGEgaHJlZj1cImh0dHBzOi8vY2FydG8uY29tL2F0dHJpYnV0aW9uc1wiPkNBUlRPPC9hPicsXHJcblx0c3ViZG9tYWluczogJ2FiY2QnLFxyXG5cdG1heFpvb206IDIwXHJcbiAgfSkuYWRkVG8obWFwKTtcclxuIFxyXG4gIFxyXG4gIEwuZ2VvSlNPTihqc29uLCB7XHJcbiAgICBzdHlsZToge1xyXG4gICAgY29sb3I6ICdncmVlbicsIFxyXG4gICAgd2VpZ2h0OiAxIFxyXG4gIH0sIFxyXG4gICAgICBvbkVhY2hGZWF0dXJlOiBmdW5jdGlvbiAoZmVhdHVyZSwgbGF5ZXIpIHtcclxuICAgIGNvbnN0IHBvcHVwQ29udGVudCA9IGBcclxuICAgICAgPGJ1dHRvbiBvbmNsaWNrPVwid2luZG93LmxvY2F0aW9uLmhyZWYgPSAnJHtsb2NhdGlvbn1tdW5pY2lwaW8uaHRtbD9pZD0nICsgJHtmZWF0dXJlLnByb3BlcnRpZXMuaWR9O1wiPlZpc3VhbGl6YXIgZGFkb3MgZGUgJHtmZWF0dXJlLnByb3BlcnRpZXMubmFtZX08L2J1dHRvbj5cclxuICAgIGA7XHJcbiAgICAgXHJcbiAgICBsYXllci5iaW5kUG9wdXAocG9wdXBDb250ZW50KTsgXHJcbiAgfVxyXG4gIH0pLmFkZFRvKG1hcCk7XHJcblxyXG5cclxuICByZXR1cm4gbWFwRGl2O1xyXG59IFxyXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ3RleHRJbnB1dCcpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdtYXAnKSJ9XX0=
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
@@ -634,9 +802,20 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 </div> <!-- /content -->
 <script>
+
+    function getScope() {
+        if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+            return "/";
+        } else {
+            var repositoryName = window.location.pathname.split('/')[1];
+            return repositoryName;
+        }
+    }
+
+
     if('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js', {scope:'/rede-educacao-e-saude/'})
+        navigator.serviceWorker.register('sw.js', {scope: getScope()})
         .then(function (reg) {
             //registration worked
             console.log('Registration succeded. Scope is: ' + reg.scope);
@@ -651,4 +830,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
