@@ -1,7 +1,18 @@
 <script>
+
+    function getScope() {
+        if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+            return "/";
+        } else {
+            var repositoryName = window.location.pathname.split('/')[1];
+            return repositoryName;
+        }
+    }
+
+
     if('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js', {scope:'/rede-educacao-e-saude/'})
+        navigator.serviceWorker.register('sw.js', {scope: getScope()})
         .then(function (reg) {
             //registration worked
             console.log('Registration succeded. Scope is: ' + reg.scope);

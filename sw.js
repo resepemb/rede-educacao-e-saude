@@ -5,12 +5,13 @@ const { registerRoute, setDefaultHandler } = workbox.routing;
 const { CacheFirst } = workbox.strategies;
 const { clientsClaim } = workbox.core;
 
+const scope = self.registration.scope; 
 
 precacheAndRoute([
-    {url: '/rede-educacao-e-saude/index.html', revision: '01'},
-    {url: '/rede-educacao-e-saude/404.html', revision: '01'},
-    {url: '/rede-educacao-e-saude/municipio.html', revision: '01'},
-    {url: '/rede-educacao-e-saude/sobre.html', revision: '01'},
+    {url: scope+'index.html', revision: '01'},
+    {url: scope+'404.html', revision: '01'},
+    {url: scope+'municipio.html', revision: '01'},
+    {url: scope+'sobre.html', revision: '01'},
 ]);
 
 const localurls = {
@@ -29,9 +30,9 @@ const localurls = {
   }
 
 
-registerRoute(({url}) => url.pathname === '/rede-educacao-e-saude/municipio.html', async({event}) => {
+registerRoute(({url}) => url.pathname === scope+'municipio.html', async({event}) => {
     try {
-        const cacheResponse = await caches.match('/rede-educacao-e-saude/municipio.html?__WB_REVISION__=01');
+        const cacheResponse = await caches.match(scope+'municipio.html?__WB_REVISION__=01');
         return cacheResponse || fetch(event.request);
     } catch (error) {
         return new Response('Error loading page', { status: 500 });
@@ -39,18 +40,18 @@ registerRoute(({url}) => url.pathname === '/rede-educacao-e-saude/municipio.html
 }); 
 
 
-registerRoute(({url}) => localurls[url] != undefined, async({url, event}) => {
+registerRoute(({url}) => localurls[url] != undefined, async({url}) => {
     try {                           
         console.log('Using a personalized route to load a project offline file');
 
-        const response = await fetch("./static/requests_content/"+ localurls[url]);
+        const response = await fetch(scope+"static/requests_content/"+ localurls[url]);
         
         if (!response.ok) {
             throw new Error('Failed to load '+ localurls[url]);
         }
 
         const fileContent = await response.text();
-        return new Response(fileContent, { status: 200 });
+        return new Response(fileContent, { status: 200, headers: {'Content-Type': localurls[url].endsWith('js') ? 'application/javascript' : 'text/plain'}});
     } catch (error) {
         console.log('Error loading a project file from request, redirecting.. '+ error );
         const response = await fetch(url);
