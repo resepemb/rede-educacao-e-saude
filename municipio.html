@@ -1156,14 +1156,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             return "/";
         } else {
             var repositoryName = window.location.pathname.split('/')[1];
-            return repositoryName;
+            return '/'+ repositoryName+'/';
         }
     }
 
 
     if('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js', {scope: '/'+getScope()+'/'})
+        navigator.serviceWorker.register('sw.js', {scope: getScope()})
         .then(function (reg) {
             //registration worked
             console.log('Registration succeded. Scope is: ' + reg.scope);
