@@ -8,6 +8,9 @@ format:
       file: 'loadserviceworker.html'
 ---
 
+
+{{< include _functions.qmd >}}
+
 ::: {.grid .mx-5 .px-4 .my-3 .bg-primary .rounded}
 
 :::{ .g-col-12  .d-flex .fs-1 .flex-column .sloganMainPage .align-items-start .pt-2}
@@ -49,21 +52,15 @@ Até mesmo offline.
   
   hideSearch =  {
     if(textInput == "" || searchCityFilter.length == 0){
-      
-      if (!document.getElementById("searchTab").classList.contains("d-none")){
-        document.getElementById("searchTab").classList.add("d-none");    
-      }
-      
+      changeVisible("searchTab", false);
       return;
     }
   }
   
   showSearch =  {
     if (searchCityFilter.length > 0){
-      
-      if (document.getElementById("searchTab").classList.contains("d-none")){
-        document.getElementById("searchTab").classList.remove("d-none");  
-      }
+      changeVisible("searchTab", true);
+      return;
     }
   }
 

@@ -7,10 +7,11 @@ format:
     include-after-body: 
       file: 'loadserviceworker.html'
 --- 
+
 {{< include _dados.qmd >}}
+ 
 
-
-::: {.grid .mx-5 .my-3}
+::: {.grid .mx-5 .my-3} 
 
 ::: {.g-col-12 .g-col-sm-6}
 
@@ -36,7 +37,7 @@ ${nomeCidade}
 
 :::{.fw-bold}
 
-Selecione o ano de pesquisa desejado   
+Selecione o ano de pesquisa desejado    
 
 ```{ojs}
 viewof pesquisa_ano = html`
@@ -51,13 +52,13 @@ viewof pesquisa_ano = html`
   <option value="2017">2017</option>
   <option value="2018">2018</option>
   <option value="2019">2019</option>
-  <option value="2020" selected >2020</option>
+  <option value="2020" selected>2020</option>
 </select>
 `
 ```
 
 :::
-
+ 
 
 :::
 
@@ -206,22 +207,23 @@ Fonte: INEP.
 
 Gráficos representativos
 
-:::{.mx-5 .pb-3}
+:::{.grid .pb-3 .g-col-4}
+
+:::{}
 
 ```{ojs}
-//| title: 'Dados completos'
  
 bar({
-  data: [{ name: "Total", '' :dados[0][pesquisa_ano].Total},
-  { name: "Masculina", '':  dados[0][pesquisa_ano].Masculina},
-  { name: "Feminina", '': dados[0][pesquisa_ano].Feminina},
-  { name: "Não declarada", '': dados[0][pesquisa_ano].Nãodeclarada},
-  { name: "Branca", '': dados[0][pesquisa_ano].Branca},
-  { name: "Preta", '': dados[0][pesquisa_ano].Preta},
-  { name: "Parda", '': dados[0][pesquisa_ano].Parda},
-  { name: "Amarela", '': dados[0][pesquisa_ano].Amarela},
-  { name: "Indígena",'':dados[0][pesquisa_ano].Indígena},
-  { name: "Deficiência", '':dados[0][pesquisa_ano].Deficiência},
+  data: [{ name: "Total", '2020' :dados[0][pesquisa_ano].Total},
+  { name: "Masculina", '2020':  dados[0][pesquisa_ano].Masculina},
+  { name: "Feminina", '2020': dados[0][pesquisa_ano].Feminina},
+  { name: "Não declarada", '2020': dados[0][pesquisa_ano].Nãodeclarada},
+  { name: "Branca", '2020': dados[0][pesquisa_ano].Branca},
+  { name: "Preta", '2020': dados[0][pesquisa_ano].Preta},
+  { name: "Parda", '2020': dados[0][pesquisa_ano].Parda},
+  { name: "Amarela", '2020': dados[0][pesquisa_ano].Amarela},
+  { name: "Indígena",'2020':dados[0][pesquisa_ano].Indígena},
+  { name: "Deficiência", '2020':dados[0][pesquisa_ano].Deficiência},
   ],
  
    
@@ -243,6 +245,30 @@ bar({
 
 :::
 
+:::{id="tabRendimento" .g-col-12}
+Taxas de Rendimento no Ensino Médio
+
+```{ojs}
+
+hideRendimento =  {
+  changeVisible("tabRendimento", filtered_rendimento.length != 0);
+  } 
+     
+  
+filledLine({ 
+  data: [{ name: "2010", 'Aprovação': dados_rendimento["2010"].Aprovação, 'Reprovação': dados_rendimento["2010"].Reprovação, 'Abandono': dados_rendimento["2010"].Abandono},
+         { name: "2019", 'Aprovação': dados_rendimento["2019"].Aprovação, 'Reprovação': dados_rendimento["2019"].Reprovação, 'Abandono': dados_rendimento["2019"].Abandono}, 
+  ],
+  width: 400,
+  height: 400
+ 
+});  
+
+```
+
+:::
+
+:::
 
 :::
 

@@ -2,9 +2,12 @@
 ```{ojs}
 //| output: false
 
-import { bar } from '@chrispahm/charts'
+import { bar, line, filledLine  } from '@chrispahm/charts'
 
-data = FileAttachment("files/Matriculas 2010 a 2022 ID.xlsx").xlsx();
+dados_taxas = FileAttachment("files/Taxa distorção e Rendimento.xlsx").xlsx();
+
+
+dados_matriculas = FileAttachment("files/Matriculas 2010 a 2022 ID.xlsx").xlsx();
 
 searchParams = new URLSearchParams(location.search);
 
@@ -14,8 +17,18 @@ id_pesquisa = searchParams.has("id") ? searchParams.get("id") : "2928703";
 
 // ano_pesquisa_parcial = "2022";
 
-filtered = data.sheet("números absolutos").filter(function(filtro) {
+filtered = dados_matriculas.sheet("números absolutos").filter(function(filtro) {
   return filtro.A != "Territórios BA" && filtro.B == id_pesquisa;
+})
+
+
+filtered_distorcao = dados_taxas.sheet("Taxa distorção").filter(function(filtro) {
+  return filtro.A != "Territórios BA" && filtro.B == id_pesquisa && (pesquisa_ano == "2010" || pesquisa_ano == "2020");
+})
+
+
+filtered_rendimento = dados_taxas.sheet("Taxa rendimento").filter(function(filtro) {
+  return filtro.A != "Territórios BA" && filtro.B == id_pesquisa&& (pesquisa_ano == "2010" || pesquisa_ano == "2019");;
 })
 
 
@@ -169,6 +182,23 @@ dados = [{
   }]
 
 
+  dados_rendimento = {
+    var dados_rendimento ={
+      "2010": {
+      "Aprovação" : (filtered_rendimento[0].D* 100).toFixed(2), 
+      "Reprovação": (filtered_rendimento[0].E* 100).toFixed(2), 
+      "Abandono": (filtered_rendimento[0].F* 100).toFixed(2)},
+      "2019": {
+      "Aprovação" : (filtered_rendimento[0].CV* 100).toFixed(2), 
+      "Reprovação": (filtered_rendimento[0].CW* 100).toFixed(2), 
+      "Abandono": (filtered_rendimento[0].CX* 100).toFixed(2)}
+    }
+    return dados_rendimento
+  }
+   
+
+
+
 
 total = dados[0][pesquisa_ano].Total.toLocaleString('pt-BR');
 
@@ -199,8 +229,8 @@ total_indigena_porcentagem = calculaPorcentagemTotal(dados[0][pesquisa_ano].Ind�
 total_deficiencia = dados[0][pesquisa_ano].Deficiência.toLocaleString('pt-BR');
 total_deficiencia_porcentagem = calculaPorcentagemTotal(dados[0][pesquisa_ano].Deficiência);
 
-function calculaPorcentagemTotal(n1){
-  return ((n1/dados[0][pesquisa_ano].Total) * 100).toFixed(2);
-}
+
 
 ```
+
+{{< include _functions.qmd >}}
