@@ -5,6 +5,7 @@ const { registerRoute, setDefaultHandler } = workbox.routing;
 const { CacheFirst } = workbox.strategies;
 const { clientsClaim } = workbox.core;
 
+
 const scope = self.registration.scope; 
 
 precacheAndRoute([
@@ -18,16 +19,17 @@ const localurls = {
     "https://cdn.jsdelivr.net/npm/exceljs@4.3.0/dist/exceljs.min.js": "exceljs.min.js",
     "https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap": "font_google_api_Montserrat.css",
     "https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js":"leaflet.js",
-    "https://storage.googleapis.com/workbox-cdn/releases/6.4.1/workbox-precaching.dev.js":"workbox-precaching.dev.js",
-    "https://storage.googleapis.com/workbox-cdn/releases/6.4.1/workbox-core.dev.js": "workbox-core.dev.js",
-    "https://storage.googleapis.com/workbox-cdn/releases/6.4.1/workbox-strategies.dev.js":"workbox-strategies.dev.js",
-    "https://storage.googleapis.com/workbox-cdn/releases/6.4.1/workbox-routing.dev.js":"workbox-routing.dev.js",
     "https://api.observablehq.com/@chrispahm/charts.js?v=3":"charts.js",
     "https://cdn.jsdelivr.net/npm/htl@0.3.1/dist/htl.min.js":"htl.min.js"
     // "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css":"leaflet_194.css",
     // "https://unpkg.com/leaflet/dist/leaflet.css":"leaflet_194.css",
     // "https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css":"leaflet_193.css",
   }
+
+const contentTypeMappings = {
+'.js': 'application/javascript',
+'.css': 'text/css',
+};
 
 
 registerRoute(({url}) => url.pathname === scope+'municipio.html', async({event}) => {
@@ -50,15 +52,28 @@ registerRoute(({url}) => localurls[url] != undefined, async({url}) => {
             throw new Error('Failed to load '+ localurls[url]);
         }
 
+        var contentType;
+
+        for (const extension in contentTypeMappings) {
+            if (localurls[url].endsWith(extension)) {
+                contentType = contentTypeMappings[extension];
+                break;
+            }
+        }
+
+        if (!contentType) {
+            contentType = 'text/plain';
+        }
+
+
         const fileContent = await response.text();
-        return new Response(fileContent, { status: 200, headers: {'Content-Type': localurls[url].endsWith('js') ? 'application/javascript' : 'text/plain'}});
+        return new Response(fileContent, { status: 200, headers: {'Content-Type': contentType}});
     } catch (error) {
         console.log('Error loading a project file from request, redirecting.. '+ error );
         const response = await fetch(url);
         return response;
     }
 });
-
 
 const strategy = new CacheFirst();
 setDefaultHandler(strategy);
