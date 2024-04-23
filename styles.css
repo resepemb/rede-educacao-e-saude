@@ -33,9 +33,16 @@
 .inputSearchRight{
     border-top-right-radius: .4rem ;
     border-bottom-right-radius: .4rem ;
+    width: 30vw !important;
+    min-width: 185px !important;
+    max-width: 75vw !important;
 }
 
 .footerBorders{
     border-top-left-radius: .9rem;
     border-top-right-radius: .9rem ;
+}
+
+.cell-output-display{
+    overflow-x: visible !important
 }

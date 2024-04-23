@@ -10,7 +10,7 @@ format:
 
 ::: {.grid .mx-5 .px-4 .my-3 .bg-primary .rounded}
 
-:::{ .g-col-12  .d-flex .fs-1 .flex-column .sloganMainPage .align-items-start }
+:::{ .g-col-12  .d-flex .fs-1 .flex-column .sloganMainPage .align-items-start .pt-2}
 
 Informações de fácil acesso.
 
@@ -22,10 +22,11 @@ Até mesmo offline.
 
 :::{.pb-3}
 
-:::{.input-group .w-100}
+:::{.input-group} 
 
 :::{.input-group-text  .bi-search .inputSearchLeft}
  
+
 :::
 
 ```{ojs}
@@ -136,7 +137,7 @@ viewof map = {
 	subdomains: 'abcd',
 	maxZoom: 20
   }).addTo(map);
- 
+
   
   L.geoJSON(json, {
     style: {
@@ -147,21 +148,21 @@ viewof map = {
     const popupContent = `
       <button onclick="window.location.href = '${location}municipio.html?id=' + ${feature.properties.id};">Visualizar dados de ${feature.properties.name}</button>
     `;
-     
-    layer.bindPopup(popupContent); 
+
+    layer.bindPopup(popupContent);
   }
   }).addTo(map);
 
 
   return mapDiv;
-} 
+}
 ```
-  
-:::   
-     
-::: 
 
 :::
-  
+
+:::
+
+:::
+
+
 {{< include _pagefooter.qmd >}}
- 

@@ -3,7 +3,7 @@
 
 :::{.grid .px-5 .bg-primary .footerBorders }
 
-:::{.d-flex .g-col-3 .justify-content-center .align-items-start .pt-3}
+:::{.d-flex .g-col-1 .g-col-md-3 .justify-content-center .align-items-start .pt-3}
 
 :::{.col}
 
@@ -18,28 +18,28 @@
 :::
 
 
-:::{.g-col-3 }
+:::{.g-col-0 .g-col-md-3}
 
 
 
 :::
 
 
-:::{.g-col-3 }
+:::{.g-col-0 .g-col-md-3}
  
 
 
 :::
 
 
-:::{.g-col-3 .pt-3}
- Realização: 
+:::{.g-col-11 .g-col-md-3 .pt-3 }
+ Realização:  
 
-  [![](files/images/participants/CNPq_v2017_rgb_neg.png){width=125px fig-align="center"}](https://www.gov.br/cnpq/pt-br)  
+  [![](files/images/participants/CNPq_v2017_rgb_neg.png){width=40%  fig-align="center"}](https://www.gov.br/cnpq/pt-br)  
   
-  [![](files/images/participants/MARCA_IFBA_HORIZONTAL_completa_negativaBRANCA_IFBA.png){width=250px fig-align="center"}](https://portal.ifba.edu.br/)
+  [![](files/images/participants/MARCA_IFBA_HORIZONTAL_completa_negativaBRANCA_IFBA.png){width=65% fig-align="center"}](https://portal.ifba.edu.br/)
 
-  [![](files/images/participants/UFRB-Vertical_branca.png){width=150px fig-align="center"}](https://www.ufrb.edu.br)
+  [![](files/images/participants/UFRB-Vertical_branca.png){width=35% fig-align="center"}](https://www.ufrb.edu.br)
 :::
 
 :::
