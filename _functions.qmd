@@ -7,6 +7,22 @@ function calculaPorcentagemTotal(n1){
 }
 
 
+function clearChartGroup(chartGroup, chartID, chartWidth, chartHeight){
+  try {
+    document.getElementById(chartGroup).replaceChildren();
+    const para = document.createElement("canvas");
+    para.setAttribute("id", chartID);
+    para.setAttribute("width", chartWidth);
+    para.setAttribute("height", chartHeight);
+
+    document.getElementById(chartGroup).appendChild(para);
+  } catch (error) {
+    throw console.error();
+  }
+  
+}
+
+
 function changeVisible(element, value){
     if(value){
       if (document.getElementById(element).classList.contains("d-none")){

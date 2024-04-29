@@ -13,7 +13,7 @@ format:
 
 ::: {.grid .mx-5 .px-4 .my-3 .bg-primary .rounded}
 
-:::{ .g-col-12  .d-flex .fs-1 .flex-column .sloganMainPage .align-items-start .pt-2}
+:::{ .g-col-12  .d-flex .fs-1 .flex-column .sloganMainPage .align-items-start .pt-2 .flex-wrap}
 
 Informações de fácil acesso.
 
@@ -21,7 +21,7 @@ Até mesmo offline.
 
 :::
 
-::: {.g-col-12 }
+::: {.g-col-12 } 
 
 :::{.pb-3}
 

@@ -42,7 +42,7 @@ Selecione o ano de pesquisa desejado
 ```{ojs}
 viewof pesquisa_ano = html`
 <select id="pesquisa_ano" class="form-select" >
-  <option value="2010">2010</option>
+  <option value="2010" selected>2010</option>
   <option value="2011">2011</option>
   <option value="2012">2012</option>
   <option value="2013">2013</option>
@@ -52,7 +52,7 @@ viewof pesquisa_ano = html`
   <option value="2017">2017</option>
   <option value="2018">2018</option>
   <option value="2019">2019</option>
-  <option value="2020" selected>2020</option>
+  <option value="2020">2020</option>
 </select>
 `
 ```
@@ -207,68 +207,126 @@ Fonte: INEP.
 
 Gráficos representativos
 
-:::{.grid .pb-3 .g-col-4}
+:::{.grid .pb-3}
 
-:::{}
+:::{id="myChartGroup" .g-col-6}
 
 ```{ojs}
- 
-bar({
-  data: [{ name: "Total", '2020' :dados[0][pesquisa_ano].Total},
-  { name: "Masculina", '2020':  dados[0][pesquisa_ano].Masculina},
-  { name: "Feminina", '2020': dados[0][pesquisa_ano].Feminina},
-  { name: "Não declarada", '2020': dados[0][pesquisa_ano].Nãodeclarada},
-  { name: "Branca", '2020': dados[0][pesquisa_ano].Branca},
-  { name: "Preta", '2020': dados[0][pesquisa_ano].Preta},
-  { name: "Parda", '2020': dados[0][pesquisa_ano].Parda},
-  { name: "Amarela", '2020': dados[0][pesquisa_ano].Amarela},
-  { name: "Indígena",'2020':dados[0][pesquisa_ano].Indígena},
-  { name: "Deficiência", '2020':dados[0][pesquisa_ano].Deficiência},
-  ],
- 
-   
-  options: {
-    plugins: {
-      datalabels: {
-        color: 'white',
-        font: {
-          weight: 'bold'
+  // viavél ?
+  // window.addEventListener('resize', function(event) {
+  //   updateChart()
+  // });
+
+  updateChart =  function (){  
+    
+      try {
+        clearChartGroup("myChartGroup", "myChart", (document.body.clientWidth/2), "400")
+
+        var chart = new chartjs.Chart(document.getElementById('myChart'), {
+        type: 'bar',
+        data: {
+          labels: ['Total', 'Masculina', 'Feminina', 'Não declarada', 'Branca', 'Preta','Parda','Amarela','Indígena','Deficiência'],
+          datasets: [{
+            label: '',
+            data: [dados[0][pesquisa_ano].Total, dados[0][pesquisa_ano].Masculina, dados[0][pesquisa_ano].Feminina, dados[0][pesquisa_ano].Nãodeclarada, dados[0][pesquisa_ano].Branca,  dados[0][pesquisa_ano].Preta,dados[0][pesquisa_ano].Parda,dados[0][pesquisa_ano].Amarela,dados[0][pesquisa_ano].Indígena,dados[0][pesquisa_ano].Deficiência],
+            borderWidth: 1
+          }]
         },
-        formatter: function(x) {
-          return x.toLocaleString('pt-BR')
+        options: {
+          plugins:{
+            title: {
+              display: true,
+              text:`Matriculas em ${pesquisa_ano}`,
+            },
+            legend: {
+              display: false,
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
         }
-      }
-    }
-  },
-});  
+        });
+        } catch (error) {
+          console.log(error);
+      }    
+    return chart;
+  }
+
+ updateChart()
+ 
 ```
 
 :::
 
-:::{id="tabRendimento" .g-col-12}
+:::{id="tabRendimentoLine" .g-col-6}
+
 Taxas de Rendimento no Ensino Médio
 
 ```{ojs}
 
 hideRendimento =  {
-  changeVisible("tabRendimento", filtered_rendimento.length != 0);
+  changeVisible("tabRendimentoLine", filtered_rendimento.length != 0);
+  changeVisible("tabRendimentoBar", filtered_rendimento.length != 0);
   } 
-     
-  
-filledLine({ 
-  data: [{ name: "2010", 'Aprovação': dados_rendimento["2010"].Aprovação, 'Reprovação': dados_rendimento["2010"].Reprovação, 'Abandono': dados_rendimento["2010"].Abandono},
-         { name: "2019", 'Aprovação': dados_rendimento["2019"].Aprovação, 'Reprovação': dados_rendimento["2019"].Reprovação, 'Abandono': dados_rendimento["2019"].Abandono}, 
-  ],
-  width: 400,
-  height: 400
- 
-});  
+
+
+   updaterendimentoChartLine =  function (){  
+      // 
+      try {
+        clearChartGroup("tabRendimentoLine", "rendimentoChartLine", 320, 320)
+
+        var chart = new chartjs.Chart(document.getElementById('rendimentoChartLine'), {
+        type: 'line',
+        data: 
+        {
+          labels: ['2010', '2019'],
+          datasets: [
+            {
+              label: 'Aprovação',
+              data: [dados_rendimento["2010"]["TotalGeral"]["Total"].Aprovação, dados_rendimento["2019"]["TotalGeral"]["Total"].Aprovação],
+            
+            },
+            {
+              label: 'Reprovação',
+              data: [dados_rendimento["2010"]["TotalGeral"]["Total"].Reprovação, dados_rendimento["2019"]["TotalGeral"]["Total"].Reprovação],
+              
+            },
+            {
+              label: 'Abandono',
+              data: [dados_rendimento["2010"]["TotalGeral"]["Total"].Abandono, dados_rendimento["2019"]["TotalGeral"]["Total"].Abandono],
+            }
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins:{
+            title: {
+              display: true,
+              text:'Taxa de rendimento nos anos de 2010 e 2019',
+            },
+          },
+        }
+        });
+        } catch (error) {
+          console.log(error);
+      }    
+    return chart;
+  } 
+
+  updaterendimentoChartLine()
+
 
 ```
 
 :::
 
+
 :::
+
 
 :::
 

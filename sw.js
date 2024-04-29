@@ -19,8 +19,9 @@ const localurls = {
     "https://cdn.jsdelivr.net/npm/exceljs@4.3.0/dist/exceljs.min.js": "exceljs.min.js",
     "https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap": "font_google_api_Montserrat.css",
     "https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js":"leaflet.js",
-    "https://api.observablehq.com/@chrispahm/charts.js?v=3":"charts.js",
-    "https://cdn.jsdelivr.net/npm/htl@0.3.1/dist/htl.min.js":"htl.min.js"
+    "https://cdn.jsdelivr.net/npm/htl@0.3.1/dist/htl.min.js":"htl.min.js",
+    "https://cdn.jsdelivr.net/npm/chart.js/package.json":"chartsjs_package.json",
+    "https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.js":"chart.umd.js",
     // "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css":"leaflet_194.css",
     // "https://unpkg.com/leaflet/dist/leaflet.css":"leaflet_194.css",
     // "https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css":"leaflet_193.css",
@@ -29,6 +30,7 @@ const localurls = {
 const contentTypeMappings = {
 '.js': 'application/javascript',
 '.css': 'text/css',
+'.json': 'application/json'
 };
 
 
