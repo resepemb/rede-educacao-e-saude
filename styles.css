@@ -6,6 +6,11 @@
     margin-bottom: -1.25rem !important;
 }
 
+input[type="radio"] {
+    margin: 6px;
+    padding: 6px;
+}
+
 .cityfont{
     font-weight: 600;
     font-size: 60px;

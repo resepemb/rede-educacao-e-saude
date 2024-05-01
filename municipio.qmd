@@ -201,26 +201,28 @@ Por raça/cor
 
 Fonte: INEP.
 
+::: 
+
+::: {.mx-5}
+
+
+:::{.grid .pb-3 }
+
+:::{.g-col-12 .g-col-sm-6}
+
+
+::: {.fw-bold .fs-3}
+Quantidade de Matrículas em ${pesquisa_ano} 
+
 :::
 
-::: {.mx-5 .fs-2 .fw-bold}
-
-Gráficos representativos
-
-:::{.grid .pb-3}
-
-:::{id="myChartGroup" .g-col-6}
-
+:::{id="myChartGroup"}
 ```{ojs}
-  // viavél ?
-  // window.addEventListener('resize', function(event) {
-  //   updateChart()
-  // });
 
   updateChart =  function (){  
     
       try {
-        clearChartGroup("myChartGroup", "myChart", (document.body.clientWidth/2), "400")
+        clearChartGroup("myChartGroup", "myChart", document.body.clientWidth*0.45, "320")
 
         var chart = new chartjs.Chart(document.getElementById('myChart'), {
         type: 'bar',
@@ -229,19 +231,31 @@ Gráficos representativos
           datasets: [{
             label: '',
             data: [dados[0][pesquisa_ano].Total, dados[0][pesquisa_ano].Masculina, dados[0][pesquisa_ano].Feminina, dados[0][pesquisa_ano].Nãodeclarada, dados[0][pesquisa_ano].Branca,  dados[0][pesquisa_ano].Preta,dados[0][pesquisa_ano].Parda,dados[0][pesquisa_ano].Amarela,dados[0][pesquisa_ano].Indígena,dados[0][pesquisa_ano].Deficiência],
-            borderWidth: 1
+            borderWidth: 1,
+            minBarLength: 10,
+            backgroundColor:'rgba(75, 192, 192, 0.2)',
+            borderColor: 'rgb(75, 192, 192)',
           }]
         },
         options: {
+          responsive: true,
+          maintainAspectRatio: false, 
           plugins:{
             title: {
-              display: true,
+              display: false,
               text:`Matriculas em ${pesquisa_ano}`,
             },
             legend: {
               display: false,
+            },
+            tooltip:{
+              callbacks:{
+                 label: function(context) {
+                    return context.parsed.y.toLocaleString('pt-BR');
+                }
+              }
             }
-          },
+          }, 
           scales: {
             y: {
               beginAtZero: true
@@ -256,59 +270,142 @@ Gráficos representativos
   }
 
  updateChart()
- 
+  
 ```
 
 :::
 
-:::{id="tabRendimentoLine" .g-col-6}
+:::
 
-Taxas de Rendimento no Ensino Médio
+:::{.g-col-12 .g-col-sm-6 .border .border-primary .rounded .px-3}
+
+:::{.fw-bold .fs-3}
+Texto sobre quantidade de matriculas
+:::
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget lobortis ligula, sed aliquet metus. Nullam urna erat, maximus sed ligula nec, eleifend pellentesque enim. Nullam eros mauris, auctor in euismod gravida, egestas ut sem. Maecenas venenatis mauris et felis ultrices feugiat. Cras convallis dui eu ex iaculis tristique vitae faucibus enim. Duis non nisl sit amet ex luctus porttitor vel vel orci. Vestibulum pulvinar elit ut molestie volutpat. Vestibulum sagittis enim sit amet metus bibendum euismod. Vestibulum purus ex, tempus a aliquet ac, auctor vitae lacus.
+
+Nullam pulvinar libero lorem, at accumsan elit pulvinar ut. Suspendisse fringilla sed libero eu sodales. Vivamus egestas tincidunt massa et sagittis. Quisque malesuada est et quam auctor, ut finibus justo dictum. Nunc lobortis hendrerit sagittis. Aliquam augue ipsum, aliquet eget ultrices et, tincidunt eu tellus. Aliquam elit felis, facilisis non turpis in, vulputate luctus tellus. Etiam dignissim pharetra massa sed dictum. Donec laoreet dictum convallis. Donec consectetur vitae tellus nec egestas. Curabitur id accumsan neque. Mauris condimentum tellus nec leo sodales, et congue justo consequat.
+
+:::
+
+:::{id="dadosRendimento" .g-col-12 .g-col-sm-6}
+
+:::{.fw-bold .fs-3}
+
+Taxa de rendimento em ${pesquisa_ano}
+
+:::
 
 ```{ojs}
 
 hideRendimento =  {
-  changeVisible("tabRendimentoLine", filtered_rendimento.length != 0);
-  changeVisible("tabRendimentoBar", filtered_rendimento.length != 0);
+  changeVisible("dadosRendimento", filtered_rendimento.length != 0);
+  changeVisible("infoRendimento", filtered_rendimento.length != 0);
   } 
 
+mutable selectedValue ="TotalGeral";
 
-   updaterendimentoChartLine =  function (){  
-      // 
+updateValue = {
+  const radioButtons = document.querySelectorAll('input[name="inlineRadioOptions"]');
+
+  for (const radioButton of radioButtons) {
+      radioButton.addEventListener('change', (event) => {
+          mutable selectedValue = event.target.value;
+      });
+  }
+}
+
+viewof radioRendimentoBar = html`
+
+<div class="form-check form-check-inline row fs-5">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="TotalGeral" checked="true">
+  <label class="form-check-label" for="inlineRadio1">Total</label>
+</div>
+
+<div class="form-check form-check-inline row fs-5">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Masculino">
+  <label class="form-check-label" for="inlineRadio2">Masculino</label>
+</div>
+
+<div class="form-check form-check-inline row fs-5">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="Feminino">
+  <label class="form-check-label" for="inlineRadio3">Feminino</label>
+</div>
+`
+
+```
+
+
+
+
+:::{id="tabRendimentoBar" }
+
+```{ojs}
+     
+   updaterendimentoChartBar =  function (){  
+      
       try {
-        clearChartGroup("tabRendimentoLine", "rendimentoChartLine", 320, 320)
+        clearChartGroup("tabRendimentoBar", "rendimentoChartBar",document.body.clientWidth/2, "320")
 
-        var chart = new chartjs.Chart(document.getElementById('rendimentoChartLine'), {
-        type: 'line',
+        var chart = new chartjs.Chart(document.getElementById('rendimentoChartBar'), {
+        type: 'bar',
         data: 
         {
-          labels: ['2010', '2019'],
+          labels: ['Total', 'Não declarado','Branca', 'Preta', 'Parda', 'Amarela', 'Indígena', 'Deficiência'],
           datasets: [
             {
               label: 'Aprovação',
-              data: [dados_rendimento["2010"]["TotalGeral"]["Total"].Aprovação, dados_rendimento["2019"]["TotalGeral"]["Total"].Aprovação],
-            
+              data: [dados_rendimento[pesquisa_ano][selectedValue]["Total"].Aprovação, dados_rendimento[pesquisa_ano][selectedValue]["RacaNaoDeclarada"].Aprovação, dados_rendimento[pesquisa_ano][selectedValue]["Branca"].Aprovação, dados_rendimento[pesquisa_ano][selectedValue]["Preta"].Aprovação, dados_rendimento[pesquisa_ano][selectedValue]["Parda"].Aprovação, dados_rendimento[pesquisa_ano][selectedValue]["Amarela"].Aprovação,dados_rendimento[pesquisa_ano][selectedValue]["Indígena"].Aprovação, dados_rendimento[pesquisa_ano][selectedValue]["Deficiência"].Aprovação],
+              backgroundColor: 'rgba(255, 99, 132, 0.2)',
+              borderColor: 'rgba(255, 99, 132, 1)',
+              borderWidth: 1,
             },
             {
               label: 'Reprovação',
-              data: [dados_rendimento["2010"]["TotalGeral"]["Total"].Reprovação, dados_rendimento["2019"]["TotalGeral"]["Total"].Reprovação],
-              
+              data: [dados_rendimento[pesquisa_ano][selectedValue]["Total"].Reprovação, dados_rendimento[pesquisa_ano][selectedValue]["RacaNaoDeclarada"].Reprovação, dados_rendimento[pesquisa_ano][selectedValue]["Branca"].Reprovação, dados_rendimento[pesquisa_ano][selectedValue]["Preta"].Reprovação, dados_rendimento[pesquisa_ano][selectedValue]["Parda"].Reprovação, dados_rendimento[pesquisa_ano][selectedValue]["Amarela"].Reprovação,dados_rendimento[pesquisa_ano][selectedValue]["Indígena"].Reprovação, dados_rendimento[pesquisa_ano][selectedValue]["Deficiência"].Reprovação],
+              backgroundColor: 'rgba(75, 192, 192, 0.2)',
+              borderColor: 'rgba(75, 192, 192, 1)',
+              borderWidth: 1,
             },
             {
               label: 'Abandono',
-              data: [dados_rendimento["2010"]["TotalGeral"]["Total"].Abandono, dados_rendimento["2019"]["TotalGeral"]["Total"].Abandono],
-            }
+              data: [dados_rendimento[pesquisa_ano][selectedValue]["Total"].Abandono, dados_rendimento[pesquisa_ano][selectedValue]["RacaNaoDeclarada"].Abandono, dados_rendimento[pesquisa_ano][selectedValue]["Branca"].Abandono, dados_rendimento[pesquisa_ano][selectedValue]["Preta"].Abandono, dados_rendimento[pesquisa_ano][selectedValue]["Parda"].Abandono, dados_rendimento[pesquisa_ano][selectedValue]["Amarela"].Abandono,dados_rendimento[pesquisa_ano][selectedValue]["Indígena"].Abandono, dados_rendimento[pesquisa_ano][selectedValue]["Deficiência"].Abandono],
+              backgroundColor: 'rgba(205, 205, 133, 0.2)',
+              borderColor: 'rgba(205, 205, 133, 1)',
+              borderWidth: 1,
+            },
+            
           ],
         },
         options: {
           responsive: true,
           maintainAspectRatio: false,
-          plugins:{
-            title: {
-              display: true,
-              text:'Taxa de rendimento nos anos de 2010 e 2019',
+           plugins: {
+            tooltip: {
+                callbacks: {
+                    label: function(context) {
+                        let label = context.dataset.label || '';
+
+                        if (label) {
+                            label += ': ';
+                        }
+                        if (context.parsed.y !== null) {
+                            label += context.parsed.y + '%';
+                        }
+                        return label;
+                    }
+                }
+            }
+        },
+          scales: {
+            x: {
+              stacked: true
             },
-          },
+            y: {
+              stacked: true
+            }
+          }
         }
         });
         } catch (error) {
@@ -317,13 +414,27 @@ hideRendimento =  {
     return chart;
   } 
 
-  updaterendimentoChartLine()
-
+  updaterendimentoChartBar()
 
 ```
 
+
 :::
 
+:::
+
+
+:::{id="infoRendimento" .g-col-12 .g-col-sm-6 .border .border-primary .rounded .px-3}
+
+:::{.fw-bold .fs-3}
+Texto sobre o rendimento escolar
+:::
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget lobortis ligula, sed aliquet metus. Nullam urna erat, maximus sed ligula nec, eleifend pellentesque enim. Nullam eros mauris, auctor in euismod gravida, egestas ut sem. Maecenas venenatis mauris et felis ultrices feugiat. Cras convallis dui eu ex iaculis tristique vitae faucibus enim. Duis non nisl sit amet ex luctus porttitor vel vel orci. Vestibulum pulvinar elit ut molestie volutpat. Vestibulum sagittis enim sit amet metus bibendum euismod. Vestibulum purus ex, tempus a aliquet ac, auctor vitae lacus.
+
+Nullam pulvinar libero lorem, at accumsan elit pulvinar ut. Suspendisse fringilla sed libero eu sodales. Vivamus egestas tincidunt massa et sagittis. Quisque malesuada est et quam auctor, ut finibus justo dictum. Nunc lobortis hendrerit sagittis. Aliquam augue ipsum, aliquet eget ultrices et, tincidunt eu tellus. Aliquam elit felis, facilisis non turpis in, vulputate luctus tellus. Etiam dignissim pharetra massa sed dictum. Donec laoreet dictum convallis. Donec consectetur vitae tellus nec egestas. Curabitur id accumsan neque. Mauris condimentum tellus nec leo sodales, et congue justo consequat.
+
+:::
 
 :::
 
