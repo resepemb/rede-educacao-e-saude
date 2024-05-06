@@ -17,13 +17,13 @@ format:
 
 ::: { .text-start } 
 
-:::{.mun}
+:::{.subtopic}
 
 Município
 
 :::
   
-:::{.cityfont .fw-bold }
+:::{.cityName .fw-bold }
 
 ${nomeCidade}
 
@@ -76,7 +76,7 @@ Matrículas no Ensino Médio
 
 ::: {.g-col-12 .g-col-md-6}
 
-::: {.mun } 
+::: {.subtopic } 
 
 Por genêro
 
@@ -85,21 +85,40 @@ Por genêro
 :::{.d-flex .text-center .flex-column .flex-md-row .gap-3 }
  
 
-::: {.valuebox .flex-fill  .my-2 .rounded-2 .pt-2} 
+::: {.valuebox .flex-fill .my-2 .rounded-2 .pt-2} 
+
   Masculino
+
+:::{.cityNumber}
 
   ${total_masculina}
 
-  ${total_masculina_porcentagem}%
+:::
+
+:::{.cityPercent}
+
+  (${total_masculina_porcentagem}%)
+
+:::
+
 :::
 
 
 ::: {.valuebox .flex-fill  .my-2  .rounded-2 .pt-2}  
   Feminino
 
+:::{.cityNumber}
+
   ${total_feminina}
 
-  ${total_feminina_porcentagem}%
+:::
+
+:::{.cityPercent}
+
+  (${total_feminina_porcentagem}%)
+
+:::
+
 :::
 
 
@@ -110,7 +129,7 @@ Por genêro
 
 ::: {.g-col-12 .g-col-md-6}
 
-::: {.mun } 
+::: {.subtopic} 
 
 Por raça/cor
 
@@ -119,32 +138,57 @@ Por raça/cor
 :::{.d-flex .text-center .flex-column}
 
 
-
 :::{.d-flex .justify-content-between .gap-3 .flex-column .flex-md-row}
 
 ::: {.valuebox .flex-fill .my-2  .rounded-2 .pt-2} 
+
   Não declarada
 
-  ${total_naodeclarada}
+:::{.cityNumber}
 
-  ${total_naodeclarada_porcentagem}%
+  ${total_naodeclarada}
+:::
+
+:::{.cityPercent}
+
+ (${total_naodeclarada_porcentagem}%)
+
+:::
+
 :::
 
 ::: {.valuebox .flex-fill .my-2   .rounded-2 .pt-2} 
   Branca
- 
-  ${total_branca}
 
-  ${total_branca_porcentagem}%
+:::{.cityNumber}
+
+  ${total_branca}
+:::
+
+:::{.cityPercent}
+
+  (${total_branca_porcentagem}%)
+
+:::
+
 :::
 
 
 ::: {.valuebox .flex-fill .my-2 .rounded-2 .pt-2} 
   Preta
 
+:::{.cityNumber}
+
   ${total_preta}
 
-  ${total_preta_porcentagem}%
+:::
+
+:::{.cityPercent}
+
+  (${total_preta_porcentagem}%)
+
+:::
+
 :::
 
 :::
@@ -153,41 +197,80 @@ Por raça/cor
 
 
 ::: {.valuebox .flex-fill .my-2 .rounded-2 .pt-2} 
+
   Parda
+
+:::{.cityNumber}
 
   ${total_parda}
 
-  ${total_parda_porcentagem}%
+:::
+
+:::{.cityPercent}
+
+  (${total_parda_porcentagem}%)
+
+:::
+
+
 :::
 
 
 ::: {.valuebox  .flex-fill .my-2 .rounded-2 .pt-2} 
+
   Amarela
+
+:::{.cityNumber}
 
   ${total_amarela}
 
-  ${total_amarela_porcentagem}%
+:::
+
+:::{.cityPercent}
+
+  (${total_amarela_porcentagem}%)
+
+:::
+
 :::
 
 
 ::: {.valuebox  .flex-fill  .my-2  .rounded-2 .pt-2} 
   Indígena
 
+:::{.cityNumber}
+
   ${total_indigena}
 
-  ${total_indigena_porcentagem}%
+:::
+
+:::{.cityPercent}
+
+  (${total_indigena_porcentagem}%)
+
+:::
+
 :::
 
 ::: {.valuebox  .flex-fill .my-2 .rounded-2 .pt-2} 
+
   Deficiência
+
+:::{.cityNumber}
 
   ${total_deficiencia}
 
-  ${total_deficiencia_porcentagem}%
 :::
+
+:::{.cityPercent}
+
+  (${total_deficiencia_porcentagem}%)
 
 :::
 
+:::
+
+:::
 
 :::
 
@@ -256,12 +339,15 @@ Quantidade de Matrículas em ${pesquisa_ano}
                 }
               },
             },
+            scales: {
+              y: {
+                ticks: {
+                  callback: (value) => value.toLocaleString('pt-BR'),
+                },
+                beginAtZero: true,
+              }
+            },
           }, 
-          scales: {
-            y: {
-              beginAtZero: true
-            }
-          },
         });
       } catch (error) {
         console.log(error);
@@ -368,7 +454,7 @@ viewof radioDistorcaoBar = html`
         options: {
           responsive: true,
           maintainAspectRatio: false,
-           plugins: {
+          plugins: {
             tooltip: {
                 callbacks: {
                     label: function(context) {
@@ -380,7 +466,7 @@ viewof radioDistorcaoBar = html`
                         if (context.parsed.y !== null) {
                             label += context.parsed.y + '%';
                         }
-                        return label;
+                        return label.replace(".", ",");
                     }
                 },
                 
@@ -388,7 +474,7 @@ viewof radioDistorcaoBar = html`
             legend: {
               display: false,
             },
-        },
+          },
           scales: {
             x: {
               stacked: true
@@ -420,6 +506,7 @@ viewof radioDistorcaoBar = html`
 :::{.fw-bold .fs-3}
 Texto sobre a distorção idade/série
 :::
+(contabilizados estudantes com 19 anos ou mais)
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget lobortis ligula, sed aliquet metus. Nullam urna erat, maximus sed ligula nec, eleifend pellentesque enim. Nullam eros mauris, auctor in euismod gravida, egestas ut sem. Maecenas venenatis mauris et felis ultrices feugiat. Cras convallis dui eu ex iaculis tristique vitae faucibus enim. Duis non nisl sit amet ex luctus porttitor vel vel orci. Vestibulum pulvinar elit ut molestie volutpat. Vestibulum sagittis enim sit amet metus bibendum euismod. Vestibulum purus ex, tempus a aliquet ac, auctor vitae lacus.
 
@@ -534,7 +621,7 @@ viewof radioRendimentoBar = html`
                         if (context.parsed.y !== null) {
                             label += context.parsed.y + '%';
                         }
-                        return label;
+                        return label.replace(".", ",");;
                     }
                 }
             }

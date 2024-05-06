@@ -2,8 +2,9 @@
 ```{ojs}
 //| output: false
 
-function calculaPorcentagemTotal(n1){
-  return ((n1/dados[0][pesquisa_ano].Total) * 100).toFixed(2);
+function calculateTotalPercentage(n1){
+  let percent = ((n1/dados[0][pesquisa_ano].Total) * 100).toFixed(2)
+  return percent.replace(".", ",");
 }
 
 

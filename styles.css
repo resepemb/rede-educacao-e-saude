@@ -1,6 +1,6 @@
 /* css styles */
 
-.mun{
+.subtopic{
     font-weight: 600;
     font-size: medium;
     margin-bottom: -1.25rem !important;
@@ -11,15 +11,32 @@ input[type="radio"] {
     padding: 6px;
 }
 
-.cityfont{
+.cityName{
     font-weight: 600;
     font-size: 60px;
 }
+
+.cityNumber{
+    font-size: 300%;
+    font-weight: 600;
+    margin-top: -5px !important;
+}
+
+
+.cityPercent{
+    font-size: medium;
+    margin-top: -5px;
+}
+
 
 .valuebox{
     font-weight: 600;
     background-color: darkcyan;
     color: white;
+}
+
+.valuebox p {
+    margin-bottom: 0 !important;
 }
 
 
