@@ -90,7 +90,7 @@ Por genêro
 
   ${total_masculina}
 
-  ${total_masculina_porcentagem} %
+  ${total_masculina_porcentagem}%
 :::
 
 
@@ -99,7 +99,7 @@ Por genêro
 
   ${total_feminina}
 
-  ${total_feminina_porcentagem} %
+  ${total_feminina_porcentagem}%
 :::
 
 
@@ -127,7 +127,7 @@ Por raça/cor
 
   ${total_naodeclarada}
 
-  ${total_naodeclarada_porcentagem} %
+  ${total_naodeclarada_porcentagem}%
 :::
 
 ::: {.valuebox .flex-fill .my-2   .rounded-2 .pt-2} 
@@ -135,7 +135,7 @@ Por raça/cor
  
   ${total_branca}
 
-  ${total_branca_porcentagem} %
+  ${total_branca_porcentagem}%
 :::
 
 
@@ -144,7 +144,7 @@ Por raça/cor
 
   ${total_preta}
 
-  ${total_preta_porcentagem} %
+  ${total_preta_porcentagem}%
 :::
 
 :::
@@ -157,7 +157,7 @@ Por raça/cor
 
   ${total_parda}
 
-  ${total_parda_porcentagem} %
+  ${total_parda_porcentagem}%
 :::
 
 
@@ -166,7 +166,7 @@ Por raça/cor
 
   ${total_amarela}
 
-  ${total_amarela_porcentagem} %
+  ${total_amarela_porcentagem}%
 :::
 
 
@@ -175,7 +175,7 @@ Por raça/cor
 
   ${total_indigena}
 
-  ${total_indigena_porcentagem} %
+  ${total_indigena_porcentagem}%
 :::
 
 ::: {.valuebox  .flex-fill .my-2 .rounded-2 .pt-2} 
@@ -183,7 +183,7 @@ Por raça/cor
 
   ${total_deficiencia}
 
-  ${total_deficiencia_porcentagem} %
+  ${total_deficiencia_porcentagem}%
 :::
 
 :::
@@ -203,10 +203,9 @@ Fonte: INEP.
 
 ::: 
 
-::: {.mx-5}
 
 
-:::{.grid .pb-3 }
+:::{.grid .pb-3 .mx-5 }
 
 :::{.g-col-12 .g-col-sm-6}
 
@@ -216,60 +215,61 @@ Quantidade de Matrículas em ${pesquisa_ano}
 
 :::
 
-:::{id="myChartGroup"}
+:::{id="dadosMatriculas"}
+
 ```{ojs}
 
-  updateChart =  function (){  
+  updateMatriculasChart =  function (){  
     
       try {
-        clearChartGroup("myChartGroup", "myChart", document.body.clientWidth*0.45, "320")
+        clearChartGroup("dadosMatriculas", "matriculasChartBar", document.body.clientWidth*0.45, "320")
 
-        var chart = new chartjs.Chart(document.getElementById('myChart'), {
-        type: 'bar',
-        data: {
-          labels: ['Total', 'Masculina', 'Feminina', 'Não declarada', 'Branca', 'Preta','Parda','Amarela','Indígena','Deficiência'],
-          datasets: [{
-            label: '',
-            data: [dados[0][pesquisa_ano].Total, dados[0][pesquisa_ano].Masculina, dados[0][pesquisa_ano].Feminina, dados[0][pesquisa_ano].Nãodeclarada, dados[0][pesquisa_ano].Branca,  dados[0][pesquisa_ano].Preta,dados[0][pesquisa_ano].Parda,dados[0][pesquisa_ano].Amarela,dados[0][pesquisa_ano].Indígena,dados[0][pesquisa_ano].Deficiência],
-            borderWidth: 1,
-            minBarLength: 10,
-            backgroundColor:'rgba(75, 192, 192, 0.2)',
-            borderColor: 'rgb(75, 192, 192)',
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false, 
-          plugins:{
-            title: {
-              display: false,
-              text:`Matriculas em ${pesquisa_ano}`,
-            },
-            legend: {
-              display: false,
-            },
-            tooltip:{
-              callbacks:{
-                 label: function(context) {
-                    return context.parsed.y.toLocaleString('pt-BR');
+        var chart = new chartjs.Chart(document.getElementById('matriculasChartBar'), {
+          type: 'bar',
+          data: {
+            labels: ['Total', 'Masculina', 'Feminina', 'Não declarada', 'Branca', 'Preta','Parda','Amarela','Indígena','Deficiência'],
+            datasets: [{
+              label: '',
+              data: [dados[0][pesquisa_ano].Total, dados[0][pesquisa_ano].Masculina, dados[0][pesquisa_ano].Feminina, dados[0][pesquisa_ano].Nãodeclarada, dados[0][pesquisa_ano].Branca,  dados[0][pesquisa_ano].Preta,dados[0][pesquisa_ano].Parda,dados[0][pesquisa_ano].Amarela,dados[0][pesquisa_ano].Indígena,dados[0][pesquisa_ano].Deficiência],
+              borderWidth: 1,
+              minBarLength: 10,
+              backgroundColor:'rgba(75, 192, 192, 0.2)',
+              borderColor: 'rgb(75, 192, 192)',
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false, 
+            plugins:{
+              title: {
+                display: false,
+                text:`Matriculas em ${pesquisa_ano}`,
+              },
+              legend: {
+                display: false,
+              },
+              tooltip:{
+                callbacks:{
+                  label: function(context) {
+                      return context.parsed.y.toLocaleString('pt-BR');
+                  }
                 }
-              }
-            }
+              },
+            },
           }, 
           scales: {
             y: {
               beginAtZero: true
             }
-          }
-        }
+          },
         });
-        } catch (error) {
-          console.log(error);
+      } catch (error) {
+        console.log(error);
       }    
     return chart;
   }
 
- updateChart()
+ updateMatriculasChart()
   
 ```
 
@@ -280,7 +280,7 @@ Quantidade de Matrículas em ${pesquisa_ano}
 :::{.g-col-12 .g-col-sm-6 .border .border-primary .rounded .px-3}
 
 :::{.fw-bold .fs-3}
-Texto sobre quantidade de matriculas
+Texto sobre quantidade de matrículas
 :::
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget lobortis ligula, sed aliquet metus. Nullam urna erat, maximus sed ligula nec, eleifend pellentesque enim. Nullam eros mauris, auctor in euismod gravida, egestas ut sem. Maecenas venenatis mauris et felis ultrices feugiat. Cras convallis dui eu ex iaculis tristique vitae faucibus enim. Duis non nisl sit amet ex luctus porttitor vel vel orci. Vestibulum pulvinar elit ut molestie volutpat. Vestibulum sagittis enim sit amet metus bibendum euismod. Vestibulum purus ex, tempus a aliquet ac, auctor vitae lacus.
@@ -288,6 +288,147 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget lobort
 Nullam pulvinar libero lorem, at accumsan elit pulvinar ut. Suspendisse fringilla sed libero eu sodales. Vivamus egestas tincidunt massa et sagittis. Quisque malesuada est et quam auctor, ut finibus justo dictum. Nunc lobortis hendrerit sagittis. Aliquam augue ipsum, aliquet eget ultrices et, tincidunt eu tellus. Aliquam elit felis, facilisis non turpis in, vulputate luctus tellus. Etiam dignissim pharetra massa sed dictum. Donec laoreet dictum convallis. Donec consectetur vitae tellus nec egestas. Curabitur id accumsan neque. Mauris condimentum tellus nec leo sodales, et congue justo consequat.
 
 :::
+
+
+:::{id="dadosDistorcao" .g-col-12 .g-col-sm-6}
+
+:::{.fw-bold .fs-3}
+
+Taxa de distorção idade/série em ${pesquisa_ano}
+
+:::
+
+```{ojs}
+
+hideDistorcao =  {
+  changeVisible("dadosDistorcao", filtered_distorcao.length != 0);
+  changeVisible("infoDistorcao", filtered_distorcao.length != 0);
+  } 
+
+mutable valueDistorcao ="TotalGeral";
+
+updateValueDistorcao = {
+  const radioButtons = document.querySelectorAll('input[name="inlineRadioDistorcaoOptions"]');
+
+  for (const radioButton of radioButtons) {
+      radioButton.addEventListener('change', (event) => {
+          mutable valueDistorcao = event.target.value;
+      });
+  }
+}
+
+viewof radioDistorcaoBar = html`
+
+<div class="form-check form-check-inline row fs-5">
+  <input class="form-check-input" type="radio" name="inlineRadioDistorcaoOptions" id="inlineRadioDistorcao1" value="TotalGeral" checked="true">
+  <label class="form-check-label" for="inlineRadioDistorcao1">Total</label>
+</div>
+
+<div class="form-check form-check-inline row fs-5">
+  <input class="form-check-input" type="radio" name="inlineRadioDistorcaoOptions" id="inlineRadioDistorcao2" value="Masculino">
+  <label class="form-check-label" for="inlineRadioDistorcao2">Masculino</label>
+</div>
+
+<div class="form-check form-check-inline row fs-5">
+  <input class="form-check-input" type="radio" name="inlineRadioDistorcaoOptions" id="inlineRadioDistorcao3" value="Feminino">
+  <label class="form-check-label" for="inlineRadioDistorcao3">Feminino</label>
+</div>
+`
+
+```
+
+
+
+
+:::{id="tabDistorcaoBar" }
+
+```{ojs}
+     
+   updatedistorcaoChartBar =  function (){  
+      
+      try {
+        clearChartGroup("tabDistorcaoBar", "distorcaoChartBar",document.body.clientWidth/2, "320")
+
+        var chart = new chartjs.Chart(document.getElementById('distorcaoChartBar'), {
+        type: 'bar',
+        data: 
+        {
+          labels: ['Total', 'Não declarado','Branca', 'Preta', 'Parda', 'Amarela', 'Indígena', 'Deficiência'],
+          datasets: [
+            {
+              label: '',
+              data: [dados_distorcao[pesquisa_ano][valueDistorcao].Total, dados_distorcao[pesquisa_ano][valueDistorcao].RacaNaoDeclarada, dados_distorcao[pesquisa_ano][valueDistorcao].Branca, dados_distorcao[pesquisa_ano][valueDistorcao].Preta, dados_distorcao[pesquisa_ano][valueDistorcao].Parda, dados_distorcao[pesquisa_ano][valueDistorcao].Amarela,dados_distorcao[pesquisa_ano][valueDistorcao].Indígena, dados_distorcao[pesquisa_ano][valueDistorcao].Deficiência],
+              backgroundColor: 'rgba(255, 99, 132, 0.2)',
+              borderColor: 'rgba(255, 99, 132, 1)',
+              borderWidth: 1,
+               minBarLength: 10,
+            }
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+           plugins: {
+            tooltip: {
+                callbacks: {
+                    label: function(context) {
+                        let label = context.dataset.label || '';
+
+                        if (label) {
+                            label += ': ';
+                        }
+                        if (context.parsed.y !== null) {
+                            label += context.parsed.y + '%';
+                        }
+                        return label;
+                    }
+                },
+                
+            },
+            legend: {
+              display: false,
+            },
+        },
+          scales: {
+            x: {
+              stacked: true
+            },
+            y: {
+              stacked: true
+            }
+          }
+        }
+        });
+        } catch (error) {
+          console.log(error);
+      }    
+    return chart;
+  } 
+
+  updatedistorcaoChartBar()
+
+```
+
+
+:::
+
+:::
+
+
+:::{id="infoDistorcao" .g-col-12 .g-col-sm-6 .border .border-primary .rounded .px-3}
+
+:::{.fw-bold .fs-3}
+Texto sobre a distorção idade/série
+:::
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget lobortis ligula, sed aliquet metus. Nullam urna erat, maximus sed ligula nec, eleifend pellentesque enim. Nullam eros mauris, auctor in euismod gravida, egestas ut sem. Maecenas venenatis mauris et felis ultrices feugiat. Cras convallis dui eu ex iaculis tristique vitae faucibus enim. Duis non nisl sit amet ex luctus porttitor vel vel orci. Vestibulum pulvinar elit ut molestie volutpat. Vestibulum sagittis enim sit amet metus bibendum euismod. Vestibulum purus ex, tempus a aliquet ac, auctor vitae lacus.
+
+Nullam pulvinar libero lorem, at accumsan elit pulvinar ut. Suspendisse fringilla sed libero eu sodales. Vivamus egestas tincidunt massa et sagittis. Quisque malesuada est et quam auctor, ut finibus justo dictum. Nunc lobortis hendrerit sagittis. Aliquam augue ipsum, aliquet eget ultrices et, tincidunt eu tellus. Aliquam elit felis, facilisis non turpis in, vulputate luctus tellus. Etiam dignissim pharetra massa sed dictum. Donec laoreet dictum convallis. Donec consectetur vitae tellus nec egestas. Curabitur id accumsan neque. Mauris condimentum tellus nec leo sodales, et congue justo consequat.
+
+:::
+
+
+
 
 :::{id="dadosRendimento" .g-col-12 .g-col-sm-6}
 
@@ -304,14 +445,14 @@ hideRendimento =  {
   changeVisible("infoRendimento", filtered_rendimento.length != 0);
   } 
 
-mutable selectedValue ="TotalGeral";
+mutable valueRendimento ="TotalGeral";
 
-updateValue = {
-  const radioButtons = document.querySelectorAll('input[name="inlineRadioOptions"]');
+updateValueRendimento = {
+  const radioButtons = document.querySelectorAll('input[name="inlineRadioRendimentoOptions"]');
 
   for (const radioButton of radioButtons) {
       radioButton.addEventListener('change', (event) => {
-          mutable selectedValue = event.target.value;
+          mutable valueRendimento = event.target.value;
       });
   }
 }
@@ -319,18 +460,18 @@ updateValue = {
 viewof radioRendimentoBar = html`
 
 <div class="form-check form-check-inline row fs-5">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="TotalGeral" checked="true">
-  <label class="form-check-label" for="inlineRadio1">Total</label>
+  <input class="form-check-input" type="radio" name="inlineRadioRendimentoOptions" id="inlineRadioRendimento1" value="TotalGeral" checked="true">
+  <label class="form-check-label" for="inlineRadioRendimento1">Total</label>
 </div>
 
 <div class="form-check form-check-inline row fs-5">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Masculino">
-  <label class="form-check-label" for="inlineRadio2">Masculino</label>
+  <input class="form-check-input" type="radio" name="inlineRadioRendimentoOptions" id="inlineRadioRendimento2" value="Masculino">
+  <label class="form-check-label" for="inlineRadioRendimento2">Masculino</label>
 </div>
 
 <div class="form-check form-check-inline row fs-5">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="Feminino">
-  <label class="form-check-label" for="inlineRadio3">Feminino</label>
+  <input class="form-check-input" type="radio" name="inlineRadioRendimentoOptions" id="inlineRadioRendimento3" value="Feminino">
+  <label class="form-check-label" for="inlineRadioRendimento3">Feminino</label>
 </div>
 `
 
@@ -356,21 +497,21 @@ viewof radioRendimentoBar = html`
           datasets: [
             {
               label: 'Aprovação',
-              data: [dados_rendimento[pesquisa_ano][selectedValue]["Total"].Aprovação, dados_rendimento[pesquisa_ano][selectedValue]["RacaNaoDeclarada"].Aprovação, dados_rendimento[pesquisa_ano][selectedValue]["Branca"].Aprovação, dados_rendimento[pesquisa_ano][selectedValue]["Preta"].Aprovação, dados_rendimento[pesquisa_ano][selectedValue]["Parda"].Aprovação, dados_rendimento[pesquisa_ano][selectedValue]["Amarela"].Aprovação,dados_rendimento[pesquisa_ano][selectedValue]["Indígena"].Aprovação, dados_rendimento[pesquisa_ano][selectedValue]["Deficiência"].Aprovação],
+              data: [dados_rendimento[pesquisa_ano][valueRendimento]["Total"].Aprovação, dados_rendimento[pesquisa_ano][valueRendimento]["RacaNaoDeclarada"].Aprovação, dados_rendimento[pesquisa_ano][valueRendimento]["Branca"].Aprovação, dados_rendimento[pesquisa_ano][valueRendimento]["Preta"].Aprovação, dados_rendimento[pesquisa_ano][valueRendimento]["Parda"].Aprovação, dados_rendimento[pesquisa_ano][valueRendimento]["Amarela"].Aprovação,dados_rendimento[pesquisa_ano][valueRendimento]["Indígena"].Aprovação, dados_rendimento[pesquisa_ano][valueRendimento]["Deficiência"].Aprovação],
               backgroundColor: 'rgba(255, 99, 132, 0.2)',
               borderColor: 'rgba(255, 99, 132, 1)',
               borderWidth: 1,
             },
             {
               label: 'Reprovação',
-              data: [dados_rendimento[pesquisa_ano][selectedValue]["Total"].Reprovação, dados_rendimento[pesquisa_ano][selectedValue]["RacaNaoDeclarada"].Reprovação, dados_rendimento[pesquisa_ano][selectedValue]["Branca"].Reprovação, dados_rendimento[pesquisa_ano][selectedValue]["Preta"].Reprovação, dados_rendimento[pesquisa_ano][selectedValue]["Parda"].Reprovação, dados_rendimento[pesquisa_ano][selectedValue]["Amarela"].Reprovação,dados_rendimento[pesquisa_ano][selectedValue]["Indígena"].Reprovação, dados_rendimento[pesquisa_ano][selectedValue]["Deficiência"].Reprovação],
+              data: [dados_rendimento[pesquisa_ano][valueRendimento]["Total"].Reprovação, dados_rendimento[pesquisa_ano][valueRendimento]["RacaNaoDeclarada"].Reprovação, dados_rendimento[pesquisa_ano][valueRendimento]["Branca"].Reprovação, dados_rendimento[pesquisa_ano][valueRendimento]["Preta"].Reprovação, dados_rendimento[pesquisa_ano][valueRendimento]["Parda"].Reprovação, dados_rendimento[pesquisa_ano][valueRendimento]["Amarela"].Reprovação,dados_rendimento[pesquisa_ano][valueRendimento]["Indígena"].Reprovação, dados_rendimento[pesquisa_ano][valueRendimento]["Deficiência"].Reprovação],
               backgroundColor: 'rgba(75, 192, 192, 0.2)',
               borderColor: 'rgba(75, 192, 192, 1)',
               borderWidth: 1,
             },
             {
               label: 'Abandono',
-              data: [dados_rendimento[pesquisa_ano][selectedValue]["Total"].Abandono, dados_rendimento[pesquisa_ano][selectedValue]["RacaNaoDeclarada"].Abandono, dados_rendimento[pesquisa_ano][selectedValue]["Branca"].Abandono, dados_rendimento[pesquisa_ano][selectedValue]["Preta"].Abandono, dados_rendimento[pesquisa_ano][selectedValue]["Parda"].Abandono, dados_rendimento[pesquisa_ano][selectedValue]["Amarela"].Abandono,dados_rendimento[pesquisa_ano][selectedValue]["Indígena"].Abandono, dados_rendimento[pesquisa_ano][selectedValue]["Deficiência"].Abandono],
+              data: [dados_rendimento[pesquisa_ano][valueRendimento]["Total"].Abandono, dados_rendimento[pesquisa_ano][valueRendimento]["RacaNaoDeclarada"].Abandono, dados_rendimento[pesquisa_ano][valueRendimento]["Branca"].Abandono, dados_rendimento[pesquisa_ano][valueRendimento]["Preta"].Abandono, dados_rendimento[pesquisa_ano][valueRendimento]["Parda"].Abandono, dados_rendimento[pesquisa_ano][valueRendimento]["Amarela"].Abandono,dados_rendimento[pesquisa_ano][valueRendimento]["Indígena"].Abandono, dados_rendimento[pesquisa_ano][valueRendimento]["Deficiência"].Abandono],
               backgroundColor: 'rgba(205, 205, 133, 0.2)',
               borderColor: 'rgba(205, 205, 133, 1)',
               borderWidth: 1,
@@ -433,8 +574,6 @@ Texto sobre o rendimento escolar
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget lobortis ligula, sed aliquet metus. Nullam urna erat, maximus sed ligula nec, eleifend pellentesque enim. Nullam eros mauris, auctor in euismod gravida, egestas ut sem. Maecenas venenatis mauris et felis ultrices feugiat. Cras convallis dui eu ex iaculis tristique vitae faucibus enim. Duis non nisl sit amet ex luctus porttitor vel vel orci. Vestibulum pulvinar elit ut molestie volutpat. Vestibulum sagittis enim sit amet metus bibendum euismod. Vestibulum purus ex, tempus a aliquet ac, auctor vitae lacus.
 
 Nullam pulvinar libero lorem, at accumsan elit pulvinar ut. Suspendisse fringilla sed libero eu sodales. Vivamus egestas tincidunt massa et sagittis. Quisque malesuada est et quam auctor, ut finibus justo dictum. Nunc lobortis hendrerit sagittis. Aliquam augue ipsum, aliquet eget ultrices et, tincidunt eu tellus. Aliquam elit felis, facilisis non turpis in, vulputate luctus tellus. Etiam dignissim pharetra massa sed dictum. Donec laoreet dictum convallis. Donec consectetur vitae tellus nec egestas. Curabitur id accumsan neque. Mauris condimentum tellus nec leo sodales, et congue justo consequat.
-
-:::
 
 :::
 
