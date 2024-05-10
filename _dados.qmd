@@ -6,7 +6,6 @@
 
   dados_taxas = FileAttachment("files/Taxa distorção e Rendimento.xlsx").xlsx();
 
-
   dados_matriculas = FileAttachment("files/Matriculas 2010 a 2022 ID.xlsx").xlsx();
 
   searchParams = new URLSearchParams(location.search);
@@ -22,13 +21,49 @@
     return filtro.A != "Territórios BA" && filtro.B == id_pesquisa && (pesquisa_ano == "2010" || pesquisa_ano == "2020");
   })
 
+  filtered_distorcao_anuais = dados_taxas.sheet("Distorção anuais").filter(function(filtro) {
+    return filtro.A != "Territórios/BA" && filtro.B == id_pesquisa && filtro.C != "Total" && (parseInt(pesquisa_ano)>= 2010)  && (parseInt(pesquisa_ano) <= 2022);
+  })
 
   filtered_rendimento = dados_taxas.sheet("Taxa rendimento").filter(function(filtro) {
-    return filtro.A != "Territórios BA" && filtro.B == id_pesquisa&& (pesquisa_ano == "2010" || pesquisa_ano == "2019");;
+    return filtro.A != "Territórios BA" && filtro.B == id_pesquisa && (pesquisa_ano == "2010" || pesquisa_ano == "2019");
+  })
+
+  filtered_rendimento_anuais = dados_taxas.sheet("Rendimento anuais").filter(function(filtro) {
+    return filtro.A != "Territórios/BA" && filtro.B != "Total" && filtro.C == id_pesquisa && (parseInt(pesquisa_ano)>= 2010) && (parseInt(pesquisa_ano) <= 2021);
   })
 
 
   nomeCidade = filtered[0].C
+
+  total = dados[0][pesquisa_ano].Total.toLocaleString('pt-BR');
+
+  total_masculina = dados[0][pesquisa_ano].Masculina.toLocaleString('pt-BR');
+  total_masculina_porcentagem = calculateTotalPercentage(dados[0][pesquisa_ano].Masculina);
+
+  total_feminina = dados[0][pesquisa_ano].Feminina.toLocaleString('pt-BR');
+  total_feminina_porcentagem = calculateTotalPercentage(dados[0][pesquisa_ano].Feminina);
+
+  total_naodeclarada = dados[0][pesquisa_ano].Nãodeclarada.toLocaleString('pt-BR');
+  total_naodeclarada_porcentagem = calculateTotalPercentage(dados[0][pesquisa_ano].Nãodeclarada);
+
+  total_branca = dados[0][pesquisa_ano].Branca.toLocaleString('pt-BR');
+  total_branca_porcentagem = calculateTotalPercentage(dados[0][pesquisa_ano].Branca);
+
+  total_preta = dados[0][pesquisa_ano].Preta.toLocaleString('pt-BR');
+  total_preta_porcentagem = calculateTotalPercentage(dados[0][pesquisa_ano].Preta);
+
+  total_parda = dados[0][pesquisa_ano].Parda.toLocaleString('pt-BR');
+  total_parda_porcentagem = calculateTotalPercentage(dados[0][pesquisa_ano].Parda);
+
+  total_amarela = dados[0][pesquisa_ano].Amarela.toLocaleString('pt-BR');
+  total_amarela_porcentagem = calculateTotalPercentage(dados[0][pesquisa_ano].Amarela);
+
+  total_indigena = dados[0][pesquisa_ano].Indígena.toLocaleString('pt-BR');
+  total_indigena_porcentagem = calculateTotalPercentage(dados[0][pesquisa_ano].Indígena);
+
+  total_deficiencia = dados[0][pesquisa_ano].Deficiência.toLocaleString('pt-BR');
+  total_deficiencia_porcentagem = calculateTotalPercentage(dados[0][pesquisa_ano].Deficiência);
 
   dados = [{
     "2010": {
@@ -529,34 +564,92 @@
   }
    
 
-  total = dados[0][pesquisa_ano].Total.toLocaleString('pt-BR');
+  dados_rendimento_anuais = {
+    var dados_rendimento_anuais = {
+      "2010": {
+        "Aprovação": (filtered_rendimento_anuais[0].D).toFixed(2),
+        "Reprovação": (filtered_rendimento_anuais[0].E).toFixed(2),
+        "Abandono": (filtered_rendimento_anuais[0].F).toFixed(2),
+      },
+      "2011": {
+        "Aprovação": (filtered_rendimento_anuais[0].G).toFixed(2),
+        "Reprovação": (filtered_rendimento_anuais[0].H).toFixed(2),
+        "Abandono": (filtered_rendimento_anuais[0].I).toFixed(2),
+      },
+      "2012": {
+        "Aprovação": (filtered_rendimento_anuais[0].J).toFixed(2),
+        "Reprovação": (filtered_rendimento_anuais[0].K).toFixed(2),
+        "Abandono": (filtered_rendimento_anuais[0].L).toFixed(2),
+      },
+      "2013": {
+        "Aprovação": (filtered_rendimento_anuais[0].M).toFixed(2),
+        "Reprovação": (filtered_rendimento_anuais[0].N).toFixed(2),
+        "Abandono": (filtered_rendimento_anuais[0].O).toFixed(2),
+      },
+      "2014": {
+        "Aprovação": (filtered_rendimento_anuais[0].P).toFixed(2),
+        "Reprovação": (filtered_rendimento_anuais[0].Q).toFixed(2),
+        "Abandono": (filtered_rendimento_anuais[0].R).toFixed(2),
+      },
+      "2015": {
+        "Aprovação": (filtered_rendimento_anuais[0].S).toFixed(2),
+        "Reprovação": (filtered_rendimento_anuais[0].T).toFixed(2),
+        "Abandono": (filtered_rendimento_anuais[0].U).toFixed(2),
+      },
+      "2016": {
+        "Aprovação": (filtered_rendimento_anuais[0].V).toFixed(2),
+        "Reprovação": (filtered_rendimento_anuais[0].W).toFixed(2),
+        "Abandono": (filtered_rendimento_anuais[0].X).toFixed(2),
+      },
+      "2017": {
+        "Aprovação": (filtered_rendimento_anuais[0].Y).toFixed(2),
+        "Reprovação": (filtered_rendimento_anuais[0].Z).toFixed(2),
+        "Abandono": (filtered_rendimento_anuais[0].AA).toFixed(2),
+      },
+      "2018": {
+        "Aprovação": (filtered_rendimento_anuais[0].AB).toFixed(2),
+        "Reprovação": (filtered_rendimento_anuais[0].AC).toFixed(2),
+        "Abandono": (filtered_rendimento_anuais[0].AD).toFixed(2),
+      },
+      "2019": {
+        "Aprovação": (filtered_rendimento_anuais[0].AE).toFixed(2),
+        "Reprovação": (filtered_rendimento_anuais[0].AF).toFixed(2),
+        "Abandono": (filtered_rendimento_anuais[0].AG).toFixed(2),
+      },
+      "2020": {
+        "Aprovação": (filtered_rendimento_anuais[0].AH).toFixed(2),
+        "Reprovação": (filtered_rendimento_anuais[0].AI).toFixed(2),
+        "Abandono": (filtered_rendimento_anuais[0].AJ).toFixed(2),
+      },
+      "2021": {
+        "Aprovação": (filtered_rendimento_anuais[0].AK).toFixed(2),
+        "Reprovação": (filtered_rendimento_anuais[0].AL).toFixed(2),
+        "Abandono": (filtered_rendimento_anuais[0].AM).toFixed(2),
+      }
+    }
+    return dados_rendimento_anuais;
+  }
 
-  total_masculina = dados[0][pesquisa_ano].Masculina.toLocaleString('pt-BR');
-  total_masculina_porcentagem = calculateTotalPercentage(dados[0][pesquisa_ano].Masculina);
+   dados_distorcao_anuais = {
+    var dados_distorcao_anuais = {
+      "2010": (filtered_distorcao_anuais[0].D).toFixed(2),
+      "2011": (filtered_distorcao_anuais[0].E).toFixed(2),
+      "2012": (filtered_distorcao_anuais[0].F).toFixed(2),
+      "2013": (filtered_distorcao_anuais[0].G).toFixed(2),
+      "2014": (filtered_distorcao_anuais[0].H).toFixed(2),
+      "2015": (filtered_distorcao_anuais[0].I).toFixed(2),
+      "2016": (filtered_distorcao_anuais[0].J).toFixed(2),
+      "2017": (filtered_distorcao_anuais[0].K).toFixed(2),
+      "2018": (filtered_distorcao_anuais[0].L).toFixed(2),
+      "2019": (filtered_distorcao_anuais[0].M).toFixed(2),
+      "2020": (filtered_distorcao_anuais[0].N).toFixed(2),
+      "2021": (filtered_distorcao_anuais[0].O).toFixed(2),
+      "2022": (filtered_distorcao_anuais[0].P).toFixed(2),
+    }
+    return dados_distorcao_anuais;
+  }
 
-  total_feminina = dados[0][pesquisa_ano].Feminina.toLocaleString('pt-BR');
-  total_feminina_porcentagem = calculateTotalPercentage(dados[0][pesquisa_ano].Feminina);
-
-  total_naodeclarada = dados[0][pesquisa_ano].Nãodeclarada.toLocaleString('pt-BR');
-  total_naodeclarada_porcentagem = calculateTotalPercentage(dados[0][pesquisa_ano].Nãodeclarada);
-
-  total_branca = dados[0][pesquisa_ano].Branca.toLocaleString('pt-BR');
-  total_branca_porcentagem = calculateTotalPercentage(dados[0][pesquisa_ano].Branca);
-
-  total_preta = dados[0][pesquisa_ano].Preta.toLocaleString('pt-BR');
-  total_preta_porcentagem = calculateTotalPercentage(dados[0][pesquisa_ano].Preta);
-
-  total_parda = dados[0][pesquisa_ano].Parda.toLocaleString('pt-BR');
-  total_parda_porcentagem = calculateTotalPercentage(dados[0][pesquisa_ano].Parda);
-
-  total_amarela = dados[0][pesquisa_ano].Amarela.toLocaleString('pt-BR');
-  total_amarela_porcentagem = calculateTotalPercentage(dados[0][pesquisa_ano].Amarela);
-
-  total_indigena = dados[0][pesquisa_ano].Indígena.toLocaleString('pt-BR');
-  total_indigena_porcentagem = calculateTotalPercentage(dados[0][pesquisa_ano].Indígena);
-
-  total_deficiencia = dados[0][pesquisa_ano].Deficiência.toLocaleString('pt-BR');
-  total_deficiencia_porcentagem = calculateTotalPercentage(dados[0][pesquisa_ano].Deficiência);
+ 
 
 ```
 
