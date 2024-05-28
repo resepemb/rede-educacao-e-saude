@@ -124,6 +124,74 @@ Por genêro
 
 :::
 
+```{ojs}
+//| output: false
+ 
+  document.getElementById('Aprovacao').style.backgroundColor = getPositionColor(posicao_aprovacao);
+  document.getElementById('Reprovacao').style.backgroundColor = getPositionColor(posicao_reprovacao);
+  document.getElementById('Abandono').style.backgroundColor = getPositionColor(posicao_abandono);
+ 
+```
+
+:::{.d-flex .justify-content-between .text-center .gap-3 .flex-column .flex-md-row}
+
+::: {.valuebox .flex-fill .my-2  .rounded-2 .pt-2 id="Aprovacao"} 
+
+  Aprovação
+
+:::{.cityNumber}
+ 
+ ${posicao_aprovacao}ª
+ 
+:::
+
+:::{.cityPercent}
+
+(De 417ª Posições)
+
+:::
+
+:::
+
+::: {.valuebox .flex-fill .my-2   .rounded-2 .pt-2 id="Reprovacao"} 
+  Reprovação
+
+
+:::{.cityNumber}
+
+  ${posicao_reprovacao}ª
+
+:::
+
+:::{.cityPercent}
+
+(De 417ª Posições)
+
+:::
+
+:::
+
+
+::: {.valuebox .flex-fill .my-2 .rounded-2 .pt-2 id="Abandono"} 
+  Abandono
+
+:::{.cityNumber}
+
+  ${posicao_abandono}ª
+ 
+:::
+
+:::{.cityPercent}
+
+(De 417ª Posições)
+
+:::
+
+::: 
+
+::: 
+
+
 :::
 
 
@@ -364,15 +432,24 @@ Quantidade de Matrículas em ${pesquisa_ano}
 
 :::
 
-:::{.g-col-12 .g-col-sm-6 .border .border-primary .rounded .px-3}
+:::{.g-col-12 .g-col-sm-6 .pt-2}
+
+
+:::{.border .border-primary .rounded .px-3}
 
 :::{.fw-bold .fs-3}
-Texto sobre quantidade de matrículas
+
+Como os dados são coletados ?
+
 :::
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget lobortis ligula, sed aliquet metus. Nullam urna erat, maximus sed ligula nec, eleifend pellentesque enim. Nullam eros mauris, auctor in euismod gravida, egestas ut sem. Maecenas venenatis mauris et felis ultrices feugiat. Cras convallis dui eu ex iaculis tristique vitae faucibus enim. Duis non nisl sit amet ex luctus porttitor vel vel orci. Vestibulum pulvinar elit ut molestie volutpat. Vestibulum sagittis enim sit amet metus bibendum euismod. Vestibulum purus ex, tempus a aliquet ac, auctor vitae lacus.
+O Censo Escolar é o principal instrumento de coleta de informações da educação básica e a mais importante pesquisa estatística educacional brasileira. É coordenado pelo Inep e realizado em regime de colaboração entre as secretarias estaduais e municipais de educação e com a participação de todas as escolas públicas e privadas do país.
 
-Nullam pulvinar libero lorem, at accumsan elit pulvinar ut. Suspendisse fringilla sed libero eu sodales. Vivamus egestas tincidunt massa et sagittis. Quisque malesuada est et quam auctor, ut finibus justo dictum. Nunc lobortis hendrerit sagittis. Aliquam augue ipsum, aliquet eget ultrices et, tincidunt eu tellus. Aliquam elit felis, facilisis non turpis in, vulputate luctus tellus. Etiam dignissim pharetra massa sed dictum. Donec laoreet dictum convallis. Donec consectetur vitae tellus nec egestas. Curabitur id accumsan neque. Mauris condimentum tellus nec leo sodales, et congue justo consequat.
+O Censo Escolar é realizado anualmente e a declaração é obrigatória para todas as escolas públicas e privadas do país. Além disso, é regulamentado por instrumentos normativos que instituem a obrigatoriedade, os prazos, os responsáveis e suas responsabilidades, bem como os procedimentos para realização de todo o processo de coleta de dados.
+
+Saiba mais sobre em: [Censo Escolar - Inep](https://www.gov.br/inep/pt-br/areas-de-atuacao/pesquisas-estatisticas-e-indicadores/censo-escolar).
+
+:::
 
 :::
 
@@ -572,20 +649,33 @@ viewof radioDistorcaoBar = html`
 :::
 
 
-:::{id="infoDistorcao" .g-col-12 .g-col-sm-6 .border .border-primary .rounded .px-3}
+:::{id="infoDistorcao" .g-col-12 .g-col-sm-6 .pt-2}
 
-:::{.fw-bold .fs-3}
-Texto sobre a distorção idade/série
+:::{.border .border-primary .rounded .px-3}
+
+
+:::{.fw-bold .fs-3 }
+
+O que é a distorção idade-série?
+
+
 :::
-(contabilizados estudantes com 19 anos ou mais)
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget lobortis ligula, sed aliquet metus. Nullam urna erat, maximus sed ligula nec, eleifend pellentesque enim. Nullam eros mauris, auctor in euismod gravida, egestas ut sem. Maecenas venenatis mauris et felis ultrices feugiat. Cras convallis dui eu ex iaculis tristique vitae faucibus enim. Duis non nisl sit amet ex luctus porttitor vel vel orci. Vestibulum pulvinar elit ut molestie volutpat. Vestibulum sagittis enim sit amet metus bibendum euismod. Vestibulum purus ex, tempus a aliquet ac, auctor vitae lacus.
+A distorção idade-série é a proporção de alunos com mais de 2 anos de atraso escolar.
 
-Nullam pulvinar libero lorem, at accumsan elit pulvinar ut. Suspendisse fringilla sed libero eu sodales. Vivamus egestas tincidunt massa et sagittis. Quisque malesuada est et quam auctor, ut finibus justo dictum. Nunc lobortis hendrerit sagittis. Aliquam augue ipsum, aliquet eget ultrices et, tincidunt eu tellus. Aliquam elit felis, facilisis non turpis in, vulputate luctus tellus. Etiam dignissim pharetra massa sed dictum. Donec laoreet dictum convallis. Donec consectetur vitae tellus nec egestas. Curabitur id accumsan neque. Mauris condimentum tellus nec leo sodales, et congue justo consequat.
+O cálculo da distorção idade-série é realizado a partir de dados coletados no [Censo Escolar](https://www.gov.br/inep/pt-br/areas-de-atuacao/pesquisas-estatisticas-e-indicadores/censo-escolar). Quando o aluno reprova ou abandona os estudos por dois anos ou mais e retorna à escola, ele precisa repetir uma mesma série para não prejudicar a progressão dos conteúdos.
+
+Nessa situação, ele dá continuidade aos estudos, mas com defasagem em relação à idade considerada adequada para cada ano de estudo, de acordo com o que propõe a legislação educacional do país. Trata-se de um aluno que será contabilizado na situação de distorção idade-série.
+
+Observação: Os dados em exibição são de estudantes com 19 anos ou mais.
+
+
+Saiba mais sobre em: [QEdu Conteúdos](https://conteudos.qedu.org.br/academia/distorcao-idade-serie/).
 
 :::
 
 
+:::
 
 
 :::{id="dadosRendimento" .g-col-12 .g-col-sm-6}
@@ -803,15 +893,26 @@ viewof radioRendimentoBar = html`
 :::
 
 
-:::{id="infoRendimento" .g-col-12 .g-col-sm-6 .border .border-primary .rounded .px-3}
+:::{id="infoRendimento" .g-col-12 .g-col-sm-6 .pt-2}
+
+
+:::{.border .border-primary .rounded .px-3}
 
 :::{.fw-bold .fs-3}
-Texto sobre o rendimento escolar
+
+O que são as taxas de rendimento escolar ?
+
 :::
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget lobortis ligula, sed aliquet metus. Nullam urna erat, maximus sed ligula nec, eleifend pellentesque enim. Nullam eros mauris, auctor in euismod gravida, egestas ut sem. Maecenas venenatis mauris et felis ultrices feugiat. Cras convallis dui eu ex iaculis tristique vitae faucibus enim. Duis non nisl sit amet ex luctus porttitor vel vel orci. Vestibulum pulvinar elit ut molestie volutpat. Vestibulum sagittis enim sit amet metus bibendum euismod. Vestibulum purus ex, tempus a aliquet ac, auctor vitae lacus.
+As taxas de rendimento escolar são informações produzidas anualmente pelo Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira (Inep), por meio dos dados coletados pelo Censo Escolar da Educação Básica, e são fundamentais para a verificação e o acompanhamento dos dados da escola e do município.
 
-Nullam pulvinar libero lorem, at accumsan elit pulvinar ut. Suspendisse fringilla sed libero eu sodales. Vivamus egestas tincidunt massa et sagittis. Quisque malesuada est et quam auctor, ut finibus justo dictum. Nunc lobortis hendrerit sagittis. Aliquam augue ipsum, aliquet eget ultrices et, tincidunt eu tellus. Aliquam elit felis, facilisis non turpis in, vulputate luctus tellus. Etiam dignissim pharetra massa sed dictum. Donec laoreet dictum convallis. Donec consectetur vitae tellus nec egestas. Curabitur id accumsan neque. Mauris condimentum tellus nec leo sodales, et congue justo consequat.
+O cálculo das taxas de rendimento tem como referência as informações de rendimento e movimento dos alunos coletadas na segunda etapa do Censo Escolar, denominada Situação do Aluno. Nessa etapa, os
+respondentes preenchem as informações de rendimento (“aprovado” ou “reprovado”), movimento (“falecido”, “deixou de frequentar” ou “transferido”), curso em andamento e sem movimentação dos alunos que foram declarados na Matrícula Inicial do Censo Escolar (primeira etapa).
+
+Saiba mais sobre em: [Taxas de rendimento escolar - Inep](https://download.inep.gov.br/educacao_basica/educacenso/situacao_aluno/documentos/2021/taxas_de_rendimento_escolar_final.pdf).
+
+:::
+
 
 :::
 
