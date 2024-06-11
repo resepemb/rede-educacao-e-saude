@@ -11,7 +11,7 @@ const scope = self.registration.scope;
 precacheAndRoute([
     {url: scope+'index.html', revision: '02'},
     {url: scope+'404.html', revision: '02'},
-    {url: scope+'municipio.html', revision: '02'},
+    {url: scope+'municipio.html', revision: '03'},
     {url: scope+'sobre.html', revision: '02'},
 ]);
 
