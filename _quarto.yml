@@ -35,6 +35,8 @@ website:
         text: Sobre 
       - icon: instagram
         href: https://instagram.com/rede_de_educacao_e_saude_
+      - icon: youtube
+        href: https://www.youtube.com/@RedeEducacaoeSaudeemEscolasPub
 
 format:
   html:
