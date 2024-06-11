@@ -1,19 +1,122 @@
 ---
-title: "Mapa regional"
 format:
   html:
-    toc: false
-    echo: false
-    keep-hidden: true
-    
+    include-in-header:
+      - text: |
+          <link rel="manifest" href="/static/manifest.json">
+    include-after-body: 
+      file: 'loadserviceworker.html'
 ---
 
-#### Escolha um município para visualizar os dados
 
-::: {.card}
+{{< include _functions.qmd >}}
+
+::: {.grid .mx-5 .px-4 .my-3 .bg-primary .rounded}
+
+:::{ .g-col-12  .d-flex .fs-1 .flex-column .sloganMainPage .align-items-start .pt-2 .flex-wrap}
+
+Informações de fácil acesso.
+
+Até mesmo offline.
+
+:::
+
+::: {.g-col-12 } 
+
+:::{.pb-3}
+
+:::{.input-group} 
+
+:::{.input-group-text  .bi-search .inputSearchLeft}
+ 
+
+:::
+
+```{ojs}
+  viewof textInput = html`<input type="search" class="form-control inputSearchRight" id="searchCity" placeholder="Digite o Município" name="q">`
+
+  data = FileAttachment("files/Matriculas 2010 a 2022 ID.xlsx").xlsx();
+
+  searchCityFilter = data.sheet("id").filter(function(element) { 
+
+    if (textInput.trim() === ""){
+      return false;
+    }
+
+    var normalizedElementA = element.A.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+    var normalizedTextInput = textInput.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+
+    return normalizedElementA.startsWith(normalizedTextInput);
+  })
+
+  
+  hideSearch =  {
+    if(textInput == "" || searchCityFilter.length == 0){
+      changeVisible("searchTab", false);
+      return;
+    }
+  }
+  
+  showSearch =  {
+    if (searchCityFilter.length > 0){
+      changeVisible("searchTab", true);
+      return;
+    }
+  }
+
+```
+
+
+:::
+
+
+:::
+
+::: {id="searchTab"}
+
+::: {id="searchListGroup" .list-group .pb-3}
 
 ```{ojs}
 
+  updateSearch = function () {
+    document.getElementById("searchListGroup").replaceChildren();
+
+    for (let i = 0; i < 5; i++) {
+      const element = searchCityFilter[i];
+
+      const para = document.createElement("a");
+      para.setAttribute("href", location+"municipio.html?id=" + element.B);
+      para.classList.add("list-group-item");
+      para.classList.add("list-group-item-action");
+
+      const node = document.createTextNode(element.A);
+      para.appendChild(node);
+
+      document.getElementById("searchListGroup").appendChild(para);
+    }
+    
+  }
+
+  updateSearch();
+```
+
+:::
+
+:::
+
+:::
+
+:::
+
+
+::: {.grid .mx-5 .my-3  .rounded .vh-100 }
+
+:::{ .g-col-12}
+
+::: {.card}
+
+
+```{ojs}
 json = FileAttachment("files/geojs_bahia.json").json()
 
 html`<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
@@ -37,12 +140,12 @@ viewof map = {
     style: {
     color: 'green', 
     weight: 1 
-  },
+  }, 
       onEachFeature: function (feature, layer) {
     const popupContent = `
-      <button onclick="window.location.href = '${location}municipio.html?id=' + ${feature.properties.id}+ '&ano=2020' ;">Visualizar dados de ${feature.properties.name}</button>
+      <button onclick="window.location.href = '${location}municipio.html?id=' + ${feature.properties.id};">Visualizar dados de ${feature.properties.name}</button>
     `;
-     
+
     layer.bindPopup(popupContent);
   }
   }).addTo(map);
@@ -51,4 +154,12 @@ viewof map = {
   return mapDiv;
 }
 ```
+
 :::
+
+:::
+
+:::
+
+
+{{< include _pagefooter.qmd >}}

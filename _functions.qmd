@@ -1,0 +1,79 @@
+
+```{ojs}
+//| output: false
+
+function calculateTotalPercentage(n1){
+  let percent = ((n1/dados[0][pesquisa_ano].Total) * 100).toFixed(2)
+
+  if (isNaN(percent)){
+    percent = "-"
+  }
+
+  return percent.replace(".", ",");
+}
+
+
+function fixNumber(number, decimal){
+  if (isNaN(number)){
+    return "-";
+  }
+
+  return number.toFixed(decimal)
+}
+
+
+function clearChartGroup(chartGroup, chartID, chartWidth, chartHeight){
+  try {
+    document.getElementById(chartGroup).replaceChildren();
+    const para = document.createElement("canvas");
+    para.setAttribute("id", chartID);
+    para.setAttribute("width", chartWidth);
+    para.setAttribute("height", chartHeight);
+
+    document.getElementById(chartGroup).appendChild(para);
+  } catch (error) {
+    throw console.error();
+  }
+  
+}
+
+
+function changeVisible(element, value){
+    if(value){
+      if (document.getElementById(element).classList.contains("d-none")){
+        document.getElementById(element).classList.remove("d-none");  
+      }
+    }else{
+      if (!document.getElementById(element).classList.contains("d-none")){
+        document.getElementById(element).classList.add("d-none");    
+      } 
+    } 
+}
+
+
+function getOrdemAnual(list, id){
+  var index = list.findIndex(function(item) {
+    return item.id == id;
+  }) + 1;
+
+  return index;
+}
+
+
+
+function getPositionColor(position){
+  if (isNaN(position)){
+    return "grey";
+  }
+
+  if(Number(position) < 21){
+    return "darkgreen";
+  }
+  else if(Number(position) < 251){
+    return "darkorange";
+  }
+  else{
+    return "darkred";
+  }
+}
+```

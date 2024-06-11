@@ -1,32 +1,58 @@
 project:
   type: website
+  post-render:
+    - "cp -rnv static/images/. _site/static/images"
+    - "cp -rnv static/requests_content/. _site/static/requests_content"
+    - "cp sw.js _site/"
   preview:
     # host: 0.0.0.0
     port: 4200
-    browser: true
+    browser: false
 
 
 website:
   title: "Rede de Educação e Saúde"
   search: false
   navbar:
-    left:
-      - href: index.qmd
-        text: Página inicial
-      - href: municipio.qmd
-        text: Dados
-      - sobre.qmd
-      
-    right: 
+
+    right:
+        # Substituir no futuro com as respectivas páginas
+      - href: ./proeficiencia/
+        text: Proeficiência
+      - text: Publicações
+        menu: 
+          - href: ./publicacoes_gerais/
+            text: Publicações Gerais
+          - href: ./artigos/
+            text: Artigos
+      - text: Cursos de Formação
+        menu: 
+          - href: ./curso_especializacao/
+            text: Curso de especialização
+          - href: ./jovem_doutor/
+            text: Jovem Doutor
+      - href: sobre.qmd
+        text: Sobre 
       - icon: instagram
         href: https://instagram.com/rede_de_educacao_e_saude_
+      - icon: youtube
+        href: https://www.youtube.com/@RedeEducacaoeSaudeemEscolasPub
 
 format:
   html:
-    theme: minty
+    toc: false
+    echo: false
+    keep-hidden: true
+    smooth-scroll: true
+    theme: 
+      - minty
+      - custom.scss
     css: styles.css
-    toc: true
-
+    page-layout: custom
+    
+    
+    
+    
 
 
 

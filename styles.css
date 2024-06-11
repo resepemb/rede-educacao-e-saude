@@ -1,5 +1,70 @@
 /* css styles */
 
-.navbar{
+.subtopic{
+    font-weight: 600;
+    font-size: medium;
+    margin-bottom: -1.25rem !important;
+}
+
+input[type="radio"] {
+    margin: 6px;
+    padding: 6px;
+}
+
+.cityName{
+    font-weight: 600;
+    font-size: 60px;
+}
+
+.cityNumber{
+    font-size: 300%;
+    font-weight: 600;
+    margin-top: -5px !important;
+}
+
+
+.cityPercent{
+    font-size: medium;
+    margin-top: -5px;
+}
+
+
+.valuebox{
+    font-weight: 600;
     background-color: darkcyan;
+    color: white;
+}
+
+.valuebox p {
+    margin-bottom: 0 !important;
+}
+
+
+.sloganMainPage{
+    font-weight: 600;
+    font-weight: bold;
+    line-height: 1;
+}
+
+
+.inputSearchLeft{
+    border-top-left-radius: .4rem;
+    border-bottom-left-radius: .4rem;
+}
+
+.inputSearchRight{
+    border-top-right-radius: .4rem ;
+    border-bottom-right-radius: .4rem ;
+    width: 30vw !important;
+    min-width: 140px !important;
+    max-width: 75vw !important;
+}
+
+.footerBorders{
+    border-top-left-radius: .9rem;
+    border-top-right-radius: .9rem ;
+}
+
+.cell-output-display{
+    overflow-x: visible !important
 }

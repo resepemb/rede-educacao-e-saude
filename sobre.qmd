@@ -1,5 +1,19 @@
----
-title: "Sobre"
----
+
+:::{.grid .mx-5 .vh-100}
+
+:::{.g-col}
+
+:::{.fs-1 .fw-bold}
+
+Sobre
+
+:::
 
 Sobre este site
+
+
+:::
+
+:::
+
+{{< include _pagefooter.qmd >}}

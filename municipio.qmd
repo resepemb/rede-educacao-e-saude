@@ -1,142 +1,931 @@
 ---
-format: dashboard
+format: 
+  html:
+    include-in-header:
+      - text: |
+          <link rel="manifest" href="/static/manifest.json">
+    include-after-body: 
+      file: 'loadserviceworker.html'
 --- 
+
 {{< include _dados.qmd >}}
  
-## {height=20%}
-::: {.valuebox color="white"} 
-  Município
 
-  ${nomeCidade}
+::: {.grid .mx-5 .my-3} 
+
+::: {.g-col-12 .g-col-sm-6}
+
+::: { .text-start } 
+
+:::{.subtopic}
+
+Município
+
 :::
   
-## {height=15%}
+:::{.cityName .fw-bold }
 
-::: {.valuebox  color="blue" } 
-  Total
+${nomeCidade}
 
-  ${total}
+:::
+  
+:::
 
-  100%
+:::
+
+:::{.g-col-12 .g-col-sm-6 .d-flex .justify-content-center .justify-content-sm-end .align-self-center}
+
+:::{.fw-bold}
+
+Selecione o ano de pesquisa desejado    
+
+```{ojs}
+viewof pesquisa_ano = html`
+<select id="pesquisa_ano" class="form-select" >
+  <option value="2010" selected>2010</option>
+  <option value="2011">2011</option>
+  <option value="2012">2012</option>
+  <option value="2013">2013</option>
+  <option value="2014">2014</option>
+  <option value="2015">2015</option>
+  <option value="2016">2016</option>
+  <option value="2017">2017</option>
+  <option value="2018">2018</option>
+  <option value="2019">2019</option>
+  <option value="2020">2020</option>
+</select>
+`
+```
+
+:::
+ 
+
+:::
+
+::: 
+
+::: {.fs-2 .fw-bold .mx-5}
+
+Matrículas no Ensino Médio
+
 :::
 
 
-::: {.valuebox color="info" } 
-  Masculina
+:::{.grid .mx-5}
+
+
+::: {.g-col-12 .g-col-lg-6}
+
+::: {.subtopic } 
+
+Por genêro
+
+:::
+
+:::{.d-flex .text-center .flex-column .flex-lg-row .gap-3 }
+ 
+
+::: {.valuebox .flex-fill .my-2 .rounded-2 .pt-2} 
+
+  Masculino
+
+:::{.cityNumber}
 
   ${total_masculina}
 
-  ${total_masculina_porcentagem} %
 :::
 
-::: {.valuebox  color="info"} 
-  Feminina
+:::{.cityPercent}
+
+  (${total_masculina_porcentagem}%)
+
+:::
+
+:::
+
+
+::: {.valuebox .flex-fill  .my-2  .rounded-2 .pt-2}  
+  Feminino
+
+:::{.cityNumber}
 
   ${total_feminina}
 
-  ${total_feminina_porcentagem} %
+:::
+
+:::{.cityPercent}
+
+  (${total_feminina_porcentagem}%)
+
+:::
+
 :::
 
 
-::: {.valuebox  color="info" } 
-  Nãodeclarada
+:::
+
+```{ojs}
+//| output: false
+ 
+  document.getElementById('Aprovacao').style.backgroundColor = getPositionColor(posicao_aprovacao);
+  document.getElementById('Reprovacao').style.backgroundColor = getPositionColor(posicao_reprovacao);
+  document.getElementById('Abandono').style.backgroundColor = getPositionColor(posicao_abandono);
+ 
+```
+
+::: {.subtopic } 
+
+Posicionamento educacional
+
+:::
+
+:::{.d-flex .justify-content-between .text-center .gap-3 .flex-column .flex-lg-row}
+
+
+::: {.valuebox .flex-fill .my-2  .rounded-2 .pt-2 id="Aprovacao"} 
+
+  Aprovação
+
+:::{.cityNumber}
+ 
+ ${posicao_aprovacao}ª
+ 
+:::
+
+:::{.cityPercent}
+
+(De 417ª Posições)
+
+:::
+
+:::
+
+::: {.valuebox .flex-fill .my-2   .rounded-2 .pt-2 id="Reprovacao"} 
+  Reprovação
+
+
+:::{.cityNumber}
+
+  ${posicao_reprovacao}ª
+
+:::
+
+:::{.cityPercent}
+
+(De 417ª Posições)
+
+:::
+
+:::
+
+
+::: {.valuebox .flex-fill .my-2 .rounded-2 .pt-2 id="Abandono"} 
+  Abandono
+
+:::{.cityNumber}
+
+  ${posicao_abandono}ª
+ 
+:::
+
+:::{.cityPercent}
+
+(De 417ª Posições)
+
+:::
+
+::: 
+
+::: 
+
+
+:::
+
+
+::: {.g-col-12 .g-col-lg-6}
+
+::: {.subtopic} 
+
+Por raça/cor
+
+:::
+
+:::{.d-flex .text-center .flex-column}
+
+
+:::{.d-flex .justify-content-between .gap-3 .flex-column .flex-lg-row}
+
+::: {.valuebox .flex-fill .my-2  .rounded-2 .pt-2} 
+
+  Não declarada
+
+:::{.cityNumber}
 
   ${total_naodeclarada}
-
-  ${total_naodeclarada_porcentagem} %
 :::
 
- 
-::: {.valuebox  color="info" } 
+:::{.cityPercent}
+
+ (${total_naodeclarada_porcentagem}%)
+
+:::
+
+:::
+
+::: {.valuebox .flex-fill .my-2  .rounded-2 .pt-2} 
   Branca
- 
-  ${total_branca}
 
-  ${total_branca_porcentagem} %
+:::{.cityNumber}
+
+  ${total_branca}
+:::
+
+:::{.cityPercent}
+
+  (${total_branca_porcentagem}%)
+
+:::
+
 :::
 
 
-::: {.valuebox  color="info" } 
+::: {.valuebox .flex-fill .my-2 .rounded-2 .pt-2} 
   Preta
+
+:::{.cityNumber}
 
   ${total_preta}
 
-  ${total_preta_porcentagem} %
 :::
 
+:::{.cityPercent}
 
-::: {.valuebox  color="info" } 
+  (${total_preta_porcentagem}%)
+
+:::
+
+:::
+
+:::
+
+:::{.d-flex .gap-3 .flex-column .flex-lg-row }
+
+
+::: {.valuebox .flex-fill .my-2 .rounded-2 .pt-2} 
+
   Parda
+
+:::{.cityNumber}
 
   ${total_parda}
 
-  ${total_parda_porcentagem} %
+:::
+
+:::{.cityPercent}
+
+  (${total_parda_porcentagem}%)
+
 :::
 
 
-::: {.valuebox  color="info" } 
+:::
+
+
+::: {.valuebox  .flex-fill .my-2 .rounded-2 .pt-2} 
+
   Amarela
+
+:::{.cityNumber}
 
   ${total_amarela}
 
-  ${total_amarela_porcentagem} %
+:::
+
+:::{.cityPercent}
+
+  (${total_amarela_porcentagem}%)
+
+:::
+
 :::
 
 
-::: {.valuebox  color="info" } 
+::: {.valuebox  .flex-fill  .my-2  .rounded-2 .pt-2} 
   Indígena
+
+:::{.cityNumber}
 
   ${total_indigena}
 
-  ${total_indigena_porcentagem} %
 :::
- 
 
-::: {.valuebox  color="info" } 
+:::{.cityPercent}
+
+  (${total_indigena_porcentagem}%)
+
+:::
+
+:::
+
+::: {.valuebox  .flex-fill .my-2 .rounded-2 .pt-2} 
+
   Deficiência
+
+:::{.cityNumber}
 
   ${total_deficiencia}
 
-  ${total_deficiencia_porcentagem} %
+:::
+
+:::{.cityPercent}
+
+  (${total_deficiencia_porcentagem}%)
+
+:::
+
+:::
+
+:::
+
+:::
+
+
+:::
+
+:::
+
+
+:::{.mx-5 .fs-6 .fw-light}
+
+Fonte: INEP.
+
+::: 
+
+
+
+:::{.grid .pb-3 .mx-5 }
+
+:::{.g-col-12 .g-col-md-6}
+
+
+::: {.fw-bold .fs-3}
+Quantidade de Matrículas em ${pesquisa_ano} 
+
 :::
  
- 
-## Row {.tabset}
+:::{id="dadosMatriculas"}
 
 ```{ojs}
-//| title: 'Dados completos'
-viewof pesquisa_ano = Inputs.select(["2010", "2011", "2012", "2013","2014","2015","2016","2017", "2018","2019","2020"], {value: ano_pesquisa, label: "Ano de pesquisa"})
- 
-bar({
-  data: [{ name: "Total", '' :dados[0][pesquisa_ano].Total},
-  { name: "Masculina", '':  dados[0][pesquisa_ano].Masculina},
-  { name: "Feminina", '': dados[0][pesquisa_ano].Feminina},
-  { name: "Não declarada", '': dados[0][pesquisa_ano].Nãodeclarada},
-  { name: "Branca", '': dados[0][pesquisa_ano].Branca},
-  { name: "Preta", '': dados[0][pesquisa_ano].Preta},
-  { name: "Parda", '': dados[0][pesquisa_ano].Parda},
-  { name: "Amarela", '': dados[0][pesquisa_ano].Amarela},
-  { name: "Indígena",'':dados[0][pesquisa_ano].Indígena},
-  { name: "Deficiência", '':dados[0][pesquisa_ano].Deficiência},
-  ],
- 
-   
-  options: {
-    plugins: {
-      datalabels: {
-        color: 'white',
-        font: {
-          weight: 'bold'
-        },
-        formatter: function(x) {
-          return x.toLocaleString('pt-BR')
-        }
-      }
-    }
-  },
-   width: 900,
-  height: 375
-})  
+
+  updateMatriculasChart =  function (){  
+    
+      try {
+        clearChartGroup("dadosMatriculas", "matriculasChartBar", document.body.clientWidth*0.45, "320")
+
+        var chart = new chartjs.Chart(document.getElementById('matriculasChartBar'), {
+          type: 'bar',
+          data: {
+            labels: ['Total', 'Masculina', 'Feminina', 'Não declarada', 'Branca', 'Preta','Parda','Amarela','Indígena','Deficiência'],
+            datasets: [{
+              label: '',
+              data: [dados[0][pesquisa_ano].Total, dados[0][pesquisa_ano].Masculina, dados[0][pesquisa_ano].Feminina, dados[0][pesquisa_ano].Nãodeclarada, dados[0][pesquisa_ano].Branca,  dados[0][pesquisa_ano].Preta,dados[0][pesquisa_ano].Parda,dados[0][pesquisa_ano].Amarela,dados[0][pesquisa_ano].Indígena,dados[0][pesquisa_ano].Deficiência],
+              borderWidth: 1,
+              minBarLength: 10,
+              backgroundColor:'rgba(75, 192, 192, 0.2)',
+              borderColor: 'rgb(75, 192, 192)',
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false, 
+            plugins:{
+              title: {
+                display: false,
+                text:`Matriculas em ${pesquisa_ano}`,
+              },
+              legend: {
+                display: false,
+              },
+              tooltip:{
+                callbacks:{
+                  label: function(context) {
+                      return context.parsed.y.toLocaleString('pt-BR');
+                  }
+                }
+              },
+            },
+            scales: {
+              y: {
+                ticks: {
+                  callback: (value) => value.toLocaleString('pt-BR'),
+                },
+                beginAtZero: true,
+              }
+            },
+          }, 
+        });
+      } catch (error) {
+        console.log(error);
+      }    
+    return chart;
+  } 
+
+ updateMatriculasChart()
+  
+  
+```
+
+:::
+
+:::
+
+:::{.g-col-12 .g-col-md-6 .pt-2}
+
+
+:::{.border .border-primary .rounded .px-3}
+
+:::{.fw-bold .fs-3}
+
+Como os dados são coletados ?
+
+:::
+
+O Censo Escolar é o principal instrumento de coleta de informações da educação básica e a mais importante pesquisa estatística educacional brasileira. É coordenado pelo Inep e realizado em regime de colaboração entre as secretarias estaduais e municipais de educação e com a participação de todas as escolas públicas e privadas do país.
+
+O Censo Escolar é realizado anualmente e a declaração é obrigatória para todas as escolas públicas e privadas do país. Além disso, é regulamentado por instrumentos normativos que instituem a obrigatoriedade, os prazos, os responsáveis e suas responsabilidades, bem como os procedimentos para realização de todo o processo de coleta de dados.
+
+Saiba mais sobre em: [Censo Escolar - Inep](https://www.gov.br/inep/pt-br/areas-de-atuacao/pesquisas-estatisticas-e-indicadores/censo-escolar).
+
+:::
+
+:::
+
+
+:::{id="dadosDistorcao" .g-col-12 .g-col-md-6}
+
+:::{.fw-bold .fs-3}
+
+Taxa de distorção idade/série em ${pesquisa_ano}
+
+:::
+
+```{ojs}
+
+hideDistorcao =  {
+  changeVisible("dadosDistorcao", filtered_distorcao.length != 0);
+  changeVisible("infoDistorcao", filtered_distorcao.length != 0);
+  } 
+
+mutable valueDistorcao ="TotalGeral";
+
+updateValueDistorcao = {
+  const radioButtons = document.querySelectorAll('input[name="inlineRadioDistorcaoOptions"]');
+
+  for (const radioButton of radioButtons) {
+      radioButton.addEventListener('change', (event) => {
+          mutable valueDistorcao = event.target.value;
+      });
+  }
+}
+
+viewof radioDistorcaoBar = html`
+
+<div class="form-check form-check-inline row fs-5">
+  <input class="form-check-input" type="radio" name="inlineRadioDistorcaoOptions" id="inlineRadioDistorcao1" value="TotalGeral" checked="true">
+  <label class="form-check-label" for="inlineRadioDistorcao1">Total</label>
+</div>
+
+<div class="form-check form-check-inline row fs-5">
+  <input class="form-check-input" type="radio" name="inlineRadioDistorcaoOptions" id="inlineRadioDistorcao2" value="Masculino">
+  <label class="form-check-label" for="inlineRadioDistorcao2">Masculino</label>
+</div>
+
+<div class="form-check form-check-inline row fs-5">
+  <input class="form-check-input" type="radio" name="inlineRadioDistorcaoOptions" id="inlineRadioDistorcao3" value="Feminino">
+  <label class="form-check-label" for="inlineRadioDistorcao3">Feminino</label>
+</div>
+`
+
 ```
 
 
+
+
+:::{id="tabDistorcaoBar" }
+
+```{ojs}
+     
+   updateDistorcaoChartBar =  function (){  
+      
+      try {
+        clearChartGroup("tabDistorcaoBar", "distorcaoChartBar",document.body.clientWidth/2, "320")
+
+        var chart = new chartjs.Chart(document.getElementById('distorcaoChartBar'), {
+        type: 'bar',
+        data: 
+        {
+          labels: ['Total', 'Não declarado','Branca', 'Preta', 'Parda', 'Amarela', 'Indígena', 'Deficiência'],
+          datasets: [
+            {
+              label: '',
+              data: [dados_distorcao[pesquisa_ano][valueDistorcao].Total, dados_distorcao[pesquisa_ano][valueDistorcao].RacaNaoDeclarada, dados_distorcao[pesquisa_ano][valueDistorcao].Branca, dados_distorcao[pesquisa_ano][valueDistorcao].Preta, dados_distorcao[pesquisa_ano][valueDistorcao].Parda, dados_distorcao[pesquisa_ano][valueDistorcao].Amarela,dados_distorcao[pesquisa_ano][valueDistorcao].Indígena, dados_distorcao[pesquisa_ano][valueDistorcao].Deficiência],
+              backgroundColor: 'rgba(255, 99, 132, 0.2)',
+              borderColor: 'rgba(255, 99, 132, 1)',
+              borderWidth: 1,
+               minBarLength: 10,
+            }
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            tooltip: {
+                callbacks: {
+                    label: function(context) {
+                        let label = context.dataset.label || '';
+
+                        if (label) {
+                            label += ': ';
+                        }
+                        if (context.parsed.y !== null) {
+                            label += context.parsed.y + '%';
+                        }
+                        return label.replace(".", ",");
+                    }
+                },
+                
+            },
+            legend: {
+              display: false,
+            },
+          },
+          scales: {
+            x: {
+              stacked: true
+            },
+            y: {
+              stacked: true
+            }
+          }
+        }
+        });
+        } catch (error) {
+          console.log(error);
+      }    
+    return chart;
+  } 
+
+  updateDistorcaoChartBar()
+
+```
+
+
+:::
+
+
+
+:::{id="tabDistorcaoLine" }
+
+```{ojs}
+     
+  
+
+   updateDistorcaoChartLine =  function (){  
+      
+      try {
+        clearChartGroup("tabDistorcaoLine", "distorcaoChartLine",document.body.clientWidth/2, "320")
+
+        var chart = new chartjs.Chart(document.getElementById('distorcaoChartLine'), {
+        type: 'line',
+        data: 
+        {
+          labels: ['2010', '2011', '2012','2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021','2022'],
+          datasets: [
+            { 
+              label: 'Taxa de distorção idade/série',
+              data: [dados_distorcao_anuais['2010'], dados_distorcao_anuais['2011'], dados_distorcao_anuais['2012'], dados_distorcao_anuais['2013'], dados_distorcao_anuais['2014'], dados_distorcao_anuais['2015'], dados_distorcao_anuais['2016'], dados_distorcao_anuais['2017'], dados_distorcao_anuais['2018'], dados_distorcao_anuais['2019'], dados_distorcao_anuais['2020'], dados_distorcao_anuais['2021'], dados_distorcao_anuais['2022'],],
+              backgroundColor: 'rgba(255, 99, 132, 0.2)',
+              borderColor: 'rgba(255, 99, 132, 1)',
+            }
+          ],
+        },
+        options: {
+          responsive: true,
+          interaction: {
+            intersect: false,
+            axis: 'x'
+          },
+          maintainAspectRatio: false,
+          plugins: {
+            tooltip: {
+                callbacks: {
+                    label: function(context) {
+                        let label = context.dataset.label || '';
+
+                        if (label) {
+                            label += ': ';
+                        }
+                        if (context.parsed.y !== null) {
+                            label += context.parsed.y + '%';
+                        }
+                        return label.replace(".", ",");
+                    }
+                },
+                
+            },
+            legend: {
+              display: false,
+            },
+          },
+        }
+        });
+        } catch (error) {
+          console.log(error);
+      }    
+    return chart;
+  } 
+
+  updateDistorcaoChartLine()
+
+```
+
+
+:::
+
+:::
+
+
+:::{id="infoDistorcao" .g-col-12 .g-col-md-6 .pt-2}
+
+:::{.border .border-primary .rounded .px-3}
+
+
+:::{.fw-bold .fs-3 }
+
+O que é a distorção idade-série?
+
+
+:::
+
+A distorção idade-série é a proporção de alunos com mais de 2 anos de atraso escolar.
+
+O cálculo da distorção idade-série é realizado a partir de dados coletados no [Censo Escolar](https://www.gov.br/inep/pt-br/areas-de-atuacao/pesquisas-estatisticas-e-indicadores/censo-escolar). Quando o aluno reprova ou abandona os estudos por dois anos ou mais e retorna à escola, ele precisa repetir uma mesma série para não prejudicar a progressão dos conteúdos.
+
+Nessa situação, ele dá continuidade aos estudos, mas com defasagem em relação à idade considerada adequada para cada ano de estudo, de acordo com o que propõe a legislação educacional do país. Trata-se de um aluno que será contabilizado na situação de distorção idade-série.
+
+Observação: Os dados em exibição são de estudantes com 19 anos ou mais.
+
+
+Saiba mais sobre em: [QEdu Conteúdos](https://conteudos.qedu.org.br/academia/distorcao-idade-serie/).
+
+:::
+
+
+:::
+
+
+:::{id="dadosRendimento" .g-col-12 .g-col-md-6}
+
+:::{.fw-bold .fs-3}
+
+Taxa de rendimento em ${pesquisa_ano}
+
+:::
+
+```{ojs}
+
+hideRendimento =  {
+  changeVisible("dadosRendimento", filtered_rendimento.length != 0);
+  changeVisible("infoRendimento", filtered_rendimento.length != 0);
+  } 
+
+mutable valueRendimento ="TotalGeral";
+
+updateValueRendimento = {
+  const radioButtons = document.querySelectorAll('input[name="inlineRadioRendimentoOptions"]');
+
+  for (const radioButton of radioButtons) {
+      radioButton.addEventListener('change', (event) => {
+          mutable valueRendimento = event.target.value;
+      });
+  }
+}
+
+viewof radioRendimentoBar = html`
+
+<div class="form-check form-check-inline row fs-5">
+  <input class="form-check-input" type="radio" name="inlineRadioRendimentoOptions" id="inlineRadioRendimento1" value="TotalGeral" checked="true">
+  <label class="form-check-label" for="inlineRadioRendimento1">Total</label>
+</div>
+
+<div class="form-check form-check-inline row fs-5">
+  <input class="form-check-input" type="radio" name="inlineRadioRendimentoOptions" id="inlineRadioRendimento2" value="Masculino">
+  <label class="form-check-label" for="inlineRadioRendimento2">Masculino</label>
+</div>
+
+<div class="form-check form-check-inline row fs-5">
+  <input class="form-check-input" type="radio" name="inlineRadioRendimentoOptions" id="inlineRadioRendimento3" value="Feminino">
+  <label class="form-check-label" for="inlineRadioRendimento3">Feminino</label>
+</div>
+`
+
+```
+
+
+
+
+:::{id="tabRendimentoBar" }
+
+```{ojs}
+     
+   updateRendimentoChartBar =  function (){  
+      
+      try {
+        clearChartGroup("tabRendimentoBar", "rendimentoChartBar",document.body.clientWidth/2, "320")
+
+        var chart = new chartjs.Chart(document.getElementById('rendimentoChartBar'), {
+        type: 'bar',
+        data: 
+        {
+          labels: ['Total', 'Não declarado','Branca', 'Preta', 'Parda', 'Amarela', 'Indígena', 'Deficiência'],
+          datasets: [
+            {
+              label: 'Aprovação',
+              data: [dados_rendimento[pesquisa_ano][valueRendimento]["Total"].Aprovação, dados_rendimento[pesquisa_ano][valueRendimento]["RacaNaoDeclarada"].Aprovação, dados_rendimento[pesquisa_ano][valueRendimento]["Branca"].Aprovação, dados_rendimento[pesquisa_ano][valueRendimento]["Preta"].Aprovação, dados_rendimento[pesquisa_ano][valueRendimento]["Parda"].Aprovação, dados_rendimento[pesquisa_ano][valueRendimento]["Amarela"].Aprovação,dados_rendimento[pesquisa_ano][valueRendimento]["Indígena"].Aprovação, dados_rendimento[pesquisa_ano][valueRendimento]["Deficiência"].Aprovação],
+              backgroundColor: 'rgba(255, 99, 132, 0.2)',
+              borderColor: 'rgba(255, 99, 132, 1)',
+              borderWidth: 1,
+            },
+            {
+              label: 'Reprovação',
+              data: [dados_rendimento[pesquisa_ano][valueRendimento]["Total"].Reprovação, dados_rendimento[pesquisa_ano][valueRendimento]["RacaNaoDeclarada"].Reprovação, dados_rendimento[pesquisa_ano][valueRendimento]["Branca"].Reprovação, dados_rendimento[pesquisa_ano][valueRendimento]["Preta"].Reprovação, dados_rendimento[pesquisa_ano][valueRendimento]["Parda"].Reprovação, dados_rendimento[pesquisa_ano][valueRendimento]["Amarela"].Reprovação,dados_rendimento[pesquisa_ano][valueRendimento]["Indígena"].Reprovação, dados_rendimento[pesquisa_ano][valueRendimento]["Deficiência"].Reprovação],
+              backgroundColor: 'rgba(75, 192, 192, 0.2)',
+              borderColor: 'rgba(75, 192, 192, 1)',
+              borderWidth: 1,
+            },
+            {
+              label: 'Abandono',
+              data: [dados_rendimento[pesquisa_ano][valueRendimento]["Total"].Abandono, dados_rendimento[pesquisa_ano][valueRendimento]["RacaNaoDeclarada"].Abandono, dados_rendimento[pesquisa_ano][valueRendimento]["Branca"].Abandono, dados_rendimento[pesquisa_ano][valueRendimento]["Preta"].Abandono, dados_rendimento[pesquisa_ano][valueRendimento]["Parda"].Abandono, dados_rendimento[pesquisa_ano][valueRendimento]["Amarela"].Abandono,dados_rendimento[pesquisa_ano][valueRendimento]["Indígena"].Abandono, dados_rendimento[pesquisa_ano][valueRendimento]["Deficiência"].Abandono],
+              backgroundColor: 'rgba(205, 205, 133, 0.2)',
+              borderColor: 'rgba(205, 205, 133, 1)',
+              borderWidth: 1,
+            },
+            
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+           plugins: {
+            tooltip: {
+                callbacks: {
+                    label: function(context) {
+                        let label = context.dataset.label || '';
+
+                        if (label) {
+                            label += ': ';
+                        }
+                        if (context.parsed.y !== null) {
+                            label += context.parsed.y + '%';
+                        }
+                        return label.replace(".", ",");;
+                    }
+                }
+            }
+        },
+          scales: {
+            x: {
+              stacked: true
+            },
+            y: {
+              stacked: true
+            }
+          }
+        }
+        });
+        } catch (error) {
+          console.log(error);
+      }    
+    return chart;
+  } 
+
+  updateRendimentoChartBar()
+
+```
+
+
+:::
+
+
+:::{id="tabRendimentoLine" }
+
+```{ojs}
+     
+  
+
+   updateRendimentoChartLine =  function (){  
+      
+      try {
+        clearChartGroup("tabRendimentoLine", "rendimentoChartLine",document.body.clientWidth/2, "320")
+
+        var chart = new chartjs.Chart(document.getElementById('rendimentoChartLine'), {
+        type: 'line',
+        data: 
+        {
+          labels: ['2010', '2011', '2012','2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021'],
+          datasets: [
+            { 
+              label: 'Aprovação',
+              data: [dados_rendimento_anuais['2010'].Aprovação, dados_rendimento_anuais['2011'].Aprovação, dados_rendimento_anuais['2012'].Aprovação, dados_rendimento_anuais['2013'].Aprovação, dados_rendimento_anuais['2014'].Aprovação, dados_rendimento_anuais['2015'].Aprovação, dados_rendimento_anuais['2016'].Aprovação, dados_rendimento_anuais['2017'].Aprovação, dados_rendimento_anuais['2018'].Aprovação, dados_rendimento_anuais['2019'].Aprovação, dados_rendimento_anuais['2020'].Aprovação, dados_rendimento_anuais['2021'].Aprovação,],
+              backgroundColor: 'rgba(255, 99, 132, 0.2)',
+              borderColor: 'rgba(255, 99, 132, 1)',
+            },
+            {
+              label: 'Reprovação',
+              data: [dados_rendimento_anuais['2010'].Reprovação, dados_rendimento_anuais['2011'].Reprovação, dados_rendimento_anuais['2012'].Reprovação, dados_rendimento_anuais['2013'].Reprovação, dados_rendimento_anuais['2014'].Reprovação, dados_rendimento_anuais['2015'].Reprovação, dados_rendimento_anuais['2016'].Reprovação, dados_rendimento_anuais['2017'].Reprovação, dados_rendimento_anuais['2018'].Reprovação, dados_rendimento_anuais['2019'].Reprovação, dados_rendimento_anuais['2020'].Reprovação, dados_rendimento_anuais['2021'].Reprovação,],
+              backgroundColor: 'rgba(75, 192, 192, 0.2)',
+              borderColor: 'rgba(75, 192, 192, 1)',
+            },
+            {
+              label: 'Abandono',
+              data: [dados_rendimento_anuais['2010'].Abandono, dados_rendimento_anuais['2011'].Abandono, dados_rendimento_anuais['2012'].Abandono, dados_rendimento_anuais['2013'].Abandono, dados_rendimento_anuais['2014'].Abandono, dados_rendimento_anuais['2015'].Abandono, dados_rendimento_anuais['2016'].Abandono, dados_rendimento_anuais['2017'].Abandono, dados_rendimento_anuais['2018'].Abandono, dados_rendimento_anuais['2019'].Abandono, dados_rendimento_anuais['2020'].Abandono, dados_rendimento_anuais['2021'].Abandono,],
+              backgroundColor: 'rgba(205, 205, 133, 0.2)',
+              borderColor: 'rgba(205, 205, 133, 1)',
+            }
+
+
+          ],
+        },
+        options: {
+          responsive: true,
+          interaction: {
+            intersect: false,
+            axis: 'x'
+          },
+          maintainAspectRatio: false,
+          plugins: {
+            tooltip: {
+                callbacks: {
+                    label: function(context) {
+                        let label = context.dataset.label || '';
+
+                        if (label) {
+                            label += ': ';
+                        }
+                        if (context.parsed.y !== null) {
+                            label += context.parsed.y + '%';
+                        }
+                        return label.replace(".", ",");
+                    }
+                },
+                
+            },
+          },
+        }
+        });
+        } catch (error) {
+          console.log(error);
+      }    
+    return chart;
+  } 
+
+  updateRendimentoChartLine()
+
+```
+
+
+:::
+
+:::
+
+
+:::{id="infoRendimento" .g-col-12 .g-col-md-6 .pt-2}
+
+
+:::{.border .border-primary .rounded .px-3}
+
+:::{.fw-bold .fs-3}
+
+O que são as taxas de rendimento escolar ?
+
+:::
+
+As taxas de rendimento escolar são informações produzidas anualmente pelo Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira (Inep), por meio dos dados coletados pelo Censo Escolar da Educação Básica, e são fundamentais para a verificação e o acompanhamento dos dados da escola e do município.
+
+O cálculo das taxas de rendimento tem como referência as informações de rendimento e movimento dos alunos coletadas na segunda etapa do Censo Escolar, denominada Situação do Aluno. Nessa etapa, os
+respondentes preenchem as informações de rendimento (“aprovado” ou “reprovado”), movimento (“falecido”, “deixou de frequentar” ou “transferido”), curso em andamento e sem movimentação dos alunos que foram declarados na Matrícula Inicial do Censo Escolar (primeira etapa).
+
+Saiba mais sobre em: [Taxas de rendimento escolar - Inep](https://download.inep.gov.br/educacao_basica/educacenso/situacao_aluno/documentos/2021/taxas_de_rendimento_escolar_final.pdf).
+
+:::
+
+
+:::
+
+
+:::
+
+
+
+{{< include _pagefooter.qmd >}}

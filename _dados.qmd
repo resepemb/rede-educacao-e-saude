@@ -1,206 +1,789 @@
 
 ```{ojs}
 //| output: false
+ 
+  chartjs = require('chart.js');
 
-import { bar } from '@chrispahm/charts'
+  dados_taxas = FileAttachment("files/Taxa distorção e Rendimento.xlsx").xlsx();
 
-data = FileAttachment("files/Matriculas 2010 a 2022 ID.xlsx").xlsx()
+  dados_matriculas = FileAttachment("files/Matriculas 2010 a 2022 ID.xlsx").xlsx();
 
-searchParams = new URLSearchParams(location.search);
+  searchParams = new URLSearchParams(location.search);
 
-id_pesquisa = searchParams.has("id") ? searchParams.get("id") : "2928703";
+  id_pesquisa = searchParams.has("id") ? searchParams.get("id") : "2928703";
 
-ano_pesquisa = searchParams.has("ano") ? searchParams.get("ano") : "2010";
-
-ano_pesquisa_parcial = "2022"
-
-filtered = data.sheet("números absolutos").filter(function(filtro) {
-  return filtro.A != "Territórios BA" && filtro.B == id_pesquisa
-})
+  filtered = dados_matriculas.sheet("números absolutos").filter(function(filtro) {
+    return filtro.A != "Territórios BA" && filtro.B == id_pesquisa;
+  })
 
 
-nomeCidade = filtered[0].C
+  filtered_distorcao = dados_taxas.sheet("Taxa distorção").filter(function(filtro) {
+    return filtro.A != "Territórios BA" && filtro.B == id_pesquisa && (pesquisa_ano == "2010" || pesquisa_ano == "2020");
+  })
 
-dados = [{
-  "2010": {
-  "Total" : filtered[0].D, 
-  "Masculina": filtered[0].E, 
-  "Feminina": filtered[0].F,
-  "Nãodeclarada": filtered[0].G,
-  "Branca": filtered[0].H,
-  "Preta": filtered[0].I,
-  "Parda": filtered[0].J,
-  "Amarela": filtered[0].K,
-  "Indígena":filtered[0].L,
-  "Deficiência": filtered[0].M,},
+  filtered_distorcao_anuais = dados_taxas.sheet("Distorção anuais").filter(function(filtro) {
+    return filtro.A != "Territórios/BA" && filtro.B == id_pesquisa && filtro.C != "Total" && (parseInt(pesquisa_ano)>= 2010)  && (parseInt(pesquisa_ano) <= 2022);
+  })
 
-  "2011": {
-  "Total" : filtered[0].N, 
-  "Masculina": filtered[0].O, 
-  "Feminina": filtered[0].P,
-  "Nãodeclarada": filtered[0].Q,
-  "Branca": filtered[0].R,
-  "Preta": filtered[0].S,
-  "Parda": filtered[0].T,
-  "Amarela": filtered[0].U,
-  "Indígena":filtered[0].V,
-  "Deficiência": filtered[0].W,},
+  filtered_rendimento = dados_taxas.sheet("Taxa rendimento").filter(function(filtro) {
+    return filtro.A != "Territórios BA" && filtro.B == id_pesquisa && (pesquisa_ano == "2010" || pesquisa_ano == "2019");
+  })
 
-  "2012": {
-  "Total" : filtered[0].X, 
-  "Masculina": filtered[0].Y, 
-  "Feminina": filtered[0].Z,
-  "Nãodeclarada": filtered[0].AA,
-  "Branca": filtered[0].AB,
-  "Preta": filtered[0].AC,
-  "Parda": filtered[0].AD,
-  "Amarela": filtered[0].AE,
-  "Indígena":filtered[0].AF,
-  "Deficiência": filtered[0].AG,},
-
-  "2013": {
-  "Total" : filtered[0].AH, 
-  "Masculina": filtered[0].AI, 
-  "Feminina": filtered[0].AJ,
-  "Nãodeclarada": filtered[0].AK,
-  "Branca": filtered[0].AL,
-  "Preta": filtered[0].AM,
-  "Parda": filtered[0].AN,
-  "Amarela": filtered[0].AO,
-  "Indígena":filtered[0].AP,
-  "Deficiência": filtered[0].AQ,},
-
-  "2014": {
-  "Total" : filtered[0].AR, 
-  "Masculina": filtered[0].AS, 
-  "Feminina": filtered[0].AT,
-  "Nãodeclarada": filtered[0].AU,
-  "Branca": filtered[0].AV,
-  "Preta": filtered[0].AW,
-  "Parda": filtered[0].AX,
-  "Amarela": filtered[0].AY,
-  "Indígena":filtered[0].AZ,
-  "Deficiência": filtered[0].BA,},
+  filtered_rendimento_anuais = dados_taxas.sheet("Rendimento anuais").filter(function(filtro) {
+    return filtro.A != "Territórios/BA" && filtro.B != "Total" && filtro.C == id_pesquisa && (parseInt(pesquisa_ano)>= 2010) && (parseInt(pesquisa_ano) <= 2021);
+  })
 
 
-  "2015": {
-  "Total" : filtered[0].BB, 
-  "Masculina": filtered[0].BC, 
-  "Feminina": filtered[0].BD,
-  "Nãodeclarada": filtered[0].BE,
-  "Branca": filtered[0].BF,
-  "Preta": filtered[0].BG,
-  "Parda": filtered[0].BH,
-  "Amarela": filtered[0].BI,
-  "Indígena":filtered[0].BJ,
-  "Deficiência": filtered[0].BK,},
+  aprovacoes_anuais = dados_taxas.sheet("Rendimento anuais")
+  .filter(function(filtro) {
+    return filtro.A != "Territórios/BA" && filtro.B != "Total"  && !isNaN(filtro.C) && (parseInt(pesquisa_ano)>= 2010) && (parseInt(pesquisa_ano) <= 2021);
+  })
+  .map(function(filtro) {
+    var value_aprovacao = parseFloat(filtro[anos_rendimento[pesquisa_ano]["Aprovação"]])
 
-  "2016": {
-  "Total" : filtered[0].BL, 
-  "Masculina": filtered[0].BM, 
-  "Feminina": filtered[0].BN,
-  "Nãodeclarada": filtered[0].BO,
-  "Branca": filtered[0].BP,
-  "Preta": filtered[0].BQ,
-  "Parda": filtered[0].BR,
-  "Amarela": filtered[0].BS,
-  "Indígena":filtered[0].BT,
-  "Deficiência": filtered[0].BU,},
+    if (isNaN(value_aprovacao)){
+      value_aprovacao = null;
+    }
+
+    return {
+      id: filtro.C,
+      aprovacao: value_aprovacao
+    };
+  });
+
+  aprovacoes_ordenadas = aprovacoes_anuais.sort((a, b) => b.aprovacao - a.aprovacao);
 
 
-  "2017": {
-  "Total" : filtered[0].BV, 
-  "Masculina": filtered[0].BW, 
-  "Feminina": filtered[0].BX,
-  "Nãodeclarada": filtered[0].BY,
-  "Branca": filtered[0].BZ,
-  "Preta": filtered[0].CA,
-  "Parda": filtered[0].CB,
-  "Amarela": filtered[0].CC,
-  "Indígena":filtered[0].CD,
-  "Deficiência": filtered[0].CE,},
+  reprovacoes_anuais = dados_taxas.sheet("Rendimento anuais")
+  .filter(function(filtro) {
+    return filtro.A != "Territórios/BA" && filtro.B != "Total"  && !isNaN(filtro.C) && (parseInt(pesquisa_ano)>= 2010) && (parseInt(pesquisa_ano) <= 2021);
+  })
+  .map(function(filtro) {
+    var value_reprovacao = parseFloat(filtro[anos_rendimento[pesquisa_ano]["Reprovação"]])
 
-  "2018": {
-  "Total" : filtered[0].CF, 
-  "Masculina": filtered[0].CG, 
-  "Feminina": filtered[0].CH,
-  "Nãodeclarada": filtered[0].CI,
-  "Branca": filtered[0].CJ,
-  "Preta": filtered[0].CK,
-  "Parda": filtered[0].CL,
-  "Amarela": filtered[0].CM,
-  "Indígena":filtered[0].CN,
-  "Deficiência": filtered[0].CO,},
+    if (isNaN(value_reprovacao)){
+      value_reprovacao = null;
+    }
 
-  "2019": {
-  "Total" : filtered[0].CP, 
-  "Masculina": filtered[0].CQ, 
-  "Feminina": filtered[0].CR,
-  "Nãodeclarada": filtered[0].CS,
-  "Branca": filtered[0].CT,
-  "Preta": filtered[0].CU,
-  "Parda": filtered[0].CV,
-  "Amarela": filtered[0].CW,
-  "Indígena":filtered[0].CX,
-  "Deficiência": filtered[0].CY,},
-  
+    return {
+      id: filtro.C,
+      reprovacao: value_reprovacao
+    }
+  });
 
-  "2020": {
-  "Total" : filtered[0].CZ, 
-  "Masculina": filtered[0].DA, 
-  "Feminina": filtered[0].DB,
-  "Nãodeclarada": filtered[0].DC,
-  "Branca": filtered[0].DD,
-  "Preta": filtered[0].DE,
-  "Parda": filtered[0].DF,
-  "Amarela": filtered[0].DG,
-  "Indígena":filtered[0].DH,
-  "Deficiência": filtered[0].DI,},
+  reprovacoes_ordenadas = reprovacoes_anuais.sort((a, b) => a.reprovacao - b.reprovacao );
 
-   "2021": {
-  "Total" : filtered[0].DJ, 
-  "Integral": filtered[0].DK,
-  "Parcial":filtered[0].DL},
 
-  "2022": {
-  "Total" : filtered[0].DM, 
-  "Integral": filtered[0].DN,
-  "Parcial":filtered[0].DO},
+  abandono_anuais = dados_taxas.sheet("Rendimento anuais")
+  .filter(function(filtro) {
+    return filtro.A != "Territórios/BA" && filtro.B != "Total"  && !isNaN(filtro.C) && (parseInt(pesquisa_ano)>= 2010) && (parseInt(pesquisa_ano) <= 2021);
+  })
+  .map(function(filtro) {
+    var value_abandono = parseFloat(filtro[anos_rendimento[pesquisa_ano]["Abandono"]])
+
+    if (isNaN(value_abandono)){
+      value_abandono = null;
+    }
+    return {
+      id: filtro.C,
+      abandono: value_abandono
+    };
+  });
+
+  abandono_ordenadas = abandono_anuais.sort((a, b) => a.abandono - b.abandono);
+
+
+  nomeCidade = filtered[0].C
+
+  total = dados[0][pesquisa_ano].Total.toLocaleString('pt-BR');
+
+  total_masculina = dados[0][pesquisa_ano].Masculina.toLocaleString('pt-BR');
+  total_masculina_porcentagem = calculateTotalPercentage(dados[0][pesquisa_ano].Masculina);
+
+  total_feminina = dados[0][pesquisa_ano].Feminina.toLocaleString('pt-BR');
+  total_feminina_porcentagem = calculateTotalPercentage(dados[0][pesquisa_ano].Feminina);
+
+  total_naodeclarada = dados[0][pesquisa_ano].Nãodeclarada.toLocaleString('pt-BR');
+  total_naodeclarada_porcentagem = calculateTotalPercentage(dados[0][pesquisa_ano].Nãodeclarada);
+
+  total_branca = dados[0][pesquisa_ano].Branca.toLocaleString('pt-BR');
+  total_branca_porcentagem = calculateTotalPercentage(dados[0][pesquisa_ano].Branca);
+
+  total_preta = dados[0][pesquisa_ano].Preta.toLocaleString('pt-BR');
+  total_preta_porcentagem = calculateTotalPercentage(dados[0][pesquisa_ano].Preta);
+
+  total_parda = dados[0][pesquisa_ano].Parda.toLocaleString('pt-BR');
+  total_parda_porcentagem = calculateTotalPercentage(dados[0][pesquisa_ano].Parda);
+
+  total_amarela = dados[0][pesquisa_ano].Amarela.toLocaleString('pt-BR');
+  total_amarela_porcentagem = calculateTotalPercentage(dados[0][pesquisa_ano].Amarela);
+
+  total_indigena = dados[0][pesquisa_ano].Indígena.toLocaleString('pt-BR');
+  total_indigena_porcentagem = calculateTotalPercentage(dados[0][pesquisa_ano].Indígena);
+
+  total_deficiencia = dados[0][pesquisa_ano].Deficiência.toLocaleString('pt-BR');
+  total_deficiencia_porcentagem = calculateTotalPercentage(dados[0][pesquisa_ano].Deficiência);
+
+
+  posicao_aprovacao = getOrdemAnual(aprovacoes_ordenadas, id_pesquisa)
+
+  posicao_reprovacao = getOrdemAnual(reprovacoes_ordenadas, id_pesquisa)
+
+  posicao_abandono = getOrdemAnual(abandono_ordenadas, id_pesquisa)
+
+
+  dados = [{
+    "2010": {
+      "Total" : filtered[0].D, 
+      "Masculina": filtered[0].E, 
+      "Feminina": filtered[0].F,
+      "Nãodeclarada": filtered[0].G,
+      "Branca": filtered[0].H,
+      "Preta": filtered[0].I,
+      "Parda": filtered[0].J,
+      "Amarela": filtered[0].K,
+      "Indígena":filtered[0].L,
+      "Deficiência": filtered[0].M,
+    },
+
+    "2011": {
+      "Total" : filtered[0].N, 
+      "Masculina": filtered[0].O, 
+      "Feminina": filtered[0].P,
+      "Nãodeclarada": filtered[0].Q,
+      "Branca": filtered[0].R,
+      "Preta": filtered[0].S,
+      "Parda": filtered[0].T,
+      "Amarela": filtered[0].U,
+      "Indígena":filtered[0].V,
+      "Deficiência": filtered[0].W,
+    },
+
+    "2012": {
+      "Total" : filtered[0].X, 
+      "Masculina": filtered[0].Y, 
+      "Feminina": filtered[0].Z,
+      "Nãodeclarada": filtered[0].AA,
+      "Branca": filtered[0].AB,
+      "Preta": filtered[0].AC,
+      "Parda": filtered[0].AD,
+      "Amarela": filtered[0].AE,
+      "Indígena":filtered[0].AF,
+      "Deficiência": filtered[0].AG,
+    },
+
+    "2013": {
+      "Total" : filtered[0].AH, 
+      "Masculina": filtered[0].AI, 
+      "Feminina": filtered[0].AJ,
+      "Nãodeclarada": filtered[0].AK,
+      "Branca": filtered[0].AL,
+      "Preta": filtered[0].AM,
+      "Parda": filtered[0].AN,
+      "Amarela": filtered[0].AO,
+      "Indígena":filtered[0].AP,
+      "Deficiência": filtered[0].AQ,
+    },
+
+    "2014": {
+      "Total" : filtered[0].AR, 
+      "Masculina": filtered[0].AS, 
+      "Feminina": filtered[0].AT,
+      "Nãodeclarada": filtered[0].AU,
+      "Branca": filtered[0].AV,
+      "Preta": filtered[0].AW,
+      "Parda": filtered[0].AX,
+      "Amarela": filtered[0].AY,
+      "Indígena":filtered[0].AZ,
+      "Deficiência": filtered[0].BA,
+    },
+
+
+    "2015": {
+      "Total" : filtered[0].BB, 
+      "Masculina": filtered[0].BC, 
+      "Feminina": filtered[0].BD,
+      "Nãodeclarada": filtered[0].BE,
+      "Branca": filtered[0].BF,
+      "Preta": filtered[0].BG,
+      "Parda": filtered[0].BH,
+      "Amarela": filtered[0].BI,
+      "Indígena":filtered[0].BJ,
+      "Deficiência": filtered[0].BK,
+    },
+
+    "2016": {
+      "Total" : filtered[0].BL, 
+      "Masculina": filtered[0].BM, 
+      "Feminina": filtered[0].BN,
+      "Nãodeclarada": filtered[0].BO,
+      "Branca": filtered[0].BP,
+      "Preta": filtered[0].BQ,
+      "Parda": filtered[0].BR,
+      "Amarela": filtered[0].BS,
+      "Indígena":filtered[0].BT,
+      "Deficiência": filtered[0].BU,
+    },
+
+
+    "2017": {
+      "Total" : filtered[0].BV, 
+      "Masculina": filtered[0].BW, 
+      "Feminina": filtered[0].BX,
+      "Nãodeclarada": filtered[0].BY,
+      "Branca": filtered[0].BZ,
+      "Preta": filtered[0].CA,
+      "Parda": filtered[0].CB,
+      "Amarela": filtered[0].CC,
+      "Indígena":filtered[0].CD,
+      "Deficiência": filtered[0].CE,
+    },
+
+    "2018": {
+      "Total" : filtered[0].CF, 
+      "Masculina": filtered[0].CG, 
+      "Feminina": filtered[0].CH,
+      "Nãodeclarada": filtered[0].CI,
+      "Branca": filtered[0].CJ,
+      "Preta": filtered[0].CK,
+      "Parda": filtered[0].CL,
+      "Amarela": filtered[0].CM,
+      "Indígena":filtered[0].CN,
+      "Deficiência": filtered[0].CO,
+    },
+
+    "2019": {
+      "Total" : filtered[0].CP, 
+      "Masculina": filtered[0].CQ, 
+      "Feminina": filtered[0].CR,
+      "Nãodeclarada": filtered[0].CS,
+      "Branca": filtered[0].CT,
+      "Preta": filtered[0].CU,
+      "Parda": filtered[0].CV,
+      "Amarela": filtered[0].CW,
+      "Indígena":filtered[0].CX,
+      "Deficiência": filtered[0].CY,
+    },
+    
+
+    "2020": {
+      "Total" : filtered[0].CZ, 
+      "Masculina": filtered[0].DA, 
+      "Feminina": filtered[0].DB,
+      "Nãodeclarada": filtered[0].DC,
+      "Branca": filtered[0].DD,
+      "Preta": filtered[0].DE,
+      "Parda": filtered[0].DF,
+      "Amarela": filtered[0].DG,
+      "Indígena":filtered[0].DH,
+      "Deficiência": filtered[0].DI,
+    },
+
+    "2021": {
+      "Total" : filtered[0].DJ, 
+      "Integral": filtered[0].DK,
+      "Parcial":filtered[0].DL
+    },
+
+    "2022": {
+      "Total" : filtered[0].DM, 
+      "Integral": filtered[0].DN,
+      "Parcial":filtered[0].DO
+    },
   }]
 
 
+  dados_rendimento = {
+    var dados_rendimento = { 
+      "2010": {
+        "TotalGeral":{
+          "Total":{
+            "Aprovação" : fixNumber(filtered_rendimento[0].D* 100, 2), 
+            "Reprovação": fixNumber(filtered_rendimento[0].E* 100, 2), 
+            "Abandono": fixNumber(filtered_rendimento[0].F* 100, 2),
+          },
+          "RacaNaoDeclarada":{
+            "Aprovação" : fixNumber(filtered_rendimento[0].G* 100, 2), 
+            "Reprovação": fixNumber(filtered_rendimento[0].H* 100, 2), 
+            "Abandono": fixNumber(filtered_rendimento[0].I* 100, 2)
+          },
+          "Branca":{
+            "Aprovação" : fixNumber(filtered_rendimento[0].J* 100, 2), 
+            "Reprovação": fixNumber(filtered_rendimento[0].K* 100, 2), 
+            "Abandono": fixNumber(filtered_rendimento[0].L* 100, 2)
+          },
+          "Preta":{
+            "Aprovação" : fixNumber(filtered_rendimento[0].M* 100, 2), 
+            "Reprovação": fixNumber(filtered_rendimento[0].N* 100, 2), 
+            "Abandono": fixNumber(filtered_rendimento[0].O* 100, 2)
+          },
+          "Parda":{
+            "Aprovação" : fixNumber(filtered_rendimento[0].P* 100, 2), 
+            "Reprovação": fixNumber(filtered_rendimento[0].Q* 100, 2), 
+            "Abandono": fixNumber(filtered_rendimento[0].R* 100, 2)
+          },
+          "Amarela":{
+            "Aprovação" : fixNumber(filtered_rendimento[0].S* 100, 2), 
+            "Reprovação": fixNumber(filtered_rendimento[0].T* 100, 2), 
+            "Abandono": fixNumber(filtered_rendimento[0].U* 100, 2)
+          },
+          "Indígena":{
+            "Aprovação" : fixNumber(filtered_rendimento[0].V* 100, 2), 
+            "Reprovação": fixNumber(filtered_rendimento[0].W* 100, 2), 
+            "Abandono": fixNumber(filtered_rendimento[0].X* 100, 2)
+          },
+          "Deficiência":{
+            "Aprovação" : fixNumber(filtered_rendimento[0].Y* 100, 2), 
+            "Reprovação": fixNumber(filtered_rendimento[0].Z* 100, 2), 
+            "Abandono": fixNumber(filtered_rendimento[0].AA* 100, 2)
+          },
+        },
+        "Masculino":{
+          "Total":{
+            "Aprovação" : fixNumber(filtered_rendimento[0].AB* 100, 2), 
+            "Reprovação": fixNumber(filtered_rendimento[0].AC* 100, 2), 
+            "Abandono": fixNumber(filtered_rendimento[0].AD* 100, 2)
+          },
+          "RacaNaoDeclarada":{
+            "Aprovação" : fixNumber(filtered_rendimento[0].AE* 100, 2), 
+            "Reprovação": fixNumber(filtered_rendimento[0].AF* 100, 2), 
+            "Abandono": fixNumber(filtered_rendimento[0].AG* 100, 2)
+          },
+          "Branca":{
+            "Aprovação" : fixNumber(filtered_rendimento[0].AH* 100, 2), 
+            "Reprovação": fixNumber(filtered_rendimento[0].AI* 100, 2), 
+            "Abandono": fixNumber(filtered_rendimento[0].AJ* 100, 2)
+          },
+          "Preta":{
+            "Aprovação" : fixNumber(filtered_rendimento[0].AK* 100, 2), 
+            "Reprovação": fixNumber(filtered_rendimento[0].AL* 100, 2), 
+            "Abandono": fixNumber(filtered_rendimento[0].AM* 100, 2)
+          },
+          "Parda":{
+            "Aprovação" : fixNumber(filtered_rendimento[0].AN* 100, 2), 
+            "Reprovação": fixNumber(filtered_rendimento[0].AO* 100, 2), 
+            "Abandono": fixNumber(filtered_rendimento[0].AP* 100, 2)
+          },
+          "Amarela":{
+            "Aprovação" : fixNumber(filtered_rendimento[0].AQ* 100, 2), 
+            "Reprovação": fixNumber(filtered_rendimento[0].AR* 100, 2), 
+            "Abandono": fixNumber(filtered_rendimento[0].AS* 100, 2)
+          },
+          "Indígena":{
+            "Aprovação" : fixNumber(filtered_rendimento[0].AT* 100, 2), 
+            "Reprovação": fixNumber(filtered_rendimento[0].AU* 100, 2), 
+            "Abandono": fixNumber(filtered_rendimento[0].AV* 100, 2)
+          },
+          "Deficiência":{
+            "Aprovação" : fixNumber(filtered_rendimento[0].AW* 100, 2), 
+            "Reprovação": fixNumber(filtered_rendimento[0].AX* 100, 2), 
+            "Abandono": fixNumber(filtered_rendimento[0].AY* 100, 2)
+          },
+        },
+        "Feminino":{
+          "Total":{
+            "Aprovação" : fixNumber(filtered_rendimento[0].AZ* 100, 2), 
+            "Reprovação": fixNumber(filtered_rendimento[0].BA* 100, 2), 
+            "Abandono": fixNumber(filtered_rendimento[0].BB* 100, 2)
+          },
+          "RacaNaoDeclarada":{
+            "Aprovação" : fixNumber(filtered_rendimento[0].BC* 100, 2), 
+            "Reprovação": fixNumber(filtered_rendimento[0].BD* 100, 2), 
+            "Abandono": fixNumber(filtered_rendimento[0].BE* 100, 2)
+          },
+          "Branca":{
+            "Aprovação" : fixNumber(filtered_rendimento[0].BF* 100, 2), 
+            "Reprovação": fixNumber(filtered_rendimento[0].BG* 100, 2), 
+            "Abandono": fixNumber(filtered_rendimento[0].BH* 100, 2)
+          },
+          "Preta":{
+            "Aprovação" : fixNumber(filtered_rendimento[0].BI* 100, 2), 
+            "Reprovação": fixNumber(filtered_rendimento[0].BJ* 100, 2), 
+            "Abandono": fixNumber(filtered_rendimento[0].BK* 100, 2)
+          },
+          "Parda":{
+            "Aprovação" : fixNumber(filtered_rendimento[0].BL* 100, 2), 
+            "Reprovação": fixNumber(filtered_rendimento[0].BM* 100, 2), 
+            "Abandono": fixNumber(filtered_rendimento[0].BN* 100, 2)
+          },
+          "Amarela":{
+            "Aprovação" : fixNumber(filtered_rendimento[0].BO* 100, 2), 
+            "Reprovação": fixNumber(filtered_rendimento[0].BP* 100, 2), 
+            "Abandono": fixNumber(filtered_rendimento[0].BQ* 100, 2)
+          },
+          "Indígena":{
+            "Aprovação" : fixNumber(filtered_rendimento[0].BR* 100, 2), 
+            "Reprovação": fixNumber(filtered_rendimento[0].BS* 100, 2), 
+            "Abandono": fixNumber(filtered_rendimento[0].BT* 100, 2)
+          },
+          "Deficiência":{
+            "Aprovação" : fixNumber(filtered_rendimento[0].BU* 100, 2), 
+            "Reprovação": fixNumber(filtered_rendimento[0].BV* 100, 2), 
+            "Abandono": fixNumber(filtered_rendimento[0].BW* 100, 2)
+          },
+        },
+      },
+      "2019": {
+        "TotalGeral":{
+          "Total":{
+            "Aprovação" : fixNumber(filtered_rendimento[0].BX* 100, 2), 
+            "Reprovação": fixNumber(filtered_rendimento[0].BY* 100, 2), 
+            "Abandono": fixNumber(filtered_rendimento[0].BZ* 100, 2)
+          },
+          "RacaNaoDeclarada":{
+            "Aprovação" : fixNumber(filtered_rendimento[0].CA* 100, 2), 
+            "Reprovação": fixNumber(filtered_rendimento[0].CB* 100, 2), 
+            "Abandono": fixNumber(filtered_rendimento[0].CC* 100, 2)
+          },
+          "Branca":{
+            "Aprovação" : fixNumber(filtered_rendimento[0].CD* 100, 2), 
+            "Reprovação": fixNumber(filtered_rendimento[0].CE* 100, 2), 
+            "Abandono": fixNumber(filtered_rendimento[0].CF* 100, 2)
+          },
+          "Preta":{
+            "Aprovação" : fixNumber(filtered_rendimento[0].CG* 100, 2), 
+            "Reprovação": fixNumber(filtered_rendimento[0].CH* 100, 2), 
+            "Abandono": fixNumber(filtered_rendimento[0].CI* 100, 2)
+          },
+          "Parda":{
+            "Aprovação" : fixNumber(filtered_rendimento[0].CJ* 100, 2), 
+            "Reprovação": fixNumber(filtered_rendimento[0].CK* 100, 2), 
+            "Abandono": fixNumber(filtered_rendimento[0].CL* 100, 2)
+          },
+          "Amarela":{
+            "Aprovação" : fixNumber(filtered_rendimento[0].CM* 100, 2), 
+            "Reprovação": fixNumber(filtered_rendimento[0].CN* 100, 2), 
+            "Abandono": fixNumber(filtered_rendimento[0].CO* 100, 2)
+          },
+          "Indígena":{
+            "Aprovação" : fixNumber(filtered_rendimento[0].CP* 100, 2), 
+            "Reprovação": fixNumber(filtered_rendimento[0].CQ* 100, 2), 
+            "Abandono": fixNumber(filtered_rendimento[0].CR* 100, 2)
+          },
+          "Deficiência":{
+            "Aprovação" : fixNumber(filtered_rendimento[0].CS* 100, 2), 
+            "Reprovação": fixNumber(filtered_rendimento[0].CT* 100, 2), 
+            "Abandono": fixNumber(filtered_rendimento[0].CU* 100, 2)
+          },
+        },
+        "Masculino":{
+          "Total":{
+            "Aprovação" : fixNumber(filtered_rendimento[0].CV* 100, 2), 
+            "Reprovação": fixNumber(filtered_rendimento[0].CW* 100, 2), 
+            "Abandono": fixNumber(filtered_rendimento[0].CX* 100, 2)
+          },
+          "RacaNaoDeclarada":{
+            "Aprovação" : fixNumber(filtered_rendimento[0].CY* 100, 2), 
+            "Reprovação": fixNumber(filtered_rendimento[0].CZ* 100, 2), 
+            "Abandono": fixNumber(filtered_rendimento[0].DA* 100, 2)
+          },
+          "Branca":{
+            "Aprovação" : fixNumber(filtered_rendimento[0].DB* 100, 2), 
+            "Reprovação": fixNumber(filtered_rendimento[0].DC* 100, 2), 
+            "Abandono": fixNumber(filtered_rendimento[0].DD* 100, 2)
+          },
+          "Preta":{
+            "Aprovação" : fixNumber(filtered_rendimento[0].DE* 100, 2), 
+            "Reprovação": fixNumber(filtered_rendimento[0].DF* 100, 2), 
+            "Abandono": fixNumber(filtered_rendimento[0].DG* 100, 2)
+          },
+          "Parda":{
+            "Aprovação" : fixNumber(filtered_rendimento[0].DH* 100, 2), 
+            "Reprovação": fixNumber(filtered_rendimento[0].DI* 100, 2), 
+            "Abandono": fixNumber(filtered_rendimento[0].DJ* 100, 2)
+          },
+          "Amarela":{
+            "Aprovação" : fixNumber(filtered_rendimento[0].DK* 100, 2), 
+            "Reprovação": fixNumber(filtered_rendimento[0].DL* 100, 2), 
+            "Abandono": fixNumber(filtered_rendimento[0].DM* 100, 2)
+          },
+          "Indígena":{
+            "Aprovação" : fixNumber(filtered_rendimento[0].DN* 100, 2), 
+            "Reprovação": fixNumber(filtered_rendimento[0].DO* 100, 2), 
+            "Abandono": fixNumber(filtered_rendimento[0].DP* 100, 2)
+          },
+          "Deficiência":{
+            "Aprovação" : fixNumber(filtered_rendimento[0].DQ* 100, 2), 
+            "Reprovação": fixNumber(filtered_rendimento[0].DR* 100, 2), 
+            "Abandono": fixNumber(filtered_rendimento[0].DS* 100, 2)
+          },
+        },
+        "Feminino":{
+          "Total":{
+            "Aprovação" : fixNumber(filtered_rendimento[0].DT* 100, 2), 
+            "Reprovação": fixNumber(filtered_rendimento[0].DU* 100, 2), 
+            "Abandono": fixNumber(filtered_rendimento[0].DV* 100, 2)
+          },
+          "RacaNaoDeclarada":{
+            "Aprovação" : fixNumber(filtered_rendimento[0].DW* 100, 2), 
+            "Reprovação": fixNumber(filtered_rendimento[0].DX* 100, 2), 
+            "Abandono": fixNumber(filtered_rendimento[0].DY* 100, 2)
+          },
+          "Branca":{
+            "Aprovação" : fixNumber(filtered_rendimento[0].DZ* 100, 2), 
+            "Reprovação": fixNumber(filtered_rendimento[0].EA* 100, 2), 
+            "Abandono": fixNumber(filtered_rendimento[0].EB* 100, 2)
+          },
+          "Preta":{
+            "Aprovação" : fixNumber(filtered_rendimento[0].EC* 100, 2), 
+            "Reprovação": fixNumber(filtered_rendimento[0].ED* 100, 2), 
+            "Abandono": fixNumber(filtered_rendimento[0].EE* 100, 2)
+          },
+          "Parda":{
+            "Aprovação" : fixNumber(filtered_rendimento[0].EF* 100, 2), 
+            "Reprovação": fixNumber(filtered_rendimento[0].EG* 100, 2), 
+            "Abandono": fixNumber(filtered_rendimento[0].EH* 100, 2)
+          },
+          "Amarela":{
+            "Aprovação" : fixNumber(filtered_rendimento[0].EI* 100, 2), 
+            "Reprovação": fixNumber(filtered_rendimento[0].EJ* 100, 2), 
+            "Abandono": fixNumber(filtered_rendimento[0].EK* 100, 2)
+          },
+          "Indígena":{
+            "Aprovação" : fixNumber(filtered_rendimento[0].EL* 100, 2), 
+            "Reprovação": fixNumber(filtered_rendimento[0].EM* 100, 2), 
+            "Abandono": fixNumber(filtered_rendimento[0].EN* 100, 2)
+          },
+          "Deficiência":{
+            "Aprovação" : fixNumber(filtered_rendimento[0].EO* 100, 2), 
+            "Reprovação": fixNumber(filtered_rendimento[0].EP* 100, 2), 
+            "Abandono": fixNumber(filtered_rendimento[0].EQ* 100, 2)
+          },
+        },
+      },
+    }
+    return dados_rendimento;  
+  }
 
-total = dados[0][pesquisa_ano].Total.toLocaleString('pt-BR')
 
-total_masculina = dados[0][pesquisa_ano].Masculina.toLocaleString('pt-BR')
-total_masculina_porcentagem = calculaPorcentagemTotal(dados[0][pesquisa_ano].Masculina)
+  dados_distorcao = {
+    var dados_distorcao = { 
+      "2010": {
+        "TotalGeral":{
+          "Total": fixNumber(filtered_distorcao[0].D* 100, 2),
+          "Masculino": fixNumber(filtered_distorcao[0].E* 100, 2),
+          "Feminino": fixNumber(filtered_distorcao[0].F* 100, 2),
+          "RacaNaoDeclarada": fixNumber(filtered_distorcao[0].G* 100, 2),
+          "Branca": fixNumber(filtered_distorcao[0].H* 100, 2),
+          "Preta": fixNumber(filtered_distorcao[0].I* 100, 2),
+          "Parda": fixNumber(filtered_distorcao[0].J* 100, 2),
+          "Amarela": fixNumber(filtered_distorcao[0].K* 100, 2),
+          "Indígena": fixNumber(filtered_distorcao[0].L* 100, 2),
+          "Deficiência": fixNumber(filtered_distorcao[0].M* 100, 2),
+        },
+        "Masculino":{
+          "Total": fixNumber(filtered_distorcao[0].N* 100, 2),
+          "RacaNaoDeclarada": fixNumber(filtered_distorcao[0].O* 100, 2),
+          "Branca": fixNumber(filtered_distorcao[0].P* 100, 2),
+          "Preta": fixNumber(filtered_distorcao[0].Q* 100, 2),
+          "Parda": fixNumber(filtered_distorcao[0].R* 100, 2),
+          "Amarela": fixNumber(filtered_distorcao[0].S* 100, 2),
+          "Indígena": fixNumber(filtered_distorcao[0].T* 100, 2),
+          "Deficiência": fixNumber(filtered_distorcao[0].U* 100, 2),
+        },
+        "Feminino":{
+          "Total": fixNumber(filtered_distorcao[0].V* 100, 2),
+          "RacaNaoDeclarada": fixNumber(filtered_distorcao[0].W* 100, 2),
+          "Branca": fixNumber(filtered_distorcao[0].X* 100, 2),
+          "Preta": fixNumber(filtered_distorcao[0].Y* 100, 2),
+          "Parda": fixNumber(filtered_distorcao[0].Z* 100, 2),
+          "Amarela": fixNumber(filtered_distorcao[0].AA* 100, 2),
+          "Indígena": fixNumber(filtered_distorcao[0].AB* 100, 2),
+          "Deficiência": fixNumber(filtered_distorcao[0].AC* 100, 2),
+        },
+      },
+      "2020": {
+        "TotalGeral":{
+          "Total": fixNumber(filtered_distorcao[0].AD* 100, 2),
+          "Masculino": fixNumber(filtered_distorcao[0].AE* 100, 2),
+          "Feminino": fixNumber(filtered_distorcao[0].AF* 100, 2) ,
+          "RacaNaoDeclarada": fixNumber(filtered_distorcao[0].AG* 100, 2),
+          "Branca": fixNumber(filtered_distorcao[0].AH* 100, 2),
+          "Preta": fixNumber(filtered_distorcao[0].AI* 100, 2),
+          "Parda": fixNumber(filtered_distorcao[0].AJ* 100, 2),
+          "Amarela": fixNumber(filtered_distorcao[0].AK* 100, 2),
+          "Indígena": fixNumber(filtered_distorcao[0].AL* 100, 2),
+          "Deficiência": fixNumber(filtered_distorcao[0].AM* 100, 2),
+        },
+        "Masculino":{
+          "Total": fixNumber(filtered_distorcao[0].AN* 100, 2),
+          "RacaNaoDeclarada": fixNumber(filtered_distorcao[0].AO* 100, 2),
+          "Branca": fixNumber(filtered_distorcao[0].AP* 100, 2),
+          "Preta": fixNumber(filtered_distorcao[0].AQ* 100, 2),
+          "Parda": fixNumber(filtered_distorcao[0].AR* 100, 2),
+          "Amarela": fixNumber(filtered_distorcao[0].AS* 100, 2),
+          "Indígena": fixNumber(filtered_distorcao[0].AT* 100, 2),
+          "Deficiência": fixNumber(filtered_distorcao[0].AU* 100, 2),
+        },
+        "Feminino":{
+          "Total": fixNumber(filtered_distorcao[0].AV* 100, 2),
+          "RacaNaoDeclarada": fixNumber(filtered_distorcao[0].W* 100, 2),
+          "Branca": fixNumber(filtered_distorcao[0].AX* 100, 2),
+          "Preta": fixNumber(filtered_distorcao[0].AY* 100, 2),
+          "Parda": fixNumber(filtered_distorcao[0].AZ* 100, 2),
+          "Amarela": fixNumber(filtered_distorcao[0].BA* 100, 2),
+          "Indígena": fixNumber(filtered_distorcao[0].BB* 100, 2),
+          "Deficiência": fixNumber(filtered_distorcao[0].BC* 100, 2),
+        },
+      },
+    }
+    return dados_distorcao;  
+  }
+   
 
-total_feminina = dados[0][pesquisa_ano].Feminina.toLocaleString('pt-BR')
-total_feminina_porcentagem = calculaPorcentagemTotal(dados[0][pesquisa_ano].Feminina)
+  dados_rendimento_anuais = {
+    var dados_rendimento_anuais = {
+      "2010": {
+        "Aprovação": fixNumber(filtered_rendimento_anuais[0].D, 2),
+        "Reprovação": fixNumber(filtered_rendimento_anuais[0].E, 2),
+        "Abandono": fixNumber(filtered_rendimento_anuais[0].F, 2),
+      },
+      "2011": {
+        "Aprovação": fixNumber(filtered_rendimento_anuais[0].G, 2),
+        "Reprovação": fixNumber(filtered_rendimento_anuais[0].H, 2),
+        "Abandono": fixNumber(filtered_rendimento_anuais[0].I, 2),
+      },
+      "2012": {
+        "Aprovação": fixNumber(filtered_rendimento_anuais[0].J, 2),
+        "Reprovação": fixNumber(filtered_rendimento_anuais[0].K, 2),
+        "Abandono": fixNumber(filtered_rendimento_anuais[0].L, 2),
+      },
+      "2013": {
+        "Aprovação": fixNumber(filtered_rendimento_anuais[0].M, 2),
+        "Reprovação": fixNumber(filtered_rendimento_anuais[0].N, 2),
+        "Abandono": fixNumber(filtered_rendimento_anuais[0].O, 2),
+      },
+      "2014": {
+        "Aprovação": fixNumber(filtered_rendimento_anuais[0].P, 2),
+        "Reprovação": fixNumber(filtered_rendimento_anuais[0].Q, 2),
+        "Abandono": fixNumber(filtered_rendimento_anuais[0].R, 2),
+      },
+      "2015": {
+        "Aprovação": fixNumber(filtered_rendimento_anuais[0].S, 2),
+        "Reprovação": fixNumber(filtered_rendimento_anuais[0].T, 2),
+        "Abandono": fixNumber(filtered_rendimento_anuais[0].U, 2),
+      },
+      "2016": {
+        "Aprovação": fixNumber(filtered_rendimento_anuais[0].V, 2),
+        "Reprovação": fixNumber(filtered_rendimento_anuais[0].W, 2),
+        "Abandono": fixNumber(filtered_rendimento_anuais[0].X, 2),
+      },
+      "2017": {
+        "Aprovação": fixNumber(filtered_rendimento_anuais[0].Y, 2),
+        "Reprovação": fixNumber(filtered_rendimento_anuais[0].Z, 2),
+        "Abandono": fixNumber(filtered_rendimento_anuais[0].AA, 2),
+      },
+      "2018": {
+        "Aprovação": fixNumber(filtered_rendimento_anuais[0].AB, 2),
+        "Reprovação": fixNumber(filtered_rendimento_anuais[0].AC, 2),
+        "Abandono": fixNumber(filtered_rendimento_anuais[0].AD, 2),
+      },
+      "2019": {
+        "Aprovação": fixNumber(filtered_rendimento_anuais[0].AE, 2),
+        "Reprovação": fixNumber(filtered_rendimento_anuais[0].AF, 2),
+        "Abandono": fixNumber(filtered_rendimento_anuais[0].AG, 2),
+      },
+      "2020": {
+        "Aprovação": fixNumber(filtered_rendimento_anuais[0].AH, 2),
+        "Reprovação": fixNumber(filtered_rendimento_anuais[0].AI, 2),
+        "Abandono": fixNumber(filtered_rendimento_anuais[0].AJ, 2),
+      },
+      "2021": {
+        "Aprovação": fixNumber(filtered_rendimento_anuais[0].AK, 2),
+        "Reprovação": fixNumber(filtered_rendimento_anuais[0].AL, 2),
+        "Abandono": fixNumber(filtered_rendimento_anuais[0].AM, 2),
+      }
+    }
+    return dados_rendimento_anuais;
+  }
 
-total_naodeclarada = dados[0][pesquisa_ano].Nãodeclarada.toLocaleString('pt-BR')
-total_naodeclarada_porcentagem = calculaPorcentagemTotal(dados[0][pesquisa_ano].Nãodeclarada)
+   dados_distorcao_anuais = {
+    var dados_distorcao_anuais = {
+      "2010": fixNumber(filtered_distorcao_anuais[0].D, 2),
+      "2011": fixNumber(filtered_distorcao_anuais[0].E, 2),
+      "2012": fixNumber(filtered_distorcao_anuais[0].F, 2),
+      "2013": fixNumber(filtered_distorcao_anuais[0].G, 2),
+      "2014": fixNumber(filtered_distorcao_anuais[0].H, 2),
+      "2015": fixNumber(filtered_distorcao_anuais[0].I, 2),
+      "2016": fixNumber(filtered_distorcao_anuais[0].J, 2),
+      "2017": fixNumber(filtered_distorcao_anuais[0].K, 2),
+      "2018": fixNumber(filtered_distorcao_anuais[0].L, 2),
+      "2019": fixNumber(filtered_distorcao_anuais[0].M, 2),
+      "2020": fixNumber(filtered_distorcao_anuais[0].N, 2),
+      "2021": fixNumber(filtered_distorcao_anuais[0].O, 2),
+      "2022": fixNumber(filtered_distorcao_anuais[0].P, 2),
+    }
+    return dados_distorcao_anuais;
+  }
 
-total_branca = dados[0][pesquisa_ano].Branca.toLocaleString('pt-BR')
-total_branca_porcentagem = calculaPorcentagemTotal(dados[0][pesquisa_ano].Branca)
 
-total_preta = dados[0][pesquisa_ano].Preta.toLocaleString('pt-BR')
-total_preta_porcentagem = calculaPorcentagemTotal(dados[0][pesquisa_ano].Preta)
-
-total_parda = dados[0][pesquisa_ano].Parda.toLocaleString('pt-BR')
-total_parda_porcentagem = calculaPorcentagemTotal(dados[0][pesquisa_ano].Parda)
-
-total_amarela = dados[0][pesquisa_ano].Amarela.toLocaleString('pt-BR')
-total_amarela_porcentagem = calculaPorcentagemTotal(dados[0][pesquisa_ano].Amarela)
-
-total_indigena = dados[0][pesquisa_ano].Indígena.toLocaleString('pt-BR')
-total_indigena_porcentagem = calculaPorcentagemTotal(dados[0][pesquisa_ano].Indígena)
-
-total_deficiencia = dados[0][pesquisa_ano].Deficiência.toLocaleString('pt-BR')
-total_deficiencia_porcentagem = calculaPorcentagemTotal(dados[0][pesquisa_ano].Deficiência)
-
-function calculaPorcentagemTotal(n1){
-  return ((n1/dados[0][pesquisa_ano].Total) * 100).toFixed(2)
-}
+  anos_rendimento = {
+    var anos_rendimento = {
+      "2010": {
+        "Aprovação": "D",
+        "Reprovação": "E",
+        "Abandono": "F",
+      },
+      "2011": {
+        "Aprovação": "G",
+        "Reprovação": "H",
+        "Abandono": "I",
+      },
+      "2012": {
+        "Aprovação": "J",
+        "Reprovação": "K",
+        "Abandono": "L",
+      },
+      "2013": {
+        "Aprovação": "M",
+        "Reprovação": "N",
+        "Abandono": "O",
+      },
+      "2014": {
+        "Aprovação": "P",
+        "Reprovação": "Q",
+        "Abandono": "R",
+      },
+      "2015": {
+        "Aprovação": "S",
+        "Reprovação": "T",
+        "Abandono": "U",
+      },
+      "2016": {
+        "Aprovação": "V",
+        "Reprovação": "W",
+        "Abandono": "X",
+      },
+      "2017": {
+        "Aprovação": "Y",
+        "Reprovação": "Z",
+        "Abandono": "AA",
+      },
+      "2018": {
+        "Aprovação": "AB",
+        "Reprovação": "AC",
+        "Abandono": "AD",
+      },
+      "2019": {
+        "Aprovação": "AE",
+        "Reprovação": "AF",
+        "Abandono": "AG",
+      },
+      "2020": {
+        "Aprovação":"AH",
+        "Reprovação": "AI",
+        "Abandono": "AJ",
+      },
+      "2021": {
+        "Aprovação": "AK",
+        "Reprovação": "AL",
+        "Abandono": "AM",
+      }
+    }
+    return anos_rendimento;
+  }
+ 
 
 ```
+
+{{< include _functions.qmd >}}
