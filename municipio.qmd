@@ -472,8 +472,8 @@ Taxa de distorção idade/série em ${pesquisa_ano}
 ```{ojs}
 
 hideDistorcao =  {
-  changeVisible("dadosDistorcao", filtered_distorcao.length != 0);
-  changeVisible("infoDistorcao", filtered_distorcao.length != 0);
+  changeVisible("tabDistorcaoBar", filtered_distorcao.length != 0);
+  changeVisible("radioDistorcaoBar", filtered_distorcao.length != 0);
   } 
 
 mutable valueDistorcao ="TotalGeral";
@@ -489,6 +489,7 @@ updateValueDistorcao = {
 }
 
 viewof radioDistorcaoBar = html`
+<div id= radioDistorcaoBar> 
 
 <div class="form-check form-check-inline row fs-5">
   <input class="form-check-input" type="radio" name="inlineRadioDistorcaoOptions" id="inlineRadioDistorcao1" value="TotalGeral" checked="true">
@@ -503,6 +504,8 @@ viewof radioDistorcaoBar = html`
 <div class="form-check form-check-inline row fs-5">
   <input class="form-check-input" type="radio" name="inlineRadioDistorcaoOptions" id="inlineRadioDistorcao3" value="Feminino">
   <label class="form-check-label" for="inlineRadioDistorcao3">Feminino</label>
+</div>
+
 </div>
 `
 
@@ -589,8 +592,6 @@ viewof radioDistorcaoBar = html`
 
 ```{ojs}
      
-  
-
    updateDistorcaoChartLine =  function (){  
       
       try {
@@ -696,8 +697,8 @@ Taxa de rendimento em ${pesquisa_ano}
 ```{ojs}
 
 hideRendimento =  {
-  changeVisible("dadosRendimento", filtered_rendimento.length != 0);
-  changeVisible("infoRendimento", filtered_rendimento.length != 0);
+  changeVisible("tabRendimentoBar", filtered_rendimento.length != 0);
+  changeVisible("radioRendimentoBar", filtered_rendimento.length != 0);
   } 
 
 mutable valueRendimento ="TotalGeral";
@@ -713,6 +714,7 @@ updateValueRendimento = {
 }
 
 viewof radioRendimentoBar = html`
+<div id= radioRendimentoBar>
 
 <div class="form-check form-check-inline row fs-5">
   <input class="form-check-input" type="radio" name="inlineRadioRendimentoOptions" id="inlineRadioRendimento1" value="TotalGeral" checked="true">
@@ -727,6 +729,8 @@ viewof radioRendimentoBar = html`
 <div class="form-check form-check-inline row fs-5">
   <input class="form-check-input" type="radio" name="inlineRadioRendimentoOptions" id="inlineRadioRendimento3" value="Feminino">
   <label class="form-check-label" for="inlineRadioRendimento3">Feminino</label>
+</div>
+
 </div>
 `
 
