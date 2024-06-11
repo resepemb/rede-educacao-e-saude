@@ -9,10 +9,10 @@ const { clientsClaim } = workbox.core;
 const scope = self.registration.scope; 
 
 precacheAndRoute([
-    {url: scope+'index.html', revision: '01'},
-    {url: scope+'404.html', revision: '01'},
-    {url: scope+'municipio.html', revision: '01'},
-    {url: scope+'sobre.html', revision: '01'},
+    {url: scope+'index.html', revision: '02'},
+    {url: scope+'404.html', revision: '02'},
+    {url: scope+'municipio.html', revision: '02'},
+    {url: scope+'sobre.html', revision: '02'},
 ]);
 
 const localurls = {
@@ -22,9 +22,6 @@ const localurls = {
     "https://cdn.jsdelivr.net/npm/htl@0.3.1/dist/htl.min.js":"htl.min.js",
     "https://cdn.jsdelivr.net/npm/chart.js/package.json":"chartsjs_package.json",
     "https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.js":"chart.umd.js",
-    // "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css":"leaflet_194.css",
-    // "https://unpkg.com/leaflet/dist/leaflet.css":"leaflet_194.css",
-    // "https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css":"leaflet_193.css",
   }
 
 const contentTypeMappings = {
@@ -36,7 +33,7 @@ const contentTypeMappings = {
 
 registerRoute(({url}) => url.pathname === scope+'municipio.html', async({event}) => {
     try {
-        const cacheResponse = await caches.match(scope+'municipio.html?__WB_REVISION__=01');
+        const cacheResponse = await caches.match(scope+'municipio.html?__WB_REVISION__=02');
         return cacheResponse || fetch(event.request);
     } catch (error) {
         return new Response('Error loading page', { status: 500 });

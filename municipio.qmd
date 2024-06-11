@@ -74,7 +74,7 @@ Matrículas no Ensino Médio
 :::{.grid .mx-5}
 
 
-::: {.g-col-12 .g-col-md-6}
+::: {.g-col-12 .g-col-lg-6}
 
 ::: {.subtopic } 
 
@@ -82,7 +82,7 @@ Por genêro
 
 :::
 
-:::{.d-flex .text-center .flex-column .flex-md-row .gap-3 }
+:::{.d-flex .text-center .flex-column .flex-lg-row .gap-3 }
  
 
 ::: {.valuebox .flex-fill .my-2 .rounded-2 .pt-2} 
@@ -133,7 +133,14 @@ Por genêro
  
 ```
 
-:::{.d-flex .justify-content-between .text-center .gap-3 .flex-column .flex-md-row}
+::: {.subtopic } 
+
+Posicionamento educacional
+
+:::
+
+:::{.d-flex .justify-content-between .text-center .gap-3 .flex-column .flex-lg-row}
+
 
 ::: {.valuebox .flex-fill .my-2  .rounded-2 .pt-2 id="Aprovacao"} 
 
@@ -195,7 +202,7 @@ Por genêro
 :::
 
 
-::: {.g-col-12 .g-col-md-6}
+::: {.g-col-12 .g-col-lg-6}
 
 ::: {.subtopic} 
 
@@ -206,7 +213,7 @@ Por raça/cor
 :::{.d-flex .text-center .flex-column}
 
 
-:::{.d-flex .justify-content-between .gap-3 .flex-column .flex-md-row}
+:::{.d-flex .justify-content-between .gap-3 .flex-column .flex-lg-row}
 
 ::: {.valuebox .flex-fill .my-2  .rounded-2 .pt-2} 
 
@@ -225,7 +232,7 @@ Por raça/cor
 
 :::
 
-::: {.valuebox .flex-fill .my-2   .rounded-2 .pt-2} 
+::: {.valuebox .flex-fill .my-2  .rounded-2 .pt-2} 
   Branca
 
 :::{.cityNumber}
@@ -261,7 +268,7 @@ Por raça/cor
 
 :::
 
-:::{.d-flex .gap-3 .flex-column .flex-md-row}
+:::{.d-flex .gap-3 .flex-column .flex-lg-row }
 
 
 ::: {.valuebox .flex-fill .my-2 .rounded-2 .pt-2} 
@@ -358,7 +365,7 @@ Fonte: INEP.
 
 :::{.grid .pb-3 .mx-5 }
 
-:::{.g-col-12 .g-col-sm-6}
+:::{.g-col-12 .g-col-md-6}
 
 
 ::: {.fw-bold .fs-3}
@@ -432,7 +439,7 @@ Quantidade de Matrículas em ${pesquisa_ano}
 
 :::
 
-:::{.g-col-12 .g-col-sm-6 .pt-2}
+:::{.g-col-12 .g-col-md-6 .pt-2}
 
 
 :::{.border .border-primary .rounded .px-3}
@@ -454,7 +461,7 @@ Saiba mais sobre em: [Censo Escolar - Inep](https://www.gov.br/inep/pt-br/areas-
 :::
 
 
-:::{id="dadosDistorcao" .g-col-12 .g-col-sm-6}
+:::{id="dadosDistorcao" .g-col-12 .g-col-md-6}
 
 :::{.fw-bold .fs-3}
 
@@ -649,7 +656,7 @@ viewof radioDistorcaoBar = html`
 :::
 
 
-:::{id="infoDistorcao" .g-col-12 .g-col-sm-6 .pt-2}
+:::{id="infoDistorcao" .g-col-12 .g-col-md-6 .pt-2}
 
 :::{.border .border-primary .rounded .px-3}
 
@@ -678,7 +685,7 @@ Saiba mais sobre em: [QEdu Conteúdos](https://conteudos.qedu.org.br/academia/di
 :::
 
 
-:::{id="dadosRendimento" .g-col-12 .g-col-sm-6}
+:::{id="dadosRendimento" .g-col-12 .g-col-md-6}
 
 :::{.fw-bold .fs-3}
 
@@ -893,7 +900,7 @@ viewof radioRendimentoBar = html`
 :::
 
 
-:::{id="infoRendimento" .g-col-12 .g-col-sm-6 .pt-2}
+:::{id="infoRendimento" .g-col-12 .g-col-md-6 .pt-2}
 
 
 :::{.border .border-primary .rounded .px-3}
