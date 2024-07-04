@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.553">
+<meta name="generator" content="quarto-1.5.53">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -104,7 +104,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <span class="navbar-title">Rede de Educação e Saúde</span>
     </a>
   </div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -114,7 +114,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Proeficiência</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-publicações" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-publicações" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Publicações</span>
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-publicações">    
@@ -129,7 +129,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos-de-formação" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos-de-formação" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Cursos de Formação</span>
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-cursos-de-formação">    
@@ -159,7 +159,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -174,7 +174,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <div class="cell hidden">
-<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="38" data-source-offset="-2"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 37;"><span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">calculateTotalPercentage</span>(n1){</span>
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="38" data-source-offset="-1"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 37;"><span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">calculateTotalPercentage</span>(n1){</span>
 <span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> percent <span class="op">=</span> ((n1<span class="op">/</span>dados[<span class="dv">0</span>][pesquisa_ano]<span class="op">.</span><span class="at">Total</span>) <span class="op">*</span> <span class="dv">100</span>)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)</span>
 <span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="pp">isNaN</span>(percent)){</span>
@@ -374,7 +374,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="searchTab">
 <div id="searchListGroup" class="list-group pb-3">
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="121" data-source-offset="-4"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 120;"><span id="cb3-121"><a href="#cb3-121" aria-hidden="true" tabindex="-1"></a>updateSearch <span class="op">=</span> <span class="kw">function</span> () {</span>
+<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="121" data-source-offset="-3"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 120;"><span id="cb3-121"><a href="#cb3-121" aria-hidden="true" tabindex="-1"></a>updateSearch <span class="op">=</span> <span class="kw">function</span> () {</span>
 <span id="cb3-122"><a href="#cb3-122" aria-hidden="true" tabindex="-1"></a>    <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">"searchListGroup"</span>)<span class="op">.</span><span class="fu">replaceChildren</span>()<span class="op">;</span></span>
 <span id="cb3-123"><a href="#cb3-123" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-124"><a href="#cb3-124" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">5</span><span class="op">;</span> i<span class="op">++</span>) {</span>
@@ -435,7 +435,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="5" data-source-offset="-210"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 4;"><span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div id="map" style="height: 600px;"&gt;&lt;/div&gt;`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="5" data-source-offset="-205"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 4;"><span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div id="map" style="height: 600px;"&gt;&lt;/div&gt;`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-4-3" data-nodetype="expression">
@@ -443,7 +443,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div class="sourceCode cell-code hidden" id="cb6" data-startfrom="7" data-source-offset="-263"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 6;"><span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>viewof map <span class="op">=</span> {</span>
+<div class="sourceCode cell-code hidden" id="cb6" data-startfrom="7" data-source-offset="-256"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 6;"><span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>viewof map <span class="op">=</span> {</span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> mapDiv <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">'map'</span>)<span class="op">;</span></span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> map <span class="op">=</span> L<span class="op">.</span><span class="fu">map</span>(mapDiv)<span class="op">.</span><span class="fu">setView</span>([<span class="op">-</span><span class="fl">12.9714</span><span class="op">,</span> <span class="op">-</span><span class="fl">38.5014</span>]<span class="op">,</span> <span class="dv">10</span>)<span class="op">;</span></span>
@@ -520,7 +520,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <script type="ojs-module-contents">
-eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxyXG5mdW5jdGlvbiBjYWxjdWxhdGVUb3RhbFBlcmNlbnRhZ2UobjEpe1xyXG4gIGxldCBwZXJjZW50ID0gKChuMS9kYWRvc1swXVtwZXNxdWlzYV9hbm9dLlRvdGFsKSAqIDEwMCkudG9GaXhlZCgyKVxyXG5cclxuICBpZiAoaXNOYU4ocGVyY2VudCkpe1xyXG4gICAgcGVyY2VudCA9IFwiLVwiXHJcbiAgfVxyXG5cclxuICByZXR1cm4gcGVyY2VudC5yZXBsYWNlKFwiLlwiLCBcIixcIik7XHJcbn1cclxuXHJcblxyXG5mdW5jdGlvbiBmaXhOdW1iZXIobnVtYmVyLCBkZWNpbWFsKXtcclxuICBpZiAoaXNOYU4obnVtYmVyKSl7XHJcbiAgICByZXR1cm4gXCItXCI7XHJcbiAgfVxyXG5cclxuICByZXR1cm4gbnVtYmVyLnRvRml4ZWQoZGVjaW1hbClcclxufVxyXG5cclxuXHJcbmZ1bmN0aW9uIGNsZWFyQ2hhcnRHcm91cChjaGFydEdyb3VwLCBjaGFydElELCBjaGFydFdpZHRoLCBjaGFydEhlaWdodCl7XHJcbiAgdHJ5IHtcclxuICAgIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKGNoYXJ0R3JvdXApLnJlcGxhY2VDaGlsZHJlbigpO1xyXG4gICAgY29uc3QgcGFyYSA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJjYW52YXNcIik7XHJcbiAgICBwYXJhLnNldEF0dHJpYnV0ZShcImlkXCIsIGNoYXJ0SUQpO1xyXG4gICAgcGFyYS5zZXRBdHRyaWJ1dGUoXCJ3aWR0aFwiLCBjaGFydFdpZHRoKTtcclxuICAgIHBhcmEuc2V0QXR0cmlidXRlKFwiaGVpZ2h0XCIsIGNoYXJ0SGVpZ2h0KTtcclxuXHJcbiAgICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZChjaGFydEdyb3VwKS5hcHBlbmRDaGlsZChwYXJhKTtcclxuICB9IGNhdGNoIChlcnJvcikge1xyXG4gICAgdGhyb3cgY29uc29sZS5lcnJvcigpO1xyXG4gIH1cclxuICBcclxufVxyXG5cclxuXHJcbmZ1bmN0aW9uIGNoYW5nZVZpc2libGUoZWxlbWVudCwgdmFsdWUpe1xyXG4gICAgaWYodmFsdWUpe1xyXG4gICAgICBpZiAoZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoZWxlbWVudCkuY2xhc3NMaXN0LmNvbnRhaW5zKFwiZC1ub25lXCIpKXtcclxuICAgICAgICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZChlbGVtZW50KS5jbGFzc0xpc3QucmVtb3ZlKFwiZC1ub25lXCIpOyAgXHJcbiAgICAgIH1cclxuICAgIH1lbHNle1xyXG4gICAgICBpZiAoIWRvY3VtZW50LmdldEVsZW1lbnRCeUlkKGVsZW1lbnQpLmNsYXNzTGlzdC5jb250YWlucyhcImQtbm9uZVwiKSl7XHJcbiAgICAgICAgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoZWxlbWVudCkuY2xhc3NMaXN0LmFkZChcImQtbm9uZVwiKTsgICAgXHJcbiAgICAgIH0gXHJcbiAgICB9IFxyXG59XHJcblxyXG5cclxuZnVuY3Rpb24gZ2V0T3JkZW1BbnVhbChsaXN0LCBpZCl7XHJcbiAgdmFyIGluZGV4ID0gbGlzdC5maW5kSW5kZXgoZnVuY3Rpb24oaXRlbSkge1xyXG4gICAgcmV0dXJuIGl0ZW0uaWQgPT0gaWQ7XHJcbiAgfSkgKyAxO1xyXG5cclxuICByZXR1cm4gaW5kZXg7XHJcbn1cclxuXHJcblxyXG5cclxuZnVuY3Rpb24gZ2V0UG9zaXRpb25Db2xvcihwb3NpdGlvbil7XHJcbiAgaWYgKGlzTmFOKHBvc2l0aW9uKSl7XHJcbiAgICByZXR1cm4gXCJncmV5XCI7XHJcbiAgfVxyXG5cclxuICBpZihOdW1iZXIocG9zaXRpb24pIDwgMjEpe1xyXG4gICAgcmV0dXJuIFwiZGFya2dyZWVuXCI7XHJcbiAgfVxyXG4gIGVsc2UgaWYoTnVtYmVyKHBvc2l0aW9uKSA8IDI1MSl7XHJcbiAgICByZXR1cm4gXCJkYXJrb3JhbmdlXCI7XHJcbiAgfVxyXG4gIGVsc2V7XHJcbiAgICByZXR1cm4gXCJkYXJrcmVkXCI7XHJcbiAgfVxyXG59XHJcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMiIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IiAgdmlld29mIHRleHRJbnB1dCA9IGh0bWxgPGlucHV0IHR5cGU9XCJzZWFyY2hcIiBjbGFzcz1cImZvcm0tY29udHJvbCBpbnB1dFNlYXJjaFJpZ2h0XCIgaWQ9XCJzZWFyY2hDaXR5XCIgcGxhY2Vob2xkZXI9XCJEaWdpdGUgbyBNdW5pY8OtcGlvXCIgbmFtZT1cInFcIj5gXHJcblxyXG4gIGRhdGEgPSBGaWxlQXR0YWNobWVudChcImZpbGVzL01hdHJpY3VsYXMgMjAxMCBhIDIwMjIgSUQueGxzeFwiKS54bHN4KCk7XHJcblxyXG4gIHNlYXJjaENpdHlGaWx0ZXIgPSBkYXRhLnNoZWV0KFwiaWRcIikuZmlsdGVyKGZ1bmN0aW9uKGVsZW1lbnQpIHsgXHJcblxyXG4gICAgaWYgKHRleHRJbnB1dC50cmltKCkgPT09IFwiXCIpe1xyXG4gICAgICByZXR1cm4gZmFsc2U7XHJcbiAgICB9XHJcblxyXG4gICAgdmFyIG5vcm1hbGl6ZWRFbGVtZW50QSA9IGVsZW1lbnQuQS5ub3JtYWxpemUoXCJORkRcIikucmVwbGFjZSgvW1xcdTAzMDAtXFx1MDM2Zl0vZywgXCJcIikudG9Mb3dlckNhc2UoKTtcclxuICAgIHZhciBub3JtYWxpemVkVGV4dElucHV0ID0gdGV4dElucHV0Lm5vcm1hbGl6ZShcIk5GRFwiKS5yZXBsYWNlKC9bXFx1MDMwMC1cXHUwMzZmXS9nLCBcIlwiKS50b0xvd2VyQ2FzZSgpO1xyXG5cclxuICAgIHJldHVybiBub3JtYWxpemVkRWxlbWVudEEuc3RhcnRzV2l0aChub3JtYWxpemVkVGV4dElucHV0KTtcclxuICB9KVxyXG5cclxuICBcclxuICBoaWRlU2VhcmNoID0gIHtcclxuICAgIGlmKHRleHRJbnB1dCA9PSBcIlwiIHx8IHNlYXJjaENpdHlGaWx0ZXIubGVuZ3RoID09IDApe1xyXG4gICAgICBjaGFuZ2VWaXNpYmxlKFwic2VhcmNoVGFiXCIsIGZhbHNlKTtcclxuICAgICAgcmV0dXJuO1xyXG4gICAgfVxyXG4gIH1cclxuICBcclxuICBzaG93U2VhcmNoID0gIHtcclxuICAgIGlmIChzZWFyY2hDaXR5RmlsdGVyLmxlbmd0aCA+IDApe1xyXG4gICAgICBjaGFuZ2VWaXNpYmxlKFwic2VhcmNoVGFiXCIsIHRydWUpO1xyXG4gICAgICByZXR1cm47XHJcbiAgICB9XHJcbiAgfVxyXG5cclxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0zIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiXHJcbiAgdXBkYXRlU2VhcmNoID0gZnVuY3Rpb24gKCkge1xyXG4gICAgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoXCJzZWFyY2hMaXN0R3JvdXBcIikucmVwbGFjZUNoaWxkcmVuKCk7XHJcblxyXG4gICAgZm9yIChsZXQgaSA9IDA7IGkgPCA1OyBpKyspIHtcclxuICAgICAgY29uc3QgZWxlbWVudCA9IHNlYXJjaENpdHlGaWx0ZXJbaV07XHJcblxyXG4gICAgICBjb25zdCBwYXJhID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudChcImFcIik7XHJcbiAgICAgIHBhcmEuc2V0QXR0cmlidXRlKFwiaHJlZlwiLCBsb2NhdGlvbitcIm11bmljaXBpby5odG1sP2lkPVwiICsgZWxlbWVudC5CKTtcclxuICAgICAgcGFyYS5jbGFzc0xpc3QuYWRkKFwibGlzdC1ncm91cC1pdGVtXCIpO1xyXG4gICAgICBwYXJhLmNsYXNzTGlzdC5hZGQoXCJsaXN0LWdyb3VwLWl0ZW0tYWN0aW9uXCIpO1xyXG5cclxuICAgICAgY29uc3Qgbm9kZSA9IGRvY3VtZW50LmNyZWF0ZVRleHROb2RlKGVsZW1lbnQuQSk7XHJcbiAgICAgIHBhcmEuYXBwZW5kQ2hpbGQobm9kZSk7XHJcblxyXG4gICAgICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZChcInNlYXJjaExpc3RHcm91cFwiKS5hcHBlbmRDaGlsZChwYXJhKTtcclxuICAgIH1cclxuICAgIFxyXG4gIH1cclxuXHJcbiAgdXBkYXRlU2VhcmNoKCk7XHJcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNCIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Impzb24gPSBGaWxlQXR0YWNobWVudChcImZpbGVzL2dlb2pzX2JhaGlhLmpzb25cIikuanNvbigpXHJcblxyXG5odG1sYDxsaW5rIHJlbD1cInN0eWxlc2hlZXRcIiBocmVmPVwiaHR0cHM6Ly91bnBrZy5jb20vbGVhZmxldC9kaXN0L2xlYWZsZXQuY3NzXCIgLz5cclxuPHNjcmlwdCBzcmM9XCJodHRwczovL3VucGtnLmNvbS9sZWFmbGV0L2Rpc3QvbGVhZmxldC5qc1wiPjwvc2NyaXB0PmBcclxuXHJcbmh0bWxgPGRpdiBpZD1cIm1hcFwiIHN0eWxlPVwiaGVpZ2h0OiA2MDBweDtcIj48L2Rpdj5gXHJcblxyXG52aWV3b2YgbWFwID0ge1xyXG4gIGNvbnN0IG1hcERpdiA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdtYXAnKTtcclxuICBcclxuICBjb25zdCBtYXAgPSBMLm1hcChtYXBEaXYpLnNldFZpZXcoWy0xMi45NzE0LCAtMzguNTAxNF0sIDEwKTtcclxuXHJcbiAgTC50aWxlTGF5ZXIoJ2h0dHBzOi8ve3N9LmJhc2VtYXBzLmNhcnRvY2RuLmNvbS9saWdodF9hbGwve3p9L3t4fS97eX17cn0ucG5nJywge1xyXG5cdGF0dHJpYnV0aW9uOiAnJmNvcHk7IDxhIGhyZWY9XCJodHRwczovL3d3dy5vcGVuc3RyZWV0bWFwLm9yZy9jb3B5cmlnaHRcIj5PcGVuU3RyZWV0TWFwPC9hPiBjb250cmlidXRvcnMgJmNvcHk7IDxhIGhyZWY9XCJodHRwczovL2NhcnRvLmNvbS9hdHRyaWJ1dGlvbnNcIj5DQVJUTzwvYT4nLFxyXG5cdHN1YmRvbWFpbnM6ICdhYmNkJyxcclxuXHRtYXhab29tOiAyMFxyXG4gIH0pLmFkZFRvKG1hcCk7XHJcblxyXG4gIFxyXG4gIEwuZ2VvSlNPTihqc29uLCB7XHJcbiAgICBzdHlsZToge1xyXG4gICAgY29sb3I6ICdncmVlbicsIFxyXG4gICAgd2VpZ2h0OiAxIFxyXG4gIH0sIFxyXG4gICAgICBvbkVhY2hGZWF0dXJlOiBmdW5jdGlvbiAoZmVhdHVyZSwgbGF5ZXIpIHtcclxuICAgIGNvbnN0IHBvcHVwQ29udGVudCA9IGBcclxuICAgICAgPGJ1dHRvbiBvbmNsaWNrPVwid2luZG93LmxvY2F0aW9uLmhyZWYgPSAnJHtsb2NhdGlvbn1tdW5pY2lwaW8uaHRtbD9pZD0nICsgJHtmZWF0dXJlLnByb3BlcnRpZXMuaWR9O1wiPlZpc3VhbGl6YXIgZGFkb3MgZGUgJHtmZWF0dXJlLnByb3BlcnRpZXMubmFtZX08L2J1dHRvbj5cclxuICAgIGA7XHJcblxyXG4gICAgbGF5ZXIuYmluZFBvcHVwKHBvcHVwQ29udGVudCk7XHJcbiAgfVxyXG4gIH0pLmFkZFRvKG1hcCk7XHJcblxyXG5cclxuICByZXR1cm4gbWFwRGl2O1xyXG59XHJcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgndGV4dElucHV0JykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ21hcCcpIn1dfQ==
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxuZnVuY3Rpb24gY2FsY3VsYXRlVG90YWxQZXJjZW50YWdlKG4xKXtcbiAgbGV0IHBlcmNlbnQgPSAoKG4xL2RhZG9zWzBdW3Blc3F1aXNhX2Fub10uVG90YWwpICogMTAwKS50b0ZpeGVkKDIpXG5cbiAgaWYgKGlzTmFOKHBlcmNlbnQpKXtcbiAgICBwZXJjZW50ID0gXCItXCJcbiAgfVxuXG4gIHJldHVybiBwZXJjZW50LnJlcGxhY2UoXCIuXCIsIFwiLFwiKTtcbn1cblxuXG5mdW5jdGlvbiBmaXhOdW1iZXIobnVtYmVyLCBkZWNpbWFsKXtcbiAgaWYgKGlzTmFOKG51bWJlcikpe1xuICAgIHJldHVybiBcIi1cIjtcbiAgfVxuXG4gIHJldHVybiBudW1iZXIudG9GaXhlZChkZWNpbWFsKVxufVxuXG5cbmZ1bmN0aW9uIGNsZWFyQ2hhcnRHcm91cChjaGFydEdyb3VwLCBjaGFydElELCBjaGFydFdpZHRoLCBjaGFydEhlaWdodCl7XG4gIHRyeSB7XG4gICAgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoY2hhcnRHcm91cCkucmVwbGFjZUNoaWxkcmVuKCk7XG4gICAgY29uc3QgcGFyYSA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJjYW52YXNcIik7XG4gICAgcGFyYS5zZXRBdHRyaWJ1dGUoXCJpZFwiLCBjaGFydElEKTtcbiAgICBwYXJhLnNldEF0dHJpYnV0ZShcIndpZHRoXCIsIGNoYXJ0V2lkdGgpO1xuICAgIHBhcmEuc2V0QXR0cmlidXRlKFwiaGVpZ2h0XCIsIGNoYXJ0SGVpZ2h0KTtcblxuICAgIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKGNoYXJ0R3JvdXApLmFwcGVuZENoaWxkKHBhcmEpO1xuICB9IGNhdGNoIChlcnJvcikge1xuICAgIHRocm93IGNvbnNvbGUuZXJyb3IoKTtcbiAgfVxuICBcbn1cblxuXG5mdW5jdGlvbiBjaGFuZ2VWaXNpYmxlKGVsZW1lbnQsIHZhbHVlKXtcbiAgICBpZih2YWx1ZSl7XG4gICAgICBpZiAoZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoZWxlbWVudCkuY2xhc3NMaXN0LmNvbnRhaW5zKFwiZC1ub25lXCIpKXtcbiAgICAgICAgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoZWxlbWVudCkuY2xhc3NMaXN0LnJlbW92ZShcImQtbm9uZVwiKTsgIFxuICAgICAgfVxuICAgIH1lbHNle1xuICAgICAgaWYgKCFkb2N1bWVudC5nZXRFbGVtZW50QnlJZChlbGVtZW50KS5jbGFzc0xpc3QuY29udGFpbnMoXCJkLW5vbmVcIikpe1xuICAgICAgICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZChlbGVtZW50KS5jbGFzc0xpc3QuYWRkKFwiZC1ub25lXCIpOyAgICBcbiAgICAgIH0gXG4gICAgfSBcbn1cblxuXG5mdW5jdGlvbiBnZXRPcmRlbUFudWFsKGxpc3QsIGlkKXtcbiAgdmFyIGluZGV4ID0gbGlzdC5maW5kSW5kZXgoZnVuY3Rpb24oaXRlbSkge1xuICAgIHJldHVybiBpdGVtLmlkID09IGlkO1xuICB9KSArIDE7XG5cbiAgcmV0dXJuIGluZGV4O1xufVxuXG5cblxuZnVuY3Rpb24gZ2V0UG9zaXRpb25Db2xvcihwb3NpdGlvbil7XG4gIGlmIChpc05hTihwb3NpdGlvbikpe1xuICAgIHJldHVybiBcImdyZXlcIjtcbiAgfVxuXG4gIGlmKE51bWJlcihwb3NpdGlvbikgPCAyMSl7XG4gICAgcmV0dXJuIFwiZGFya2dyZWVuXCI7XG4gIH1cbiAgZWxzZSBpZihOdW1iZXIocG9zaXRpb24pIDwgMjUxKXtcbiAgICByZXR1cm4gXCJkYXJrb3JhbmdlXCI7XG4gIH1cbiAgZWxzZXtcbiAgICByZXR1cm4gXCJkYXJrcmVkXCI7XG4gIH1cbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMiIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IiAgdmlld29mIHRleHRJbnB1dCA9IGh0bWxgPGlucHV0IHR5cGU9XCJzZWFyY2hcIiBjbGFzcz1cImZvcm0tY29udHJvbCBpbnB1dFNlYXJjaFJpZ2h0XCIgaWQ9XCJzZWFyY2hDaXR5XCIgcGxhY2Vob2xkZXI9XCJEaWdpdGUgbyBNdW5pY8OtcGlvXCIgbmFtZT1cInFcIj5gXG5cbiAgZGF0YSA9IEZpbGVBdHRhY2htZW50KFwiZmlsZXMvTWF0cmljdWxhcyAyMDEwIGEgMjAyMiBJRC54bHN4XCIpLnhsc3goKTtcblxuICBzZWFyY2hDaXR5RmlsdGVyID0gZGF0YS5zaGVldChcImlkXCIpLmZpbHRlcihmdW5jdGlvbihlbGVtZW50KSB7IFxuXG4gICAgaWYgKHRleHRJbnB1dC50cmltKCkgPT09IFwiXCIpe1xuICAgICAgcmV0dXJuIGZhbHNlO1xuICAgIH1cblxuICAgIHZhciBub3JtYWxpemVkRWxlbWVudEEgPSBlbGVtZW50LkEubm9ybWFsaXplKFwiTkZEXCIpLnJlcGxhY2UoL1tcXHUwMzAwLVxcdTAzNmZdL2csIFwiXCIpLnRvTG93ZXJDYXNlKCk7XG4gICAgdmFyIG5vcm1hbGl6ZWRUZXh0SW5wdXQgPSB0ZXh0SW5wdXQubm9ybWFsaXplKFwiTkZEXCIpLnJlcGxhY2UoL1tcXHUwMzAwLVxcdTAzNmZdL2csIFwiXCIpLnRvTG93ZXJDYXNlKCk7XG5cbiAgICByZXR1cm4gbm9ybWFsaXplZEVsZW1lbnRBLnN0YXJ0c1dpdGgobm9ybWFsaXplZFRleHRJbnB1dCk7XG4gIH0pXG5cbiAgXG4gIGhpZGVTZWFyY2ggPSAge1xuICAgIGlmKHRleHRJbnB1dCA9PSBcIlwiIHx8IHNlYXJjaENpdHlGaWx0ZXIubGVuZ3RoID09IDApe1xuICAgICAgY2hhbmdlVmlzaWJsZShcInNlYXJjaFRhYlwiLCBmYWxzZSk7XG4gICAgICByZXR1cm47XG4gICAgfVxuICB9XG4gIFxuICBzaG93U2VhcmNoID0gIHtcbiAgICBpZiAoc2VhcmNoQ2l0eUZpbHRlci5sZW5ndGggPiAwKXtcbiAgICAgIGNoYW5nZVZpc2libGUoXCJzZWFyY2hUYWJcIiwgdHJ1ZSk7XG4gICAgICByZXR1cm47XG4gICAgfVxuICB9XG5cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMyIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxuICB1cGRhdGVTZWFyY2ggPSBmdW5jdGlvbiAoKSB7XG4gICAgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoXCJzZWFyY2hMaXN0R3JvdXBcIikucmVwbGFjZUNoaWxkcmVuKCk7XG5cbiAgICBmb3IgKGxldCBpID0gMDsgaSA8IDU7IGkrKykge1xuICAgICAgY29uc3QgZWxlbWVudCA9IHNlYXJjaENpdHlGaWx0ZXJbaV07XG5cbiAgICAgIGNvbnN0IHBhcmEgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KFwiYVwiKTtcbiAgICAgIHBhcmEuc2V0QXR0cmlidXRlKFwiaHJlZlwiLCBsb2NhdGlvbitcIm11bmljaXBpby5odG1sP2lkPVwiICsgZWxlbWVudC5CKTtcbiAgICAgIHBhcmEuY2xhc3NMaXN0LmFkZChcImxpc3QtZ3JvdXAtaXRlbVwiKTtcbiAgICAgIHBhcmEuY2xhc3NMaXN0LmFkZChcImxpc3QtZ3JvdXAtaXRlbS1hY3Rpb25cIik7XG5cbiAgICAgIGNvbnN0IG5vZGUgPSBkb2N1bWVudC5jcmVhdGVUZXh0Tm9kZShlbGVtZW50LkEpO1xuICAgICAgcGFyYS5hcHBlbmRDaGlsZChub2RlKTtcblxuICAgICAgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoXCJzZWFyY2hMaXN0R3JvdXBcIikuYXBwZW5kQ2hpbGQocGFyYSk7XG4gICAgfVxuICAgIFxuICB9XG5cbiAgdXBkYXRlU2VhcmNoKCk7XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTQiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJqc29uID0gRmlsZUF0dGFjaG1lbnQoXCJmaWxlcy9nZW9qc19iYWhpYS5qc29uXCIpLmpzb24oKVxuXG5odG1sYDxsaW5rIHJlbD1cInN0eWxlc2hlZXRcIiBocmVmPVwiaHR0cHM6Ly91bnBrZy5jb20vbGVhZmxldC9kaXN0L2xlYWZsZXQuY3NzXCIgLz5cbjxzY3JpcHQgc3JjPVwiaHR0cHM6Ly91bnBrZy5jb20vbGVhZmxldC9kaXN0L2xlYWZsZXQuanNcIj48L3NjcmlwdD5gXG5cbmh0bWxgPGRpdiBpZD1cIm1hcFwiIHN0eWxlPVwiaGVpZ2h0OiA2MDBweDtcIj48L2Rpdj5gXG5cbnZpZXdvZiBtYXAgPSB7XG4gIGNvbnN0IG1hcERpdiA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdtYXAnKTtcbiAgXG4gIGNvbnN0IG1hcCA9IEwubWFwKG1hcERpdikuc2V0VmlldyhbLTEyLjk3MTQsIC0zOC41MDE0XSwgMTApO1xuXG4gIEwudGlsZUxheWVyKCdodHRwczovL3tzfS5iYXNlbWFwcy5jYXJ0b2Nkbi5jb20vbGlnaHRfYWxsL3t6fS97eH0ve3l9e3J9LnBuZycsIHtcblx0YXR0cmlidXRpb246ICcmY29weTsgPGEgaHJlZj1cImh0dHBzOi8vd3d3Lm9wZW5zdHJlZXRtYXAub3JnL2NvcHlyaWdodFwiPk9wZW5TdHJlZXRNYXA8L2E+IGNvbnRyaWJ1dG9ycyAmY29weTsgPGEgaHJlZj1cImh0dHBzOi8vY2FydG8uY29tL2F0dHJpYnV0aW9uc1wiPkNBUlRPPC9hPicsXG5cdHN1YmRvbWFpbnM6ICdhYmNkJyxcblx0bWF4Wm9vbTogMjBcbiAgfSkuYWRkVG8obWFwKTtcblxuICBcbiAgTC5nZW9KU09OKGpzb24sIHtcbiAgICBzdHlsZToge1xuICAgIGNvbG9yOiAnZ3JlZW4nLCBcbiAgICB3ZWlnaHQ6IDEgXG4gIH0sIFxuICAgICAgb25FYWNoRmVhdHVyZTogZnVuY3Rpb24gKGZlYXR1cmUsIGxheWVyKSB7XG4gICAgY29uc3QgcG9wdXBDb250ZW50ID0gYFxuICAgICAgPGJ1dHRvbiBvbmNsaWNrPVwid2luZG93LmxvY2F0aW9uLmhyZWYgPSAnJHtsb2NhdGlvbn1tdW5pY2lwaW8uaHRtbD9pZD0nICsgJHtmZWF0dXJlLnByb3BlcnRpZXMuaWR9O1wiPlZpc3VhbGl6YXIgZGFkb3MgZGUgJHtmZWF0dXJlLnByb3BlcnRpZXMubmFtZX08L2J1dHRvbj5cbiAgICBgO1xuXG4gICAgbGF5ZXIuYmluZFBvcHVwKHBvcHVwQ29udGVudCk7XG4gIH1cbiAgfSkuYWRkVG8obWFwKTtcblxuXG4gIHJldHVybiBtYXBEaXY7XG59XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ3RleHRJbnB1dCcpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdtYXAnKSJ9XX0=
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
@@ -565,18 +565,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -608,15 +597,37 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/GabrielCoffee9\.github\.io\/rede-educacao-e-saude\/");
+      var filterRegex = new RegExp("https:\/\/resepemb\.github\.io\/rede-educacao-e-saude\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -942,52 +953,28 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <script>
 
-
-
     function getScope() {
-
         if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
-
             return "/";
-
         } else {
-
             var repositoryName = window.location.pathname.split('/')[1];
-
             return '/'+ repositoryName+'/';
-
         }
-
     }
 
 
-
-
-
     if('serviceWorker' in navigator) {
-
     window.addEventListener('load', () => {
-
         navigator.serviceWorker.register('sw.js', {scope: getScope()})
-
         .then(function (reg) {
-
             //registration worked
-
             console.log('Registration succeded. Scope is: ' + reg.scope);
-
         }).catch(function (error) {
-
             //registration failed
-
             console.log('Registration failed with '+ error);
-
         });
-
     });
-
 }
-
 </script>
 
 
