@@ -2,134 +2,118 @@
 ```{ojs}
 //| output: false
  
+
   chartjs = require('chart.js');
 
-  dados_taxas = FileAttachment("files/Taxa distorção e Rendimento.xlsx").xlsx();
+  dados_taxas = FileAttachment("files/Taxa distorção e Rendimento.xlsx")?.xlsx?.();
 
-  dados_matriculas = FileAttachment("files/Matriculas 2010 a 2022 ID.xlsx").xlsx();
+  dados_matriculas = FileAttachment("files/Matriculas 2010 a 2022 ID.xlsx")?.xlsx?.();
 
   searchParams = new URLSearchParams(location.search);
 
-  id_pesquisa = searchParams.has("id") ? searchParams.get("id") : "2928703";
+  id_pesquisa = searchParams?.has("id") ? searchParams?.get("id") : "2928703";
 
-  filtered = dados_matriculas.sheet("números absolutos").filter(function(filtro) {
-    return filtro.A != "Territórios BA" && filtro.B == id_pesquisa;
-  })
+  filtered = dados_matriculas?.sheet?.("números absolutos")?.filter?.(filtro =>
+    filtro?.A != "Territórios BA" && filtro?.B == id_pesquisa
+  ) ?? [];
 
+  filtered_distorcao = dados_taxas?.sheet?.("Taxa distorção")?.filter?.(filtro =>
+    filtro?.A != "Territórios BA" && filtro?.B == id_pesquisa && (pesquisa_ano == "2010" || pesquisa_ano == "2020")
+  ) ?? [];
 
-  filtered_distorcao = dados_taxas.sheet("Taxa distorção").filter(function(filtro) {
-    return filtro.A != "Territórios BA" && filtro.B == id_pesquisa && (pesquisa_ano == "2010" || pesquisa_ano == "2020");
-  })
+  filtered_distorcao_anuais = dados_taxas?.sheet?.("Distorção anuais")?.filter?.(filtro =>
+    filtro?.A != "Territórios/BA" && filtro?.B == id_pesquisa && filtro?.C != "Total" && (parseInt(pesquisa_ano) >= 2010) && (parseInt(pesquisa_ano) <= 2022)
+  ) ?? [];
 
-  filtered_distorcao_anuais = dados_taxas.sheet("Distorção anuais").filter(function(filtro) {
-    return filtro.A != "Territórios/BA" && filtro.B == id_pesquisa && filtro.C != "Total" && (parseInt(pesquisa_ano)>= 2010)  && (parseInt(pesquisa_ano) <= 2022);
-  })
+  filtered_rendimento = dados_taxas?.sheet?.("Taxa rendimento")?.filter?.(filtro =>
+    filtro?.A != "Territórios BA" && filtro?.B == id_pesquisa && (pesquisa_ano == "2010" || pesquisa_ano == "2019")
+  ) ?? [];
 
-  filtered_rendimento = dados_taxas.sheet("Taxa rendimento").filter(function(filtro) {
-    return filtro.A != "Territórios BA" && filtro.B == id_pesquisa && (pesquisa_ano == "2010" || pesquisa_ano == "2019");
-  })
+  filtered_rendimento_anuais = dados_taxas?.sheet?.("Rendimento anuais")?.filter?.(filtro =>
+    filtro?.A != "Territórios/BA" && filtro?.B != "Total" && filtro?.C == id_pesquisa && (parseInt(pesquisa_ano) >= 2010) && (parseInt(pesquisa_ano) <= 2021)
+  ) ?? [];
 
-  filtered_rendimento_anuais = dados_taxas.sheet("Rendimento anuais").filter(function(filtro) {
-    return filtro.A != "Territórios/BA" && filtro.B != "Total" && filtro.C == id_pesquisa && (parseInt(pesquisa_ano)>= 2010) && (parseInt(pesquisa_ano) <= 2021);
-  })
-
-
-  aprovacoes_anuais = dados_taxas.sheet("Rendimento anuais")
-  .filter(function(filtro) {
-    return filtro.A != "Territórios/BA" && filtro.B != "Total"  && !isNaN(filtro.C) && (parseInt(pesquisa_ano)>= 2010) && (parseInt(pesquisa_ano) <= 2021);
-  })
-  .map(function(filtro) {
-    var value_aprovacao = parseFloat(filtro[anos_rendimento[pesquisa_ano]["Aprovação"]])
-
-    if (isNaN(value_aprovacao)){
+  aprovacoes_anuais = dados_taxas?.sheet?.("Rendimento anuais")?.filter?.(filtro =>
+    filtro?.A != "Territórios/BA" && filtro?.B != "Total" && !isNaN(filtro?.C) && (parseInt(pesquisa_ano) >= 2010) && (parseInt(pesquisa_ano) <= 2021)
+  )?.map?.(filtro => {
+    var value_aprovacao = parseFloat(filtro?.[anos_rendimento?.[pesquisa_ano]?.["Aprovação"]])
+    if (isNaN(value_aprovacao)) {
       value_aprovacao = null;
     }
-
     return {
-      id: filtro.C,
+      id: filtro?.C ?? null,
       aprovacao: value_aprovacao
     };
-  });
+  }) ?? [];
 
-  aprovacoes_ordenadas = aprovacoes_anuais.sort((a, b) => b.aprovacao - a.aprovacao);
+  aprovacoes_ordenadas = aprovacoes_anuais?.sort?.((a, b) => (b?.aprovacao ?? 0) - (a?.aprovacao ?? 0)) ?? [];
 
-
-  reprovacoes_anuais = dados_taxas.sheet("Rendimento anuais")
-  .filter(function(filtro) {
-    return filtro.A != "Territórios/BA" && filtro.B != "Total"  && !isNaN(filtro.C) && (parseInt(pesquisa_ano)>= 2010) && (parseInt(pesquisa_ano) <= 2021);
-  })
-  .map(function(filtro) {
-    var value_reprovacao = parseFloat(filtro[anos_rendimento[pesquisa_ano]["Reprovação"]])
-
-    if (isNaN(value_reprovacao)){
+  reprovacoes_anuais = dados_taxas?.sheet?.("Rendimento anuais")?.filter?.(filtro =>
+    filtro?.A != "Territórios/BA" && filtro?.B != "Total" && !isNaN(filtro?.C) && (parseInt(pesquisa_ano) >= 2010) && (parseInt(pesquisa_ano) <= 2021)
+  )?.map?.(filtro => {
+    var value_reprovacao = parseFloat(filtro?.[anos_rendimento?.[pesquisa_ano]?.["Reprovação"]])
+    if (isNaN(value_reprovacao)) {
       value_reprovacao = null;
     }
-
     return {
-      id: filtro.C,
+      id: filtro?.C ?? null,
       reprovacao: value_reprovacao
     }
-  });
+  }) ?? [];
 
-  reprovacoes_ordenadas = reprovacoes_anuais.sort((a, b) => a.reprovacao - b.reprovacao );
+  reprovacoes_ordenadas = reprovacoes_anuais?.sort?.((a, b) => (a?.reprovacao ?? 0) - (b?.reprovacao ?? 0)) ?? [];
 
-
-  abandono_anuais = dados_taxas.sheet("Rendimento anuais")
-  .filter(function(filtro) {
-    return filtro.A != "Territórios/BA" && filtro.B != "Total"  && !isNaN(filtro.C) && (parseInt(pesquisa_ano)>= 2010) && (parseInt(pesquisa_ano) <= 2021);
-  })
-  .map(function(filtro) {
-    var value_abandono = parseFloat(filtro[anos_rendimento[pesquisa_ano]["Abandono"]])
-
-    if (isNaN(value_abandono)){
+  abandono_anuais = dados_taxas?.sheet?.("Rendimento anuais")?.filter?.(filtro =>
+    filtro?.A != "Territórios/BA" && filtro?.B != "Total" && !isNaN(filtro?.C) && (parseInt(pesquisa_ano) >= 2010) && (parseInt(pesquisa_ano) <= 2021)
+  )?.map?.(filtro => {
+    var value_abandono = parseFloat(filtro?.[anos_rendimento?.[pesquisa_ano]?.["Abandono"]])
+    if (isNaN(value_abandono)) {
       value_abandono = null;
     }
     return {
-      id: filtro.C,
+      id: filtro?.C ?? null,
       abandono: value_abandono
     };
-  });
+  }) ?? [];
 
-  abandono_ordenadas = abandono_anuais.sort((a, b) => a.abandono - b.abandono);
+  abandono_ordenadas = abandono_anuais?.sort?.((a, b) => (a?.abandono ?? 0) - (b?.abandono ?? 0)) ?? [];
 
+  nomeCidade = filtered?.[0]?.C ?? "-";
 
-  nomeCidade = filtered[0].C
+  total = dados?.[0]?.[pesquisa_ano]?.Total?.toLocaleString?.('pt-BR') ?? "-";
 
-  total = dados[0][pesquisa_ano].Total.toLocaleString('pt-BR');
+  total_masculina = dados?.[0]?.[pesquisa_ano]?.Masculina?.toLocaleString?.('pt-BR') ?? "-";
+  total_masculina_porcentagem = calculateTotalPercentage(dados?.[0]?.[pesquisa_ano]?.Masculina ?? 0);
 
-  total_masculina = dados[0][pesquisa_ano].Masculina.toLocaleString('pt-BR');
-  total_masculina_porcentagem = calculateTotalPercentage(dados[0][pesquisa_ano].Masculina);
+  total_feminina = dados?.[0]?.[pesquisa_ano]?.Feminina?.toLocaleString?.('pt-BR') ?? "-";
+  total_feminina_porcentagem = calculateTotalPercentage(dados?.[0]?.[pesquisa_ano]?.Feminina ?? 0);
 
-  total_feminina = dados[0][pesquisa_ano].Feminina.toLocaleString('pt-BR');
-  total_feminina_porcentagem = calculateTotalPercentage(dados[0][pesquisa_ano].Feminina);
+  total_naodeclarada = dados?.[0]?.[pesquisa_ano]?.Nãodeclarada?.toLocaleString?.('pt-BR') ?? "-";
+  total_naodeclarada_porcentagem = calculateTotalPercentage(dados?.[0]?.[pesquisa_ano]?.Nãodeclarada ?? 0);
 
-  total_naodeclarada = dados[0][pesquisa_ano].Nãodeclarada.toLocaleString('pt-BR');
-  total_naodeclarada_porcentagem = calculateTotalPercentage(dados[0][pesquisa_ano].Nãodeclarada);
+  total_branca = dados?.[0]?.[pesquisa_ano]?.Branca?.toLocaleString?.('pt-BR') ?? "-";
+  total_branca_porcentagem = calculateTotalPercentage(dados?.[0]?.[pesquisa_ano]?.Branca ?? 0);
 
-  total_branca = dados[0][pesquisa_ano].Branca.toLocaleString('pt-BR');
-  total_branca_porcentagem = calculateTotalPercentage(dados[0][pesquisa_ano].Branca);
+  total_preta = dados?.[0]?.[pesquisa_ano]?.Preta?.toLocaleString?.('pt-BR') ?? "-";
+  total_preta_porcentagem = calculateTotalPercentage(dados?.[0]?.[pesquisa_ano]?.Preta ?? 0);
 
-  total_preta = dados[0][pesquisa_ano].Preta.toLocaleString('pt-BR');
-  total_preta_porcentagem = calculateTotalPercentage(dados[0][pesquisa_ano].Preta);
+  total_parda = dados?.[0]?.[pesquisa_ano]?.Parda?.toLocaleString?.('pt-BR') ?? "-";
+  total_parda_porcentagem = calculateTotalPercentage(dados?.[0]?.[pesquisa_ano]?.Parda ?? 0);
 
-  total_parda = dados[0][pesquisa_ano].Parda.toLocaleString('pt-BR');
-  total_parda_porcentagem = calculateTotalPercentage(dados[0][pesquisa_ano].Parda);
+  total_amarela = dados?.[0]?.[pesquisa_ano]?.Amarela?.toLocaleString?.('pt-BR') ?? "-";
+  total_amarela_porcentagem = calculateTotalPercentage(dados?.[0]?.[pesquisa_ano]?.Amarela ?? 0);
 
-  total_amarela = dados[0][pesquisa_ano].Amarela.toLocaleString('pt-BR');
-  total_amarela_porcentagem = calculateTotalPercentage(dados[0][pesquisa_ano].Amarela);
+  total_indigena = dados?.[0]?.[pesquisa_ano]?.Indígena?.toLocaleString?.('pt-BR') ?? "-";
+  total_indigena_porcentagem = calculateTotalPercentage(dados?.[0]?.[pesquisa_ano]?.Indígena ?? 0);
 
-  total_indigena = dados[0][pesquisa_ano].Indígena.toLocaleString('pt-BR');
-  total_indigena_porcentagem = calculateTotalPercentage(dados[0][pesquisa_ano].Indígena);
+  total_deficiencia = dados?.[0]?.[pesquisa_ano]?.Deficiência?.toLocaleString?.('pt-BR') ?? "-";
+  total_deficiencia_porcentagem = calculateTotalPercentage(dados?.[0]?.[pesquisa_ano]?.Deficiência ?? 0);
 
-  total_deficiencia = dados[0][pesquisa_ano].Deficiência.toLocaleString('pt-BR');
-  total_deficiencia_porcentagem = calculateTotalPercentage(dados[0][pesquisa_ano].Deficiência);
+  posicao_aprovacao = getOrdemAnual(aprovacoes_ordenadas ?? [], id_pesquisa ?? "-");
 
+  posicao_reprovacao = getOrdemAnual(reprovacoes_ordenadas ?? [], id_pesquisa ?? "-");
 
-  posicao_aprovacao = getOrdemAnual(aprovacoes_ordenadas, id_pesquisa)
-
-  posicao_reprovacao = getOrdemAnual(reprovacoes_ordenadas, id_pesquisa)
-
-  posicao_abandono = getOrdemAnual(abandono_ordenadas, id_pesquisa)
+  posicao_abandono = getOrdemAnual(abandono_ordenadas ?? [], id_pesquisa ?? "-");
 
 
   dados = [{
@@ -782,7 +766,16 @@
     }
     return anos_rendimento;
   }
- 
+
+function calculateTotalPercentage(n1){
+  let percent = ((n1/dados[0][pesquisa_ano].Total) * 100).toFixed(2)
+
+  if (isNaN(percent)){
+    percent = "-"
+  }
+
+  return percent.replace(".", ",");
+}
 
 ```
 

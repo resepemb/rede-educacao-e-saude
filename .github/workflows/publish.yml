@@ -1,25 +1,135 @@
 on:
   workflow_dispatch:
-  push:
-    branches: main
+  release:
+    types: [created]
 
 name: Quarto Publish
 
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
+    env:
+      TAG_NAME: ${{ github.event.release.tag_name }}
     permissions:
       contents: write
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Set up Quarto
-        uses: quarto-dev/quarto-actions/setup@v2
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
 
-      - name: Render and Publish
+      - name: Install dependencies 
+        run: npm ci
+
+      - name: Install Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+  
+      - name: Publish Quarto project
         uses: quarto-dev/quarto-actions/publish@v2
         with:
           target: gh-pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate hashes of source code and built files
+        id: generate_hashes
+        run: |
+          # Criar diretório para os hashes se não existir
+          mkdir -p hashes
+          
+          # Gerar hash de todo o código fonte
+          echo "# Hashes SHA256 - Código Fonte " > hashes/hashes.txt
+          echo "Gerado em: $(date)" >> hashes/hashes.txt
+          echo "Tag: ${{ github.event.release.tag_name }}" >> hashes/hashes.txt
+          echo "Commit: ${{ github.sha }}" >> hashes/hashes.txt
+          echo "" >> hashes/hashes.txt
+          
+          # Hash do arquivo Source code (tar.gz) oficial da release
+          echo "## 📦 Hash do Source Code Oficial da Release" >> hashes/hashes.txt
+          echo "" >> hashes/hashes.txt
+          
+          # Baixar o arquivo tar.gz da release
+          TARBALL_URL="https://github.com/${{ github.repository }}/archive/refs/tags/${{ github.event.release.tag_name }}.tar.gz"
+          echo "Baixando: $TARBALL_URL"
+          curl -L -o source-code-release.tar.gz "$TARBALL_URL"
+          
+          # Gerar hash do arquivo oficial
+          if [ -f "source-code-release.tar.gz" ]; then
+            RELEASE_HASH=$(sha256sum source-code-release.tar.gz | cut -d' ' -f1)
+            echo "$RELEASE_HASH  ${{ github.event.release.tag_name }}.tar.gz (Source code oficial da release)" >> hashes/hashes.txt
+            echo "✅ Hash do arquivo oficial gerado: $RELEASE_HASH"
+          else
+            echo "❌ Erro: Não foi possível baixar o arquivo tar.gz da release" >> hashes/hashes.txt
+          fi
+          
+          # Hash do arquivo ZIP da release também
+          ZIP_URL="https://github.com/${{ github.repository }}/archive/refs/tags/${{ github.event.release.tag_name }}.zip"
+          echo "Baixando: $ZIP_URL"
+          curl -L -o source-code-release.zip "$ZIP_URL"
+          
+          if [ -f "source-code-release.zip" ]; then
+            ZIP_HASH=$(sha256sum source-code-release.zip | cut -d' ' -f1)
+            echo "$ZIP_HASH  ${{ github.event.release.tag_name }}.zip (Source code oficial da release)" >> hashes/hashes.txt
+            echo "✅ Hash do arquivo ZIP oficial gerado: $ZIP_HASH"
+          else
+            echo "❌ Erro: Não foi possível baixar o arquivo zip da release" >> hashes/hashes.txt
+          fi
+          
+          echo "" >> hashes/hashes.txt
+          
+          # Mostrar o conteúdo do arquivo de hashes
+          echo "Conteúdo do arquivo de hashes:"
+          cat hashes/hashes.txt
+
+      - name: Upload hashes as release asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: hashes/hashes.txt
+          asset_name: build-hashes.txt
+          asset_content_type: text/plain
+
+      - name: Update release description with hashes
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+            
+            // Ler o arquivo de hashes
+            const hashesPath = path.join(process.cwd(), 'hashes', 'hashes.txt');
+            const hashesContent = fs.readFileSync(hashesPath, 'utf8');
+            
+            // Obter a release atual
+            const release = await github.rest.repos.getRelease({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              release_id: context.payload.release.id
+            });
+            
+            // Atualizar a descrição da release com os hashes
+            const updatedBody = `${release.data.body || ''}
+            
+            ## 🔐 Hashes dos Arquivos Gerados
+            
+            \`\`\`
+            ${hashesContent}
+            \`\`\`
+            
+            ---
+            *Hashes gerados automaticamente durante o build*`;
+            
+            await github.rest.repos.updateRelease({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              release_id: context.payload.release.id,
+              body: updatedBody
+            });
+            
+            console.log('Descrição da release atualizada com os hashes!');

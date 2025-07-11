@@ -83,16 +83,17 @@ Até mesmo offline.
 
     for (let i = 0; i < 5; i++) {
       const element = searchCityFilter[i];
+      if(element){
+        const para = document.createElement("a");
+        para.setAttribute("href", location+"municipio.html?id=" + element.B);
+        para.classList.add("list-group-item");
+        para.classList.add("list-group-item-action");
 
-      const para = document.createElement("a");
-      para.setAttribute("href", location+"municipio.html?id=" + element.B);
-      para.classList.add("list-group-item");
-      para.classList.add("list-group-item-action");
+        const node = document.createTextNode(element.A);
+        para.appendChild(node);
 
-      const node = document.createTextNode(element.A);
-      para.appendChild(node);
-
-      document.getElementById("searchListGroup").appendChild(para);
+        document.getElementById("searchListGroup").appendChild(para);
+      }
     }
     
   }
@@ -162,4 +163,3 @@ viewof map = {
 :::
 
 
-{{< include _pagefooter.qmd >}}

@@ -1,9 +1,7 @@
 project:
   type: website
   post-render:
-    - "cp -rnv static/images/. _site/static/images"
-    - "cp -rnv static/requests_content/. _site/static/requests_content"
-    - "cp sw.js _site/"
+    - quarto run files/scripts/copy_files_site.ts
   preview:
     # host: 0.0.0.0
     port: 4200
@@ -14,7 +12,6 @@ website:
   title: "Rede de Educação e Saúde"
   search: false
   navbar:
-
     right:
         # Substituir no futuro com as respectivas páginas
       - href: ./proeficiencia/
@@ -37,6 +34,27 @@ website:
         href: https://instagram.com/rede_de_educacao_e_saude_
       - icon: youtube
         href: https://www.youtube.com/@RedeEducacaoeSaudeemEscolasPub
+      - icon: github
+        href: https://github.com/resepemb/rede-educacao-e-saude
+  page-footer:
+    background: "darkcyan"
+    foreground: "#ffffff"
+    border: false
+    left:
+      - text: Página inicial
+        href: index.qmd
+      - text: Sobre
+        href: sobre.qmd
+    center:
+      - text: "Versão: {{< env TAG_NAME >}}"
+    right:
+      - text: "Realização:"
+      - icon: gov 
+        href: https://www.gov.br/cnpq/pt-br
+      - icon: ufrb
+        href: https://www.ufrb.edu.br
+      - icon: ifba
+        href: https://portal.ifba.edu.br/
 
 format:
   html:
@@ -51,8 +69,3 @@ format:
     page-layout: custom
     
     
-    
-    
-
-
-

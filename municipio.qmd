@@ -388,7 +388,18 @@ Quantidade de Matrículas em ${pesquisa_ano}
             labels: ['Total', 'Masculina', 'Feminina', 'Não declarada', 'Branca', 'Preta','Parda','Amarela','Indígena','Deficiência'],
             datasets: [{
               label: '',
-              data: [dados[0][pesquisa_ano].Total, dados[0][pesquisa_ano].Masculina, dados[0][pesquisa_ano].Feminina, dados[0][pesquisa_ano].Nãodeclarada, dados[0][pesquisa_ano].Branca,  dados[0][pesquisa_ano].Preta,dados[0][pesquisa_ano].Parda,dados[0][pesquisa_ano].Amarela,dados[0][pesquisa_ano].Indígena,dados[0][pesquisa_ano].Deficiência],
+              data: [
+                dados?.[0]?.[pesquisa_ano]?.Total ?? 0,
+                dados?.[0]?.[pesquisa_ano]?.Masculina ?? 0,
+                dados?.[0]?.[pesquisa_ano]?.Feminina ?? 0,
+                dados?.[0]?.[pesquisa_ano]?.Nãodeclarada ?? 0,
+                dados?.[0]?.[pesquisa_ano]?.Branca ?? 0,
+                dados?.[0]?.[pesquisa_ano]?.Preta ?? 0,
+                dados?.[0]?.[pesquisa_ano]?.Parda ?? 0,
+                dados?.[0]?.[pesquisa_ano]?.Amarela ?? 0,
+                dados?.[0]?.[pesquisa_ano]?.Indígena ?? 0,
+                dados?.[0]?.[pesquisa_ano]?.Deficiência ?? 0
+              ],
               borderWidth: 1,
               minBarLength: 10,
               backgroundColor:'rgba(75, 192, 192, 0.2)',
@@ -932,4 +943,3 @@ Saiba mais sobre em: [Taxas de rendimento escolar - Inep](https://download.inep.
 
 
 
-{{< include _pagefooter.qmd >}}

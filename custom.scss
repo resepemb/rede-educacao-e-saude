@@ -13,3 +13,61 @@ $input-border-radius: 0;
 //   xl: 1200px,
 //   xxl: 1400px
 // );
+
+
+/* FOOTER */
+
+.footer-items{
+  gap: 10px;
+  flex-direction: column !important;
+  text-align: start;
+}
+
+footer.footer .nav-footer{
+  border-top-left-radius: .9rem !important;
+  border-top-right-radius: .9rem !important;
+}
+
+.nav-footer{
+  padding-bottom: 0em;
+}
+
+
+.nav-footer-left{
+  padding-left: 50px;
+}
+
+
+/* CUSTOM ICONS */
+
+.bi-gov::before {
+  display: inline-block;
+  content: "";
+  background-image: url("./files/images/participants/CNPq_v2017_rgb_neg.png");
+  background-size: contain; 
+  background-repeat: no-repeat;
+  width: 140px;  
+  height: 40px;  
+}
+
+
+.bi-ifba::before {
+  display: inline-block;
+  content: "";
+  background-image: url("./files/images/participants/MARCA_IFBA_HORIZONTAL_completa_negativaBRANCA_IFBA.png");
+  background-size: contain; 
+  background-repeat: no-repeat;
+  width: 190px;  
+  height: 80px;  
+}
+
+.bi-ufrb::before {
+  display: inline-block;
+  content: "";
+  background-image: url("./files/images/participants/UFRB-Vertical_branca.png");
+  background-size: contain; 
+  background-repeat: no-repeat;
+  width: 160px;  
+  height: 80px;  
+}
+

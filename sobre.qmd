@@ -1,19 +1,27 @@
+::: {.container}
 
-:::{.grid .mx-5 .vh-100}
+:::{.row}
 
-:::{.g-col}
+:::{.col .col-lg-2}
 
-:::{.fs-1 .fw-bold}
+# Sobre
 
-Sobre
+Este site apresenta dados educacionais dos municípios da Bahia, com foco nas matrículas, taxas de rendimento e distorção idade-série no Ensino Médio. As informações são extraídas do Censo Escolar, realizado pelo INEP, e organizadas para facilitar o acompanhamento e análise dos indicadores educacionais.
+
+## Objetivo
+Disponibilizar estatísticas atualizadas e visualizações interativas para apoiar gestores, pesquisadores, educadores e cidadãos interessados na melhoria da educação pública.
+
+## Fonte dos dados
+Os dados utilizados são provenientes do [Censo Escolar](https://www.gov.br/inep/pt-br/areas-de-atuacao/pesquisas-estatisticas-e-indicadores/censo-escolar), principal pesquisa estatística educacional do Brasil, realizada anualmente pelo INEP.
+
+## Como navegar
+Utilize o menu para acessar informações por município, visualizar gráficos, consultar indicadores e entender conceitos como rendimento escolar e distorção idade-série.
+
+## Contato
+Para dúvidas ou sugestões, entre em contato com a equipe do projeto.
 
 :::
 
-Sobre este site
-
-
 :::
 
 :::
-
-{{< include _pagefooter.qmd >}}
